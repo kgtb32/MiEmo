@@ -7,15 +7,17 @@ if you are on linux **do not install node via apt**, use nvm (node version manag
 
 [nvm-sh](https://github.com/nvm-sh/nvm)
 
-## How to start the project ? 
+## How to start the project ?
 
-To start this project simply type : 
-> yarn 
+To start this project simply type :
 
-to download all the nescessary dependencies 
+> yarn
 
-then you can start the developpement server 
-> yarn dev 
+to download all the nescessary dependencies
+
+then you can start the developpement server
+
+> yarn dev
 
 if you are comming from create-react-app you need to use **yarn dev** instead of **yarn start**
 
@@ -27,7 +29,6 @@ You cannot commit if your files is not well formated or have errors.
 
 to format all your code, you need to have the editorconfig and prettier extension enabled.
 
-If you dont have theses extensions or enforce the formatting use 
+If you dont have theses extensions or enforce the formatting use
+
 > yarn format
-
-
