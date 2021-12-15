@@ -1,0 +1,13 @@
+{
+  "name": "MiEmoAPI",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev":"node index.js"
+  },
+  "dependencies": {
+    "fastify": "^3.25.0"
+  }
+}
