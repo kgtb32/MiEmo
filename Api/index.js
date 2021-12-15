@@ -1,6 +1,7 @@
 // Require the framework and instantiate it
 
 import fastify from "fastify";
+import fastifyCors from "fastify-cors";
 import { get as weatherGet } from "./routes/weather.js";
 
 const fastifyServer = fastify({ logger: true });
@@ -10,6 +11,11 @@ fastifyServer.get("/", async (request, reply) => {
 });
 
 fastifyServer.get("/weather/get", weatherGet);
+
+fastifyServer.register( fastifyCors, {
+	origin: 'http://localhost:3000'
+  })
+  
 
 const start = async () => {
 	try {
