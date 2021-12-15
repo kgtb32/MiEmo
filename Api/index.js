@@ -1,21 +1,22 @@
 // Require the framework and instantiate it
 
-import fastify from "fastify"
+import fastify from "fastify";
+import { get as weatherGet } from "./routes/weather.js";
 
-const fastifyServer = fastify({ logger: true })
+const fastifyServer = fastify({ logger: true });
 
-// Declare a route
-fastifyServer.get('/', async (request, reply) => {
-  return { hello: 'world' }
-})
+fastifyServer.get("/", async (request, reply) => {
+	return { hello: "world" };
+});
 
-// Run the server!
+fastifyServer.get("/weather/get", weatherGet);
+
 const start = async () => {
-  try {
-    await fastifyServer.listen(8000)
-  } catch (err) {
-    fastifyServer.log.error(err)
-    process.exit(1)
-  }
-}
-start()
+	try {
+		await fastifyServer.listen(8000);
+	} catch (err) {
+		fastifyServer.log.error(err);
+		process.exit(1);
+	}
+};
+start();
