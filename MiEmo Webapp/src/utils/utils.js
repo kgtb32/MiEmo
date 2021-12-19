@@ -1,3 +1,5 @@
+import { dayjs } from 'dayjs'
+
 export const generateQueryString = (urlStr, parameters) => {
 	const finalUrl = new URL(urlStr)
 	let params = finalUrl.searchParams
@@ -10,4 +12,8 @@ export const generateMeteoAvailable = whatWanted => {
 		console.log(previousValue, currentValue)
 		return previousValue + ',' + currentValue
 	})
+}
+
+export const parseISO8601Date = dateToParse => {
+	return dayjs(dateToParse)
 }
