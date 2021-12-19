@@ -24,6 +24,7 @@
 		}
 	},
 	"dependencies": {
+		"dayjs": "^1.10.7",
 		"primereact": "^7.0.1",
 		"react": "^17.0.0",
 		"react-dom": "^17.0.0",
