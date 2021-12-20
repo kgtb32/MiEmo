@@ -1,15 +1,17 @@
 import { React, useState } from 'react'
 
-import { Responsive, WidthProvider } from 'react-grid-layout'
+import styled from 'styled-components'
 
-import 'react-grid-layout/css/styles.css'
-import componentFactory from './ComponentFactory'
+import { Responsive, WidthProvider } from 'react-grid-layout'
 
 import { Card } from 'primereact/card'
 
+import componentFactory from './ComponentFactory'
 import layoutFactory from '../../layouts/layoutFactory'
 
+import 'react-grid-layout/css/styles.css'
 import 'primereact/resources/themes/lara-light-blue/theme.css'
+import '../../static/css/height.css'
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
@@ -21,11 +23,11 @@ function GridLayout() {
 			const Component = componentFactory[element.componentId]
 			return (
 				<div key={element.gridId} style={{ padding: '0.5em' }}>
-					<Card title="Horloge" style={{ height: '100%' }}>
-						<div className="no-drag">
+					<JoliCard className="h-100">
+						<div className="no-drag h-100">
 							<Component />
 						</div>
-					</Card>
+					</JoliCard>
 				</div>
 			)
 		})
@@ -45,5 +47,17 @@ function GridLayout() {
 		</ResponsiveGridLayout>
 	)
 }
+
+const JoliCard = styled(Card)`
+	& .p-card-body {
+		height: 100%;
+		padding: 0.75rem;
+	}
+
+	& .p-card-content {
+		height: 100%;
+		padding: 0em;
+	}
+`
 
 export default GridLayout
