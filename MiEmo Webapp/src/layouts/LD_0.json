@@ -7,8 +7,8 @@
 			"gridId": "clock1"
 		},
 		{
-			"componentId": "com.miemo.widgets.clock",
-			"gridId": "clock2"
+			"componentId": "com.miemo.widgets.meteo",
+			"gridId": "weather"
 		},
 		{
 			"componentId": "com.miemo.widgets.clock",
@@ -18,7 +18,7 @@
 	"layouts": {
 		"lg": [
 			{ "i": "clock1", "x": 0, "y": 0, "w": 4, "h": 2 },
-			{ "i": "clock2", "x": 1, "y": 0, "w": 4, "h": 2, "minW": 2, "maxW": 4 },
+			{ "i": "weather", "x": 1, "y": 0, "w": 4, "h": 2, "minW": 2, "maxW": 4 },
 			{ "i": "clock3", "x": 4, "y": 0, "w": 1, "h": 2 }
 		]
 	}
