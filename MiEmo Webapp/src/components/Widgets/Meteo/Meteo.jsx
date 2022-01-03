@@ -1,18 +1,18 @@
 import React, { useCallback, useEffect, useState } from 'react'
 
 import styled from 'styled-components'
-import { getClosedDate } from '../../utils/utils'
+import { getClosedDate } from '../../../utils/utils'
 
-import WeatherImageFactory from '../../static/WeatherImageFactory'
-import WeatherImage from '../../static/json/weatherImage.json'
+import WeatherImageFactory from '../../../static/WeatherImageFactory'
+import WeatherImage from '../../../static/json/weatherImage.json'
 
-import api from '../../api/'
+import api from '../../../api'
 
-import '../../static/css/height.css'
-import '../../static/css/overflow.css'
-import '../../static/css/flexboxes.css'
-import '../../static/css/display.css'
-import '../../static/css/width.css'
+import '../../../static/css/height.css'
+import '../../../static/css/overflow.css'
+import '../../../static/css/flexboxes.css'
+import '../../../static/css/display.css'
+import '../../../static/css/width.css'
 
 function Meteo() {
 	const [meteo, setMeteo] = useState(null)
