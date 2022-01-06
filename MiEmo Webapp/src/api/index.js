@@ -13,6 +13,11 @@ const apis = {
 			return api().weather.get(latitude, longitude, enabledValues)
 		},
 	},
+	city: {
+		find: cityName => {
+			return api().city.find(cityName)
+		},
+	},
 }
 
 export default apis
