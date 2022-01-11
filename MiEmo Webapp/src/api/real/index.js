@@ -36,4 +36,16 @@ export default {
 			)
 		},
 	},
+	city: {
+		find: cityName => {
+			return fetchAPI(
+				generateQueryString(settings.city.url, [
+					{
+						name: settings.city.query.cityName,
+						val: cityName,
+					},
+				]),
+			)
+		},
+	},
 }

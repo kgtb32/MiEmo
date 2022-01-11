@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Meteo from '../Widgets/Meteo'
+import Meteo from '../Widgets/Meteo/Meteo'
 
 const componentFactory = {
 	'com.miemo.widgets.clock': () => (
