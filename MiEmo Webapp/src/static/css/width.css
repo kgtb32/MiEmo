@@ -5,3 +5,19 @@
 .w100 {
 	width: 100%;
 }
+
+button.p-button p-component {
+	width: 90% !important;
+	height: 90% !important;
+	font-size: 13px !important;
+}
+
+.flex {
+	display: flex;
+	width: 100% !important;
+}
+
+.ghqVyt {
+	height: 2.3rem !important;
+	width: auto !important;
+}
