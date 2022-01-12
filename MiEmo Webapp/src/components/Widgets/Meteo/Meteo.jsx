@@ -5,6 +5,7 @@ import { getClosedDate } from '../../../utils/utils'
 
 import WeatherImageFactory from '../../../static/WeatherImageFactory'
 import WeatherImage from '../../../static/json/weatherImage.json'
+import MeteoForecast from './MeteoForecast'
 
 import api from '../../../api'
 
@@ -111,6 +112,7 @@ function Meteo() {
 								</div>
 							</div>
 						</div>
+						<MeteoForecast closeDate={closeDate} meteo={meteo} />
 					</div>
 				</>
 			)}
