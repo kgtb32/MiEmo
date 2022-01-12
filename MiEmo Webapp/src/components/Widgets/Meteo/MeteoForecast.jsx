@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import { Chart } from 'primereact/chart'
+import { Dropdown } from 'react-bootstrap'
 
 export default function MeteoForecast({ meteo, closeDate }) {
+	const [selectedMode, setMode] = useState('temperature')
+
 	const meteoAfterDate = (index => {
 		let finalMeteo = {}
 		for (let i = index; i < meteo.hourly.time.length; i++) {
@@ -27,7 +30,31 @@ export default function MeteoForecast({ meteo, closeDate }) {
 					label: 'Température',
 					data: meteoAfterDate.temperature_2m,
 					fill: true,
+					borderColor: '#e74c3c',
+					tension: 0.4,
+				},
+			],
+		},
+		prec: {
+			labels: meteoAfterDate.time,
+			datasets: [
+				{
+					label: 'Précipitations',
+					data: meteoAfterDate.prec,
+					fill: true,
 					borderColor: '#2980b9',
+					tension: 0.4,
+				},
+			],
+		},
+		windspeed: {
+			labels: meteoAfterDate.time,
+			datasets: [
+				{
+					label: 'Vitesse du vent',
+					data: meteoAfterDate.windspeed,
+					fill: true,
+					borderColor: '#e67e22',
 					tension: 0.4,
 				},
 			],
@@ -74,8 +101,16 @@ export default function MeteoForecast({ meteo, closeDate }) {
 		<div>
 			<p>Prévisions</p>
 			<div>
-				<Chart type="line" data={graphData.temperature} options={multiAxisOptions} />
-				<p>obj</p>
+				<Chart type="line" data={graphData[selectedMode]} options={multiAxisOptions} />
+				<Dropdown>
+					{Object.keys(graphData).map((e, i) => {
+						return (
+							<Dropdown.Item key={'meteo_forecast_mode_' + i} onClick={() => setMode(e)}>
+								{e}
+							</Dropdown.Item>
+						)
+					})}
+				</Dropdown>
 			</div>
 		</div>
 	)
