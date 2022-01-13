@@ -1,5 +1,5 @@
 export default {
-	useMock: false,
+	useMock: true,
 	city: {
 		query: {
 			cityName: 'cityName',
