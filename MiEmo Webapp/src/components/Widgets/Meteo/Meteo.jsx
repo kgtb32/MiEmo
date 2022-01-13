@@ -9,11 +9,6 @@ import MeteoForecast from './MeteoForecast'
 
 import api from '../../../api'
 
-import '../../../static/css/height.css'
-import '../../../static/css/overflow.css'
-import '../../../static/css/flexboxes.css'
-import '../../../static/css/display.css'
-import '../../../static/css/width.css'
 import CitySelectorModal from './CitySelectorModal'
 import { Button } from 'primereact/button'
 import { Row, Col } from 'react-bootstrap'
@@ -85,28 +80,28 @@ function Meteo() {
 			{!meteo && <p>Aucune donnée météo disponible</p>}
 			{!!meteo && !!city.name && (
 				<>
-					<div className="flex w100 h-100">
+					<div className="d-flex w-100 h-100">
 						<JoliWeatherImage src={imageFromWMOCode(meteo.hourly.weathercode[closeDate])} />
-						<div className="flex-col w100">
-							<div className="flex-row w100">
-								<div className="flex-row w50">
+						<div className="d-flex flex-column w-100">
+							<div className="d-flex flex-row w-100">
+								<div className="d-flex flex-row w-50">
 									<JoliImageDescription src={WeatherImageFactory.thermometer} />
 									<span>
 										{meteo.hourly.temperature_2m[closeDate]} /{' '}
 										{meteo.hourly.apparent_temperature[closeDate]}
 									</span>
 								</div>
-								<div className="flex-row w50">
+								<div className="d-flex flex-row w-50">
 									<JoliImageDescription src={WeatherImageFactory.umbrella} />
 									<span>{meteo.hourly.precipitation[closeDate]}</span>
 								</div>
 							</div>
-							<div className="flex-row w100">
-								<div className="flex-row w50">
+							<div className="d-flex flex-row w-100">
+								<div className="d-flex flex-row w-50">
 									<JoliImageDescription src={WeatherImageFactory.humidity} />
 									<span>{meteo.hourly.relativehumidity_2m[closeDate]}</span>
 								</div>
-								<div className="flex-row w50">
+								<div className="d-flex flex-row w-50">
 									<JoliImageDescription src={WeatherImageFactory.windsock} />
 									<span>{meteo.hourly.windspeed_10m[closeDate]}</span>
 								</div>
