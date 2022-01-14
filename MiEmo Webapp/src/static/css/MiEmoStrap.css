@@ -1,0 +1,11 @@
+.h-inherit {
+	height: inherit;
+}
+
+.pb-3em {
+	padding-bottom: 3em;
+}
+
+.overflow-x-auto {
+	overflow-x: auto;
+}
