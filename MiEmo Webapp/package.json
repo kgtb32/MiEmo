@@ -38,7 +38,8 @@
 		"react-router-dom": "^6.0.2",
 		"react-sizeme": "^3.0.2",
 		"react-transition-group": "^4.4.2",
-		"styled-components": "^5.3.3"
+		"styled-components": "^5.3.3",
+		"x-react-flipclock": "^0.1.184153"
 	},
 	"devDependencies": {
 		"@vitejs/plugin-react": "^1.0.0",
