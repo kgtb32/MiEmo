@@ -49,7 +49,7 @@ function GridLayout() {
 const JoliCard = styled(Card)`
 	& .p-card-body {
 		height: 100%;
-		padding: 0.75em;
+		padding: 0.5rem;
 	}
 
 	& .p-card-content {
