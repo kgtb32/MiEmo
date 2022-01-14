@@ -10,9 +10,7 @@ import componentFactory from './ComponentFactory'
 import layoutFactory from '../../layouts/layoutFactory'
 
 import 'react-grid-layout/css/styles.css'
-import 'primereact/resources/themes/lara-light-blue/theme.css'
-import '../../static/css/height.css'
-
+import 'primereact/resources/themes/lara-dark-teal/theme.css'
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
 function GridLayout() {
@@ -51,12 +49,13 @@ function GridLayout() {
 const JoliCard = styled(Card)`
 	& .p-card-body {
 		height: 100%;
-		padding: 0.75rem;
+		padding: 0.75em;
 	}
 
 	& .p-card-content {
 		height: 100%;
 		padding: 0em;
+		border: 4px white;
 	}
 `
 
