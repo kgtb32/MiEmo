@@ -1,22 +1,19 @@
 import React, { useCallback, useEffect, useState } from 'react'
-
 import styled from 'styled-components'
-import { getClosedDate } from '../../../utils/utils'
 
-import WeatherImageFactory from '../../../static/WeatherImageFactory'
-import WeatherImage from '../../../static/json/weatherImage.json'
-import MeteoForecast from './MeteoForecast'
-
-import api from '../../../api'
-
-import '../../../static/css/height.css'
-import '../../../static/css/overflow.css'
-import '../../../static/css/flexboxes.css'
-import '../../../static/css/display.css'
-import '../../../static/css/width.css'
-import CitySelectorModal from './CitySelectorModal'
 import { Button } from 'primereact/button'
 import { Row, Col } from 'react-bootstrap'
+
+import MeteoForecast from './MeteoForecast'
+
+import CitySelectorModal from './CitySelectorModal'
+
+import { getClosedDate, imageFromWMOCode } from '../../../utils/utils'
+import api from '../../../api'
+
+import WeatherImageFactory from '../../../static/WeatherImageFactory'
+
+import { FiEdit } from 'react-icons/fi'
 
 function Meteo() {
 	const [meteo, setMeteo] = useState(null)
@@ -50,83 +47,95 @@ function Meteo() {
 		fecthAPI(city)
 	}, [city])
 
-	const imageFromWMOCode = WMOCode => {
-		return WeatherImageFactory[WeatherImage[WMOCode]]
-	}
-
-	const generateCity = city => {
+	const generateCity = currentCity => {
 		return (
-			<div>
-				<div>
-					<span>Météo à</span>
-					<span className="mx-1">{city.name}</span>{' '}
+			<div className="w-100">
+				<div className="d-flex justify-content-between h-100">
+					<span className={`fi fi-${currentCity.country_code.toLowerCase()} mx-1 align-middle h-100`} />
+					<span className="ml-1 align-middle h-100 text-truncate	">
+						{currentCity.name} ({currentCity.admin1})
+					</span>
+					<Button className="p-button-rounded p-1 px-2" onClick={() => setModalVisible(true)}>
+						<FiEdit />
+					</Button>
 				</div>
-				<span className={`fi fi-${city.country_code.toLowerCase()}`} />
-				<span className="ml-1">({city.admin1})</span>
 			</div>
 		)
 	}
 
 	return (
 		<div className="h-100">
-			<Row>
-				<Col>
-					<Button onClick={() => setModalVisible(true)}>Changer ville</Button>
-					{!city.name && (
-						<>
-							<p>Aucune ville choisie</p>
-						</>
-					)}
-				</Col>
-				<Col>{!!city.name && generateCity(city)}</Col>
-			</Row>
 			{isModalVisible && <CitySelectorModal setModalVisible={setModalVisible} setCity={setCity} />}
-
-			{!meteo && <p>Aucune donnée météo disponible</p>}
+			{!city.name && (
+				<div className="text-center">
+					<p>Aucune ville choisie</p>
+					<Button onClick={() => setModalVisible(true)}>Sélectionner une ville</Button>
+				</div>
+			)}
 			{!!meteo && !!city.name && (
-				<>
-					<div className="flex w100 h-100">
-						<JoliWeatherImage src={imageFromWMOCode(meteo.hourly.weathercode[closeDate])} />
-						<div className="flex-col w100">
-							<div className="flex-row w100">
-								<div className="flex-row w50">
+				<div className="d-flex flex-column h-100 overflow-hidden">
+					{generateCity(city)}
+					<Row className="h-100 w-100">
+						<Col md={4} className="h-100 col-4">
+							<JoliWeatherImage src={imageFromWMOCode(meteo.hourly.weathercode[closeDate])} />
+						</Col>
+						<Col className="h-100 col-4" md={4}>
+							<Row>
+								<div className="d-flex flex-row p-0 w-100">
 									<JoliImageDescription src={WeatherImageFactory.thermometer} />
-									<span>
-										{meteo.hourly.temperature_2m[closeDate]} /{' '}
-										{meteo.hourly.apparent_temperature[closeDate]}
-									</span>
+									<span>{meteo.hourly.temperature_2m[closeDate]}°C</span>
 								</div>
-								<div className="flex-row w50">
+							</Row>
+							<Row>
+								<div className="d-flex flex-row w-100 p-0">
 									<JoliImageDescription src={WeatherImageFactory.umbrella} />
-									<span>{meteo.hourly.precipitation[closeDate]}</span>
+									<div className="d-flex flex-column text-center">
+										<span>{meteo.hourly.precipitation[closeDate]}</span>
+										<span>mm</span>
+									</div>
 								</div>
-							</div>
-							<div className="flex-row w100">
-								<div className="flex-row w50">
+							</Row>
+						</Col>
+						<Col md={4} className="col-4">
+							<Row>
+								<div className="d-flex flex-row w-100 p-0">
 									<JoliImageDescription src={WeatherImageFactory.humidity} />
-									<span>{meteo.hourly.relativehumidity_2m[closeDate]}</span>
+									<span>{meteo.hourly.relativehumidity_2m[closeDate]}%</span>
 								</div>
-								<div className="flex-row w50">
+							</Row>
+							<Row>
+								<div className="d-flex flex-row w-100 p-0">
 									<JoliImageDescription src={WeatherImageFactory.windsock} />
-									<span>{meteo.hourly.windspeed_10m[closeDate]}</span>
+									<div className="d-flex flex-column">
+										<div className="d-flex flex-column text-center">
+											<span>{meteo.hourly.windspeed_10m[closeDate]}</span>
+											<span>km/h</span>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
+							</Row>
+						</Col>
+					</Row>
+					<Row className="h-100 w-100 p-0 m-0">
 						<MeteoForecast closeDate={closeDate} meteo={meteo} />
-					</div>
-				</>
+					</Row>
+				</div>
 			)}
 		</div>
 	)
 }
 
 const JoliWeatherImage = styled.img`
-	height: auto;
-	width: auto;
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	aspect-ratio: 2/1;
+	padding: 0px;
+	display: block;
 `
 
 const JoliImageDescription = styled.img`
-	height: 3rem;
+	height: 2.25rem;
 	width: auto;
 `
 
