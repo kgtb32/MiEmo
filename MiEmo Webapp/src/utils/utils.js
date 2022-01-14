@@ -1,4 +1,10 @@
 import dayjs from 'dayjs'
+import 'dayjs/locale/fr'
+
+dayjs.locale('fr')
+
+import WeatherImageFactory from '../static/WeatherImageFactory'
+import WeatherImage from '../static/json/weatherImage.json'
 
 export const generateQueryString = (urlStr, parameters) => {
 	const finalUrl = new URL(urlStr)
@@ -19,7 +25,7 @@ export const parseISO8601Date = dateToParse => {
 }
 
 export const getClosedDate = ISO8601Dates => {
-	const now = new Date()
+	const now = momentNow()
 	let dateDiff = 99999999999
 	let dateIndex = 0
 	ISO8601Dates.map((e, i) => {
@@ -31,4 +37,28 @@ export const getClosedDate = ISO8601Dates => {
 		}
 	})
 	return dateIndex
+}
+
+export const isSameDay = (dayjsDate1, dayjsDate2) => {
+	return (
+		dayjs(dayjsDate1).day() == dayjs(dayjsDate2).day() &&
+		dayjs(dayjsDate1).month() == dayjs(dayjsDate2).month() &&
+		dayjs(dayjsDate1).year() == dayjs(dayjsDate2).year()
+	)
+}
+
+export const generateDay = dayjsdate => {
+	return dayjs(dayjsdate).format('DD/MM/YYYY')
+}
+
+export const momentNow = () => {
+	return dayjs(new Date())
+}
+
+export const imageFromWMOCode = WMOCode => {
+	return WeatherImageFactory[WeatherImage[WMOCode]]
+}
+
+export const getDayFormated = dayjsDate => {
+	return dayjs(dayjsDate).format('dddd')
 }
