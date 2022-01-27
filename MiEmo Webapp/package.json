@@ -39,7 +39,8 @@
 		"react-sizeme": "^3.0.2",
 		"react-transition-group": "^4.4.2",
 		"styled-components": "^5.3.3",
-		"x-react-flipclock": "^0.1.184153"
+		"x-react-flipclock": "^0.1.184153",
+		"react-youtube": "^7.14.0"
 	},
 	"devDependencies": {
 		"@vitejs/plugin-react": "^1.0.0",
