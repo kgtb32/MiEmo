@@ -283,6 +283,11 @@ quick-format-unescaped@^4.0.3:
   resolved "https://registry.yarnpkg.com/quick-format-unescaped/-/quick-format-unescaped-4.0.4.tgz#93ef6dd8d3453cbc7970dd614fad4c5954d6b5a7"
   integrity sha512-tYC1Q1hgyRuHgloV/YXs2w15unPVh8qfu/qCTfhTYamaw7fyhumKa2yGpdSo87vY32rIclj+4fWYQXUMs9EHvg==
 
+radio-browser@^2.1.9:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/radio-browser/-/radio-browser-2.1.9.tgz#572358dce49651cf3950b88223d21efef0d3ce8d"
+  integrity sha512-ZUKQxpBQz8DFr8eypKvtdPInz2g56q/WXAxdUFR5SRhXGSVAhORgumRWsnPE0YGei6Qaa5HTfruv6tCe1cVCGQ==
+
 require-from-string@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
