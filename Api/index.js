@@ -6,6 +6,7 @@ import { get as weatherGet } from "./routes/weather.js";
 import { get as geocodingGet } from "./routes/city.js";
 import { list as whiteNoiseList } from "./routes/whitenoise.js";
 import { search as radioSearch } from "./routes/radio.js";
+import { search as youtubeSearch } from "./routes/youtube.js";
 
 export const generateRoutes = () => {
   const fastifyServer = fastify({ logger: true });
@@ -20,6 +21,8 @@ export const generateRoutes = () => {
   fastifyServer.get("/radio/search", radioSearch);
 
   fastifyServer.post("/whitenoise/list", whiteNoiseList);
+
+  fastifyServer.get("/youtube/search", youtubeSearch);
 
   fastifyServer.register(fastifyCors, {
     origin: "http://localhost:3000",
