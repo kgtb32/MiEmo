@@ -26,4 +26,8 @@ export default {
 			},
 		},
 	},
+	emotionDetection: {
+		cameraCoverMode: 'cover', //can be [fit, cover]
+		mirorred: true,
+	},
 }
