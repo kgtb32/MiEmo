@@ -6,7 +6,7 @@ const fetchAPI = (url, method, data, contentType) => {
 	return fetch(url, {
 		method,
 		headers: {
-			contentType: contentType ?? 'application/json; charset=utf-8',
+			'Content-Type': contentType ?? 'application/json; charset=utf-8',
 		},
 		body: JSON.stringify(data),
 	})
@@ -45,6 +45,18 @@ export default {
 						val: cityName,
 					},
 				]),
+			)
+		},
+	},
+	emotion: {
+		detect: base64Image => {
+			return fetchAPI(
+				settings.emotion.url,
+				'POST',
+				{
+					base64_image: base64Image + '',
+				},
+				'application/json',
 			)
 		},
 	},
