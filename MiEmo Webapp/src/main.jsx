@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom'
 
 import App from './App'
 
-import 'bootstrap/dist/css/bootstrap.css'
 import './static/css/MiEmoStrap.css'
 
 import 'flag-icons/css/flag-icons.min.css'
+
+import 'bootstrap-dark-5/dist/css/bootstrap-night.css'
 
 ReactDOM.render(
 	<React.StrictMode>
