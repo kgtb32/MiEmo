@@ -33,6 +33,7 @@
 		"@fullcalendar/react": "^5.10.1",
 		"@fullcalendar/timegrid": "^5.10.1",
 		"bootstrap": "^5.1.3",
+		"bootstrap-dark-5": "^1.1.3",
 		"chart.js": "^3.7.0",
 		"dayjs": "^1.10.7",
 		"primereact": "^7.0.1",
