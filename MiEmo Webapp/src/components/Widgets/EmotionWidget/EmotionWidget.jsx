@@ -4,9 +4,9 @@ import { Button } from 'primereact/button'
 
 import { EventEmitter } from 'events'
 
-import VideoWidget from './VideoWidget'
-import WebcamSelector from './WebcamSelector'
-import ResultModal from './ResultModal'
+const VideoWidget = React.lazy(() => import('./VideoWidget'))
+const WebcamSelector = React.lazy(() => import('./WebcamSelector'))
+const ResultModal = React.lazy(() => import('./ResultModal'))
 
 import { AiFillCamera } from 'react-icons/ai'
 import { MdCameraswitch } from 'react-icons/md'
