@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import { Button } from 'primereact/button'
 import { Row, Col } from 'react-bootstrap'
 
-import MeteoForecast from './MeteoForecast'
+const MeteoForecast = React.lazy(() => import('./MeteoForecast'))
 
-import CitySelectorModal from './CitySelectorModal'
+const CitySelectorModal = React.lazy(() => import('./CitySelectorModal'))
 
 import { getClosedDate, imageFromWMOCode } from '../../../utils/utils'
 import api from '../../../api'
