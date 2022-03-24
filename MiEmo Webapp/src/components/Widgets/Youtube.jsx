@@ -1,5 +1,5 @@
-import { React } from 'react'
-import Youtube from 'react-youtube'
+import React from 'react'
+const Youtube = React.lazy(() => import('react-youtube'))
 import { withSize } from 'react-sizeme'
 import PropTypes from 'prop-types'
 function ReactYoutube({ size }) {
