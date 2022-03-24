@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 import '@fullcalendar/react/dist/vdom'
 
+const FullCalendar = React.lazy(() => import('@fullcalendar/react')) // must go before plugins
 import googleCalendarPlugin from '@fullcalendar/google-calendar'
-import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
