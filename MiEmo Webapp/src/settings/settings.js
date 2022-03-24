@@ -1,6 +1,9 @@
 export default {
-	useMock: false,
+	useMock: true,
 	isProd: false,
+	emotion: {
+		url: 'http://localhost:5000/emotion/detect',
+	},
 	city: {
 		query: {
 			cityName: 'cityName',
@@ -22,5 +25,9 @@ export default {
 				wmo: 'weathercode',
 			},
 		},
+	},
+	emotionDetection: {
+		cameraCoverMode: 'cover', //can be [fit, cover]
+		mirorred: true,
 	},
 }

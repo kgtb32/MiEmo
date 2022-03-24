@@ -18,6 +18,11 @@ const apis = {
 			return api().city.find(cityName)
 		},
 	},
+	emotion: {
+		detect: base64Image => {
+			return api().emotion.detect(base64Image)
+		},
+	},
 }
 
 export default apis

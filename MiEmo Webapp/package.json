@@ -36,6 +36,7 @@
 		"bootstrap-dark-5": "^1.1.3",
 		"chart.js": "^3.7.0",
 		"dayjs": "^1.10.7",
+		"events": "^3.3.0",
 		"primereact": "^7.0.1",
 		"react": "^17.0.0",
 		"react-bootstrap": "^2.1.0",
@@ -46,9 +47,10 @@
 		"react-router-dom": "^6.0.2",
 		"react-sizeme": "^3.0.2",
 		"react-transition-group": "^4.4.2",
+		"react-webcam": "^6.0.1",
+		"react-youtube": "^7.14.0",
 		"styled-components": "^5.3.3",
-		"x-react-flipclock": "^0.1.184153",
-		"react-youtube": "^7.14.0"
+		"x-react-flipclock": "^0.1.184153"
 	},
 	"devDependencies": {
 		"@vitejs/plugin-react": "^1.0.0",

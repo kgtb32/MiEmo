@@ -1,0 +1,30 @@
+[
+	{
+		"resultCode": 0,
+		"emotion": "Angry"
+	},
+	{
+		"resultCode": 0,
+		"emotion": "Disgusted"
+	},
+	{
+		"resultCode": 0,
+		"emotion": "Fearful"
+	},
+	{
+		"resultCode": 0,
+		"emotion": "Happy"
+	},
+	{
+		"resultCode": 0,
+		"emotion": "Neutral"
+	},
+	{
+		"resultCode": 0,
+		"emotion": "Sad"
+	},
+	{
+		"resultCode": 0,
+		"emotion": "Surprised"
+	}
+]
