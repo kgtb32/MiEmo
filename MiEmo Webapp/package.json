@@ -47,6 +47,7 @@
 		"react-icons": "^4.3.1",
 		"react-router-dom": "^6.0.2",
 		"react-sizeme": "^3.0.2",
+		"react-sketch-canvas": "^6.1.5",
 		"react-transition-group": "^4.4.2",
 		"react-webcam": "^6.0.1",
 		"react-youtube": "^7.14.0",
