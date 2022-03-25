@@ -76,6 +76,18 @@ export default {
 			)
 		},
 	},
+	youtube: {
+		search: val => {
+			return fetchAPI(
+				generateQueryString(settings.youtube.url, [
+					{
+						name: 'name',
+						val,
+					},
+				]),
+			)
+		},
+	},
 	wifi: {
 		list: () => fetchAPI(settings.wifi.list.url, 'POST', {}, 'application/json'),
 		connect: (ssid, password) =>

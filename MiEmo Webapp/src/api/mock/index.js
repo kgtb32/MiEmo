@@ -8,6 +8,7 @@ import AudioInfo from './audio/info.json'
 import AudioSinks from './audio/sinks.json'
 import BluetoothList from './bluetooth/list.json'
 import WhiteNoiseList from './whitenoise/list.json'
+import youtubeSearch from './youtube/youtube.json'
 
 export default {
 	weather: {
@@ -52,5 +53,10 @@ export default {
 	},
 	whiteNoise: {
 		list: () => Promise.resolve(WhiteNoiseList),
+	},
+	youtube: {
+		search: () => {
+			return Promise.resolve(youtubeSearch)
+		},
 	},
 }

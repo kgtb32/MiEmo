@@ -51,6 +51,11 @@ const apis = {
 	whiteNoise: {
 		list: () => api().whiteNoise.list(),
 	},
+	youtube: {
+		search: name => {
+			return api().youtube.search(name)
+		},
+	},
 }
 
 export default apis

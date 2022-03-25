@@ -3,6 +3,9 @@ const Youtube = React.lazy(() => import('react-youtube'))
 import { withSize } from 'react-sizeme'
 import PropTypes from 'prop-types'
 
+import SearchBar from './SearchBar'
+import { name } from 'dayjs/locale/fr'
+
 function ReactYoutube({ size }) {
 	const youtubeSize = {
 		height: size.height,
@@ -10,7 +13,8 @@ function ReactYoutube({ size }) {
 	}
 	return (
 		<div className="h-100">
-			<Youtube videoId="2g811Eo7K8U" opts={youtubeSize} />
+			<SearchBar name={name} videoId={name} />
+			<Youtube videoId={SearchBar.name} opts={youtubeSize} />
 		</div>
 	)
 }
