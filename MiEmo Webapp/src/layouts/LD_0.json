@@ -25,6 +25,10 @@
 		{
 			"componentId": "com.miemo.widgets.emotionWidget",
 			"gridId": "emotionWidget"
+		},
+		{
+			"componentId": "com.miemo.widgets.activity",
+			"gridId": "activitiesWidget"
 		}
 	],
 	"layouts": {
@@ -34,7 +38,8 @@
 			{ "i": "clock3", "x": 4, "y": 0, "w": 2, "h": 1, "minW": 2 },
 			{ "i": "youtube", "x": 0, "y": 0, "w": 4, "h": 2 },
 			{ "i": "calendar", "x": 2, "y": 0, "w": 4, "h": 2, "minW": 4, "minH": 2 },
-			{ "i": "emotionWidget", "x": 2, "y": 0, "w": 4, "h": 4, "minW": 2, "minH": 2 }
+			{ "i": "emotionWidget", "x": 2, "y": 0, "w": 4, "h": 4, "minW": 2, "minH": 2 },
+			{ "i": "activitiesWidget", "x": 2, "y": 0, "w": 4, "h": 4 }
 		]
 	}
 }
