@@ -5,6 +5,7 @@ const FlipClock = React.lazy(() => import('../Widgets/Clocks/FlipClock'))
 const Youtube = React.lazy(() => import('../Widgets/Youtube'))
 const Calendar = React.lazy(() => import('../Widgets/Calendars/Calendar'))
 const EmotionWidget = React.lazy(() => import('../Widgets/EmotionWidget/EmotionWidget'))
+const Activity = React.lazy(() => import('../Widgets/Activities/Activity'))
 
 const componentFactory = {
 	'com.miemo.widgets.meteo': Meteo,
@@ -13,6 +14,7 @@ const componentFactory = {
 	'com.miemo.widgets.youtube': Youtube,
 	'com.miemo.widgets.calendar': Calendar,
 	'com.miemo.widgets.emotionWidget': EmotionWidget,
+	'com.miemo.widgets.activity': Activity,
 }
 
 export default componentFactory
