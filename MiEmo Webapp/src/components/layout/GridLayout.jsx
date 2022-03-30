@@ -33,9 +33,9 @@ function GridLayout({ size }) {
 	}
 
 	return (
-		<Grid
+		<JoliGrid
 			className="layout "
-			resizeHandles={['e', 'n', 'ne', 'nw', 's', 'se', 'sw', 'w']}
+			resizeHandles={['se']}
 			layouts={layout.layouts}
 			draggableCancel=".no-drag"
 			breakpoints={layout.breakpoints}
@@ -43,7 +43,7 @@ function GridLayout({ size }) {
 			width={size.width + ''}
 		>
 			{generateDom(layout.components)}
-		</Grid>
+		</JoliGrid>
 	)
 }
 
@@ -66,4 +66,13 @@ const JoliCard = styled(Card)`
 	}
 `
 
+const JoliGrid = styled(Grid)`
+	& .react-resizable-handle.react-resizable-handle::after {
+		width: 15px;
+		height: 15px;
+		color: white;
+		border-bottom: 2px solid white;
+		border-right: 2px solid white;
+	}
+`
 export default withSize()(GridLayout)
