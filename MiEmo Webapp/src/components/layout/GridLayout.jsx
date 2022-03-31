@@ -1,5 +1,6 @@
 import { React, useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
+import useStoreContext from '../../context/StoreContext'
 
 import { withSize } from 'react-sizeme'
 import { nanoid } from 'nanoid'
@@ -18,7 +19,7 @@ import layoutFactory from '../../layouts/layoutFactory'
 import 'react-grid-layout/css/styles.css'
 import 'primereact/resources/themes/lara-dark-teal/theme.css'
 
-function GridLayout({ addEvent, size }) {
+function GridLayout({ size }) {
 	const [layout, setLayout] = useState(layoutFactory.LD_0)
 
 	const { widgetEventManager, widgetEditMode } = useStoreContext()
@@ -72,7 +73,7 @@ function GridLayout({ addEvent, size }) {
 	)
 
 	useEffect(() => {
-		addEvent.on('itemAdd', componentId => {
+		widgetEventManager.on('itemAdd', componentId => {
 			addItemToLayout(componentId, nanoid(1024))
 		})
 		widgetEventManager.on('itemDel', itemId => {
@@ -139,7 +140,6 @@ GridLayout.propTypes = {
 	size: PropTypes.shape({
 		width: PropTypes.number,
 	}),
-	addEvent: PropTypes.object,
 }
 
 const JoliCard = styled(Card)`

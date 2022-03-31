@@ -1,12 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import StoreItem from './StoreItem'
 
 import useStoreContext from '../../context/StoreContext'
 import ComponentFactory from '../layout/ComponentFactory'
 
-function Store({ addEvent }) {
+function Store() {
+	const { widgetEventManager } = useStoreContext()
+
 	return (
 		<>
 			<div className="my-2">
@@ -26,10 +27,6 @@ function Store({ addEvent }) {
 			</div>
 		</>
 	)
-}
-
-Store.propTypes = {
-	addEvent: PropTypes.object,
 }
 
 export default Store
