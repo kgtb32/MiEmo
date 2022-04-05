@@ -1,4 +1,4 @@
-export default {
+let settings = {
 	useMock: true,
 	isProd: false,
 	emotion: {
@@ -31,3 +31,13 @@ export default {
 		mirorred: true,
 	},
 }
+
+const { VITE_UseMock, VITE_IsProd } = import.meta.env
+
+console.log(VITE_UseMock, VITE_IsProd)
+
+settings.useMock = VITE_UseMock ? !!VITE_UseMock : settings.useMock
+settings.isProd = VITE_IsProd ? !!VITE_IsProd : settings.isProd
+console.log(settings)
+
+export default settings
