@@ -60,4 +60,16 @@ export default {
 			)
 		},
 	},
+	radio: {
+		search: name => {
+			return fetchAPI(
+				generateQueryString(settings.radio.search.url, [
+					{
+						name: settings.radio.search.query.radioName,
+						val: name,
+					},
+				]),
+			)
+		},
+	},
 }

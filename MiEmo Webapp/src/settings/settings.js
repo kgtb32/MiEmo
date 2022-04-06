@@ -4,6 +4,14 @@ let settings = {
 	emotion: {
 		url: 'http://localhost:5000/emotion/detect',
 	},
+	radio: {
+		search: {
+			url: 'http://localhost:8000/radio/search',
+			query: {
+				radioName: 'name',
+			},
+		},
+	},
 	city: {
 		query: {
 			cityName: 'cityName',
