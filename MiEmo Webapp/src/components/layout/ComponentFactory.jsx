@@ -25,7 +25,7 @@ const componentFactory = {
 		minH: 1,
 	},
 	'com.miemo.widgets.youtube': { item: Youtube, name: 'Youtube', img: AiFillYoutube, minW: 3, minH: 2 },
-	'com.miemo.widgets.calendar': { item: Calendar, name: 'Calendrier', img: IoCalendarNumberSharp, minW: 3, minH: 2 },
+	'com.miemo.widgets.calendar': { item: Calendar, name: 'Calendrier', img: IoCalendarNumberSharp, minW: 4, minH: 2 },
 	'com.miemo.widgets.emotionWidget': {
 		item: EmotionWidget,
 		name: "Widget détection d'émotions",
