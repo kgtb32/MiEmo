@@ -14,7 +14,7 @@ export default function Home() {
 	const { widgetEditMode, toggleWidgetEditMode } = useStoreContext()
 
 	return (
-		<div className="bg-dark" style={{ padding: 60 }}>
+		<div className="bg-dark" style={{ padding: 10 }}>
 			{widgetEditMode && <Store />}
 			<div className="d-flex justify-content-end">
 				<Button className="p-button-rounded p-1 px-1 mx-1">

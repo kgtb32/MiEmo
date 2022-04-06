@@ -28,17 +28,14 @@ function DigitalClock({ size }) {
 					{
 						sep: ' ',
 						type: 'hours',
-						title: 'hour',
 					},
 					{
 						sep: ':',
 						type: 'minutes',
-						title: 'minute',
 					},
 					{
 						sep: ':',
 						type: 'seconds',
-						title: 'second',
 					},
 				]}
 			/>
