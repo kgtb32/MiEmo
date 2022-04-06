@@ -27,19 +27,18 @@ function Calendar() {
 				headerToolbar={{
 					left: 'prev,next today',
 					center: 'title',
-					right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
+					right: 'dayGridMonth,listMonth',
 				}}
 				buttonText={{
 					prev: '<',
 					next: '>',
-					today: "aujourd'hui",
-					month: 'mois',
-					week: 'semaine',
-					day: 'jour',
-					list: 'liste',
+					today: "Aujourd'hui",
+					month: 'Mois',
+					list: 'Liste',
 				}}
-				locales={'frLocale'}
 				locale={'fr'}
+				allDayText={'Journée'}
+				noEventsContent={'Rien à afficher'}
 				initialView="dayGridMonth"
 				googleCalendarApiKey=""
 				viewClassNames="view"
@@ -57,8 +56,19 @@ const JoliDiv = styled.div`
 		text-decoration: none;
 	}
 	& .fc-daygrid-day-number {
+		click: false;
 		color: white;
 		text-decoration: none;
+	}
+	& .fc-daygrid-day-events {
+		pointer-events: none;
+	}
+
+	& .fc-list-event {
+		pointer-events: none;
+	}
+	& .fc-toolbar-title {
+		text-transform: uppercase;
 	}
 `
 
