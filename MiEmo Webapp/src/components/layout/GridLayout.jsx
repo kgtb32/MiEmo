@@ -144,7 +144,6 @@ GridLayout.propTypes = {
 
 const JoliCard = styled(Card)`
 	& .p-card-body {
-		user-select: none;
 		height: 100%;
 		padding: 0.5rem;
 	}
