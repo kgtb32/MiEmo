@@ -4,9 +4,9 @@ import styled from 'styled-components'
 
 import '@fullcalendar/react/dist/vdom'
 
-const FullCalendar = React.lazy(() => import('@fullcalendar/react')) // must go before plugins
+const FullCalendar = React.lazy(() => import('@fullcalendar/react'))
 import googleCalendarPlugin from '@fullcalendar/google-calendar'
-import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list'
@@ -29,6 +29,16 @@ function Calendar() {
 					center: 'title',
 					right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth',
 				}}
+				buttonText={{
+					prev: '<',
+					next: '>',
+					today: "aujourd'hui",
+					month: 'mois',
+					week: 'semaine',
+					day: 'jour',
+					list: 'liste',
+				}}
+				locales={'frLocale'}
 				locale={'fr'}
 				initialView="dayGridMonth"
 				googleCalendarApiKey=""
