@@ -2182,6 +2182,11 @@ react-sizeme@^3.0.2:
     shallowequal "^1.1.0"
     throttle-debounce "^3.0.1"
 
+react-sketch-canvas@^6.1.5:
+  version "6.1.5"
+  resolved "https://registry.yarnpkg.com/react-sketch-canvas/-/react-sketch-canvas-6.1.5.tgz#61eb3f15e3c2d315bfb5bf3e0efc15a5b50cad3e"
+  integrity sha512-ZxrEmPY9984SvFPkEl/c/FKKkiPa56SITjNFHh9cNN25q+meAyQ6wT0rPCkf7yLjc4dXgYEppW87dP/dmuN15g==
+
 react-transition-group@^4.4.1, react-transition-group@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.2.tgz#8b59a56f09ced7b55cbd53c36768b922890d5470"
