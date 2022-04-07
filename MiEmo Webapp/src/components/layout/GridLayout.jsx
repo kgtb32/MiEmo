@@ -16,11 +16,13 @@ import StoreItem from '../Store/StoreItem'
 import componentFactory from './ComponentFactory'
 import layoutFactory from '../../layouts/layoutFactory'
 
+import { loadLocalStorageKeyAsJsonObject } from '../../utils/utils'
+
 import 'react-grid-layout/css/styles.css'
 import 'primereact/resources/themes/lara-dark-teal/theme.css'
 
 function GridLayout({ size }) {
-	const [layout, setLayout] = useState(layoutFactory.LD_0)
+	const [layout, setLayout] = useState(loadLocalStorageKeyAsJsonObject('layout', layoutFactory.LD_0))
 
 	const { widgetEventManager, widgetEditMode } = useStoreContext()
 
@@ -80,6 +82,10 @@ function GridLayout({ size }) {
 			delItemFromLayout(itemId)
 		})
 	}, [widgetEventManager, layout])
+
+	useEffect(() => {
+		localStorage.setItem('layout', JSON.stringify(layout))
+	}, [layout])
 
 	const generateDom = components => {
 		return components.map(element => {
