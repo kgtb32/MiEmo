@@ -56,6 +56,7 @@ export default function CitySelectorModal({ setCity, setModalVisible }) {
 					<InputText
 						value={cityName}
 						onChange={e => setCityName(e.target.value)}
+						onKeyUp={e => setCityName(e.target.value)}
 						className="p-inputtext-sm w-100"
 					/>
 					<Button className="p-button-sm" onClick={() => executeCitySearch()}>
