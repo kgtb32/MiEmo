@@ -8,7 +8,7 @@ const MeteoForecast = React.lazy(() => import('./MeteoForecast'))
 
 const CitySelectorModal = React.lazy(() => import('./CitySelectorModal'))
 
-import { getClosedDate, imageFromWMOCode } from '../../../utils/utils'
+import { getClosedDate, imageFromWMOCode, loadLocalStorageKeyAsJsonObject } from '../../../utils/utils'
 import api from '../../../api'
 
 import WeatherImageFactory from '../../../static/WeatherImageFactory'
@@ -18,7 +18,11 @@ import { FiEdit } from 'react-icons/fi'
 function Meteo() {
 	const [meteo, setMeteo] = useState(null)
 	const [isModalVisible, setModalVisible] = useState(false)
-	const [city, setCity] = useState({})
+	const [city, setCity] = useState(loadLocalStorageKeyAsJsonObject('com.miemo.meteo.city', {}))
+
+	useEffect(() => {
+		localStorage.setItem('com.miemo.meteo.city', JSON.stringify(city))
+	}, [city])
 
 	const closeDate = !!meteo && getClosedDate(meteo.hourly.time)
 

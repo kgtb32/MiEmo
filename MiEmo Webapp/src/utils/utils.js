@@ -62,3 +62,19 @@ export const imageFromWMOCode = WMOCode => {
 export const getDayFormated = dayjsDate => {
 	return dayjs(dayjsDate).format('dddd')
 }
+
+export const loadLocalStorageKeyAsJsonObject = (key, defaultValue) => {
+	try {
+		return JSON.parse(loadLocalStorageKey(key, JSON.stringify(defaultValue)))
+	} catch {
+		return defaultValue
+	}
+}
+
+export const loadLocalStorageKey = (key, defaultValue) => {
+	try {
+		return localStorage.getItem(key) ?? defaultValue
+	} catch {
+		return defaultValue
+	}
+}
