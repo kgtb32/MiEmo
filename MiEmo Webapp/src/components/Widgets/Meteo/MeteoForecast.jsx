@@ -34,8 +34,8 @@ export default function MeteoForecast({ meteo, closeDate }) {
 					const data = meteoAfterDate[e]
 					const index = data.length % 2
 					return (
-						<>
-							<div className="d-inline-block h-100 w-100" key={`prev_item_day_${i}`}>
+						<div key={`prev_item_day_${i}`}>
+							<div className="d-inline-block h-100 w-100">
 								<div className="d-inline h-100">
 									<p className="text-center w-100 d-inline-block p-0 m-0">
 										{getDayFormated(meteoAfterDate[e][index].time)}
@@ -46,7 +46,7 @@ export default function MeteoForecast({ meteo, closeDate }) {
 									<JoliWeatherImage src={imageFromWMOCode(meteoAfterDate[e][index].weatherCode)} />
 								</div>
 							</div>
-						</>
+						</div>
 					)
 				})}
 			</div>
