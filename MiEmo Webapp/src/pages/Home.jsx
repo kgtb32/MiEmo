@@ -16,7 +16,7 @@ export default function Home() {
 	return (
 		<div className="bg-dark" style={{ padding: 10 }}>
 			{widgetEditMode && <Store />}
-			<div className="d-flex justify-content-end">
+			<div className="d-flex justify-content-end" style={{ padding: '1.5em' }}>
 				<Button className="p-button-rounded p-1 px-1 mx-1">
 					<Link to="/settings">
 						<MdSettings size="1.5em" color="black" />
