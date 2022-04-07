@@ -28,7 +28,7 @@ class emotion_detector:
         self.model.add(Dropout(0.5))
         self.model.add(Dense(7, activation='softmax'))
 
-        self.model.load_weights('model.h5')
+        self.model.load_weights('/data/model.h5')
         cv2.ocl.setUseOpenCL(False)
     
     def detect_mood(self, base64_img):
