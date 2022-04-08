@@ -47,6 +47,6 @@ settings.isProd = JSON.parse(VITE_IsProd ?? settings.isProd)
 settings.emotion.url = VITE_EMOTION_URL ?? settings.emotion.url
 settings.city.url = VITE_CITY_URL ?? settings.city.url
 settings.weather.url = VITE_WEATHER_URL ?? settings.weather.url
-settings.radio.url = VITE_RADIO_URL ?? settings.radio.url
+settings.radio.search.url = VITE_RADIO_URL ?? settings.radio.search.url
 
 export default settings

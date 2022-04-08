@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 
-import ReactAudioPlayer from 'react-audio-player'
+import AudioPlayerBase from 'react-audio-player'
 import Slider from 'rc-slider'
 import { Button } from 'primereact/button'
 import { ListGroupItem, Row } from 'react-bootstrap'
@@ -14,6 +14,10 @@ import { IoMdRadio } from 'react-icons/io'
 import { FaSearch, FaVolumeUp, FaStop, FaPlay } from 'react-icons/fa'
 
 import { isEmpty } from 'lodash'
+
+import settings from '../../../settings/settings'
+
+const ReactAudioPlayer = settings.isProd ? AudioPlayerBase.default : AudioPlayerBase
 
 function Radio() {
 	const [modalSearchVisible, setModalSearchVisible] = useState(false)
