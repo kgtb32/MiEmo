@@ -7,13 +7,16 @@ import Webcam from 'react-webcam'
 import api from '../../../api/'
 import settings from '../../../settings/settings'
 
-function VideoWidget({ size, shotEvent, setEmotion }) {
+function VideoWidget({ size, shotEvent, setEmotion, setModalVisible }) {
 	const camRef = useRef(null)
 	const makeScreenshot = useCallback(() => {
 		const fetch = async () => {
 			return api.emotion.detect(camRef.current.getScreenshot())
 		}
-		fetch().then(({ emotion }) => setEmotion(emotion))
+		fetch().then(({ emotion }) => {
+			setEmotion(emotion)
+			setModalVisible(true)
+		})
 	}, [camRef])
 
 	useEffect(() => {
@@ -55,6 +58,7 @@ VideoWidget.propTypes = {
 	}),
 	shotEvent: PropTypes.any,
 	setEmotion: PropTypes.func,
+	setModalVisible: PropTypes.func,
 }
 
 export default withSize({ monitorHeight: true })(VideoWidget)

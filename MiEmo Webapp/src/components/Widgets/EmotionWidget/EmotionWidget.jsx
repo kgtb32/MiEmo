@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Button } from 'primereact/button'
 
@@ -29,12 +29,6 @@ function EmotionWidget() {
 		navigator.mediaDevices.enumerateDevices().then(searchDevices)
 	}, [searchDevices])
 
-	useEffect(() => {
-		if (emotion) {
-			setModalResultVisible(true)
-		}
-	}, [emotion])
-
 	return (
 		<div className="w-100 h-100 d-flex flex-column">
 			<WebcamSelector
@@ -50,7 +44,7 @@ function EmotionWidget() {
 				emotion={emotion}
 			/>
 			<div className="h-100">
-				<VideoWidget shotEvent={shotEvent} setEmotion={setEmotion} />
+				<VideoWidget shotEvent={shotEvent} setEmotion={setEmotion} setModalVisible={setModalResultVisible} />
 			</div>
 			<div className="mx-auto">
 				<JoliButton icon="pi" className="p-button-rounded mx-auto mt-2" onClick={() => shotEvent.emit('shot')}>
