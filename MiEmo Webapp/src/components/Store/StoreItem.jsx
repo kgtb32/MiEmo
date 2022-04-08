@@ -22,7 +22,7 @@ function StoreItem({ componentInfos, mode, event }) {
 				onClick={() => event.emit(mode == 'add' ? 'itemAdd' : 'itemDel', componentInfos?.id)}
 				className={
 					'p-button-rounded py-1 px-1 d-block mx-auto mt-2 ' +
-					(mode == 'del' ? 'p-button-danger position-absolute right-0' : '')
+					(mode == 'del' ? 'no-drag p-button-danger position-absolute right-0' : '')
 				}
 			>
 				{mode == 'del' ? <IoMdRemoveCircle size="1.5em" /> : <IoMdAddCircle size="1.5em" />}
