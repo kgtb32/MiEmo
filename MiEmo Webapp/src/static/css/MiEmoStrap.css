@@ -13,3 +13,11 @@
 .right-0 {
 	right: 0;
 }
+
+.w-min-content {
+	width: min-content;
+}
+
+.h-min-content {
+	height: min-content;
+}
