@@ -34,7 +34,12 @@ function SearchRadioModal({ setCurrentRadio, isModalVisible, setModalVisible }) 
 					<div className="w-100 p-3 pt-0">
 						<small className="text-muted">Entrez le nom de la radio à rechercher</small>
 						<div className="d-flex">
-							<InputText onChange={e => setQuery(e.target.value)} value={query} className="w-100" />
+							<InputText
+								onChange={e => setQuery(e.target.value)}
+								onKeyUp={e => setQuery(e.target.value)}
+								value={query}
+								className="w-100"
+							/>
 							<Button className="mx-1" disabled={query.length < 3} onClick={() => executeSearch()}>
 								<FaSearch />
 							</Button>

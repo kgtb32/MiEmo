@@ -7,14 +7,14 @@ const Calendar = React.lazy(() => import('../Widgets/Calendars/Calendar'))
 const EmotionWidget = React.lazy(() => import('../Widgets/EmotionWidget/EmotionWidget'))
 const Activity = React.lazy(() => import('../Widgets/Activities/Activity'))
 const Drawing = React.lazy(() => import('../Widgets/Draw/Drawing'))
+const Radio = React.lazy(() => import('../Widgets/Radio/Radio'))
 
 import { TiWeatherPartlySunny } from 'react-icons/ti'
-import { IoMdClock } from 'react-icons/io'
+import { IoMdClock, IoMdRadio } from 'react-icons/io'
 import { IoCalendarNumberSharp } from 'react-icons/io5'
-import { AiFillClockCircle, AiFillYoutube } from 'react-icons/ai'
+import { AiFillClockCircle, AiFillYoutube, AiOutlineHighlight } from 'react-icons/ai'
 import { MdEmojiEmotions } from 'react-icons/md'
 import { FiActivity } from 'react-icons/fi'
-import { AiOutlineHighlight } from 'react-icons/ai'
 
 const componentFactory = {
 	'com.miemo.widgets.meteo': { item: Meteo, name: 'Météo', img: TiWeatherPartlySunny, minW: 2, minH: 2 },
@@ -37,6 +37,7 @@ const componentFactory = {
 	},
 	'com.miemo.widgets.activity': { item: Activity, name: 'Activités', img: FiActivity, minW: 2, minH: 2 },
 	'com.miemo.widgets.Drawing': { item: Drawing, name: 'Drawing', img: AiOutlineHighlight, minW: 2, minH: 2 },
+	'com.miemo.widgets.radio': { item: Radio, name: 'Radio', img: IoMdRadio, minW: 4, minH: 4 },
 }
 
 export default componentFactory
