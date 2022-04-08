@@ -1,6 +1,7 @@
 import WeatherGet from './weather/get.json'
 import cityFind from './city/city.json'
 import EmotionDetect from './emotion/detect.json'
+import RadioSearch from './radio/search.json'
 
 export default {
 	weather: {
@@ -16,6 +17,11 @@ export default {
 	emotion: {
 		detect: () => {
 			return Promise.resolve(EmotionDetect[Math.floor(Math.random() * EmotionDetect.length)])
+		},
+	},
+	radio: {
+		search: () => {
+			return Promise.resolve(RadioSearch)
 		},
 	},
 }

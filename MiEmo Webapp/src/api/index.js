@@ -23,6 +23,11 @@ const apis = {
 			return api().emotion.detect(base64Image)
 		},
 	},
+	radio: {
+		search: name => {
+			return api().radio.search(name)
+		},
+	},
 }
 
 export default apis
