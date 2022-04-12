@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import App from './App'
+import ErrorBoundary from './components/Errors/ErrorBoundary'
 
 import './static/css/MiEmoStrap.css'
 
@@ -20,7 +21,9 @@ import { StoreProvider } from './context/StoreContext'
 ReactDOM.render(
 	<React.StrictMode>
 		<StoreProvider>
-			<App />
+			<ErrorBoundary>
+				<App />
+			</ErrorBoundary>
 		</StoreProvider>
 	</React.StrictMode>,
 	document.getElementById('root'),
