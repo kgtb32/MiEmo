@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 import AudioPlayerBase from 'react-audio-player'
 import Slider from 'rc-slider'
@@ -8,16 +8,23 @@ import { VirtualScroller } from 'primereact/virtualscroller'
 
 import RadioListItem from './RadioListItem'
 import SearchRadioModal from './SearchRadioModal'
-import RadioStateItem from './RadioStateItem'
 
-import { IoMdRadio } from 'react-icons/io'
 import { FaSearch, FaVolumeUp, FaStop, FaPlay } from 'react-icons/fa'
+import { IoMdRadio, IoMdHeartDislike, IoIosHeart } from 'react-icons/io'
 
 import { isEmpty } from 'lodash'
+import { loadLocalStorageKeyAsJsonObject, bitFlags } from '../../../utils/utils'
 
 import settings from '../../../settings/settings'
 
 const ReactAudioPlayer = settings.isProd ? AudioPlayerBase.default : AudioPlayerBase
+
+const radioPlayState = {
+	shouldPlay: 1 << 0,
+	isPlaying: 1 << 1,
+	isErrored: 1 << 2,
+	isPaused: 1 << 3,
+}
 
 function Radio() {
 	const [modalSearchVisible, setModalSearchVisible] = useState(false)
@@ -25,34 +32,84 @@ function Radio() {
 	const audioRef = useRef(null)
 	const [volume, setVolume] = useState(50)
 	const [currentRadio, setCurrentRadio] = useState({})
-	const [playState, setPlayState] = useState('neutral')
-	const [play, setPlay] = useState(true)
+	const [playState, setPlayState] = useState(0) //00000000b = nothing
 
-	const [radioList] = useState([])
+	const [favorites, setFavorites] = useState(loadLocalStorageKeyAsJsonObject('com.miemo.radio.favorites', {}))
 
-	const template = (item, options) => (
-		<ListGroupItem
-			action
-			onClick={() => {
-				setCurrentRadio(item)
-				setPlayState('loading')
-			}}
-		>
-			<RadioListItem
-				radioInfos={{
-					name: item.name,
-					stationUuid: item.stationuuid,
-					url: item.url,
-					favicon: item.favicon,
-					country: item.country,
-					countryCode: item.countrycode,
+	useEffect(() => {
+		localStorage.setItem('com.miemo.radio.favorites', JSON.stringify(favorites))
+	}, [favorites])
+
+	const playActions = {
+		play: () =>
+			setPlayState(
+				bitFlags.setMultipleBitFlags(playState, [
+					{ flag: radioPlayState.isPlaying, state: 1 },
+					{ flag: radioPlayState.isPaused, state: 0 },
+				]),
+			),
+		pause: () =>
+			setPlayState(
+				bitFlags.setMultipleBitFlags(playState, [
+					{ flag: radioPlayState.isPlaying, state: 0 },
+					{ flag: radioPlayState.isPaused, state: 1 },
+				]),
+			),
+		error: () =>
+			setPlayState(
+				bitFlags.setMultipleBitFlags(playState, [
+					{ flag: radioPlayState.isPlaying, state: 0 },
+					{ flag: radioPlayState.isPaused, state: 0 },
+					{ flag: radioPlayState.isErrored, state: 1 },
+				]),
+			),
+		stop: () => setPlayState(0),
+	}
+
+	const template = (item, options) => {
+		const radio = favorites[item]
+		return (
+			<ListGroupItem
+				action
+				onClick={() => {
+					setCurrentRadio(radio)
+					setPlayState(radioPlayState.shouldPlay)
 				}}
-				playState="playing"
-				currentRadio={currentRadio.stationuuid}
-				options={options}
-			/>
-		</ListGroupItem>
-	)
+			>
+				<RadioListItem
+					radioInfos={{
+						name: radio.name,
+						stationUuid: radio.stationuuid,
+						url: radio.url,
+						favicon: radio.favicon,
+						country: radio.country,
+						countryCode: radio.countrycode,
+					}}
+					playState={playState}
+					currentRadio={currentRadio.stationuuid}
+					options={options}
+				/>
+			</ListGroupItem>
+		)
+	}
+
+	const generateActionsPanel = () => {
+		return (
+			<>
+				{bitFlags.isOn(radioPlayState.isPlaying, playState) && (
+					<Button onClick={() => audioRef?.current?.audioEl?.current?.pause()}>
+						<FaStop />
+					</Button>
+				)}
+				{bitFlags.isOn(radioPlayState.isPaused, playState) && (
+					<Button onClick={() => audioRef?.current?.audioEl?.current?.play()}>
+						<FaPlay />
+					</Button>
+				)}
+				{radioPlayState.shouldPlay === playState && <Button loading />}
+			</>
+		)
+	}
 
 	return (
 		<div className="h-100 d-flex flex-column">
@@ -61,7 +118,7 @@ function Radio() {
 				setModalVisible={setModalSearchVisible}
 				setCurrentRadio={radio => {
 					setCurrentRadio(radio)
-					setPlay(true)
+					setPlayState(radioPlayState.shouldPlay)
 				}}
 			/>
 			<div className="d-flex justify-content-between align-items-baseline my-0 p-1 vertical-align-middle">
@@ -85,23 +142,11 @@ function Radio() {
 						autoPlay
 						ref={audioRef}
 						src={currentRadio.url}
-						onPlay={() => {
-							setPlayState('playing')
-							setPlay(true)
-						}}
-						onPause={() => {
-							setPlayState('neutral')
-							setPlay(false)
-						}}
-						onStop={() => {
-							setPlay(false)
-							setPlayState('neutral')
-						}}
+						onPlay={playActions.play}
+						onPause={playActions.pause}
+						onStop={playActions.stop}
 						volume={volume / 100}
-						onError={() => {
-							setPlayState('error')
-							setPlay(false)
-						}}
+						onError={playActions.error}
 					/>
 					<div>
 						{currentRadio?.favicon == '' ? (
@@ -116,24 +161,35 @@ function Radio() {
 							/>
 						)}
 						<p className="text-center">{currentRadio.name}</p>
-						<RadioStateItem playState={playState} />
 					</div>
 					<div className="d-flex justify-content-between w-100 h-min-content">
-						{play && playState != 'error' ? (
-							<Button onClick={() => audioRef?.current?.audioEl?.current?.pause()}>
-								<FaStop />
+						{generateActionsPanel()}
+						{favorites[currentRadio.stationuuid] == null ? (
+							<Button
+								onClick={() => setFavorites({ [currentRadio.stationuuid]: currentRadio, ...favorites })}
+							>
+								<IoIosHeart />
 							</Button>
 						) : (
-							<Button onClick={() => audioRef?.current?.audioEl?.current?.play()}>
-								<FaPlay />
+							<Button
+								onClick={() =>
+									setFavorites({ ...delete favorites[currentRadio.stationuuid], ...favorites })
+								}
+							>
+								<IoMdHeartDislike />
 							</Button>
 						)}
 					</div>
 				</Row>
 			)}
-			<Row className="h-100 d-none">
+			<Row className="h-100">
 				<div className="overflow-auto h-100">
-					<VirtualScroller items={radioList} itemSize={30} itemTemplate={template} className="h-100" />
+					<VirtualScroller
+						items={Object.keys(favorites)}
+						itemSize={30}
+						itemTemplate={template}
+						className="h-100"
+					/>
 				</div>
 			</Row>
 		</div>
@@ -141,3 +197,4 @@ function Radio() {
 }
 
 export default Radio
+export { radioPlayState }
