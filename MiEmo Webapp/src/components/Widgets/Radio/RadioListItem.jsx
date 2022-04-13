@@ -5,6 +5,9 @@ import { Row, Col } from 'react-bootstrap'
 
 import { BsFillDiscFill } from 'react-icons/bs'
 import { IoMdRadio } from 'react-icons/io'
+import { radioPlayState } from './Radio'
+
+import { bitFlags } from '../../../utils/utils'
 
 import '../../../static/css/Spinner.css'
 
@@ -34,7 +37,7 @@ function RadioListItem({ radioInfos, playState, currentRadio }) {
 	return (
 		<Row className="w-100 my-2 px-2">
 			<Col>
-				{playState == 'playing' && currentRadio == radioInfos.stationUuid ? (
+				{bitFlags.isOn(radioPlayState.isPlaying, playState) && currentRadio == radioInfos.stationUuid ? (
 					<span className="mx-1">
 						<BsFillDiscFill className="miemo-anim-spinner" size="2em" />
 					</span>
@@ -56,7 +59,7 @@ RadioListItem.propTypes = {
 		country: PropTypes.string,
 		countryCode: PropTypes.string,
 	}),
-	playState: PropTypes.oneOf(['neutral', 'playing', 'error', 'loading']),
+	playState: PropTypes.number,
 	currentRadio: PropTypes.string,
 	options: PropTypes.object,
 }

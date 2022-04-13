@@ -78,3 +78,19 @@ export const loadLocalStorageKey = (key, defaultValue) => {
 		return defaultValue
 	}
 }
+
+export const bitFlags = {
+	setBitFlag: (flag, currentFlag, state) => {
+		return state == 1 ? currentFlag | flag : currentFlag & ~flag
+	},
+	isOn: (flag, currentFlag) => {
+		return (currentFlag & flag) === flag
+	},
+	setMultipleBitFlags: (currentFlag, flags) => {
+		let baseFlag = currentFlag
+		flags.map(({ flag, state }) => {
+			baseFlag = bitFlags.setBitFlag(flag, baseFlag, state)
+		})
+		return baseFlag
+	},
+}
