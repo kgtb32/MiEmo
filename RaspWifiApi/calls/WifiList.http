@@ -1,0 +1,5 @@
+### Wifi list
+POST http://localhost:8001/wifi/list
+Content-Type: application/json 
+
+{}
