@@ -72,4 +72,7 @@ export default {
 			)
 		},
 	},
+	wifi: {
+		list: () => fetchAPI(settings.wifi.list.url, 'POST', {}, 'application/json'),
+	},
 }

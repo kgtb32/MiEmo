@@ -38,9 +38,22 @@ let settings = {
 		cameraCoverMode: 'cover', //can be [fit, cover]
 		mirorred: true,
 	},
+	wifi: {
+		list: {
+			url: 'http://localhost:8001/wifi/list',
+		},
+	},
 }
 
-const { VITE_UseMock, VITE_IsProd, VITE_EMOTION_URL, VITE_CITY_URL, VITE_WEATHER_URL, VITE_RADIO_URL } = import.meta.env
+const {
+	VITE_UseMock,
+	VITE_IsProd,
+	VITE_EMOTION_URL,
+	VITE_CITY_URL,
+	VITE_WEATHER_URL,
+	VITE_RADIO_URL,
+	VITE_WIFI_LIST_URL,
+} = import.meta.env
 
 settings.useMock = JSON.parse(VITE_UseMock ?? settings.useMock)
 settings.isProd = JSON.parse(VITE_IsProd ?? settings.isProd)
@@ -48,5 +61,6 @@ settings.emotion.url = VITE_EMOTION_URL ?? settings.emotion.url
 settings.city.url = VITE_CITY_URL ?? settings.city.url
 settings.weather.url = VITE_WEATHER_URL ?? settings.weather.url
 settings.radio.search.url = VITE_RADIO_URL ?? settings.radio.search.url
+settings.wifi.list.url = VITE_WIFI_LIST_URL ?? settings.wifi.list.url
 
 export default settings

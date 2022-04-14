@@ -1,0 +1,50 @@
+[
+	{
+		"SSID": "MiEmo_2.5GHZ",
+		"SECURITY": "WPA1 WPA2",
+		"IN-USE": "*",
+		"SIGNAL": "79"
+	},
+	{
+		"SSID": "Tim's WiFi Mobile",
+		"SECURITY": "WPA2 802.1X",
+		"IN-USE": " ",
+		"SIGNAL": "72"
+	},
+	{
+		"SSID": "Esiee IT",
+		"SECURITY": "--",
+		"IN-USE": " ",
+		"SIGNAL": "70"
+	},
+	{
+		"SSID": "Robin's Network",
+		"SECURITY": "WPA2",
+		"IN-USE": " ",
+		"SIGNAL": "39"
+	},
+	{
+		"SSID": "Zola de la street",
+		"SECURITY": "WPA2 802.1X",
+		"IN-USE": " ",
+		"SIGNAL": "35"
+	},
+	{
+		"SSID": "zolaBox_ABCD",
+		"SECURITY": "WPA1",
+		"IN-USE": " ",
+		"SIGNAL": "27"
+	},
+	{
+		"SSID": "FreeWifi_secure",
+		"SECURITY": "WPA1 802.1X",
+		"IN-USE": " ",
+		"SIGNAL": "24"
+	},
+	{
+		"SSID": "",
+		"SECURITY": "WPA2",
+		"IN-USE": " ",
+		"SIGNAL": "17"
+	}
+]

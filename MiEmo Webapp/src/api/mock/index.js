@@ -2,6 +2,7 @@ import WeatherGet from './weather/get.json'
 import cityFind from './city/city.json'
 import EmotionDetect from './emotion/detect.json'
 import RadioSearch from './radio/search.json'
+import WifiList from './wifi/list.json'
 
 export default {
 	weather: {
@@ -23,5 +24,8 @@ export default {
 		search: () => {
 			return Promise.resolve(RadioSearch)
 		},
+	},
+	wifi: {
+		list: () => Promise.resolve(WifiList),
 	},
 }

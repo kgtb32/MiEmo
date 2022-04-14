@@ -28,6 +28,9 @@ const apis = {
 			return api().radio.search(name)
 		},
 	},
+	wifi: {
+		list: () => api().wifi.list(),
+	},
 }
 
 export default apis
