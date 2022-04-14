@@ -30,6 +30,7 @@ const apis = {
 	},
 	wifi: {
 		list: () => api().wifi.list(),
+		connect: (ssid, password) => api().wifi.connect(ssid, password),
 	},
 }
 

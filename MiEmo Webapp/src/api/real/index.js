@@ -74,5 +74,7 @@ export default {
 	},
 	wifi: {
 		list: () => fetchAPI(settings.wifi.list.url, 'POST', {}, 'application/json'),
+		connect: (ssid, password) =>
+			fetchAPI(settings.wifi.connect.url, 'POST', { ssid, password }, 'application/json'),
 	},
 }
