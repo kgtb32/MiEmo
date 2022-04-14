@@ -10,3 +10,6 @@ class wifi_model:
             return []
         else:
             return self.wifi.scan()
+
+    def connect(self, ssid, password):
+        return self.wifi.connect(ssid, password)

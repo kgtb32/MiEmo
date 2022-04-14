@@ -3,3 +3,12 @@ POST http://localhost:8001/wifi/list
 Content-Type: application/json 
 
 {}
+
+### Wifi connect
+POST http://192.168.1.51:8001/wifi/connect
+Content-Type: application/json 
+
+{
+    "ssid":"GOMES_2.5GHZ",
+    "password": "---"
+}
