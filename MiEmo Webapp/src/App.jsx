@@ -3,7 +3,10 @@ import { React, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home'
+
 import Settings from './pages/Settings'
+import Wifi from './pages/Settings/Wifi'
+
 import Page404 from './pages/Page404'
 
 function App() {
@@ -14,6 +17,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/settings" element={<Settings />} />
+						<Route path="/settings/wifi" element={<Wifi />} />
 						<Route path="/*" element={<Page404 />} />
 					</Routes>
 				</Router>

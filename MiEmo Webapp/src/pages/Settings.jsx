@@ -37,12 +37,14 @@ export default function Settings() {
 								<FaEthernet className="mx-2" color="white" size={size} />
 								<span>Paramètres réseau</span>
 							</ListGroup.Item>
-							<ListGroup.Item action>
-								<span>
-									<MdOutlineWifi className="mx-2" color="#2980b9" size={size} />
-									Wi-Fi
-								</span>
-							</ListGroup.Item>
+							<Link to="/settings/wifi" className="text-decoration-none">
+								<ListGroup.Item action>
+									<span>
+										<MdOutlineWifi className="mx-2" color="#2980b9" size={size} />
+										Wi-Fi
+									</span>
+								</ListGroup.Item>
+							</Link>
 							<ListGroup.Item action>
 								<FaBluetooth className="mx-2" color="#2980b9" size={size} />
 								Bluetooth
