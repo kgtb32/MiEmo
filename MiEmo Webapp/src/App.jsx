@@ -6,6 +6,7 @@ import Home from './pages/Home'
 
 import Settings from './pages/Settings'
 import Wifi from './pages/Settings/Wifi'
+import CleanupPage from './pages/Settings/CleanupPage'
 
 import Page404 from './pages/Page404'
 
@@ -17,6 +18,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/settings" element={<Settings />} />
+						<Route path="/settings/cleanup" element={<CleanupPage />} />
 						<Route path="/settings/wifi" element={<Wifi />} />
 						<Route path="/*" element={<Page404 />} />
 					</Routes>

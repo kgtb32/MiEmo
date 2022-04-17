@@ -89,12 +89,14 @@ export default function Settings() {
 									Agencement
 								</span>
 							</ListGroup.Item>
-							<ListGroup.Item action>
-								<span>
-									<FaBroom className="mx-2" color="#e67e22" size={size} />
-									Mode Nettoyage
-								</span>
-							</ListGroup.Item>
+							<Link to="/settings/cleanup" className="text-decoration-none">
+								<ListGroup.Item action>
+									<span>
+										<FaBroom className="mx-2" color="#e67e22" size={size} />
+										Mode Nettoyage
+									</span>
+								</ListGroup.Item>
+							</Link>
 						</ListGroup>
 					</div>
 					<div className="my-2">
