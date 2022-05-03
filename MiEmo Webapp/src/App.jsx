@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Settings from './pages/Settings'
 import Wifi from './pages/Settings/Wifi'
 import CleanupPage from './pages/Settings/CleanupPage'
+import AudioMixer from './pages/Settings/AudioMixer'
 
 import Page404 from './pages/Page404'
 
@@ -20,6 +21,7 @@ function App() {
 						<Route path="/settings" element={<Settings />} />
 						<Route path="/settings/cleanup" element={<CleanupPage />} />
 						<Route path="/settings/wifi" element={<Wifi />} />
+						<Route path="/settings/audioMixer" element={<AudioMixer />} />
 						<Route path="/*" element={<Page404 />} />
 					</Routes>
 				</Router>

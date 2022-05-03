@@ -66,12 +66,14 @@ export default function Settings() {
 									Tester l&apos;audio
 								</span>
 							</ListGroup.Item>
-							<ListGroup.Item action>
-								<span>
-									<RiSoundModuleFill className="mx-2" color="#1abc9c" size={size} />
-									Mélangeur audio
-								</span>
-							</ListGroup.Item>
+							<Link to="/settings/audioMixer" className="text-decoration-none">
+								<ListGroup.Item action>
+									<span>
+										<RiSoundModuleFill className="mx-2" color="#1abc9c" size={size} />
+										Mélangeur audio
+									</span>
+								</ListGroup.Item>
+							</Link>
 						</ListGroup>
 					</div>
 					<div className="my-2">

@@ -21,3 +21,15 @@
 .h-min-content {
 	height: min-content;
 }
+
+.font-bold {
+	font-weight: bold;
+}
+
+.color-green {
+	color: lime;
+}
+
+.color-red {
+	color: red;
+}
