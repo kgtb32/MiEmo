@@ -13,3 +13,6 @@ class pactl_command:
     def info(self):
         return self.cmd_manager.parse_info(self.run_command(["pactl","info"]))
     
+    def sinks_list(self):
+        return self.cmd_manager.parse_sinks_list(self.run_command(["pactl","list","sinks"]))
+        
