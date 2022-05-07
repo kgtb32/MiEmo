@@ -54,3 +54,12 @@ class pactl_command_manager:
                         final_sink[current].append(self.key_depth_to_object(line))
             sinks_res.append(final_sink)
         return sinks_res
+
+    def parse_set_volume(self, result):
+        return self.is_failed(result)
+
+    def is_failed(self, result):
+        if "Échec" in str(result) or "Invalid" in str(result):
+            return False
+        else:
+            return True
