@@ -57,6 +57,9 @@ class pactl_command_manager:
 
     def parse_set_volume(self, result):
         return self.is_failed(result)
+    
+    def parse_set_default_sink(self, result):
+        return self.is_failed(result)
 
     def is_failed(self, result):
         if "Échec" in str(result) or "Invalid" in str(result):

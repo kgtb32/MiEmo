@@ -19,3 +19,6 @@ class pactl_command:
         
     def set_sink_volume(self, sink, volume):
         return self.cmd_manager.parse_set_volume(self.run_command(["pactl","set-sink-volume",sink,str(volume)+"%"]))
+
+    def set_default_sink(self, sink):
+        return self.cmd_manager.parse_set_default_sink(self.run_command(["pactl", "set-default-sink",sink]))

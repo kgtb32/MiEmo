@@ -28,5 +28,13 @@ def audio_sinks_set_volume():
     result = pactl_command_manager.set_sink_volume(sink, volume)
     return Response(json.dumps({"completed": bool(result)}), status=(200,412)[not result])
 
+@app.route("/audio/sinks/setDefaultSink", methods=['POST'])
+def audio_sinks_set_default():
+    sink = request.get_json().get('sink')
+    if (not sink or sink == ""):
+        return Response("bad request", status=400)
+    result = pactl_command_manager.set_default_sink(sink)
+    return Response(json.dumps({"completed": bool(result)}), status=(200,412)[not result])
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0.', port=8002)
