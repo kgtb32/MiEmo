@@ -77,4 +77,14 @@ export default {
 		connect: (ssid, password) =>
 			fetchAPI(settings.wifi.connect.url, 'POST', { ssid, password }, 'application/json'),
 	},
+	audio: {
+		info: () => fetchAPI(settings.audio.info.url, 'POST', {}, 'application/json'),
+		sinks: {
+			default: () => fetchAPI(settings.audio.sinks.url, 'POST', {}, 'application/json'),
+			setVolume: (sink, volume) =>
+				fetchAPI(settings.audio.sinks.setVolume.url, 'POST', { sink, volume }, 'application/json'),
+			setDefaultSink: sink =>
+				fetchAPI(settings.audio.sinks.setDefaultSink.url, 'POST', { sink }, 'application/json'),
+		},
+	},
 }

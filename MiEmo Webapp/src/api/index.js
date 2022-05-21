@@ -32,6 +32,14 @@ const apis = {
 		list: () => api().wifi.list(),
 		connect: (ssid, password) => api().wifi.connect(ssid, password),
 	},
+	audio: {
+		info: () => api().audio.info(),
+		sinks: {
+			default: () => api().audio.sinks.default(),
+			setVolume: (sink, volume) => api().audio.sinks.setVolume(sink, volume),
+			setDefaultSink: sink => api().audio.sinks.setDefaultSink(sink),
+		},
+	},
 }
 
 export default apis

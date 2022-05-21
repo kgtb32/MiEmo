@@ -46,6 +46,20 @@ let settings = {
 			url: 'http://localhost:8001/wifi/connect',
 		},
 	},
+	audio: {
+		info: {
+			url: 'http://192.168.1.51:8002/audio/info',
+		},
+		sinks: {
+			url: 'http://192.168.1.51:8002/audio/sinks',
+			setVolume: {
+				url: 'http://192.168.1.51:8002/audio/sinks/setVolume',
+			},
+			setDefaultSink: {
+				url: 'http://192.168.1.51:8002/audio/sinks/setDefaultSink',
+			},
+		},
+	},
 }
 
 const {
