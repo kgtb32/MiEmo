@@ -16,6 +16,8 @@ import 'bootstrap-dark-5/dist/css/bootstrap-night.css'
 
 import 'primeicons/primeicons.css'
 
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css'
+
 import { StoreProvider } from './context/StoreContext'
 
 ReactDOM.render(
