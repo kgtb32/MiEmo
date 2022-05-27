@@ -32,3 +32,6 @@ const start = async () => {
   }
 };
 start();
+
+export default fastifyServer;
+export { start }
