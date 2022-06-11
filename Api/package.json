@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "node index.js",
-    "test": "mocha test test/*"
+    "test": "mocha test test/* --experimental-json-modules"
   },
   "dependencies": {
     "fastify": "^3.25.0",
