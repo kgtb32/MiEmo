@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "id": 1,
+      "name": "Generation",
+      "url": "Generation-rap.fr",
+      "tags": "#RAP, #RNB, #REGGAE, #TRAP",
+      "country": "France",
+      "language": "FR"
+    },
+    {
+      "id": 2,
+      "name": "African",
+      "url": "African-Afro.fr",
+      "tags": "#AFRO, #RUMBA, #REGGAE, #COUPEDECALER",
+      "country": "France",
+      "language": "Mix"
+    },
+    {
+      "id": 3,
+      "name": "ZERL",
+      "url": "African-oiuou.fr",
+      "tags": "#AFRO, #RUMBA, #REGGAE, #COUPEDECALER",
+      "country": "ITALIE",
+      "language": "Mix"
+    }
+  ],
+  "generationtime_ms": 1.5000105
+}
