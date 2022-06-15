@@ -1,0 +1,47 @@
+import React, { useEffect, useState } from 'react'
+
+import { ProgressBar } from 'primereact/progressbar'
+
+import CleanUp from '/img/cleanup.svg'
+
+const baseDiff = 2 * 60
+
+function CleanupPage() {
+	const [percentage, setPercentage] = useState(100)
+	const [intervalItem, setIntervalItem] = useState(null)
+
+	useEffect(() => {
+		const expDate = new Date()
+		expDate.setMinutes(expDate.getMinutes() + 2)
+		const interval = setInterval(() => {
+			const dateDiff = expDate.getTime() / 1000 - new Date().getTime() / 1000
+			setPercentage(((dateDiff * 100) / baseDiff) | 0)
+			console.log('interval', percentage)
+		}, 1000)
+		setIntervalItem(interval)
+		return () => {
+			clearInterval(interval)
+		}
+	}, [])
+
+	useEffect(() => {
+		if (percentage <= 0) {
+			clearInterval(intervalItem)
+		}
+	}, [percentage])
+
+	return (
+		<div>
+			<div className="text-center">
+				<h1>Mode nettoyage</h1>
+				<h2>Activé</h2>
+				<img src={CleanUp} />
+			</div>
+			<div className="w-75 mx-auto my-5">
+				<ProgressBar value={percentage} showValue={false} style={{ height: '4px' }} />
+			</div>
+		</div>
+	)
+}
+
+export default CleanupPage

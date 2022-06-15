@@ -1,0 +1,17 @@
+{
+	"server-string": "/run/user/1000/pulse/native",
+	"library-protocol-version": "34",
+	"server-protocol-version": "34",
+	"is-local": "yes",
+	"client-index": "4",
+	"tile-size": "65496",
+	"user-name": "pi",
+	"host-name": "raspberrypi",
+	"server-name": "pulseaudio",
+	"server-version": "14.2",
+	"default-sample-specification": "s16le 2ch 44100Hz",
+	"default-channel-map": "front-left,front-right",
+	"default-sink": "alsa_output.platform-bcm2835_audio.analog-stereo",
+	"default-source": "alsa_output.platform-bcm2835_audio.analog-stereo.monitor",
+	"cookie": "5d05:6f54"
+}
