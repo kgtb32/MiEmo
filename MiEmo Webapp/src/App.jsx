@@ -8,6 +8,7 @@ import Settings from './pages/Settings'
 import Wifi from './pages/Settings/Wifi'
 import CleanupPage from './pages/Settings/CleanupPage'
 import AudioMixer from './pages/Settings/AudioMixer'
+import NetworkCheck from './pages/Settings/NetworkCheck'
 
 import Page404 from './pages/Page404'
 
@@ -22,6 +23,7 @@ function App() {
 						<Route path="/settings/cleanup" element={<CleanupPage />} />
 						<Route path="/settings/wifi" element={<Wifi />} />
 						<Route path="/settings/audioMixer" element={<AudioMixer />} />
+						<Route path="/settings/networkCheck" element={<NetworkCheck />} />
 						<Route path="/*" element={<Page404 />} />
 					</Routes>
 				</Router>

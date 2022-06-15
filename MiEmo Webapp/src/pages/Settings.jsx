@@ -49,12 +49,14 @@ export default function Settings() {
 								<FaBluetooth className="mx-2" color="#2980b9" size={size} />
 								Bluetooth
 							</ListGroup.Item>
-							<ListGroup.Item action>
-								<span>
-									<MdSettingsEthernet className="mx-2" color="#f1c40f" size={size} />
-									Tester la connectivité
-								</span>
-							</ListGroup.Item>
+							<Link to="/settings/networkCheck" className="text-decoration-none">
+								<ListGroup.Item action>
+									<span>
+										<MdSettingsEthernet className="mx-2" color="#f1c40f" size={size} />
+										Tester la connectivité
+									</span>
+								</ListGroup.Item>
+							</Link>
 						</ListGroup>
 					</div>
 					<div className="my-2">
