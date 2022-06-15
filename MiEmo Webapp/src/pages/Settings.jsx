@@ -62,12 +62,14 @@ export default function Settings() {
 					<div className="my-2">
 						<h2>Son</h2>
 						<ListGroup>
-							<ListGroup.Item action>
-								<span>
-									<AiFillSound className="mx-2" color="#bdc3c7" size={size} />
-									Tester l&apos;audio
-								</span>
-							</ListGroup.Item>
+							<Link to="/settings/audioTest" className="text-decoration-none">
+								<ListGroup.Item action>
+									<span>
+										<AiFillSound className="mx-2" color="#bdc3c7" size={size} />
+										Tester l&apos;audio
+									</span>
+								</ListGroup.Item>
+							</Link>
 							<Link to="/settings/audioMixer" className="text-decoration-none">
 								<ListGroup.Item action>
 									<span>
