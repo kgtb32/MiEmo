@@ -1,0 +1,15 @@
+Chaîne du serveur : /run/user/1000/pulse/native
+Version du protocole de bibliothèque : 33
+Version du protocole du serveur : 33
+Local : oui
+Index client : 30
+Tile Size: 65472
+Nom d'utilisateur : kevin
+Nom d'hôte : kevin-PC
+Nom du serveur : pulseaudio
+Version du serveur : 13.99.1
+Spécification d'échantillon par défaut : s16le 2ch 44100Hz
+Plan de canaux par défaut : front-left,front-right
+Destination par défaut : alsa_output.usb-Plantronics_Plantronics_Blackwire_3220_Series_2D4DEF3A89FAC84DBAC4F530C9529255-00.analog-stereo
+Source par défaut : alsa_input.usb-Plantronics_Plantronics_Blackwire_3220_Series_2D4DEF3A89FAC84DBAC4F530C9529255-00.analog-stereo
+Cookie : b412:6351

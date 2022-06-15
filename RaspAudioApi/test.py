@@ -1,0 +1,3 @@
+from src.test.test_pactl_command_manager import TestPactlCommandManager
+
+TestPactlCommandManager()
