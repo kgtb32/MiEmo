@@ -12,3 +12,5 @@ export const search = async (request, reply) => {
     .type("application/json")
     .send(JSON.stringify(searchResult));
 };
+
+export default { search };
