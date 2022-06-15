@@ -1,0 +1,11 @@
+[Unit]
+Description=Miemo bluetooth manager server
+After=NetworkManager-wait-online.service
+
+[Service]
+Type=simple
+ExecStart=BluetoothManager
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
