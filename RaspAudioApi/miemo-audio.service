@@ -1,0 +1,11 @@
+[Unit]
+Description=Miemo Audio Manager server
+After=NetworkManager-wait-online.service
+
+[Service]
+Type=simple
+ExecStart=AudioBackend
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

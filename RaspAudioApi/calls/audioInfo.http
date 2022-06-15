@@ -1,0 +1,11 @@
+### audio info
+POST http://localhost:8002/audio/info
+Content-Type: application/json 
+
+{}
+
+### sinks list
+POST http://localhost:8002/audio/sinks
+Content-Type: application/json 
+
+{}
