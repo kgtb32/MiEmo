@@ -71,7 +71,9 @@ export default function CitySelectorModal({ setCity, setModalVisible }) {
 							style={{ height: '350px' }}
 							value={selectedCity}
 							options={results}
-							onChange={e => setSelectedCity(e.value)}
+							onChange={e => {
+								if (e.value != null) setSelectedCity(e.value)
+							}}
 							itemTemplate={generateTemplate}
 						/>
 					)}
