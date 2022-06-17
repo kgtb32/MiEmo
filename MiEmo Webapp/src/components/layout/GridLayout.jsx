@@ -91,7 +91,11 @@ function GridLayout({ size }) {
 		return components.map(element => {
 			const Component = componentFactory[element.componentId]?.item
 			return (
-				<div key={element.gridId} style={{ padding: '1.5em' }}>
+				<div
+					key={element.gridId}
+					style={{ padding: '1.5em' }}
+					className={widgetEditMode ? 'border rounded' : ''}
+				>
 					{widgetEditMode ? (
 						<StoreItem
 							componentInfos={{ ...componentFactory[element.componentId], id: element.gridId }}
