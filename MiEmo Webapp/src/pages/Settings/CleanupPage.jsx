@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { ProgressBar } from 'primereact/progressbar'
+import { Button } from 'primereact/button'
 
 import CleanUp from '/img/cleanup.svg'
+import { IoMdArrowRoundBack } from 'react-icons/io'
 
 const baseDiff = 2 * 60
 
@@ -32,6 +35,11 @@ function CleanupPage() {
 
 	return (
 		<div>
+			<Button className="p-button-rounded px-1 py-1 align-middle" disabled={percentage > 0}>
+				<Link to="/settings">
+					<IoMdArrowRoundBack size="2em" color="black" />
+				</Link>
+			</Button>
 			<div className="text-center">
 				<h1>Mode nettoyage</h1>
 				<h2>Activé</h2>
