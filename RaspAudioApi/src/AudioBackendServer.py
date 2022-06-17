@@ -11,6 +11,10 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 pactl_command_manager = pactl_command()
 
+@app.route('/index')
+def index():
+    return 'Hello, World!'
+
 @app.route('/audio/info', methods=['POST'])
 def audio_info():
     return json.dumps(pactl_command_manager.info())
