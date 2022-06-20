@@ -8,7 +8,7 @@ import { InputSwitch } from 'primereact/inputswitch'
 import { ListGroup } from 'react-bootstrap'
 import RangeSlider from 'react-bootstrap-range-slider'
 
-import ReactAudioPlayer from 'react-audio-player'
+import AudioPlayerBase from 'react-audio-player'
 
 import { IoMdArrowRoundBack } from 'react-icons/io'
 import { BsSpeakerFill } from 'react-icons/bs'
@@ -16,6 +16,10 @@ import { BsSpeakerFill } from 'react-icons/bs'
 import BeepSound from '/sounds/beep.ogg'
 
 import api from '../../api/'
+
+import settings from '../../settings/settings'
+
+const ReactAudioPlayer = settings.isProd ? AudioPlayerBase.default : AudioPlayerBase
 
 function AudioMixer() {
 	const [surAmp, setSurAmp] = useState(false)
