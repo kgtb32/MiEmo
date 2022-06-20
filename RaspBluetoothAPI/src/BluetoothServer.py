@@ -14,5 +14,16 @@ bt_mod = bluetooth_model()
 def bluetooth_list():
     return json.dumps(bt_mod.list_all_networks())
 
+@app.route("/bluetooth/connect", methods=['POST'])
+def wifi_connect():
+    mac = request.get_json().get('mac')
+    if((mac==None or mac=='')):
+        return Response("bad request", status=400)
+    else:
+        cmd_res = bt_mod.connect(mac)
+        return Response("ok", status=200) if cmd_res else Response("not connected", status=412)
+        
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8003)
