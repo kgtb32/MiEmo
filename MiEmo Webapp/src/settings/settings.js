@@ -48,15 +48,15 @@ let settings = {
 	},
 	audio: {
 		info: {
-			url: 'http://192.168.1.51:8002/audio/info',
+			url: 'http://localhost:8002/audio/info',
 		},
 		sinks: {
-			url: 'http://192.168.1.51:8002/audio/sinks',
+			url: 'http://localhost:8002/audio/sinks',
 			setVolume: {
-				url: 'http://192.168.1.51:8002/audio/sinks/setVolume',
+				url: 'http://localhost:8002/audio/sinks/setVolume',
 			},
 			setDefaultSink: {
-				url: 'http://192.168.1.51:8002/audio/sinks/setDefaultSink',
+				url: 'http://localhost:8002/audio/sinks/setDefaultSink',
 			},
 		},
 	},
