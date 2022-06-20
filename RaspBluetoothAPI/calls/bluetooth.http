@@ -1,0 +1,5 @@
+###bluetooth list
+POST http://localhost:8001/bluetooth/list
+Content-Type: application/json 
+
+{}
