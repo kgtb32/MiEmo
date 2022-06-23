@@ -2,14 +2,23 @@ import { React, useState, useRef } from 'react'
 import { withSize } from 'react-sizeme'
 import PropTypes from 'prop-types'
 import { ReactSketchCanvas } from 'react-sketch-canvas'
-import Form from 'react-bootstrap/Form'
+import { Button } from 'primereact/button'
 import styled from 'styled-components'
+import { HexColorPicker } from 'react-colorful'
+import { BiUndo, BiRedo, BiEraser, BiPaint, BiColorFill } from 'react-icons/bi'
+import { InputText } from 'primereact/inputtext'
+
+const ICON_SIZE = '1.4em'
 
 function ReactDrawing(size) {
 	const [color, setColor] = useState('black')
 	const [canvasColor, setCanvasColor] = useState('white')
-	const canvas = useRef()
 	const [strokeWidth, setStrokeWidth] = useState(10)
+
+	const [pencilColorVisible, setPencilColorVisible] = useState(false)
+	const [fillColorVisible, setFillColorVisible] = useState(false)
+
+	const canvas = useRef()
 
 	const undoButtonClick = () => {
 		canvas.current.undo()
@@ -29,54 +38,41 @@ function ReactDrawing(size) {
 	}
 
 	return (
-		<BigBox className="h-100">
-			<ReactCanvas>
-				<ReactSketchCanvas
-					ref={canvas}
-					canvasColor={canvasColor}
-					opts={drawingBorderSize}
-					strokeColor={color}
-					strokeWidth={strokeWidth}
+		<BigBox className="h-100 d-flex flex-column">
+			<ReactSketchCanvas
+				ref={canvas}
+				canvasColor={canvasColor}
+				opts={drawingBorderSize}
+				strokeColor={color}
+				strokeWidth={strokeWidth}
+			/>
+			<div className="d-flex justify-content-between align-content-between w-100 flex-wrap">
+				<InputText
+					className="w-25"
+					value={strokeWidth}
+					onChange={e => setStrokeWidth(e.target.value)}
+					onKeyDown={e => setStrokeWidth(e.target.value)}
+					variant={'dark'}
 				/>
-			</ReactCanvas>
-			<Aranger>
-				<ColorBox>
-					<div>
-						Pencil color
-						<Form.Control type="color" defaultValue="black" onChange={e => setColor(e.target.value)} />
-					</div>
-					<div>
-						Canvas Color
-						<Form.Control
-							type="color"
-							defaultValue="#FFFAFA"
-							onChange={e => setCanvasColor(e.target.value)}
-						/>
-					</div>
-				</ColorBox>
+				<Button onClick={() => setFillColorVisible(!fillColorVisible)} className="p-2">
+					<BiColorFill size={ICON_SIZE} />
+				</Button>
+				{fillColorVisible && <HexColorPicker color={color} onChange={setCanvasColor} />}
+				<Button onClick={() => setPencilColorVisible(!pencilColorVisible)} className="p-2">
+					<BiPaint size={ICON_SIZE} />
+				</Button>
+				{pencilColorVisible && <HexColorPicker color={canvasColor} onChange={setColor} />}
+				<Button onClick={clearButtonClick} className="p-2">
+					<BiEraser size={ICON_SIZE} />
+				</Button>
+				<Button onClick={undoButtonClick} className="p-2">
+					<BiUndo size={ICON_SIZE} />
+				</Button>
 
-				<PencilSize>
-					strokeWidth
-					<input
-						type="number"
-						min="1"
-						max="100"
-						value={strokeWidth}
-						onChange={e => setStrokeWidth(e.target.value, 10)}
-					/>
-				</PencilSize>
-				<OptionsCanvas>
-					<div>
-						<button onClick={undoButtonClick}>Undo</button>
-					</div>
-					<div>
-						<button onClick={redoButtonClick}>Redo</button>
-					</div>
-					<div>
-						<button onClick={clearButtonClick}>Clear</button>
-					</div>
-				</OptionsCanvas>
-			</Aranger>
+				<Button onClick={redoButtonClick} className="p-2">
+					<BiRedo size={ICON_SIZE} />
+				</Button>
+			</div>
 		</BigBox>
 	)
 }
@@ -95,27 +91,9 @@ ReactDrawing.defaultProps = {
 	borderRadius: '0.25rem',
 }
 
-const ReactCanvas = styled.div`
-	height: 70%;
-`
 const BigBox = styled.div`
 	width: 100%;
-`
-
-const Aranger = styled.div`
-	width: 100%;
-	height: 30%;
-	display: flex;
-`
-const ColorBox = styled.div`
-	width: 25%;
-`
-const PencilSize = styled.div`
-	width: 25%;
-`
-const OptionsCanvas = styled.div`
-	width: 50%;
-	display: flex;
+	margin-right: 2%;
 `
 
 export default withSize({ monitorHeight: true })(ReactDrawing)
