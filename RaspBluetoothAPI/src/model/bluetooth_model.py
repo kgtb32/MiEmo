@@ -1,6 +1,7 @@
 from model.btmanager import btmanager
 from model.bluetooth_parser import bluetooth_parser
 import re
+import subprocess
 from pprint import pprint
 
 class bluetooth_model:
@@ -17,3 +18,9 @@ class bluetooth_model:
 
 	def connect(self, mac):
 		return self.manager.connect(mac)
+
+	def start_discovery(self):
+		return subprocess.check_output(['systemctl', '--user', 'start', 'bt-scan.service'])
+	
+	def end_discovery(self):
+		return subprocess.check_output(['systemctl', '--user', 'stop', 'bt-scan.service'])

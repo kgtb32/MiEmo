@@ -23,7 +23,13 @@ def wifi_connect():
         cmd_res = bt_mod.connect(mac)
         return Response("ok", status=200) if cmd_res else Response("not connected", status=412)
         
+@app.route("/bluetooth/startDiscovery", methods=['POST'])
+def start_discovery():
+    return Response(bt_mod.start_discovery(), status=200)
 
+@app.route("/bluetooth/endDiscovery", methods=['POST'])
+def end_discovery():
+    return Response(bt_mod.end_discovery(), status=200)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8003)
