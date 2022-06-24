@@ -40,6 +40,14 @@ const apis = {
 			setDefaultSink: sink => api().audio.sinks.setDefaultSink(sink),
 		},
 	},
+	bluetooth: {
+		list: () => api().bluetooth.list(),
+		connect: mac => api().bluetooth.connect(mac),
+		remove: mac => api().bluetooth.remove(mac),
+		startDiscovery: () => api().bluetooth.startDiscovery(),
+		endDiscovery: () => api().bluetooth.endDiscovery(),
+		pairedDevices: () => api().bluetooth.pairedDevices(),
+	},
 }
 
 export default apis

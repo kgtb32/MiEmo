@@ -6,6 +6,7 @@ import Home from './pages/Home'
 
 import Settings from './pages/Settings'
 import Wifi from './pages/Settings/Wifi'
+import Bluetooth from './pages/Settings/Bluetooth'
 import CleanupPage from './pages/Settings/CleanupPage'
 import AudioMixer from './pages/Settings/AudioMixer'
 import AudioTest from './pages/Settings/AudioTest'
@@ -23,6 +24,7 @@ function App() {
 						<Route path="/settings" element={<Settings />} />
 						<Route path="/settings/cleanup" element={<CleanupPage />} />
 						<Route path="/settings/wifi" element={<Wifi />} />
+						<Route path="/settings/bluetooth" element={<Bluetooth />} />
 						<Route path="/settings/audioMixer" element={<AudioMixer />} />
 						<Route path="/settings/audioTest" element={<AudioTest />} />
 						<Route path="/settings/networkCheck" element={<NetworkCheck />} />

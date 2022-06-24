@@ -60,6 +60,26 @@ let settings = {
 			},
 		},
 	},
+	bluetooth: {
+		list: {
+			url: 'http://localhost:8003/bluetooth/list',
+		},
+		connect: {
+			url: 'http://localhost:8003/bluetooth/connect',
+		},
+		startDiscovery: {
+			url: 'http://localhost:8003/bluetooth/startDiscovery',
+		},
+		endDiscovery: {
+			url: 'http://localhost:8003/bluetooth/endDiscovery',
+		},
+		remove: {
+			url: 'http://localhost:8003/bluetooth/remove',
+		},
+		pairedDevices: {
+			url: 'http://localhost:8003/bluetooth/pairedDevices',
+		},
+	},
 }
 
 const {
