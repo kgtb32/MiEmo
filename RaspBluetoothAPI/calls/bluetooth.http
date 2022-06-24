@@ -1,0 +1,28 @@
+###bluetooth list
+POST http://localhost:8001/bluetooth/list
+Content-Type: application/json 
+
+{}
+
+### Bluetooth connect
+POST http://localhost:8001/bluetooth/connect
+Content-Type: application/json 
+
+{
+    "mac":"AC:5F:EA:79:A2:43",
+}
+
+### Paired devices
+POST http://localhost:8001/bluetooth/pairedDevices
+Content-Type: application/json
+
+{}
+
+### Bluetooth delete
+POST http://localhost:8001/bluetooth/connect
+Content-Type: application/json 
+
+{
+    "mac":"AC:5F:EA:79:A2:43",
+}
+
