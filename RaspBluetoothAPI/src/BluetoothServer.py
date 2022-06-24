@@ -31,5 +31,10 @@ def start_discovery():
 def end_discovery():
     return Response(bt_mod.end_discovery(), status=200)
 
+@app.route("/bluetooth/pairedDevices", methods=['POST'])
+def bluetooth_paired_devices():
+    return Response(json.dumps(bt_mod.paired_devices()), status=200)
+
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8003)

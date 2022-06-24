@@ -8,6 +8,14 @@ class btmanager:
       p.expect(mylist)
       return p.before
 
+    def paired_devices(self):
+      p = pexpect.spawn('bluetoothctl paired-devices', encoding='utf-8')
+      p.timeout = 30
+      p.logfile_read = sys.stdout
+      mylist = [pexpect.EOF]
+      p.expect(mylist)
+      return p.before
+
     def connect(self, address):
       response=''
       p = pexpect.spawn('bluetoothctl', encoding='utf-8')

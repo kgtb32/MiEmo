@@ -16,6 +16,9 @@ class bluetooth_model:
 	def list_all_networks(self):
 		return self.parse_scan_result(self.manager.list_all_networks())
 
+	def paired_devices(self):
+		return self.parse_scan_result(self.manager.paired_devices())
+
 	def connect(self, mac):
 		return self.manager.connect(mac)
 
