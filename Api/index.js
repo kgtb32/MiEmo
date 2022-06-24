@@ -4,7 +4,7 @@ import fastify from "fastify";
 import fastifyCors from "fastify-cors";
 import { get as weatherGet } from "./routes/weather.js";
 import { get as geocodingGet } from "./routes/city.js";
-
+import { list as whiteNoiseList } from "./routes/whitenoise.js";
 import { search as radioSearch } from "./routes/radio.js";
 
 export const generateRoutes = () => {
@@ -18,6 +18,8 @@ export const generateRoutes = () => {
   fastifyServer.get("/city/find", geocodingGet);
 
   fastifyServer.get("/radio/search", radioSearch);
+
+  fastifyServer.post("/whitenoise/list", whiteNoiseList);
 
   fastifyServer.register(fastifyCors, {
     origin: "http://localhost:3000",
