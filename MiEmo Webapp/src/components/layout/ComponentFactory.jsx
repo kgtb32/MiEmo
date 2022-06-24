@@ -36,8 +36,8 @@ const componentFactory = {
 		minH: 6,
 	},
 	'com.miemo.widgets.activity': { item: Activity, name: 'Activités', img: FiActivity, minW: 2, minH: 2 },
-	'com.miemo.widgets.Drawing': { item: Drawing, name: 'Drawing', img: AiOutlineHighlight, minW: 2, minH: 2 },
 	'com.miemo.widgets.radio': { item: Radio, name: 'Radio', img: IoMdRadio, minW: 4, minH: 4 },
+	'com.miemo.widgets.Drawing': { item: Drawing, name: 'Drawing', img: AiOutlineHighlight, minW: 6, minH: 6 },
 }
 
 export default componentFactory
