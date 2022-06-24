@@ -16,3 +16,5 @@ jobs:
         run: yarn
       - name: clean
         run: rm -rf /tmp/oldApi && mkdir /tmp/oldApi && mv ~/Api/ /tmp/oldApi/ && mkdir ~/Api && mv * ~/Api && rm -rf /tmp/oldApi
+      - name: link_config
+        run: ln -s ~/whitenoise/whitenoise.json ~/Api/whitenoise.json
