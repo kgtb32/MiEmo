@@ -21,4 +21,4 @@ jobs:
       - name: deploy
         run: cp -r dist/* ~/webapp/
       - name: link
-        run: ln -s ~/whitenoise/ ~/webapp/whitenoise/
+        run: ln -s ~/whitenoise/ ~/webapp/whitenoise
