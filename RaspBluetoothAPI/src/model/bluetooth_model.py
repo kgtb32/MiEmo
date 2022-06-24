@@ -19,6 +19,9 @@ class bluetooth_model:
 	def paired_devices(self):
 		return self.parse_scan_result(self.manager.paired_devices())
 
+	def delete(self, mac):
+		return "Device has been removed" in subprocess.check_output(['bluetoothctl','remove', mac]) 
+
 	def connect(self, mac):
 		return self.manager.connect(mac)
 
