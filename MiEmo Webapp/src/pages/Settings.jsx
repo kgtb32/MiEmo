@@ -45,10 +45,12 @@ export default function Settings() {
 									</span>
 								</ListGroup.Item>
 							</Link>
-							<ListGroup.Item action>
-								<FaBluetooth className="mx-2" color="#2980b9" size={size} />
-								Bluetooth
-							</ListGroup.Item>
+							<Link to="/settings/bluetooth" className="text-decoration-none">
+								<ListGroup.Item action>
+									<FaBluetooth className="mx-2" color="#2980b9" size={size} />
+									Bluetooth
+								</ListGroup.Item>
+							</Link>
 							<Link to="/settings/networkCheck" className="text-decoration-none">
 								<ListGroup.Item action>
 									<span>
