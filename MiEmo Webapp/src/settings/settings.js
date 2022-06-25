@@ -80,6 +80,11 @@ let settings = {
 			url: 'http://localhost:8003/bluetooth/pairedDevices',
 		},
 	},
+	whiteNoise: {
+		list: {
+			url: 'http://localhost:8000/whitenoise/list',
+		},
+	},
 }
 
 const {
@@ -91,6 +96,7 @@ const {
 	VITE_RADIO_URL,
 	VITE_WIFI_LIST_URL,
 	VITE_WIFI_CONNECT_URL,
+	VITE_WHITENOISE_URL,
 } = import.meta.env
 
 settings.useMock = JSON.parse(VITE_UseMock ?? settings.useMock)
@@ -101,5 +107,6 @@ settings.weather.url = VITE_WEATHER_URL ?? settings.weather.url
 settings.radio.search.url = VITE_RADIO_URL ?? settings.radio.search.url
 settings.wifi.list.url = VITE_WIFI_LIST_URL ?? settings.wifi.list.url
 settings.wifi.connect.url = VITE_WIFI_CONNECT_URL ?? settings.wifi.connect.url
+settings.whiteNoise.url = VITE_WHITENOISE_URL ?? settings.whiteNoise.list.url
 
 export default settings

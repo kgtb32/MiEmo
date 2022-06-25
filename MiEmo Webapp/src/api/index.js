@@ -48,6 +48,9 @@ const apis = {
 		endDiscovery: () => api().bluetooth.endDiscovery(),
 		pairedDevices: () => api().bluetooth.pairedDevices(),
 	},
+	whiteNoise: {
+		list: () => api().whiteNoise.list(),
+	},
 }
 
 export default apis
