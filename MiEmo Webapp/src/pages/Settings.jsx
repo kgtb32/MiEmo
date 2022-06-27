@@ -85,12 +85,14 @@ export default function Settings() {
 					<div className="my-2">
 						<h2>Interface</h2>
 						<ListGroup>
-							<ListGroup.Item action>
-								<span>
-									<AiFillCalendar className="mx-2" color="#9b59b6" size={size} />
-									Calendrier
-								</span>
-							</ListGroup.Item>
+							<Link to="/settings/calendar" className="text-decoration-none">
+								<ListGroup.Item action>
+									<span>
+										<AiFillCalendar className="mx-2" color="#9b59b6" size={size} />
+										Calendrier
+									</span>
+								</ListGroup.Item>
+							</Link>
 							<ListGroup.Item action>
 								<span>
 									<AiFillLayout className="mx-2" color="#1abc9c" size={size} />

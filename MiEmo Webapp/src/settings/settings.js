@@ -1,6 +1,10 @@
 let settings = {
 	useMock: true,
 	isProd: false,
+	calendar: {
+		calIdLocalStorageVal: 'com.miemo.calendar.calendarId',
+		calApiKeyLocalStorageVal: 'com.miemo.calendar.apiKey',
+	},
 	emotion: {
 		url: 'http://localhost:5000/emotion/detect',
 	},
