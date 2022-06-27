@@ -111,6 +111,6 @@ settings.weather.url = VITE_WEATHER_URL ?? settings.weather.url
 settings.radio.search.url = VITE_RADIO_URL ?? settings.radio.search.url
 settings.wifi.list.url = VITE_WIFI_LIST_URL ?? settings.wifi.list.url
 settings.wifi.connect.url = VITE_WIFI_CONNECT_URL ?? settings.wifi.connect.url
-settings.whiteNoise.url = VITE_WHITENOISE_URL ?? settings.whiteNoise.list.url
+settings.whiteNoise.list.url = VITE_WHITENOISE_URL ?? settings.whiteNoise.list.url
 
 export default settings
