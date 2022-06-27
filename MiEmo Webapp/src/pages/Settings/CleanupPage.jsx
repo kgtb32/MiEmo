@@ -34,7 +34,7 @@ function CleanupPage() {
 	}, [percentage])
 
 	return (
-		<div>
+		<div className="p-5">
 			<Button className="p-button-rounded px-1 py-1 align-middle" disabled={percentage > 0}>
 				<Link to="/settings">
 					<IoMdArrowRoundBack size="2em" color="black" />

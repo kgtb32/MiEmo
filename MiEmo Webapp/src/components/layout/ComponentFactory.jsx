@@ -16,6 +16,7 @@ import { IoCalendarNumberSharp } from 'react-icons/io5'
 import { AiFillClockCircle, AiFillYoutube, AiOutlineHighlight } from 'react-icons/ai'
 import { MdEmojiEmotions } from 'react-icons/md'
 import { FiActivity } from 'react-icons/fi'
+import { SiMusicbrainz } from 'react-icons/si'
 
 const componentFactory = {
 	'com.miemo.widgets.meteo': { item: Meteo, name: 'Météo', img: TiWeatherPartlySunny, minW: 2, minH: 2 },
@@ -38,11 +39,11 @@ const componentFactory = {
 	},
 	'com.miemo.widgets.activity': { item: Activity, name: 'Activités', img: FiActivity, minW: 2, minH: 2 },
 	'com.miemo.widgets.radio': { item: Radio, name: 'Radio', img: IoMdRadio, minW: 4, minH: 4 },
-	'com.miemo.widgets.Drawing': { item: Drawing, name: 'Drawing', img: AiOutlineHighlight, minW: 2, minH: 2 },
+	'com.miemo.widgets.Drawing': { item: Drawing, name: 'Dessin', img: AiOutlineHighlight, minW: 2, minH: 2 },
 	'com.miemo.widgets.WhiteNoise': {
 		item: WhiteNoise,
 		name: 'Sons blancs',
-		img: AiOutlineHighlight,
+		img: SiMusicbrainz,
 		minW: 2,
 		minH: 2,
 	},
