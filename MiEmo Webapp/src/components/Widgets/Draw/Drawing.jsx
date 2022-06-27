@@ -4,11 +4,9 @@ import PropTypes from 'prop-types'
 import { ReactSketchCanvas } from 'react-sketch-canvas'
 import { Button } from 'primereact/button'
 import styled from 'styled-components'
-import { HexColorPicker } from 'react-colorful'
 import { BiUndo, BiRedo, BiEraser, BiPaint, BiColorFill } from 'react-icons/bi'
 import { InputText } from 'primereact/inputtext'
-
-const ICON_SIZE = '1.4em'
+import ColorModal from './ColorModal'
 
 function ReactDrawing(size) {
 	const [color, setColor] = useState('black')
@@ -16,7 +14,7 @@ function ReactDrawing(size) {
 	const [strokeWidth, setStrokeWidth] = useState(10)
 
 	const [pencilColorVisible, setPencilColorVisible] = useState(false)
-	const [fillColorVisible, setFillColorVisible] = useState(false)
+	const [modalFillColorVisible, setModalFillColorVisible] = useState(false)
 
 	const canvas = useRef()
 
@@ -38,40 +36,65 @@ function ReactDrawing(size) {
 	}
 
 	return (
-		<BigBox className="h-100 d-flex flex-column">
-			<ReactSketchCanvas
-				ref={canvas}
-				canvasColor={canvasColor}
-				opts={drawingBorderSize}
-				strokeColor={color}
-				strokeWidth={strokeWidth}
-			/>
-			<div className="d-flex justify-content-between align-content-between w-100 flex-wrap">
-				<InputText
-					className="w-25"
-					value={strokeWidth}
-					onChange={e => setStrokeWidth(e.target.value)}
-					onKeyDown={e => setStrokeWidth(e.target.value)}
-					variant={'dark'}
+		<BigBox className="h-100">
+			<ReactCanvas>
+				<ReactSketchCanvas
+					ref={canvas}
+					canvasColor={canvasColor}
+					opts={drawingBorderSize}
+					strokeColor={color}
+					strokeWidth={strokeWidth}
 				/>
-				<Button onClick={() => setFillColorVisible(!fillColorVisible)} className="p-2">
-					<BiColorFill size={ICON_SIZE} />
-				</Button>
-				{fillColorVisible && <HexColorPicker color={color} onChange={setCanvasColor} />}
-				<Button onClick={() => setPencilColorVisible(!pencilColorVisible)} className="p-2">
-					<BiPaint size={ICON_SIZE} />
-				</Button>
-				{pencilColorVisible && <HexColorPicker color={canvasColor} onChange={setColor} />}
-				<Button onClick={clearButtonClick} className="p-2">
-					<BiEraser size={ICON_SIZE} />
-				</Button>
-				<Button onClick={undoButtonClick} className="p-2">
-					<BiUndo size={ICON_SIZE} />
-				</Button>
+			</ReactCanvas>
+			<div className="d-flex justify-content-around w-100">
+				<>
+					<div>
+						<ColorModal
+							ResultModalVisible={modalFillColorVisible || pencilColorVisible}
+							setResultModalVisible={
+								modalFillColorVisible ? setModalFillColorVisible : setPencilColorVisible
+							}
+							setColor={modalFillColorVisible ? setCanvasColor : setColor}
+							color={modalFillColorVisible ? canvasColor : color}
+						/>
 
-				<Button onClick={redoButtonClick} className="p-2">
-					<BiRedo size={ICON_SIZE} />
-				</Button>
+						<Button onClick={() => setModalFillColorVisible(!modalFillColorVisible)}>
+							<BiColorFill />
+						</Button>
+					</div>
+					<div>
+						<Button onClick={() => setPencilColorVisible(!pencilColorVisible)}>
+							<BiPaint />
+						</Button>
+					</div>
+				</>
+				<>
+					<InputText
+						style={{ width: 'inherit' }}
+						value={strokeWidth}
+						onChange={e => setStrokeWidth(e.target.value)}
+						onKeyDown={e => setStrokeWidth(e.target.value)}
+						variant={'dark'}
+					/>
+				</>
+
+				<>
+					<div>
+						<Button onClick={undoButtonClick}>
+							<BiUndo />
+						</Button>
+					</div>
+					<div>
+						<Button onClick={redoButtonClick}>
+							<BiRedo />
+						</Button>
+					</div>
+					<div>
+						<Button onClick={clearButtonClick}>
+							<BiEraser />
+						</Button>
+					</div>
+				</>
 			</div>
 		</BigBox>
 	)
@@ -91,6 +114,9 @@ ReactDrawing.defaultProps = {
 	borderRadius: '0.25rem',
 }
 
+const ReactCanvas = styled.div`
+	height: 70%;
+`
 const BigBox = styled.div`
 	width: 100%;
 	margin-right: 2%;
