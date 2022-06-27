@@ -47,6 +47,7 @@ function WifiPasswordSelector({ wifiInfos, setModalVisible, modalVisible }) {
 							className="w-100"
 							type="password"
 							value={password}
+							onKeyUp={e => setPassword(e.target.value)}
 							onChange={e => setPassword(e.target.value)}
 						/>
 					</div>
