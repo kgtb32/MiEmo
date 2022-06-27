@@ -3,7 +3,7 @@ import { ListGroup } from 'react-bootstrap'
 import { Divider } from 'primereact/divider'
 import { ProgressBar } from 'primereact/progressbar'
 import { Toast } from 'primereact/toast'
-import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog'
+import { ConfirmDialog } from 'primereact/confirmdialog'
 
 import SettingsHeader from '../../components/Settings/SettingsHeader'
 
@@ -11,11 +11,6 @@ import { FaBluetooth } from 'react-icons/fa'
 import { RiRefreshLine } from 'react-icons/ri'
 
 import api from '../../api/'
-
-const BASE_DIALOG_CONTROL_NAMES = {
-	rejectLabel: 'Non',
-	acceptLabel: 'Oui',
-}
 
 export default function Bluetooth() {
 	const [bluetoothPeripherals, setBluetoothPeripherals] = useState([])
@@ -39,27 +34,11 @@ export default function Bluetooth() {
 		},
 		connect: mac => {
 			const fetchAPI = async () => api.bluetooth.connect(mac)
-			fetchAPI()
-				.then()
-				.catch(() =>
-					toast.current.show({
-						severity: 'error',
-						summary: 'Connexion bluetooth impossible',
-						detail: "Le périphérique n'est pas prêt ou pas disponible.",
-					}),
-				)
+			fetchAPI().then().catch()
 		},
 		remove: mac => {
 			const fetchAPI = async () => api.bluetooth.remove(mac)
-			fetchAPI()
-				.then()
-				.catch(() =>
-					toast.current.show({
-						severity: 'error',
-						summary: 'Erreur lors de la suppression de ce périphérique',
-						detail: "Le périphérique n'est pas prêt ou n'est plus disponible.",
-					}),
-				)
+			fetchAPI().then().catch()
 		},
 		pairedDevices: () => {
 			const fetchAPI = async () => api.bluetooth.pairedDevices()
@@ -92,18 +71,7 @@ export default function Bluetooth() {
 		<ListGroup.Item
 			key={`peripheral_bt_${i}`}
 			action
-			onClick={() =>
-				deleteMode
-					? confirmDialog({
-							message: 'Êtes vous sûr de vouloir désappairer ce périphérique ?',
-							header: 'Confirmation',
-							icon: 'pi pi-exclamation-triangle',
-							accept: () => apiCalls.remove(mac),
-							reject: () => void 0,
-							...BASE_DIALOG_CONTROL_NAMES,
-					  })
-					: apiCalls.connect(mac ?? '')
-			}
+			onClick={() => (deleteMode ? void 0 : apiCalls.connect(mac ?? ''))}
 		>
 			<FaBluetooth size="2em" />
 			<span className="mx-2">{`${name ?? 'Aucun nom'}`}</span>
@@ -119,7 +87,7 @@ export default function Bluetooth() {
 				{pairedDevices.length > 0 && (
 					<>
 						<span>Périphériques appairés :</span>
-						{pairedDevices.map((peripheral, i) => peripheralTemplate(peripheral, i, true))}
+						{pairedDevices.map((peripheral, i) => peripheralTemplate(peripheral, i, false))}
 						<Divider />
 					</>
 				)}

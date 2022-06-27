@@ -23,6 +23,7 @@ class bluetooth_model:
 		return "Device has been removed" in subprocess.check_output(['bluetoothctl','remove', mac]) 
 
 	def connect(self, mac):
+		subprocess.call('removeBTDevices')
 		return self.manager.connect(mac)
 
 	def start_discovery(self):
