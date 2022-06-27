@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { withSize } from 'react-sizeme'
 import styled from 'styled-components'
 
@@ -12,7 +12,12 @@ import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list'
 import bootstrapPlugin from '@fullcalendar/bootstrap'
 
+import settings from '../../../settings/settings'
+
 function Calendar() {
+	const [calendarId] = useState(localStorage.getItem(settings.calendar.calIdLocalStorageVal) ?? '')
+	const [apiKey] = useState(localStorage.getItem(settings.calendar.calApiKeyLocalStorageVal) ?? '')
+
 	return (
 		<JoliDiv className="h-100">
 			<FullCalendar
@@ -40,9 +45,9 @@ function Calendar() {
 				allDayText={'Journée'}
 				noEventsContent={'Rien à afficher'}
 				initialView="dayGridMonth"
-				googleCalendarApiKey=""
+				googleCalendarApiKey={apiKey}
 				viewClassNames="view"
-				events={{ googleCalendarId: '' }}
+				events={{ googleCalendarId: calendarId }}
 				height={'100%'}
 				width={'100%'}
 			/>
