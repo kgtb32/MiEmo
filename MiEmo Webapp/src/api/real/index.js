@@ -95,4 +95,7 @@ export default {
 		endDiscovery: () => fetchAPI(settings.bluetooth.endDiscovery.url, 'POST', {}, 'application/json'),
 		pairedDevices: () => fetchAPI(settings.bluetooth.pairedDevices.url, 'POST', {}, 'application/json'),
 	},
+	whiteNoise: {
+		list: () => fetchAPI(settings.whiteNoise.list.url, 'POST', {}, 'application/json'),
+	},
 }

@@ -8,6 +8,7 @@ const EmotionWidget = React.lazy(() => import('../Widgets/EmotionWidget/EmotionW
 const Activity = React.lazy(() => import('../Widgets/Activities/Activity'))
 const Drawing = React.lazy(() => import('../Widgets/Draw/Drawing'))
 const Radio = React.lazy(() => import('../Widgets/Radio/Radio'))
+const WhiteNoise = React.lazy(() => import('../Widgets/WhiteNoise/WhiteNoise'))
 
 import { TiWeatherPartlySunny } from 'react-icons/ti'
 import { IoMdClock, IoMdRadio } from 'react-icons/io'
@@ -38,6 +39,13 @@ const componentFactory = {
 	'com.miemo.widgets.activity': { item: Activity, name: 'Activités', img: FiActivity, minW: 2, minH: 2 },
 	'com.miemo.widgets.radio': { item: Radio, name: 'Radio', img: IoMdRadio, minW: 4, minH: 4 },
 	'com.miemo.widgets.Drawing': { item: Drawing, name: 'Drawing', img: AiOutlineHighlight, minW: 6, minH: 6 },
+	'com.miemo.widgets.WhiteNoise': {
+		item: WhiteNoise,
+		name: 'Sons blancs',
+		img: AiOutlineHighlight,
+		minW: 2,
+		minH: 2,
+	},
 }
 
 export default componentFactory

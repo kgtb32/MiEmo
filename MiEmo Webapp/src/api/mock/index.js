@@ -7,6 +7,7 @@ import WifiConnect from './wifi/connect.json'
 import AudioInfo from './audio/info.json'
 import AudioSinks from './audio/sinks.json'
 import BluetoothList from './bluetooth/list.json'
+import WhiteNoiseList from './whitenoise/list.json'
 
 export default {
 	weather: {
@@ -48,5 +49,8 @@ export default {
 		startDiscovery: () => Promise.resolve(),
 		endDiscovery: () => Promise.resolve(),
 		pairedDevices: () => Promise.resolve(BluetoothList),
+	},
+	whiteNoise: {
+		list: () => Promise.resolve(WhiteNoiseList),
 	},
 }
