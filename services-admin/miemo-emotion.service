@@ -1,0 +1,11 @@
+[Unit]
+Description=Miemo emotion service
+After=NetworkManager-wait-online.service
+
+[Service]
+Type=simple
+ExecStart=docker-compose -f /home/miemo/docker-compose.yml up
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

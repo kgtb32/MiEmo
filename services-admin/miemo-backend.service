@@ -1,0 +1,11 @@
+[Unit]
+Description=Miemo bluetooth backend server
+After=NetworkManager-wait-online.service
+
+[Service]
+Type=simple
+ExecStart=runMiemoBackend
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

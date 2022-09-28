@@ -1,0 +1,10 @@
+[Unit]
+Description=Miemo Audio Manager server
+
+[Service]
+Type=simple
+ExecStart=miemo-audio
+Restart=always
+
+[Install]
+WantedBy=default.target
