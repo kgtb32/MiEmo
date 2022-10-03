@@ -1,0 +1,31 @@
+- Interrupteur C14 (x1)
+  - [lien aliexpress](https://fr.aliexpress.com/item/32829721845.html?spm=a2g0o.productlist.0.0.656d3d54TlD69e&algo_pvid=b3d6d1cb-5cc9-4b1e-b72f-fcc18c5a3a87&algo_exp_id=b3d6d1cb-5cc9-4b1e-b72f-fcc18c5a3a87-1&pdp_ext_f=%7B%22sku_id%22%3A%2265015754690%22%7D&pdp_npi=2%40dis%21EUR%211.24%211.23%21%21%21%21%21%400b0a119a16643575182431242ecb04%2165015754690%21sea&curPageLogUid=aoL1p3AZ5C0y)
+  - [lien amazon](https://www.amazon.fr/YIXISI-Connecteur-Encastrable-Imprimante-Interrupteur/dp/B094ZH62PR/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2VPN8X5IGZAQL&keywords=Connecteur+IEC+M%C3%A2le+C14+Bulgin%2C+Montage+rapide%2C+10A%2C+fusibles&qid=1664353473&qu=eyJxc2MiOiIwLjAxIiwicXNhIjoiMC4wMCIsInFzcCI6IjAuMDAifQ%3D%3D&sprefix=connecteur+iec+m%C3%A2le+c14+bulgin%2C+montage+rapide%2C+10a%2C+fusibles%2Caps%2C46&sr=8-5)
+- Enceintes avec potentiomètre
+  - [lien amazon](https://www.amazon.fr/Trust-Remo-Enceinte-Ordinateur-Alimentation/dp/B005625WR8/ref=sr_1_10?crid=L1OOA51YGXTR&keywords=enceinte+pc&qid=1664357662&qu=eyJxc2MiOiI2LjU1IiwicXNhIjoiNS45OCIsInFzcCI6IjUuNDYifQ%3D%3D&refinements=p_76%3A437878031&rnid=437877031&rps=1&sprefix=enceinte%2Caps%2C104&sr=8-10)
+- Vis sans fin (x1)
+  - [lien amazon](https://www.amazon.fr/SIENOC-barre-lin%C3%A9aire-dimprimante-200mm/dp/B078JZRYBC/ref=sr_1_2?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=T7OG1560ZHKY&keywords=Tige%2Bde%2BVis%2BSans%2BFin%2Bavec%2B%C3%A9Crou%2BOreiller&qid=1664293190&qu=eyJxc2MiOiIwLjIxIiwicXNhIjoiMC4wMCIsInFzcCI6IjAuMDAifQ%3D%3D&refinements=p_76%3A437878031&rnid=437877031&rps=1&sprefix=tige%2Bde%2Bvis%2Bsans%2Bfin%2Bavec%2B%C3%A9crou%2Boreiller%2B%2Caps%2C54&sr=8-2&th=1)
+- Stepper motor (x2) avec controller
+  - [lien amazon](https://www.amazon.fr/HUABAN-moteurs-28BYJ-48-module-ULN2003/dp/B08B4J33HX/ref=sr_1_34?keywords=moteur+pas+%C3%A0+pas+arduino&qid=1664293000&qu=eyJxc2MiOiIzLjk5IiwicXNhIjoiMy4xOCIsInFzcCI6IjIuMjAifQ%3D%3D&s=industrial&sprefix=moteur+pas+a+pas+a%2Cindustrial%2C67&sr=1-34)
+- Arduino uno
+- Joysticks
+  - [lien amazon](https://www.amazon.fr/EG-STARTS-Controller-poussoir-Raspberry/dp/B076H38W5G/ref=sr_1_2_sspa?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2LLIU6ST3OBO2&keywords=Meilleur+stick+arcade+PC&qid=1664282500&sprefix=meilleur+stick+arcade+pc%2Caps%2C63&sr=8-2-spons&psc=1&smid=A1N1MN91UPB9Z0)
+- multiprise (4/5 trous) sera coupée pour être branchée à la prise C14
+- webcam **déjà présente** 12.99€ amazon
+- bombe de peinture noire (x1) (4.99 à cultura)
+- Pot de peinture
+- Écran philippe **déjà présent** 30€
+- Écran compatible HDMI/VGA secondaire (pour l'hologramme) (idélament celui de hololo)
+- Ordinateur
+- Bois
+- Vis et pâte à bois (tim a la pâte à bois) kg vis à voir
+- Charnières plates (x4)
+  - [lien amazon](https://www.amazon.fr/10-pcs-inoxydable-meubles-mat%C3%A9riel-Charni%C3%A8re/dp/B06XKDFPSY/ref=sr_1_5?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1457NQVP8Y06M&keywords=charni%C3%A8re+plate&qid=1664358180&qu=eyJxc2MiOiI2LjMwIiwicXNhIjoiNS43NCIsInFzcCI6IjUuMDYifQ%3D%3D&sprefix=charni%C3%A8re+plate%2Caps%2C70&sr=8-5)
+- Adaptateur Wifi (x1)
+  - [lien amazon](https://www.amazon.fr/TP-Link-TL-WN823N-adaptateur-jusqu%C3%A0-Windows/dp/B0088TKTY2/ref=psdc_430388031_t1_B07M69276N?th=1)
+- Adaptateur bluetooth (x1)
+  - [lien amazon](https://www.amazon.fr/TP-Link-UB400-adaptateur-imprimantes-smartphone/dp/B07NQ5YGDW/ref=sr_1_2?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2U8R5VNN87MVZ&keywords=adaptateur%2Bbluetooth%2Blinux&qid=1664368654&qu=eyJxc2MiOiIzLjM0IiwicXNhIjoiMi4yMCIsInFzcCI6IjAuOTIifQ%3D%3D&refinements=p_89%3ATP-Link&rnid=1680780031&s=computers&sprefix=adapteur%2Bbluetooth%2Blinux%2B%2Caps%2C65&sr=1-2&th=1)
+- Fermeture à levier (x4)
+  - [lien amazon](https://www.amazon.fr/ZKSM-Grenouill%C3%A8re-Capuchon-Capacit%C3%A9-s%C3%A9lecteur/dp/B081RFH17P/ref=sr_1_77?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3POMV4YUFQEU9&keywords=fermeture+%C3%A0+levier&qid=1664357723&qu=eyJxc2MiOiI2LjM3IiwicXNhIjoiNi4wMCIsInFzcCI6IjUuNDIifQ%3D%3D&refinements=p_76%3A437878031&rnid=437877031&rps=1&sprefix=fermeture+%C3%A0+levier%2Caps%2C76&sr=8-77)
+- Microphone **surement avec la webcam, reste à avoir la qualité**
+- film sans teint : 11.69€ **déjà présent**

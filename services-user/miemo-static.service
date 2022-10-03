@@ -1,0 +1,10 @@
+[Unit]
+Description=Miemo static client
+
+[Service]
+Type=simple
+ExecStart=runMiemoStatic
+Restart=always
+
+[Install]
+WantedBy=default.target

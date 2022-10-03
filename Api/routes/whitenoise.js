@@ -10,7 +10,7 @@ export const list = async (request, reply) => {
 export const getWhiteNoise = async () => {
   return (
     JSON.parse(
-      await readFile(new URL("../whitenoise.json", import.meta.url))
+      await readFile(new URL("/home/miemo/static/whitenoise/whitenoise.json", import.meta.url))
     ) ?? []
   );
 };

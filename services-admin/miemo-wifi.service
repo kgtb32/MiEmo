@@ -1,0 +1,11 @@
+[Unit]
+Description=Miemo Wifi Manager server
+After=NetworkManager-wait-online.service
+
+[Service]
+Type=simple
+ExecStart=miemo-wifi
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Miemo webapp client
+
+[Service]
+Type=simple
+ExecStart=runMiemoWebClient
+Restart=always
+
+[Install]
+WantedBy=default.target
