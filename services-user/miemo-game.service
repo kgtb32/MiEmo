@@ -1,0 +1,10 @@
+[Unit]
+Description=Miemo game client
+
+[Service]
+Type=simple
+ExecStart=runMiemoGame
+Restart=always
+
+[Install]
+WantedBy=default.target

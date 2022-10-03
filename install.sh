@@ -93,11 +93,13 @@ cp /tmp/config/runMiemoWebapp /usr/bin/
 cp /tmp/config/runMiemoBackend /usr/bin/
 cp /tmp/config/runMiemoWebClient /usr/bin/
 cp /tmp/config/runMiemoStatic /usr/bin/
+cp /tmp/config/runMiemoGame /usr/bin
 
 chmod a+x /usr/bin/runMiemoWebapp
 chmod a+x /usr/bin/runMiemoBackend
 chmod a+x /usr/bin/runMiemoWebClient
 chmod a+x /usr/bin/runMiemoStatic
+chmod a+x /usr/bin/runMiemoGame
 
 echo ">> INSTALLING miemo-emotion"
 
