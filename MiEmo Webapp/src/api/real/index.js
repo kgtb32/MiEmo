@@ -2,8 +2,12 @@ import settings from '../../settings/settings'
 
 import { generateMeteoAvailable, generateQueryString } from '../../utils/utils'
 
+import fetchRetry from 'fetch-retry'
+
 const fetchAPI = (url, method, data, contentType) => {
-	return fetch(url, {
+	return fetchRetry(fetch)(url, {
+		retries: 3,
+		retryDelay: 2000,
 		method,
 		headers: {
 			'Content-Type': contentType ?? 'application/json; charset=utf-8',
