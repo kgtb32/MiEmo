@@ -1308,6 +1308,11 @@ fast-levenshtein@^2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
+fetch-retry@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/fetch-retry/-/fetch-retry-5.0.3.tgz#edfa3641892995f9afee94f25b168827aa97fe3d"
+  integrity sha512-uJQyMrX5IJZkhoEUBQ3EjxkeiZkppBd5jS/fMTJmfZxLSiaQjv2zD0kTvuvkSH89uFvgSlB6ueGpjD3HWN7Bxw==
+
 file-entry-cache@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/file-entry-cache/-/file-entry-cache-6.0.1.tgz#211b2dd9659cb0394b073e7323ac3c933d522027"
@@ -2170,6 +2175,7 @@ react-audio-player@^0.17.0:
   integrity sha512-aCZgusPxA9HK7rLZcTdhTbBH9l6do9vn3NorgoDZRxRxJlOy9uZWzPaKjd7QdcuP2vXpxGA/61JMnnOEY7NXeA==
   dependencies:
     prop-types "^15.7.2"
+
 react-bootstrap-input-spinner@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-bootstrap-input-spinner/-/react-bootstrap-input-spinner-1.0.2.tgz#6c795cc40c648076eb8ddee7c0c44899caaea24c"
@@ -2177,6 +2183,14 @@ react-bootstrap-input-spinner@^1.0.2:
   dependencies:
     bootstrap "^4.6.0"
     react-bootstrap "^1.4.3"
+
+react-bootstrap-range-slider@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-bootstrap-range-slider/-/react-bootstrap-range-slider-3.0.4.tgz#121a815e20d28d20f82ac94a22dd038b3f138e4d"
+  integrity sha512-Yw6ELrhTmzVh3sG4FamhRc/bApRdfGyOJZla4y8dKppiIZSSu46QkSSxWo4uzgsD7EItjnfY66EsjT3eD3U7fQ==
+  dependencies:
+    classnames "^2.3.1"
+    prop-types "^15.7.2"
 
 react-bootstrap@^1.4.3:
   version "1.6.4"
@@ -2200,14 +2214,6 @@ react-bootstrap@^1.4.3:
     react-transition-group "^4.4.1"
     uncontrollable "^7.2.1"
     warning "^4.0.3"
-
-react-bootstrap-range-slider@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/react-bootstrap-range-slider/-/react-bootstrap-range-slider-3.0.4.tgz#121a815e20d28d20f82ac94a22dd038b3f138e4d"
-  integrity sha512-Yw6ELrhTmzVh3sG4FamhRc/bApRdfGyOJZla4y8dKppiIZSSu46QkSSxWo4uzgsD7EItjnfY66EsjT3eD3U7fQ==
-  dependencies:
-    classnames "^2.3.1"
-    prop-types "^15.7.2"
 
 react-bootstrap@^2.1.0:
   version "2.1.0"
