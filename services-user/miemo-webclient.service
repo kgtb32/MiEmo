@@ -2,7 +2,7 @@
 Description=Miemo webapp client
 
 [Service]
-Type=simple
+Type=idle
 ExecStart=runMiemoWebClient
 Restart=always
 
