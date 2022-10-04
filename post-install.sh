@@ -51,12 +51,26 @@ yarn && yarn build --mode prod-arcade
 
 cp -r /tmp/MiEmo\ Webapp/dist/* /home/miemo/webapp/
 
+echo ">> INSTALLING MIEMO-GAME"
+
+mkdir -p /home/miemo/miemo-game
+
+cp -r /tmp/miemo-game/* /home/miemo/miemo-game/
+
+cd /home/miemo/miemo-game
+
+python3 -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt
+deactivate
+
 echo ">> ENABLING SERVICES"
 
 systemctl --user enable miemo-webapp
 systemctl --user enable miemo-audio
 systemctl --user enable miemo-webclient
 systemctl --user enable miemo-static
+systemctl --user enable miemo-game
 
 echo ">> PREPARING STATIC RESSOURCES"
 

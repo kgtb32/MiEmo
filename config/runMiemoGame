@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /home/miemo/miemo-game/
+. venv/bin/activate
+python3 manage.py runserver 8005
