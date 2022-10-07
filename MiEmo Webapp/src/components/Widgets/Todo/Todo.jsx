@@ -14,7 +14,7 @@ const Todo = () => {
 	const [editingRows, setEditingRows] = useState({})
 	const toast = useRef(null)
 	const [checked, setChecked] = useState(false)
-	const [newtaskname, setNewTaskName] = useState()
+	const [newtaskname, setNewTaskName] = useState('')
 	const [error, setError] = useState(false)
 
 	useEffect(() => {
