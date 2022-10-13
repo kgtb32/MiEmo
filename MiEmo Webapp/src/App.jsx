@@ -3,6 +3,7 @@ import { React, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home'
+import Game from './pages/Game'
 
 import Settings from './pages/Settings'
 import Wifi from './pages/Settings/Wifi'
@@ -22,6 +23,7 @@ function App() {
 				<Router>
 					<Routes>
 						<Route path="/" element={<Home />} />
+						<Route path="/game" element={<Game />} />
 						<Route path="/settings" element={<Settings />} />
 						<Route path="/settings/calendar" element={<CalendarConfig />} />
 						<Route path="/settings/cleanup" element={<CleanupPage />} />
