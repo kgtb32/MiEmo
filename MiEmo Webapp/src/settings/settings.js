@@ -1,6 +1,12 @@
 let settings = {
 	useMock: true,
 	isProd: false,
+	buttons: {
+		button_x: 'button_0',
+		button_o: 'button_1',
+		button_a: 'button_2',
+		button_b: 'button_3',
+	},
 	calendar: {
 		calIdLocalStorageVal: 'com.miemo.calendar.calendarId',
 		calApiKeyLocalStorageVal: 'com.miemo.calendar.apiKey',
