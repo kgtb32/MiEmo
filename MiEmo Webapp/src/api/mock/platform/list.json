@@ -1,0 +1,56 @@
+[
+	{
+		"platform_id": "9d7b1adb-2136-496c-b16b-86bfa1c4f5b0",
+		"name": "Atari 2600",
+		"console_logo": "https://cdn.discordapp.com/attachments/1030061370701525015/1030061672997605396/logo.svg",
+		"console_preview": "https://cdn.discordapp.com/attachments/1030061370701525015/1030061671374409788/console.svg",
+		"controller_picture": "https://cdn.discordapp.com/attachments/1030061370701525015/1030061671810617354/controller.svg",
+		"controls": "http://localhost:8000/static/static/images/platform/controls/stack_miemo.png",
+		"game_box": "https://cdn.discordapp.com/attachments/1030061370701525015/1030061672225837086/game.svg",
+		"year_created": 1977,
+		"end_year": 1992,
+		"description": "L'Atari 2600 est une des premières consoles familialles. Elle à vu arriver de nombreux titres tels que Space Invaders, Pitsfall! ou encore l'incontournable Pac Man.",
+		"popular_games": [
+			{
+				"game_name": "Pitfall!",
+				"cover": "https://cdn.thegamesdb.net/images/thumb/boxart/front/103525-1.jpg"
+			},
+			{
+				"game_name": "Donkey Kong",
+				"cover": "https://cdn.thegamesdb.net/images/thumb/boxart/front/2876-1.jpg"
+			},
+			{
+				"game_name": "Ms. Pac Man",
+				"cover": "https://cdn.thegamesdb.net/images/thumb/boxart/front/21052-1.jpg"
+			}
+		],
+		"music": "https://cdn.discordapp.com/attachments/1030061370701525015/1031602402677235722/system.ogg"
+	},
+	{
+		"platform_id": "e37f7026-a748-4893-8a5d-202ae07c4470",
+		"name": "Atari 7800",
+		"console_logo": "https://cdn.discordapp.com/attachments/1030061370701525015/1030061828941828096/logo.svg",
+		"console_preview": "https://cdn.discordapp.com/attachments/1030061370701525015/1030061827394109441/console.svg",
+		"controller_picture": "https://cdn.discordapp.com/attachments/1030061370701525015/1030061828027465759/controller2.svg",
+		"controls": "http://localhost:8000/static/static/images/platform/controls/stack_miemo.png",
+		"game_box": "https://cdn.discordapp.com/attachments/1030061370701525015/1030061828304289792/game.svg",
+		"year_created": 1986,
+		"end_year": 1992,
+		"description": "L'Atari 7800 est une console de jeux vidéo 8-bit de troisième génération. Cette console apporta de nombreuses améliorations notamment au niveau des performances et de qualité d'image par rapport aux consoles précédentes.",
+		"popular_games": [
+			{
+				"game_name": "Xevious",
+				"cover": "https://cdn.thegamesdb.net/images/thumb/boxart/front/20608-1.jpg"
+			},
+			{
+				"game_name": "Centipede",
+				"cover": "https://cdn.thegamesdb.net/images/thumb/boxart/front/21100-1.jpg"
+			},
+			{
+				"game_name": "Pole Position II",
+				"cover": "https://cdn.thegamesdb.net/images/thumb/boxart/front/4906-1.jpg"
+			}
+		],
+		"music": "https://cdn.discordapp.com/attachments/1030061370701525015/1031602866516922368/system.ogg"
+	}
+]

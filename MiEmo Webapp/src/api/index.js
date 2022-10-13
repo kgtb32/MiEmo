@@ -51,6 +51,12 @@ const apis = {
 	whiteNoise: {
 		list: () => api().whiteNoise.list(),
 	},
+	game: {
+		list: platform_uuid => api().game.list(platform_uuid),
+		platform: () => api().game.platform(),
+		get: game_uuid => api().game.get(game_uuid),
+		play: game_uuid => api().game.play(game_uuid),
+	},
 }
 
 export default apis

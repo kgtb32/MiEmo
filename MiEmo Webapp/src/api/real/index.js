@@ -102,4 +102,13 @@ export default {
 	whiteNoise: {
 		list: () => fetchAPI(settings.whiteNoise.list.url, 'POST', {}, 'application/json'),
 	},
+	game: {
+		// eslint-disable-next-line no-unused-vars
+		list: platform_uuid => fetchAPI(settings.game.list.url, 'GET', {}, 'application/json'),
+		plaform: () => fetchAPI(settings.game.platformList.url, 'GET', {}, 'application/json'),
+		// eslint-disable-next-line no-unused-vars
+		get: game_uuid => fetchAPI(settings.game.get.url, 'GET', {}, 'application/json'),
+		// eslint-disable-next-line no-unused-vars
+		play: game_uuid => fetchAPI(settings.game.play.url, 'GET', {}, 'application/json'),
+	},
 }
