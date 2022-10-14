@@ -151,3 +151,7 @@
 .game-list .list-group-item {
 	border: none !important;
 }
+
+.p-card {
+	background: #22272d;
+}
