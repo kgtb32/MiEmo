@@ -38,6 +38,7 @@ function ReactDrawing(size) {
 		width: size.width,
 		border: size.border,
 		borderRadius: size.borderRadius,
+		strokeWidth: 1,
 	}
 
 	return (
@@ -45,8 +46,8 @@ function ReactDrawing(size) {
 			<ReactSketchCanvas
 				ref={canvas}
 				canvasColor={canvasColor}
-				opts={drawingBorderSize}
 				strokeColor={color}
+				opts={drawingBorderSize}
 				strokeWidth={strokeWidth}
 			/>
 			<div className="d-flex justify-content-between align-content-between w-100 flex-wrap">

@@ -49,7 +49,6 @@ function Calendar() {
 				viewClassNames="view"
 				events={{ googleCalendarId: calendarId }}
 				height={'100%'}
-				width={'100%'}
 			/>
 		</JoliDiv>
 	)

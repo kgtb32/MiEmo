@@ -19,9 +19,9 @@ function ColorModal({ ResultModalVisible, setResultModalVisible, setColor, color
 
 ColorModal.propTypes = {
 	setResultModalVisible: PropTypes.func,
-	ResultModalVisible: PropTypes.func,
-	setColor: PropTypes.bool,
-	color: PropTypes.func,
+	ResultModalVisible: PropTypes.bool,
+	setColor: PropTypes.func,
+	color: PropTypes.string,
 }
 
 export default ColorModal
