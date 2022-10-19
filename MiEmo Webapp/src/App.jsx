@@ -14,6 +14,7 @@ import AudioMixer from './pages/Settings/AudioMixer'
 import AudioTest from './pages/Settings/AudioTest'
 import NetworkCheck from './pages/Settings/NetworkCheck'
 import CalendarConfig from './pages/Settings/CalendarConfig'
+import GameLauncher from './pages/GameLauncher'
 
 import Page404 from './pages/Page404'
 
@@ -26,6 +27,7 @@ function App() {
 						<Route path="/" element={<Home />} />
 						<Route path="/game" element={<Game />} />
 						<Route path="/game/:platformId" element={<GameSelection />} />
+						<Route path="/game/:platformId/:gameId" element={<GameLauncher />} />
 						<Route path="/settings" element={<Settings />} />
 						<Route path="/settings/calendar" element={<CalendarConfig />} />
 						<Route path="/settings/cleanup" element={<CleanupPage />} />
