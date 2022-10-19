@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Game from './pages/Game'
+import GameSelection from './pages/GameSelection'
 
 import Settings from './pages/Settings'
 import Wifi from './pages/Settings/Wifi'
@@ -24,6 +25,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/game" element={<Game />} />
+						<Route path="/game/:platformId" element={<GameSelection />} />
 						<Route path="/settings" element={<Settings />} />
 						<Route path="/settings/calendar" element={<CalendarConfig />} />
 						<Route path="/settings/cleanup" element={<CleanupPage />} />
