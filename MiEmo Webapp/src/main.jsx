@@ -10,6 +10,8 @@ import 'flag-icons/css/flag-icons.min.css'
 
 import 'primereact/resources/primereact.css'
 
+import 'primereact/resources/themes/lara-dark-teal/theme.css'
+
 import 'rc-slider/assets/index.css'
 
 import 'bootstrap-dark-5/dist/css/bootstrap-night.css'

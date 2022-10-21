@@ -7,6 +7,9 @@ export default defineConfig({
 	optimizeDeps: {
 		exclude: ['mock'],
 	},
+	server: {
+		port: 3000,
+	},
 	build: {
 		chunkSizeWarningLimit: '800',
 	},
