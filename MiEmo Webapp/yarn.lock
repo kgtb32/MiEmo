@@ -1670,6 +1670,11 @@ isexe@^2.0.0:
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
+joypad.js@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/joypad.js/-/joypad.js-2.3.2.tgz#515d0878906ff50cad9b296ac0a91b951b61e754"
+  integrity sha512-zahj8Dd9RHqu5W8Ez2VvSaGwcWhmPeUpihwlQr3AlbmIYg40Rm1KJSgZCNdP3cvNQD0x4PDWSzXGLa7Fatpxcw==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"

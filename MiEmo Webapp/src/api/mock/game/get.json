@@ -1,0 +1,52 @@
+{
+	"game_id": "fcc7b9c7-2b6e-4008-a324-296f3bc9f612",
+	"name": "Ms. Pac Man",
+	"year_created": 1983,
+	"nb_played": 0,
+	"favorite": true,
+	"cover": "https://cdn.thegamesdb.net/images/thumb/boxart/front/5314-1.jpg",
+	"platform": {
+		"platform_id": "9d7b1adb-2136-496c-b16b-86bfa1c4f5b0",
+		"name": "Atari 2600",
+		"console_logo": "https://cdn.discordapp.com/attachments/1030061370701525015/1030061672997605396/logo.svg",
+		"console_preview": "https://cdn.discordapp.com/attachments/1030061370701525015/1030061671374409788/console.svg",
+		"controller_picture": "https://cdn.discordapp.com/attachments/1030061370701525015/1030061671810617354/controller.svg",
+		"controls": "https://cdn.discordapp.com/attachments/1030061370701525015/1032340924832948295/unknown.png",
+		"game_box": "https://cdn.discordapp.com/attachments/1030061370701525015/1030061672225837086/game.svg",
+		"year_created": 1977,
+		"end_year": 1992,
+		"description": "L'Atari 2600 est une des premières consoles familialles. Elle à vu arriver de nombreux titres tels que Space Invaders, Pitsfall! ou encore l'incontournable Pac Man.",
+		"popular_games": [
+			{
+				"game_name": "Pitfall!",
+				"cover": "https://cdn.thegamesdb.net/images/thumb/boxart/front/103525-1.jpg"
+			},
+			{
+				"game_name": "Donkey Kong",
+				"cover": "https://cdn.thegamesdb.net/images/thumb/boxart/front/2876-1.jpg"
+			},
+			{
+				"game_name": "Ms. Pac Man",
+				"cover": "https://cdn.thegamesdb.net/images/thumb/boxart/front/21052-1.jpg"
+			}
+		],
+		"music": "https://cdn.discordapp.com/attachments/1030061370701525015/1031602402677235722/system.ogg"
+	},
+	"core": {
+		"core_uuid": "e67aa0c4-31eb-4c98-9ce4-362c2ae1f68b",
+		"name": "Stella (2014)",
+		"core_path": "/home/miemo/cores/stella2014.so",
+		"config_file": "/home/miemo/config/stella2014.conf"
+	},
+	"config": "/home/miemo/config/override/fcc7b9c7-2b6e-4008-a324-296f3bc9f612.conf",
+	"genres": [
+		{
+			"genre_uuid": "769085e7-23f7-4ff8-8478-9c2d537e48be",
+			"genre_name": "Action",
+			"background": "#d35400",
+			"color": "#000000"
+		}
+	],
+	"nb_player": 1,
+	"trailer_url": ""
+}

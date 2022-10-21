@@ -3,6 +3,8 @@ import { React, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import Home from './pages/Home'
+import Game from './pages/Game'
+import GameSelection from './pages/GameSelection'
 
 import Settings from './pages/Settings'
 import Wifi from './pages/Settings/Wifi'
@@ -12,6 +14,7 @@ import AudioMixer from './pages/Settings/AudioMixer'
 import AudioTest from './pages/Settings/AudioTest'
 import NetworkCheck from './pages/Settings/NetworkCheck'
 import CalendarConfig from './pages/Settings/CalendarConfig'
+import GameLauncher from './pages/GameLauncher'
 
 import Page404 from './pages/Page404'
 
@@ -22,6 +25,9 @@ function App() {
 				<Router>
 					<Routes>
 						<Route path="/" element={<Home />} />
+						<Route path="/game" element={<Game />} />
+						<Route path="/game/:platformId" element={<GameSelection />} />
+						<Route path="/game/:platformId/:gameId" element={<GameLauncher />} />
 						<Route path="/settings" element={<Settings />} />
 						<Route path="/settings/calendar" element={<CalendarConfig />} />
 						<Route path="/settings/cleanup" element={<CleanupPage />} />

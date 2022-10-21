@@ -8,6 +8,9 @@ import AudioInfo from './audio/info.json'
 import AudioSinks from './audio/sinks.json'
 import BluetoothList from './bluetooth/list.json'
 import WhiteNoiseList from './whitenoise/list.json'
+import GameList from './game/list.json'
+import PlatformList from './platform/list.json'
+import GameGet from './game/get.json'
 
 export default {
 	weather: {
@@ -52,5 +55,11 @@ export default {
 	},
 	whiteNoise: {
 		list: () => Promise.resolve(WhiteNoiseList),
+	},
+	game: {
+		list: () => Promise.resolve(GameList),
+		platform: () => Promise.resolve(PlatformList),
+		get: () => Promise.resolve(GameGet),
+		play: () => Promise.resolve(),
 	},
 }
