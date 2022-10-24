@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { VscHistory } from 'react-icons/vsc'
 import { MdOutlineFavorite } from 'react-icons/md'
 import { HiOutlineSearch } from 'react-icons/hi'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
-const YoutubeNavBar = () => {
+const YoutubeNavBar = props => {
 	const [navItem, setNavItem] = useState({ history: false, search: true, favorites: false })
 	const [isHover, setIsHover] = useState({ history: false, search: true, favorites: false })
 	const changeValue = (history, search, favorites) => {
 		return { history: history, search: search, favorites: favorites }
 	}
+
+	useEffect(() => {
+		props.setNavItemChange(navItem)
+	}, [navItem])
 
 	const MouseOutStyle = value => {
 		return {
@@ -54,6 +59,10 @@ const YoutubeNavBar = () => {
 			</DivNavItem>
 		</DivContainer>
 	)
+}
+
+YoutubeNavBar.propTypes = {
+	setNavItemChange: PropTypes.func.isRequired,
 }
 
 const DivContainer = styled.div`
