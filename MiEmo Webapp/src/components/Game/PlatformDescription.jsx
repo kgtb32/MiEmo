@@ -34,7 +34,7 @@ export default function PlatformDescription({ platform }) {
 				})}
 				<Col className="d-flex flex-column">
 					<span className="text-center fs-4 fw-bold">Jeux populaires</span>
-					<img src={platform.controller_picture} className="w-50 my-auto h-min-content mx-auto" />
+					<img src={platform.controls} className="w-50 my-auto h-min-content mx-auto" />
 				</Col>
 			</Row>
 		</div>
