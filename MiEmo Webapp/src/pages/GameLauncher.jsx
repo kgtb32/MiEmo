@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { EventEmitter } from 'events'
 
 import { Col, Row, Spinner } from 'react-bootstrap'
 import styled from 'styled-components'
@@ -10,10 +9,8 @@ import SpecialControl from '../components/Game/SpecialControl'
 import JoypadUtils from '../utils/JoypadUtils'
 
 import apis from '../api'
-import settings from '../settings/settings'
 
-const joystickEvent = new EventEmitter()
-
+let gameLaunched = false
 export default function GameLauncher() {
 	let navigate = useNavigate()
 	const params = useParams()
@@ -32,26 +29,26 @@ export default function GameLauncher() {
 		const fetch = async () => apis.game.play(gameId)
 
 		fetch()
-			.then(() => console.log('game loading ...'))
+			.then(() => navigate(`/game/${params?.platformId}`))
 			.catch()
 	}
 
 	useEffect(() => {
-		getGame()
-	}, [])
+		if (params?.gameId) {
+			getGame()
+		}
+	}, [params])
 
 	useEffect(() => {
-		if (game) {
-			play(game?.gameId)
+		if (game && !gameLaunched) {
+			setTimeout(() => play(game?.game_id), 5000)
+			gameLaunched = true
 		}
 	}, [game])
 
-	const buttonPressed = button => {
-		switch (button) {
-			case settings.buttons.button_o:
-				navigate(`/game/${params?.platformId}`)
-		}
-	}
+	useEffect(() => {
+		gameLaunched = false
+	}, [])
 
 	return (
 		<div className="w-100 p-4">
@@ -96,14 +93,7 @@ export default function GameLauncher() {
 					</Row>
 				</>
 			)}
-			<JoypadUtils
-				currentPosition={0}
-				max={0}
-				setCurrentPosition={() => void 0}
-				joystickEvent={joystickEvent}
-				buttonPressed={buttonPressed}
-				controlType="gameLoad"
-			/>
+			<JoypadUtils currentPosition={0} max={0} setCurrentPosition={() => void 0} controlType="gameLoad" />
 		</div>
 	)
 }
