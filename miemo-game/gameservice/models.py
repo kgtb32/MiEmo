@@ -44,7 +44,7 @@ class Genre(models.Model):
     def __str__(self) -> str:
         return self.genre_name
 class Game(models.Model):
-    game_id = models.UUIDField(default=uuid.uuid4, unique=True, editable = True, primary_key=True)
+    game_id = models.UUIDField(default=uuid.uuid4, unique=True, editable = False, primary_key=True)
     name = models.CharField(max_length=255)
     year_created = models.IntegerField()
     nb_played = models.IntegerField()
