@@ -16,10 +16,15 @@ echo ">> INSTALLING REQUIRED APT PACKAGES"
 apt update -y
 apt update
 apt upgrade -y
-apt install -y htop openbox xterm unzip pulseaudio network-manager ssh chromium plymouth sudo thunar lxpanel lightdm wget snapd bash docker.io docker-compose python3-venv python3-pip xfce4-notifyd git linux-headers-generic build-essential dkms -y
-snap install retroarch
+apt install -y htop openbox xterm unzip pulseaudio network-manager ssh chromium plymouth sudo thunar lxpanel lightdm wget flatpak bash docker.io docker-compose python3-venv python3-pip xfce4-notifyd git linux-headers-generic build-essential dkms -y
 
-# OK 
+echo ">> CONFIGURING FLATPAK"
+
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo -y
+
+echo ">> INSTALLING RetroArch"
+
+flatpak install flathub org.libretro.RetroArch -y
 
 echo ">> CONFIGURING RIGHTS"
 
@@ -39,21 +44,6 @@ cp config/lightdm.conf /etc/lightdm/lightdm.conf
 cp config/grub /etc/default/grub
 
 sudo update-grub2
-
-echo ">> COMPILING WIFI DRIVERS"
-
-cd /tmp
-git clone https://github.com/Mange/rtl8192eu-linux-driver
-cd rtl8192eu-linux-driver
-. dkms.conf
-mkdir /usr/src/$PACKAGE_NAME-$PACKAGE_VERSION
-cp -r * /usr/src/$PACKAGE_NAME-$PACKAGE_VERSION
-dkms add $PACKAGE_NAME/$PACKAGE_VERSION
-dkms autoinstall $PACKAGE_NAME/$PACKAGE_VERSION
-echo "blacklist rtl8xxxu" | tee /etc/modprobe.d/rtl8xxxu.conf
-echo "options 8192eu rtw_power_mgnt=0 rtw_enusbss=0" | tee /etc/modprobe.d/8192eu.conf
-update-grub
-update-initramfs -u
 
 echo ">> INSTALLING miemo ..."
 
