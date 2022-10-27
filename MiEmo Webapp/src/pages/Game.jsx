@@ -9,10 +9,7 @@ import JoypadUtils from '../utils/JoypadUtils'
 
 import api from '../api/'
 
-import { EventEmitter } from 'events'
 import settings from '../settings/settings'
-
-const joystickEvent = new EventEmitter()
 
 export default function Game() {
 	const [platforms, setPlatforms] = useState([])
@@ -29,6 +26,7 @@ export default function Game() {
 	}, [api.game.platform])
 
 	const buttonPressed = buttonName => {
+		console.log('button pressed')
 		if (buttonName == settings.buttons.button_x) {
 			navigate(`/game/${platforms[selectedPlatform].platform_id}`)
 		} else if (buttonName == settings.buttons.button_o) {
@@ -56,7 +54,6 @@ export default function Game() {
 				currentPosition={selectedPlatform}
 				max={platforms.length - 1}
 				setCurrentPosition={setSelectedPlatform}
-				joystickEvent={joystickEvent}
 				buttonPressed={buttonPressed}
 				controlType="platformSelect"
 			/>

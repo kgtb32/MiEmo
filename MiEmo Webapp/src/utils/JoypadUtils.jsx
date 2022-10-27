@@ -3,24 +3,12 @@ import PropTypes from 'prop-types'
 
 import ControlsSelector, { ControlsTypesList } from '../components/Game/ControlsSelector'
 
-import 'joypad.js'
+import { joystickEvent } from './joypadInstanceManager'
 
 let lastTimestamp = 0
 const delayBetweenJoystickEvents = 200
 
-export default function JoypadUtils({
-	currentPosition,
-	max,
-	setCurrentPosition,
-	joystickEvent,
-	buttonPressed,
-	controlType,
-}) {
-	useEffect(() => {
-		globalThis.joypad.on('axis_move', e => joystickEvent.emit('axis_move', e.detail.directionOfMovement))
-		globalThis.joypad.on('button_press', e => joystickEvent.emit('button_press', e.detail.buttonName))
-	}, [])
-
+export default function JoypadUtils({ currentPosition, max, setCurrentPosition, buttonPressed, controlType }) {
 	const joystickMoved = direction => {
 		if (Date.now() - lastTimestamp < delayBetweenJoystickEvents) {
 			return
@@ -54,7 +42,6 @@ export default function JoypadUtils({
 JoypadUtils.propTypes = {
 	currentPosition: PropTypes.number.isRequired,
 	setCurrentPosition: PropTypes.func.isRequired,
-	joystickEvent: PropTypes.any.isRequired,
 	buttonPressed: PropTypes.func.isRequired,
 	max: PropTypes.number.isRequired,
 	controlType: PropTypes.oneOf(ControlsTypesList),
@@ -65,5 +52,4 @@ JoypadUtils.defaultProps = {
 	max: 0,
 	setCurrentPosition: () => void 0,
 	buttonPressed: () => void 0,
-	joystickEvent: {},
 }
