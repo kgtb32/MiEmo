@@ -10,6 +10,15 @@ let settings = {
 	game: {
 		musicVolume: 50,
 		musicKey: 'com.miemo.game.music.autoplay',
+		platformList: {
+			url: 'http://localhost:8000/api/platform/',
+		},
+		list: {
+			url: 'http://localhost:8000/api/game',
+		},
+		play: {
+			url: 'http://localhost:8000/api/play',
+		},
 	},
 	calendar: {
 		calIdLocalStorageVal: 'com.miemo.calendar.calendarId',
