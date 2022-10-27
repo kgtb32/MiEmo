@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'django_filters',
     'gameservice',
     'rest_framework',
-    'django_filters',
     'django_cleanup.apps.CleanupConfig',
     'corsheaders'
 ]
