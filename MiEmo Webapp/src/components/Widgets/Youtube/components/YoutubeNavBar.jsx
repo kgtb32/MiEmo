@@ -7,7 +7,6 @@ import PropTypes from 'prop-types'
 
 const YoutubeNavBar = props => {
 	const [navItem, setNavItem] = useState({ history: false, search: true, favorites: false })
-	const [isHover, setIsHover] = useState({ history: false, search: true, favorites: false })
 	const changeValue = (history, search, favorites) => {
 		return { history: history, search: search, favorites: favorites }
 	}
@@ -16,44 +15,17 @@ const YoutubeNavBar = props => {
 		props.setNavItemChange(navItem)
 	}, [navItem])
 
-	const MouseOutStyle = value => {
-		return {
-			color: navItem[value] ? 'red' : 'black',
-			borderBottom: navItem[value] ? '4px solid' : 'none',
-			borderTop: navItem[value] ? '4px solid white' : 'none',
-		}
-	}
-
-	const ColorSearch = isHover.search && !navItem.search ? MouseHoverStyle : MouseOutStyle('search')
-	const History = isHover.history && !navItem.history ? MouseHoverStyle : MouseOutStyle('history')
-	const Favorites = isHover.favorites && !navItem.favorites ? MouseHoverStyle : MouseOutStyle('favorites')
-
 	return (
 		<DivContainer>
-			<DivNavItem
-				style={History}
-				onClick={() => setNavItem(changeValue(true, false, false))}
-				onMouseEnter={() => setIsHover(changeValue(true, false, false))}
-				onMouseLeave={() => setIsHover(changeValue(false, false, false))}
-			>
+			<DivNavItem navItem={navItem.history} onClick={() => setNavItem(changeValue(true, false, false))}>
 				<VscHistory />
 				<p style={{ margin: '0' }}>Historique</p>
 			</DivNavItem>
-			<DivNavItem
-				style={ColorSearch}
-				onClick={() => setNavItem(changeValue(false, true, false))}
-				onMouseEnter={() => setIsHover(changeValue(false, true, false))}
-				onMouseLeave={() => setIsHover(changeValue(false, false, false))}
-			>
+			<DivNavItem navItem={navItem.search} onClick={() => setNavItem(changeValue(false, true, false))}>
 				<HiOutlineSearch size={16} />
 				<p style={{ margin: '0' }}>Rechercher</p>
 			</DivNavItem>
-			<DivNavItem
-				style={Favorites}
-				onClick={() => setNavItem(changeValue(false, false, true))}
-				onMouseEnter={() => setIsHover(changeValue(false, false, true))}
-				onMouseLeave={() => setIsHover(changeValue(false, false, false))}
-			>
+			<DivNavItem navItem={navItem.favorites} onClick={() => setNavItem(changeValue(false, false, true))}>
 				<MdOutlineFavorite />
 				<p style={{ margin: '0' }}>Favoris</p>
 			</DivNavItem>
@@ -81,13 +53,16 @@ const DivNavItem = styled.div`
 	flex-grow: 1;
 	align-self: stretch;
 	justify-content: center;
+	color: ${props => (props.navItem ? 'red' : 'black')};
+	border-bottom: ${props => (props.navItem ? '4px solid' : 'none')};
+	border-top: ${props => (props.navItem ? '4px solid white' : 'none')};
+	&:hover {
+		color: white;
+		border-bottom: 4px solid #ff000091;
+		background-color: #ff9c9c;
+		font-weight: 400;
+		border-top: 4px solid #ff9c9c;
+	}
 `
-export const MouseHoverStyle = {
-	color: 'white',
-	borderBottom: '4px solid #ff000091',
-	backgroundColor: '#ff9c9c',
-	fontWeight: 'bolder',
-	borderTop: '4px solid #ff9c9c',
-}
 
 export default YoutubeNavBar
