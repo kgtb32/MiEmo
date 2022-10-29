@@ -11,6 +11,7 @@ import WhiteNoiseList from './whitenoise/list.json'
 import GameList from './game/list.json'
 import PlatformList from './platform/list.json'
 import GameGet from './game/get.json'
+import Youtube from './youtube/youtube.json'
 
 export default {
 	weather: {
@@ -31,6 +32,11 @@ export default {
 	radio: {
 		search: () => {
 			return Promise.resolve(RadioSearch)
+		},
+	},
+	youtube: {
+		get: () => {
+			return Promise.resolve(Youtube)
 		},
 	},
 	wifi: {
