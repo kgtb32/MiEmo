@@ -1,46 +1,32 @@
 import React from 'react'
 import { Image } from 'primereact/image'
-import { ScrollPanel } from 'primereact/scrollpanel'
-import mock from '../../../../api/mock/youtube/youtube.json'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
-const YoutubeVideoItem = () => {
+const YoutubeVideoItem = data => {
 	const extract = publishedAt => {
 		return publishedAt.match(/\d/g).join('')
 	}
 
 	return (
-		<ScrollPanelCustom className="custombar1">
-			<YoutubeVideoItemContainer>
-				<YoutubeImage src={mock[0].snippet.thumbnails.high.url} alt="Image" />
-				<YoutubeTime>{mock[0].duration_raw}</YoutubeTime>
-				<YoutubeText>
-					<YoutubeTitle>{mock[0].title}</YoutubeTitle>
-					<YoutubeViews>
-						{mock[0].snippet.views} vues • il y a {extract(mock[0].snippet.publishedAt)} ans
-					</YoutubeViews>
-					<YoutubeViews>{mock[0].description}</YoutubeViews>
-				</YoutubeText>
-			</YoutubeVideoItemContainer>
-		</ScrollPanelCustom>
+		<YoutubeVideoItemContainer>
+			<YoutubeImage src={data.data.snippet.thumbnails.high.url} alt="Image" />
+			<YoutubeTime>{data.data.duration_raw}</YoutubeTime>
+			<YoutubeText>
+				<YoutubeTitle>{data.data.title}</YoutubeTitle>
+				<YoutubeViews>
+					{data.data.snippet.views} vues • il y a {extract(data.data.snippet.publishedAt)} ans
+				</YoutubeViews>
+				<YoutubeViews>{data.data.description}</YoutubeViews>
+			</YoutubeText>
+		</YoutubeVideoItemContainer>
 	)
 }
 
-// YoutubeVideoItem
-const ScrollPanelCustom = styled(ScrollPanel)`
-	width: 100%;
-	max-height: 65vh;
-	${'.p-scrollpanel-content'} {
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		align-content: flex-start;
-		justify-content: flex-start;
-	}
-	${'.p-scrollpanel-bar'} {
-		background: red;
-	}
-`
+YoutubeVideoItem.propTypes = {
+	data: PropTypes.object.isRequired,
+}
+
 const YoutubeVideoItemContainer = styled.div`
 	display: flex;
 	flex-direction: row;

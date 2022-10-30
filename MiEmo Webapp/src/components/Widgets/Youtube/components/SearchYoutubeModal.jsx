@@ -6,6 +6,8 @@ import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 import YoutubeVideoItem from './YoutubeVideoItem'
 import styled from 'styled-components'
+import { ScrollPanel } from 'primereact/scrollpanel'
+import mock from '../../../../api/mock/youtube/youtube.json'
 
 function SearchYoutubeModal() {
 	const [lgShow, setLgShow] = useState(false)
@@ -20,6 +22,7 @@ function SearchYoutubeModal() {
 				onHide={() => setLgShow(false)}
 				aria-labelledby="example-modal-sizes-title-lg"
 				centered
+				className="no-drag"
 			>
 				<Modal.Header closeButton>
 					<Modal.Title id="example-modal-sizes-title-lg">
@@ -45,7 +48,11 @@ function SearchYoutubeModal() {
 								</ButtonCustom>
 							</div>
 						</div>
-						<YoutubeVideoItem />
+						<ScrollPanelCustom className="custombar1">
+							{mock.map((value, index) => (
+								<YoutubeVideoItem data={value} key={index} />
+							))}
+						</ScrollPanelCustom>
 					</div>
 				</Modal.Body>
 			</Modal>
@@ -70,6 +77,21 @@ const ButtonCustom = styled(Button)`
 	&:enabled:hover {
 		background-color: white;
 		color: red;
+	}
+`
+
+const ScrollPanelCustom = styled(ScrollPanel)`
+	width: 100%;
+	max-height: 65vh;
+	${'.p-scrollpanel-content'} {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-content: flex-start;
+		justify-content: flex-start;
+	}
+	${'.p-scrollpanel-bar'} {
+		background: red;
 	}
 `
 
