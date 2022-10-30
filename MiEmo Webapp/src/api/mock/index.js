@@ -35,7 +35,7 @@ export default {
 		},
 	},
 	youtube: {
-		get: () => {
+		search: () => {
 			return Promise.resolve(Youtube)
 		},
 	},

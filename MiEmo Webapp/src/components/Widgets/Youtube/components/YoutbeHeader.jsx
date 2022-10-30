@@ -7,13 +7,13 @@ const SearchYoutubeModal = React.lazy(() => import('../components/SearchYoutubeM
 const YoutbeHeader = props => {
 	return (
 		<DivContainer>
-			<DivYoutube>
-				<BsYoutube color="red" size={30} />
-				<YoutubeText>Youtube</YoutubeText>
-			</DivYoutube>
-			{props.isSearch ? (
+			<div className="d-flex">
+				<BsYoutube className="my-auto" color="red" size="2em" />
+				<YoutubeText className="my-auto">Youtube</YoutubeText>
+			</div>
+			{props.isModalDisplay ? (
 				<DivModal>
-					<SearchYoutubeModal />
+					<SearchYoutubeModal setVideo={props.setVideo} />
 				</DivModal>
 			) : (
 				<span />
@@ -23,7 +23,13 @@ const YoutbeHeader = props => {
 }
 
 YoutbeHeader.propTypes = {
-	isSearch: PropTypes.bool.isRequired,
+	isModalDisplay: PropTypes.bool.isRequired,
+	setVideo: PropTypes.func.isRequired,
+}
+
+YoutbeHeader.defaultProps = {
+	setVideo: () => '',
+	isModalDisplay: false,
 }
 
 const DivContainer = styled.div`
@@ -32,12 +38,9 @@ const DivContainer = styled.div`
 	justify-content: space-between;
 	padding-right: 8px;
 	padding-left: 8px;
+	height: 12%;
 `
 
-const DivYoutube = styled.div`
-	display: flex;
-	alignitems: center;
-`
 const YoutubeText = styled.div`
 	margin: 0;
 	font-weight: bold;
@@ -49,4 +52,4 @@ const DivModal = styled.div`
 	color: black;
 `
 
-export default YoutbeHeader
+export default React.memo(YoutbeHeader)

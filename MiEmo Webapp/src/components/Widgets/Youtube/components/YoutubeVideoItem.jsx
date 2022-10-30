@@ -3,21 +3,21 @@ import { Image } from 'primereact/image'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const YoutubeVideoItem = data => {
+const YoutubeVideoItem = ({ data, setVideo }) => {
 	const extract = publishedAt => {
 		return publishedAt.match(/\d/g).join('')
 	}
 
 	return (
-		<YoutubeVideoItemContainer>
-			<YoutubeImage src={data.data.snippet.thumbnails.high.url} alt="Image" />
-			<YoutubeTime>{data.data.duration_raw}</YoutubeTime>
+		<YoutubeVideoItemContainer onClick={() => setVideo(data)}>
+			<YoutubeImage src={data.snippet.thumbnails.high.url} alt="Image" />
+			<YoutubeTime>{data.duration_raw}</YoutubeTime>
 			<YoutubeText>
-				<YoutubeTitle>{data.data.title}</YoutubeTitle>
+				<YoutubeTitle>{data.title}</YoutubeTitle>
 				<YoutubeViews>
-					{data.data.snippet.views} vues • il y a {extract(data.data.snippet.publishedAt)} ans
+					{data.snippet.views} vues • il y a {extract(data.snippet.publishedAt)} ans
 				</YoutubeViews>
-				<YoutubeViews>{data.data.description}</YoutubeViews>
+				<YoutubeViews>{data.description}</YoutubeViews>
 			</YoutubeText>
 		</YoutubeVideoItemContainer>
 	)
@@ -25,6 +25,11 @@ const YoutubeVideoItem = data => {
 
 YoutubeVideoItem.propTypes = {
 	data: PropTypes.object.isRequired,
+	setVideo: PropTypes.func.isRequired,
+}
+
+YoutubeVideoItem.defaultProps = {
+	setVideo: () => '',
 }
 
 const YoutubeVideoItemContainer = styled.div`
@@ -86,4 +91,4 @@ const YoutubeTime = styled.div`
 	overflow: hidden;
 	text-overflow: ellipsis;
 `
-export default YoutubeVideoItem
+export default React.memo(YoutubeVideoItem)

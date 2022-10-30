@@ -28,6 +28,11 @@ const apis = {
 			return api().radio.search(name)
 		},
 	},
+	youtube: {
+		search: name => {
+			return api().youtube.search(name)
+		},
+	},
 	wifi: {
 		list: () => api().wifi.list(),
 		connect: (ssid, password) => api().wifi.connect(ssid, password),
