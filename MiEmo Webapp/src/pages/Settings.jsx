@@ -11,6 +11,7 @@ import { FaBluetooth, FaEthernet, FaBroom } from 'react-icons/fa'
 import { MdOutlineWifi, MdSettingsEthernet } from 'react-icons/md'
 import { AiFillSound, AiFillCalendar, AiFillLayout, AiFillClockCircle, AiFillInfoCircle } from 'react-icons/ai'
 import { RiSoundModuleFill, RiRefreshLine } from 'react-icons/ri'
+import { Tb3DCubeSphere } from 'react-icons/tb'
 import { BiReset } from 'react-icons/bi'
 
 const size = '2em'
@@ -85,6 +86,12 @@ export default function Settings() {
 					<div className="my-2">
 						<h2>Interface</h2>
 						<ListGroup>
+							<Link to="/settings/hologram" className="text-decoration-none">
+								<ListGroup.Item action>
+									<Tb3DCubeSphere className="mx-2" color="#3498db" size={size} />
+									Hologramme
+								</ListGroup.Item>
+							</Link>
 							<Link to="/settings/calendar" className="text-decoration-none">
 								<ListGroup.Item action>
 									<span>
