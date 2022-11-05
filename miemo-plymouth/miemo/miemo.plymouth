@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Miemo
+Description=Miemo plymouth theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/miemo/img/
+ScriptFile=/usr/share/plymouth/themes/miemo/miemo.script
