@@ -120,6 +120,10 @@ const {
 	VITE_WIFI_LIST_URL,
 	VITE_WIFI_CONNECT_URL,
 	VITE_WHITENOISE_URL,
+
+	VITE_GAME_PLATFORM_LIST_URL,
+	VITE_GAME_LIST_URL,
+	VITE_GAME_PLAY_URL,
 } = import.meta.env
 
 settings.useMock = JSON.parse(VITE_UseMock ?? settings.useMock)
@@ -131,5 +135,9 @@ settings.radio.search.url = VITE_RADIO_URL ?? settings.radio.search.url
 settings.wifi.list.url = VITE_WIFI_LIST_URL ?? settings.wifi.list.url
 settings.wifi.connect.url = VITE_WIFI_CONNECT_URL ?? settings.wifi.connect.url
 settings.whiteNoise.list.url = VITE_WHITENOISE_URL ?? settings.whiteNoise.list.url
+
+settings.game.platformList.url = VITE_GAME_PLATFORM_LIST_URL ?? settings.game.platformList.url
+settings.game.list.url = VITE_GAME_LIST_URL ?? settings.game.list.url
+settings.game.play.url = VITE_GAME_PLAY_URL ?? settings.game.play.url
 
 export default settings
