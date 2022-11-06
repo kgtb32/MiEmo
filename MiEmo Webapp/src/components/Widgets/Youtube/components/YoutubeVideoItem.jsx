@@ -10,14 +10,13 @@ const YoutubeVideoItem = ({ data, setVideo }) => {
 
 	return (
 		<YoutubeVideoItemContainer onClick={() => setVideo(data)}>
-			<YoutubeImage src={data.snippet.thumbnails.high.url} alt="Image" />
-			<YoutubeTime>{data.duration_raw}</YoutubeTime>
+			<YoutubeImage src={data.thumbnail.thumbnails[0].url} alt="Image" />
+			<YoutubeTime>{data.length.simpleText}</YoutubeTime>
 			<YoutubeText>
 				<YoutubeTitle>{data.title}</YoutubeTitle>
 				<YoutubeViews>
-					{data.snippet.views} vues • il y a {extract(data.snippet.publishedAt)} ans
+					{data.channelTitle} • durée {extract(data.length.accessibility.accessibilityData.label)}
 				</YoutubeViews>
-				<YoutubeViews>{data.description}</YoutubeViews>
 			</YoutubeText>
 		</YoutubeVideoItemContainer>
 	)
@@ -39,6 +38,13 @@ const YoutubeVideoItemContainer = styled.div`
 	justify-content: flex-start;
 	align-items: center;
 	width: 100%;
+	margin-bottom: 10px;
+	border: 2px solid #2f2f2f;
+	border-radius: 10px;
+	&:hover {
+		border: 2px solid red;
+		border-radius: 10px;
+	}
 `
 const YoutubeImage = styled(Image)`
 	width: 40%;
@@ -46,7 +52,6 @@ const YoutubeImage = styled(Image)`
 		width: 100%;
 		height: 160px;
 		border-radius: 10px;
-		margin-bottom: 10px;
 	}
 `
 
@@ -88,7 +93,6 @@ const YoutubeTime = styled.div`
 	position: relative;
 	right: 40px;
 	top: 60px;
-	overflow: hidden;
 	text-overflow: ellipsis;
 `
 export default React.memo(YoutubeVideoItem)

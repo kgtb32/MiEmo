@@ -112,7 +112,7 @@ function SearchYoutubeModal(props) {
 						</div>
 						{result.length != 0 ? (
 							<ScrollPanelCustom className="custombar1">
-								{result.map((value, index) => (
+								{result.items.map((value, index) => (
 									<YoutubeVideoItem data={value} key={index} setVideo={selectedVideo} />
 								))}
 							</ScrollPanelCustom>
