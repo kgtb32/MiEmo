@@ -6,13 +6,14 @@ echo "POST INSTALL SCRIPT WILL RUN IN 10 SECOND"
 
 sleep 10
 
-result=$(dialog --backtitle "miemo (ARCADE MODE) V2.0" --output-fd 1 --checklist 'MIEMO POST INSTALL (choose) \n[classic install enable all]:' 15 40 5 \
+result=$(dialog --backtitle "miemo (ARCADE MODE) V2.0" --output-fd 1 --checklist 'MIEMO POST INSTALL (choose) \n[classic install enable all]:' 30 60 10 \
 1 'INSTALL NODE' off \
 2 'DOWNLOAD MIEMO' off \
 3 'DEPLOY MIEMO WEBAPP' off \
 4 'INSTALL MIEMO-GAME' off \
 5 'ENABLE USER SERVICES' off \
-6 'DOWNLOAD STATIC RESSOURCES' off
+6 'DOWNLOAD STATIC RESSOURCES' off \
+7 'DOWNLOAD RETROARCH CORES' off 
 )
 
 choices_selected=($result);
@@ -38,6 +39,9 @@ do
         ;;
     6)
         bash post-install/06_download_static.sh
+        ;;
+    7)
+        bash post-install/07_retroarch_cores.sh
         ;;
     *)
         echo 'unknown'
