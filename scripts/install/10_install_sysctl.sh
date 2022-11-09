@@ -24,6 +24,11 @@ mkdir -p /home/miemo/.local/share/systemd/user
 cp -r /tmp/miemo/services-user/* /home/miemo/.local/share/systemd/user/
 chown -R miemo:miemo /home/miemo/.local/share/systemd/user/*
 
+rm -rf /home/miemo/.config/openbox/
+mkdir -p /home/miemo/.config/openbox/
+cp /tmp/miemo/config/autostart /home/miemo/.config/openbox/autostart
+chown -R miemo:miemo /home/miemo/.config/openbox/autostart
+
 
 clear
 dialog --backtitle "miemo (ARCADE MODE) V2.0" --infobox "SERVICES INSTALLED" 3 60 &
