@@ -35,6 +35,11 @@ let settings = {
 			},
 		},
 	},
+	youtube: {
+		search: {
+			url: 'http://localhost:8000/youtube/search',
+		},
+	},
 	city: {
 		query: {
 			cityName: 'cityName',

@@ -25,7 +25,7 @@ const DivContainer = styled.div`
 	margin-bottom: 5px;
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	justify-content: center;
 	align-content: center;
 	align-items: center;

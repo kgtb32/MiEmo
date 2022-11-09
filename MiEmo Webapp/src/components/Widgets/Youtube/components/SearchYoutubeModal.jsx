@@ -1,7 +1,7 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { SpeedDial } from 'primereact/speeddial'
-import { HiOutlineSearch } from 'react-icons/hi'
+import { HiOutlineSearch, HiTrash } from 'react-icons/hi'
 import YoutbeHeader from './YoutbeHeader'
 import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
@@ -11,30 +11,45 @@ import { ScrollPanel } from 'primereact/scrollpanel'
 import NoVideo from './NoVideo'
 import PropTypes from 'prop-types'
 import api from '../../../../api'
+import { ProgressSpinner } from 'primereact/progressspinner'
 
 function SearchYoutubeModal(props) {
-	const [lgShow, setLgShow] = useState(false)
+	const [lgShow, setLgShow] = useState({ isShow: false, history: false, search: false, favorites: false })
 	const [query, setQuery] = useState('')
 	const [result, setResult] = useState([])
+	const [isLoad, setIsLoad] = useState(false)
+
+	useEffect(() => {
+		lgShow.history && setResult(JSON.parse(localStorage.getItem('youtubehistory')) ?? [])
+		return () => setResult([])
+	}, [lgShow])
 
 	const executeSearch = useCallback(() => {
-		const fetchAPI = async () => {
-			return api.youtube.search(query)
-		}
-		fetchAPI().then(res => setResult(res))
+		const fetchAPI = async () => api.youtube.search(query)
+		setIsLoad(true)
+		fetchAPI().then(res => {
+			setResult(res.items)
+			setIsLoad(false)
+		})
 	})
 
-	const selectedVideo = video => {
+	const selectedVideo = useCallback(video => {
 		props.setVideo(video)
 		setLgShow(false)
 		addVideoToHistory(video)
-	}
+	}, [])
 
 	const addVideoToHistory = video => {
 		let youtubeHistory = JSON.parse(localStorage.getItem('youtubehistory')) ?? []
-		if (!youtubeHistory.find(e => e.id.videoId === video.id.videoId)) {
+		youtubeHistory.length === 20 && youtubeHistory.splice(0, 1)
+		if (!youtubeHistory.find(e => e.id === video.id)) {
 			localStorage.setItem('youtubehistory', JSON.stringify([...youtubeHistory, video]))
 		}
+	}
+
+	const clearVideoHistory = () => {
+		localStorage.setItem('youtubehistory', JSON.stringify([]))
+		setResult([])
 	}
 
 	const items = [
@@ -42,14 +57,14 @@ function SearchYoutubeModal(props) {
 			label: 'Historique',
 			icon: 'pi pi-history',
 			command: () => {
-				// To-do
+				setLgShow({ isShow: true, history: true, search: false, favorites: false })
 			},
 		},
 		{
 			label: 'Rechercher',
 			icon: 'pi pi-search',
 			command: () => {
-				setLgShow(true)
+				setLgShow({ isShow: true, history: false, search: true, favorites: false })
 			},
 		},
 		{
@@ -63,7 +78,6 @@ function SearchYoutubeModal(props) {
 
 	return (
 		<>
-			{/* <HiOutlineSearch size={16} onClick={() => setLgShow(true)} color={'white'} /> */}
 			<SpeedDialCutom
 				model={items}
 				radius={90}
@@ -75,7 +89,7 @@ function SearchYoutubeModal(props) {
 			/>
 			<Modal
 				size="lg"
-				show={lgShow}
+				show={lgShow.isShow}
 				onHide={() => setLgShow(false)}
 				aria-labelledby="example-modal-sizes-title-lg"
 				centered
@@ -91,31 +105,39 @@ function SearchYoutubeModal(props) {
 						<div className="w-100 p-3 pt-0">
 							<div className="d-flex">
 								<span className="p-input-icon-left w-100">
-									<i className="pi pi-search" />
-									<InputTextCustom
-										value={query}
-										onChange={e => setQuery(e.target.value)}
-										onKeyUp={e => setQuery(e.target.value)}
-										placeholder="Rechercher"
-										className="w-100"
-									/>
+									{lgShow.search && (
+										<>
+											<i className="pi pi-search" />
+											<InputTextCustom
+												value={query}
+												onChange={e => setQuery(e.target.value)}
+												onKeyUp={e => setQuery(e.target.value)}
+												placeholder="Rechercher"
+												className="w-100"
+											/>
+										</>
+									)}
 								</span>
 								<ButtonCustom
 									color="blue"
 									className="mx-1"
-									disabled={query.length < 3}
-									onClick={() => executeSearch()}
+									disabled={query.length < 3 && lgShow.search}
+									onClick={() => (lgShow.search ? executeSearch() : clearVideoHistory())}
 								>
-									<HiOutlineSearch size={16} />
+									{lgShow.search ? <HiOutlineSearch size={16} /> : <HiTrash size={16} />}
 								</ButtonCustom>
 							</div>
 						</div>
 						{result.length != 0 ? (
 							<ScrollPanelCustom className="custombar1">
-								{result.items.map((value, index) => (
+								{result.map((value, index) => (
 									<YoutubeVideoItem data={value} key={index} setVideo={selectedVideo} />
 								))}
 							</ScrollPanelCustom>
+						) : isLoad ? (
+							<DivProgressSpinner>
+								<ProgressSpinner />
+							</DivProgressSpinner>
 						) : (
 							<NoVideo size={'65vh'} />
 						)}
@@ -207,6 +229,16 @@ const SpeedDialCutom = styled(SpeedDial)`
 		background-color: white;
 		color: red;
 	}
+`
+const DivProgressSpinner = styled.div`
+	height: 65vh;
+	margin-bottom: 5px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
 `
 
 export default React.memo(SearchYoutubeModal)

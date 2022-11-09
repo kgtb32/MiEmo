@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import YoutubeNavBar from './components/YoutubeNavBar'
-import Search from './pages/Home'
+import Home from './pages/Home'
 import YoutbeHeader from './components/YoutbeHeader'
 import styled from 'styled-components'
 
@@ -10,7 +10,7 @@ function Youtube() {
 	return (
 		<DivContainer className="h-100 w-100">
 			<YoutbeHeader setVideo={setVideo} isModalDisplay={true} />
-			<Search video={video} />
+			<Home video={video} />
 			<YoutubeNavBar />
 		</DivContainer>
 	)

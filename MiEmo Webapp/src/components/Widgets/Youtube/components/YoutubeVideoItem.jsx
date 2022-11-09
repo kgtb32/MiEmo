@@ -1,21 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image } from 'primereact/image'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const YoutubeVideoItem = ({ data, setVideo }) => {
-	const extract = publishedAt => {
-		return publishedAt.match(/\d/g).join('')
+	const [error, setError] = useState(false)
+
+	const isNotUnDefined = (value, entitled) => {
+		switch (entitled) {
+			case 'Image':
+				return !error && value != undefined ? value : '/public/img/noimage.svg'
+			case 'SimpleText':
+				return value != undefined ? value : '0'
+			case 'Title':
+				return value != undefined ? value : 'Aucun titre'
+			case 'ChannelTitle':
+				return value != undefined ? value : 'Aucun nom de channel'
+			case 'Label':
+				return value != undefined ? value : '0'
+			default:
+				return <></>
+		}
 	}
 
 	return (
 		<YoutubeVideoItemContainer onClick={() => setVideo(data)}>
-			<YoutubeImage src={data.thumbnail.thumbnails[0].url} alt="Image" />
-			<YoutubeTime>{data.length.simpleText}</YoutubeTime>
+			<YoutubeImage
+				src={isNotUnDefined(data?.thumbnail?.thumbnails[0]?.url, 'Image')}
+				alt="Image"
+				onError={() => setError(true)}
+			/>
+			<YoutubeTime>{isNotUnDefined(data?.length?.simpleText, 'SimpleText')}</YoutubeTime>
 			<YoutubeText>
-				<YoutubeTitle>{data.title}</YoutubeTitle>
+				<YoutubeTitle>{isNotUnDefined(data?.title, 'Title')}</YoutubeTitle>
 				<YoutubeViews>
-					{data.channelTitle} • durée {extract(data.length.accessibility.accessibilityData.label)}
+					{isNotUnDefined(data?.channelTitle, 'ChannelTitle')} • durée
+					{' ' + isNotUnDefined(data?.length?.accessibility?.accessibilityData?.label, 'Label')}
 				</YoutubeViews>
 			</YoutubeText>
 		</YoutubeVideoItemContainer>
@@ -74,7 +94,6 @@ const YoutubeViews = styled.p`
 	white-space: normal;
 	margin: 0px;
 	color: grey;
-	${'' /* white-space: nowrap; */}
 	overflow: hidden;
 	text-overflow: ellipsis;
 	max-height: 71px;
@@ -82,7 +101,7 @@ const YoutubeViews = styled.p`
 
 const YoutubeTime = styled.div`
 	overflow: hidden;
-	width: 35px;
+	width: 40px;
 	background-color: #0f2227;
 	border-radius: 5px;
 	display: flex;
