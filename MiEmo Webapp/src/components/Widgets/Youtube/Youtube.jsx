@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import YoutubeNavBar from './components/YoutubeNavBar'
-import Home from './pages/Home'
+import Home from './Home'
 import YoutbeHeader from './components/YoutbeHeader'
 import styled from 'styled-components'
 

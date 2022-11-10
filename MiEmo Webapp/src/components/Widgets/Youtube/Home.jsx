@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import YoutubePlayer from '../components/YoutubePlayer'
-import NoVideo from '../components/NoVideo'
+import YoutubePlayer from './components/YoutubePlayer'
+import NoVideo from './components/NoVideo'
 
 const Home = ({ video }) => {
 	return (
