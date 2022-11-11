@@ -2,7 +2,6 @@ import React from 'react'
 const Clock = React.lazy(() => import('../Widgets/Clocks/Clock'))
 const Meteo = React.lazy(() => import('../Widgets/Meteo/Meteo'))
 const FlipClock = React.lazy(() => import('../Widgets/Clocks/FlipClock'))
-const Youtube = React.lazy(() => import('../Widgets/Youtube'))
 const Calendar = React.lazy(() => import('../Widgets/Calendars/Calendar'))
 const EmotionWidget = React.lazy(() => import('../Widgets/EmotionWidget/EmotionWidget'))
 const Activity = React.lazy(() => import('../Widgets/Activities/Activity'))
@@ -10,6 +9,7 @@ const Drawing = React.lazy(() => import('../Widgets/Draw/Drawing'))
 const Radio = React.lazy(() => import('../Widgets/Radio/Radio'))
 const Todo = React.lazy(() => import('../Widgets/Todo/Todo'))
 const WhiteNoise = React.lazy(() => import('../Widgets/WhiteNoise/WhiteNoise'))
+const Youtube = React.lazy(() => import('../Widgets/Youtube/Youtube'))
 
 import { TiWeatherPartlySunny } from 'react-icons/ti'
 import { IoMdClock, IoMdRadio } from 'react-icons/io'
