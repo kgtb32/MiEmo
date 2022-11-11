@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import re
 
-SINK_REGEX = r"Destination #\d"
+SINK_REGEX = r"Sink #\d"
 
 class pactl_command_manager:
 
