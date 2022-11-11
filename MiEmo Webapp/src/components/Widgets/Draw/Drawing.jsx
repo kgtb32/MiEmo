@@ -1,12 +1,15 @@
 import { React, useState, useRef } from 'react'
 import { withSize } from 'react-sizeme'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
 import { ReactSketchCanvas } from 'react-sketch-canvas'
 import { Button } from 'primereact/button'
-import styled from 'styled-components'
-import { BiUndo, BiRedo, BiEraser, BiPaint, BiColorFill } from 'react-icons/bi'
-import { InputText } from 'primereact/inputtext'
+
 import ColorModal from './ColorModal'
+import KeyboardedInput from '../../layout/KeyboardedInput'
+
+import { BiUndo, BiRedo, BiEraser, BiPaint, BiColorFill } from 'react-icons/bi'
 
 const ICON_SIZE = '1.4em'
 
@@ -47,11 +50,11 @@ function ReactDrawing(size) {
 				strokeWidth={strokeWidth}
 			/>
 			<div className="d-flex justify-content-between align-content-between w-100 flex-wrap">
-				<InputText
-					className="w-25"
+				<KeyboardedInput
+					setValue={value => setStrokeWidth(value)}
 					value={strokeWidth}
-					onChange={e => setStrokeWidth(e.target.value)}
-					onKeyDown={e => setStrokeWidth(e.target.value)}
+					defaultKeyboard="numbers"
+					className="w-25"
 					variant={'dark'}
 				/>
 				<ColorModal

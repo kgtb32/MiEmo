@@ -1,13 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { DataTable } from 'primereact/datatable'
-import { Column } from 'primereact/column'
-import { InputText } from 'primereact/inputtext'
-import { Toast } from 'primereact/toast'
-import { Checkbox } from 'primereact/checkbox'
 import styled from 'styled-components'
-import { Button } from 'primereact/button/'
+
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+
+import { DataTable } from 'primereact/datatable'
+import { Column } from 'primereact/column'
+import { Toast } from 'primereact/toast'
+import { Checkbox } from 'primereact/checkbox'
+import { Button } from 'primereact/button/'
+
+import KeyboardedInput from '../../layout/KeyboardedInput'
 
 const Todo = () => {
 	const [task, setTask] = useState(JSON.parse(localStorage.getItem('taskwidgetdata')) ?? [])
@@ -34,7 +37,7 @@ const Todo = () => {
 	}
 
 	const textEditor = options => {
-		return <InputText type="text" value={options.value} onChange={e => options.editorCallback(e.target.value)} />
+		return <KeyboardedInput props={{ type: 'text' }} value={options.value} setValue={options.editorCallback} />
 	}
 
 	const checkEditor = options => {
@@ -96,10 +99,10 @@ const Todo = () => {
 						<h5>Nom de la Tâche</h5>
 						<Container>
 							<Row>
-								<InputText
+								<KeyboardedInput
 									value={newtaskname}
-									onChange={e => setNewTaskName(e.target.value)}
-									className={error ? 'p-invalid block' : ''}
+									setValue={e => setNewTaskName(e.target.value)}
+									props={{ className: error ? 'p-invalid block' : '' }}
 								/>
 							</Row>
 						</Container>
@@ -148,7 +151,6 @@ const InputTaskContainer = styled.div`
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-evenly;
-	padding: 20px;
 `
 
 const InputTask = styled.div`

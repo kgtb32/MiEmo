@@ -1,17 +1,24 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import Modal from 'react-bootstrap/Modal'
-import { SpeedDial } from 'primereact/speeddial'
-import { HiOutlineSearch, HiTrash } from 'react-icons/hi'
-import YoutbeHeader from './YoutbeHeader'
-import { InputText } from 'primereact/inputtext'
-import { Button } from 'primereact/button'
-import YoutubeVideoItem from './YoutubeVideoItem'
 import styled from 'styled-components'
-import { ScrollPanel } from 'primereact/scrollpanel'
-import NoVideo from './NoVideo'
 import PropTypes from 'prop-types'
-import api from '../../../../api'
+
+import Modal from 'react-bootstrap/Modal'
+
+import { SpeedDial } from 'primereact/speeddial'
+import { Button } from 'primereact/button'
 import { ProgressSpinner } from 'primereact/progressspinner'
+import { ScrollPanel } from 'primereact/scrollpanel'
+
+import YoutbeHeader from './YoutbeHeader'
+import YoutubeVideoItem from './YoutubeVideoItem'
+import NoVideo from './NoVideo'
+import KeyboardedInput from '../../../layout/KeyboardedInput'
+
+import { HiOutlineSearch, HiTrash } from 'react-icons/hi'
+
+import api from '../../../../api'
+
+import './youtubeSearch.css'
 
 function SearchYoutubeModal(props) {
 	const [lgShow, setLgShow] = useState({ isShow: false, history: false, search: false, favorites: false })
@@ -107,13 +114,14 @@ function SearchYoutubeModal(props) {
 								<span className="p-input-icon-left w-100">
 									{lgShow.search && (
 										<>
-											<i className="pi pi-search" />
-											<InputTextCustom
+											<KeyboardedInput
 												value={query}
-												onChange={e => setQuery(e.target.value)}
-												onKeyUp={e => setQuery(e.target.value)}
-												placeholder="Rechercher"
-												className="w-100"
+												setValue={setQuery}
+												goFunction={executeSearch}
+												props={{
+													placeholder: 'Rechercher',
+													className: 'w-100 custom-yt-search',
+												}}
 											/>
 										</>
 									)}
@@ -156,15 +164,6 @@ SearchYoutubeModal.defaultProps = {
 	setVideo: () => '',
 }
 
-const InputTextCustom = styled(InputText)`
-	&:enabled:hover {
-		border-color: red;
-	}
-	&:enabled:focus {
-		box-shadow: 0 0 0 0.2rem red;
-		border: none;
-	}
-`
 const ButtonCustom = styled(Button)`
 	background-color: red;
 	color: white;

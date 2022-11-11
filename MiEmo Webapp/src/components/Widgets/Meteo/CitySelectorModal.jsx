@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import { Button } from 'primereact/button'
-import { InputText } from 'primereact/inputtext'
 import { ListBox } from 'primereact/listbox'
 
 import { Modal } from 'react-bootstrap'
 
 import { FaSearch } from 'react-icons/fa'
+
+import KeyboardedInput from '../../layout/KeyboardedInput'
 
 import api from '../../../api'
 
@@ -43,21 +44,24 @@ export default function CitySelectorModal({ setCity, setModalVisible }) {
 			<Modal.Header closeButton>
 				<Modal.Title>Rechercher une ville</Modal.Title>
 			</Modal.Header>
-			{selectedCity.name && (
-				<div className="px-2">
-					<div>
-						<small className="text-muted">Ville choisie :</small>
+			<Modal.Body className="h-100">
+				{selectedCity.name && (
+					<div className="px-2">
+						<div>
+							<small className="text-muted">Ville choisie :</small>
+						</div>
+						{generateTemplate(selectedCity)}
 					</div>
-					{generateTemplate(selectedCity)}
-				</div>
-			)}
-			<Modal.Body>
+				)}
 				<div className="d-flex">
-					<InputText
+					<KeyboardedInput
+						setValue={setCityName}
 						value={cityName}
-						onChange={e => setCityName(e.target.value)}
+						goFunction={executeCitySearch}
 						onKeyUp={e => setCityName(e.target.value)}
-						className="p-inputtext-sm w-100"
+						props={{
+							className: 'p-inputtext-sm w-100',
+						}}
 					/>
 					<Button className="p-button-sm" onClick={() => executeCitySearch()}>
 						<FaSearch />

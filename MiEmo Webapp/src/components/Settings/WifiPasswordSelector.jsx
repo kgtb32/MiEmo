@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 
 import { Modal } from 'react-bootstrap'
 import { Button } from 'primereact/button'
-import { InputText } from 'primereact/inputtext'
+
+import KeyboardedInput from '../layout/KeyboardedInput'
 
 import { FaLock, FaUnlock } from 'react-icons/fa'
 
@@ -43,12 +44,14 @@ function WifiPasswordSelector({ wifiInfos, setModalVisible, modalVisible }) {
 						</div>
 						{errored && <p>mot de passe invalide !</p>}
 						<span className="text-muted">Mot de passe</span>
-						<InputText
-							className="w-100"
-							type="password"
+						<KeyboardedInput
+							setValue={setPassword}
 							value={password}
-							onKeyUp={e => setPassword(e.target.value)}
-							onChange={e => setPassword(e.target.value)}
+							goFunction={connect}
+							props={{
+								className: 'w-100',
+								type: 'password',
+							}}
 						/>
 					</div>
 				) : (
