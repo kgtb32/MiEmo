@@ -8521,6 +8521,11 @@ react-scripts@^5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-simple-keyboard@^3.4.234:
+  version "3.4.234"
+  resolved "https://registry.yarnpkg.com/react-simple-keyboard/-/react-simple-keyboard-3.4.234.tgz#a81a96584536aa082875239221634b19c1cc3b01"
+  integrity sha512-nbmkBgjnphBVy0YHwmXbWlkaygPKA0I2htKgtgsYhpLG4SpfL4PqzwT0S7Z8JIX2nzA1qjTNljoC8GE54F+j+A==
+
 react-sizeme@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-sizeme/-/react-sizeme-3.0.2.tgz#4a2f167905ba8f8b8d932a9e35164e459f9020e4"

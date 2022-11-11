@@ -21,13 +21,16 @@ import 'primeicons/primeicons.css'
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css'
 
 import { StoreProvider } from './context/StoreContext'
+import { KeyboardProvider } from './context/KeyboardContext'
 
 ReactDOM.render(
 	<React.StrictMode>
 		<StoreProvider>
-			<ErrorBoundary>
-				<App />
-			</ErrorBoundary>
+			<KeyboardProvider>
+				<ErrorBoundary>
+					<App />
+				</ErrorBoundary>
+			</KeyboardProvider>
 		</StoreProvider>
 	</React.StrictMode>,
 	document.getElementById('root'),

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 import { ListGroup, ListGroupItem, Modal } from 'react-bootstrap'
 
-import { InputText } from 'primereact/inputtext'
 import { Button } from 'primereact/button'
 
 import RadioListItem from './RadioListItem'
+import KeyboardedInput from '../../layout/KeyboardedInput'
 
 import api from '../../../api'
 
@@ -34,11 +34,11 @@ function SearchRadioModal({ setCurrentRadio, isModalVisible, setModalVisible }) 
 					<div className="w-100 p-3 pt-0">
 						<small className="text-muted">Entrez le nom de la radio à rechercher</small>
 						<div className="d-flex">
-							<InputText
-								onChange={e => setQuery(e.target.value)}
-								onKeyUp={e => setQuery(e.target.value)}
+							<KeyboardedInput
+								setValue={setQuery}
 								value={query}
-								className="w-100"
+								props={{ className: 'w-100' }}
+								goFunction={executeSearch}
 							/>
 							<Button className="mx-1" disabled={query.length < 3} onClick={() => executeSearch()}>
 								<FaSearch />
