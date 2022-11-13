@@ -21,7 +21,8 @@ Home.defaultProps = {
 }
 
 const DivContainer = styled.div`
-	height: 68%;
+	margin-top: 4px;
+	height: 84%;
 	margin-bottom: 5px;
 `
 
