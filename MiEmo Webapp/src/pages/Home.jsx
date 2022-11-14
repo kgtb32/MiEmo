@@ -18,14 +18,17 @@ export default function Home() {
 	return (
 		<div className="bg-dark" style={{ padding: 10 }}>
 			{widgetEditMode && <Store />}
-			<div className="d-flex justify-content-between">
-				<div className="d-flex my-auto">
-					<div className="h-100 mx-4">
+			<div className="d-flex justify-content-between flex-sm-row flex-column-reverse">
+				<div className="d-flex my-auto justify-content-center col-12 col-sm-6 justify-content-sm-start">
+					<div className="h-100 mx-sm-4 mt-2 mb-2 mt-sm-0 mb-sm-2">
 						<img src={MiemoLogo} style={{ height: '4em' }} />
 					</div>
 					<h1 className="my-auto">MiEmo</h1>
 				</div>
-				<div className="d-flex" style={{ padding: '1.5em' }}>
+				<div
+					className="d-flex justify-content-center col-12 col-sm-6 justify-content-sm-end"
+					style={{ padding: '1.5em' }}
+				>
 					<ButtonOutlinedCustom className="p-button-rounded p-1 px-1 mx-1 p-button-outlined" color={'white'}>
 						<Link to="/game">
 							<IoGameControllerOutline size="22" color="#5EEAD4" className="mx-2" />
