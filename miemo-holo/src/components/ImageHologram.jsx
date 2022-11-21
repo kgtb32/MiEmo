@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Styled from "styled-components";
 
 export default function ImageHologram({
   image,
@@ -7,11 +8,14 @@ export default function ImageHologram({
   positions,
   size,
 }) {
+  console.log(size);
   return (
-    <svg
+    <JoliSvg
       height={size.height}
       width={size.width}
-      style={`position: absolute; left: ${positions.left}px; top: ${positions.top}px`}
+      rotation={size.rotation}
+      top={positions.top}
+      left={positions.left}
     >
       <defs>
         <clipPath id="img">
@@ -19,29 +23,41 @@ export default function ImageHologram({
         </clipPath>
       </defs>
       <image
-        clip-path="url(#img)"
+        clipPath="url(#img)"
         width={size.width}
         height={size.height}
         preserveAspectRatio="xMidYMid meet"
         x={positions.x}
         y={positions.y}
-        xlink:href={image}
+        href={image}
       />
-    </svg>
+    </JoliSvg>
   );
 }
+
+const JoliSvg = Styled.svg.attrs((props) => ({
+  top: props.top || "0",
+  left: props.left || "0",
+  rotation: props.rotation || "0",
+}))`
+  position: absolute;
+  top: ${(props) => props.top};
+  left: ${(props) => props.left};
+  transform: rotate(${(props) => props.rotation}deg);
+`;
 
 ImageHologram.propTypes = {
   image: PropTypes.string.isRequired,
   poligonPoints: PropTypes.string.isRequired,
-  positions: {
+  positions: PropTypes.shape({
     x: PropTypes.number.isRequired,
     y: PropTypes.number.isRequired,
     left: PropTypes.string.isRequired,
     top: PropTypes.string.isRequired,
-  },
+  }),
   size: PropTypes.shape({
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
+    rotation: PropTypes.number,
   }),
 };
