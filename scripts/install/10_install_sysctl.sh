@@ -11,11 +11,13 @@ cp /tmp/miemo/config/runMiemoWebapp /usr/bin/
 cp /tmp/miemo/config/runMiemoWebClient /usr/bin/
 cp /tmp/miemo/config/runMiemoStatic /usr/bin/
 cp /tmp/miemo/config/runMiemoGame /usr/bin
+cp /tmp/miemo/config/runMiemoRecord /usr/bin
 
 chmod a+x /usr/bin/runMiemoWebapp
 chmod a+x /usr/bin/runMiemoWebClient
 chmod a+x /usr/bin/runMiemoStatic
 chmod a+x /usr/bin/runMiemoGame
+chmod a+x /usr/bin/runMiemoRecord
 
 cp -r /tmp/miemo/services-admin/* /etc/systemd/system/
 
