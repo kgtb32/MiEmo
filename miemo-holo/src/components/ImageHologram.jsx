@@ -25,10 +25,10 @@ export default function ImageHologram({
       <image
         clipPath="url(#img)"
         width={size.width}
-        height={size.height}
+        height={size.height - size.imHeight / 8.5}
         preserveAspectRatio="xMidYMid meet"
         x={positions.x}
-        y={positions.y}
+        y={positions.y + size.imHeight / 8.5}
         href={image}
       />
     </JoliSvg>
@@ -58,6 +58,7 @@ ImageHologram.propTypes = {
   size: PropTypes.shape({
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
+    imHeight: PropTypes.number.isRequired,
     rotation: PropTypes.number,
   }),
 };
