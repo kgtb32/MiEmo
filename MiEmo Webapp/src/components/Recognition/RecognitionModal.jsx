@@ -4,8 +4,11 @@ import PropTypes from 'prop-types'
 import Modal from 'react-bootstrap/Modal'
 import microphone from '/public/img/microphonedisabled.svg'
 import { Image } from 'primereact/image'
+import { command } from './constant'
+import useStoreContext from '../../context/StoreContext'
 
-function RecognitionModal({ isClick, setIsClick }) {
+function RecognitionModal({ isClick, setIsClick, showInfo }) {
+	const { widgetEventManager } = useStoreContext()
 	const [isError, setIsError] = useState(false)
 	const getConf = recognition => {
 		recognition.continuous = true
@@ -13,6 +16,7 @@ function RecognitionModal({ isClick, setIsClick }) {
 		recognition.onresult = result => {
 			Object.keys(result.results).map(key => {
 				console.log(result.results[key][0]?.transcript)
+				command(result.results[key][0]?.transcript, widgetEventManager, setIsClick, showInfo)
 			})
 		}
 		return recognition
@@ -90,11 +94,13 @@ function RecognitionModal({ isClick, setIsClick }) {
 RecognitionModal.propTypes = {
 	setIsClick: PropTypes.func.isRequired,
 	isClick: PropTypes.bool.isRequired,
+	showInfo: PropTypes.func.isRequired,
 }
 
 RecognitionModal.defaultProps = {
 	setIsClick: () => '',
 	isClick: () => false,
+	showInfo: () => '',
 }
 
 const ErrorImage = styled(Image)`
