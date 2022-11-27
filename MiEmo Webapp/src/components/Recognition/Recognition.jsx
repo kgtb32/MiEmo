@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 import { ButtonOutlinedCustom } from '../../static/styledComponent/styled'
 import styled from 'styled-components'
 import RecognitionModal from './RecognitionModal'
@@ -7,9 +7,9 @@ import { Toast } from 'primereact/toast'
 const Recognition = () => {
 	const [isClick, setIsClick] = useState(false)
 	const toast = useRef(null)
-	const showInfo = message => {
+	const showInfo = useCallback(message => {
 		toast.current.show({ severity: 'info', summary: 'MIEmo', detail: message, life: 3000 })
-	}
+	}, [])
 
 	return (
 		<div>

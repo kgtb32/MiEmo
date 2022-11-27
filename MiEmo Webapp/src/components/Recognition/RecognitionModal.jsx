@@ -14,10 +14,9 @@ function RecognitionModal({ isClick, setIsClick, showInfo }) {
 		recognition.continuous = true
 		recognition.onend = () => isClick && startSpeech(recognition)
 		recognition.onresult = result => {
-			Object.keys(result.results).map(key => {
-				console.log(result.results[key][0]?.transcript)
-				command(result.results[key][0]?.transcript, widgetEventManager, setIsClick, showInfo)
-			})
+			const value = result.results[result.results.length - 1][0]?.transcript
+			command(value, widgetEventManager, setIsClick, showInfo)
+			console.log(value)
 		}
 		return recognition
 	}
