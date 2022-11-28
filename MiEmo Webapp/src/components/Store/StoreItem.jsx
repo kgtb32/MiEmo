@@ -1,33 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import { Button } from 'primereact/button'
-
-import { IoMdAddCircle, IoMdRemoveCircle } from 'react-icons/io'
+import styled from 'styled-components'
 
 function StoreItem({ componentInfos, mode, event }) {
-	console.log(mode)
-	const Img = componentInfos?.img
+	const _Img = componentInfos?.img
 	return (
-		<div
-			className={'d-flex flex-column text-center user-select-none mx-1 h-100 ' + (mode == 'add' ? 'p-card' : '')}
+		<DivContainer
+			className={'mx-1 ' + (mode == 'add' ? 'p-card' : '')}
+			mode={mode}
+			onClick={() => event.emit(mode == 'add' ? 'itemAdd' : 'itemDel', componentInfos?.id)}
 		>
-			<div>
-				<Img size="4em" />
-				<div className="text-truncate">
-					<small>{componentInfos.name}</small>
-				</div>
-			</div>
-			<Button
-				onClick={() => event.emit(mode == 'add' ? 'itemAdd' : 'itemDel', componentInfos?.id)}
+			<Img src={_Img} mode={mode} />
+			<p className="text-truncate">{componentInfos.name}</p>
+			<Icustom
 				className={
-					'p-button-rounded py-1 px-1 d-block mx-auto mt-2 ' +
-					(mode == 'del' ? 'no-drag p-button-danger position-absolute right-0' : '')
+					'pi py-1 px-1 d-block mt-2 ' +
+					(mode == 'del' ? 'pi-minus-circle position-absolute right-0 top-0' : 'pi-plus-circle')
 				}
-			>
-				{mode == 'del' ? <IoMdRemoveCircle size="1.5em" /> : <IoMdAddCircle size="1.5em" />}
-			</Button>
-		</div>
+				mode={mode}
+			/>
+		</DivContainer>
 	)
 }
 
@@ -54,5 +46,34 @@ StoreItem.defaultProps = {
 	},
 	mode: 'add',
 }
+
+const DivContainer = styled.div`
+	font-weight: bold;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	${'p'} {
+		margin: ${props => (props.mode == 'add' ? '0' : '')};
+		width: 100%;
+	}
+	min-width: ${props => (props.mode == 'add' ? '170px' : '')};
+	min-height: ${props => (props.mode == 'add' ? '156px' : '')};
+	width: ${props => props.mode == 'del' && '100%'};
+	height: ${props => props.mode == 'del' && '100%'};
+`
+//
+const Icustom = styled.i`
+	color: ${props => (props.mode == 'add' ? '#5EEAD4' : 'red')};
+`
+
+const Img = styled.img`
+	width: 100%;
+	height 69%;
+`
 
 export default StoreItem

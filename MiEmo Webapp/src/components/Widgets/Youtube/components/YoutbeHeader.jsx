@@ -4,21 +4,21 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 const SearchYoutubeModal = React.lazy(() => import('../components/SearchYoutubeModal'))
 
-const YoutbeHeader = props => {
+const YoutbeHeader = ({ isModalDisplay, setVideo }) => {
 	return (
-		<DivContainer>
+		<div className="w-100 d-flex flex-row justify-content-between px-1">
 			<div className="d-flex">
 				<BsYoutube className="my-auto" color="red" size="2em" />
 				<YoutubeText className="my-auto">Youtube</YoutubeText>
 			</div>
-			{props.isModalDisplay ? (
+			{isModalDisplay ? (
 				<DivModal>
-					<SearchYoutubeModal setVideo={props.setVideo} />
+					<SearchYoutubeModal setVideo={setVideo} />
 				</DivModal>
 			) : (
 				<span />
 			)}
-		</DivContainer>
+		</div>
 	)
 }
 
@@ -28,18 +28,9 @@ YoutbeHeader.propTypes = {
 }
 
 YoutbeHeader.defaultProps = {
-	setVideo: () => '',
+	setVideo: () => void 0,
 	isModalDisplay: false,
 }
-
-const DivContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	padding-right: 8px;
-	padding-left: 8px;
-	height: 12%;
-`
 
 const YoutubeText = styled.div`
 	margin: 0;

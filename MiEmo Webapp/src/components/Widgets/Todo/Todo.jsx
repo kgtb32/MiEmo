@@ -1,22 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-
 import { DataTable } from 'primereact/datatable'
 import { Column } from 'primereact/column'
 import { Toast } from 'primereact/toast'
 import { Checkbox } from 'primereact/checkbox'
-import { Button } from 'primereact/button/'
 
 import KeyboardedInput from '../../layout/KeyboardedInput'
+import { Button } from 'primereact/button'
 
 const Todo = () => {
 	const [task, setTask] = useState(JSON.parse(localStorage.getItem('taskwidgetdata')) ?? [])
 	const [editingRows, setEditingRows] = useState({})
 	const toast = useRef(null)
-	const [checked, setChecked] = useState(false)
 	const [newtaskname, setNewTaskName] = useState('')
 	const [error, setError] = useState(false)
 
@@ -37,16 +33,18 @@ const Todo = () => {
 	}
 
 	const textEditor = options => {
-		return <KeyboardedInput props={{ type: 'text' }} value={options.value} setValue={options.editorCallback} />
+		return (
+			<KeyboardedInput props={{ type: 'text' }} value={options.value} setValue={e => options.editorCallback(e)} />
+		)
 	}
 
 	const checkEditor = options => {
 		return (
 			<Checkbox
 				inputId="binary"
-				checked={checked}
+				checked={options.rowData.check}
+				value={options.rowData.check}
 				onChange={e => {
-					setChecked(e.checked)
 					options.editorCallback(e.checked)
 				}}
 			/>
@@ -83,32 +81,28 @@ const Todo = () => {
 	}
 
 	return (
-		<div className="datatable-editing-demo overflow-auto h-100">
+		<DivContainer className="datatable-editing-demo overflow-auto h-100">
 			<Toast ref={toast} />
 
-			<div className="card">
-				<h5>Tâche</h5>
-				<InputTaskContainer>
-					<Button
+			<div className="card font-bold">
+				<div className="d-flex">
+					<div className="w-100">
+						<KeyboardedInput
+							value={newtaskname}
+							setValue={e => setNewTaskName(e)}
+							props={{
+								placeholder: 'Entrez une tâche',
+								className: error ? 'border border-danger w-100' : 'w-100',
+							}}
+						/>
+					</div>
+					<ButtonCustom
 						icon="pi pi-plus"
-						className="p-button-rounded p-button-secondary"
 						aria-label="Bookmark"
 						onClick={() => addTask()}
+						disabled={newtaskname.length < 3}
 					/>
-					<InputTask>
-						<h5>Nom de la Tâche</h5>
-						<Container>
-							<Row>
-								<KeyboardedInput
-									value={newtaskname}
-									setValue={e => setNewTaskName(e.target.value)}
-									props={{ className: error ? 'p-invalid block' : '' }}
-								/>
-							</Row>
-						</Container>
-						{error ? <small className="p-error block">Entrez une tâche</small> : ''}
-					</InputTask>
-				</InputTaskContainer>
+				</div>
 				<div className="p-fluid">
 					<DataTable
 						value={task}
@@ -141,21 +135,42 @@ const Todo = () => {
 					</DataTable>
 				</div>
 			</div>
-		</div>
+		</DivContainer>
 	)
 }
 
-const InputTaskContainer = styled.div`
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-evenly;
+const ButtonCustom = styled(Button)`
+	background-color: #5eead4;
+	color: white;
+	border: none;
+	&:enabled:hover {
+		background-color: white;
+		color: #5eead4;
+	}
+	&:enabled:active,
+	&:enabled:focus {
+		background-color: #5eead4;
+		color: white;
+	}
 `
 
-const InputTask = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+const DivContainer = styled.div`
+	::-webkit-scrollbar {
+		height: 4px;
+		background: #969696;
+		-webkit-border-radius: 1ex;
+	}
+
+	::-webkit-scrollbar-thumb {
+		height: 9px;
+		width: 350px;
+		background: #5eead4;
+		border-radius: 10px;
+		-webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+	}
+
+	::-webkit-scrollbar-corner {
+		background: #1a1a1a;
+	}
 `
 export default Todo
