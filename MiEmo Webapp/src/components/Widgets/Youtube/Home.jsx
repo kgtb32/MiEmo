@@ -1,14 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import YoutubePlayer from './components/YoutubePlayer'
 import NoVideo from './components/NoVideo'
 
 const Home = ({ video }) => {
 	return (
-		<DivContainer>
+		<div className="h-100 w-100 mt-1">
 			{Object.keys(video).length != 0 ? <YoutubePlayer videoId={video.id} /> : <NoVideo size={'100%'} />}
-		</DivContainer>
+		</div>
 	)
 }
 
@@ -19,11 +18,5 @@ Home.propTypes = {
 Home.defaultProps = {
 	video: () => {},
 }
-
-const DivContainer = styled.div`
-	margin-top: 4px;
-	height: 84%;
-	margin-bottom: 5px;
-`
 
 export default React.memo(Home)

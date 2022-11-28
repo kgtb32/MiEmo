@@ -1,14 +1,10 @@
 import React, { Suspense } from 'react'
 const ReactYoutube = React.lazy(() => import('react-youtube'))
-import { withSize } from 'react-sizeme'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import NoVideo from './NoVideo'
 
-function YoutubePlayer({ size, videoId }) {
+function YoutubePlayer({ videoId }) {
 	const opts = {
-		height: size.height,
-		width: size.width,
 		color: '#ffd400',
 		playerVars: {
 			autoplay: 1,
@@ -20,11 +16,17 @@ function YoutubePlayer({ size, videoId }) {
 	}
 
 	return (
-		<DivContainer>
+		<div className="h-100 w-100 mb-1">
 			<Suspense fallback={<NoVideo />}>
-				<ReactYoutube videoId={videoId} opts={opts} onReady={_onReady} />
+				<ReactYoutube
+					videoId={videoId}
+					opts={opts}
+					onReady={_onReady}
+					iframeClassName="h-100 w-100"
+					className="h-100 w-100"
+				/>
 			</Suspense>
-		</DivContainer>
+		</div>
 	)
 }
 
@@ -36,9 +38,4 @@ YoutubePlayer.propTypes = {
 	}),
 }
 
-const DivContainer = styled.div`
-	height: 100%;
-	margin-bottom: 5px;
-`
-
-export default withSize({ monitorHeight: true })(React.memo(YoutubePlayer))
+export default React.memo(YoutubePlayer)

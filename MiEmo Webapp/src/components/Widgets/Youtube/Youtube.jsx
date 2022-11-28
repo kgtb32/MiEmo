@@ -7,7 +7,7 @@ function Youtube() {
 	const [video, setVideo] = useState({})
 
 	return (
-		<DivContainer className="h-100 w-100">
+		<DivContainer className="d-flex flex-column h-100 w-100">
 			<YoutbeHeader setVideo={setVideo} isModalDisplay={true} />
 			<Home video={video} />
 		</DivContainer>
@@ -15,8 +15,6 @@ function Youtube() {
 }
 
 const DivContainer = styled.div`
-	display: flex;
-	flex-direction: column;
 	justify-content: flexStart;
 `
 
