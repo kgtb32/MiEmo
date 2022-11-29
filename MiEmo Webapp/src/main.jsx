@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 
 import App from './App'
 import ErrorBoundary from './components/Errors/ErrorBoundary'
@@ -23,7 +23,7 @@ import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css'
 import { StoreProvider } from './context/StoreContext'
 import { KeyboardProvider } from './context/KeyboardContext'
 
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<StoreProvider>
 			<KeyboardProvider>
@@ -33,5 +33,4 @@ ReactDOM.render(
 			</KeyboardProvider>
 		</StoreProvider>
 	</React.StrictMode>,
-	document.getElementById('root'),
 )
