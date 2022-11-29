@@ -2,7 +2,6 @@ import { React, useState, useEffect, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import useStoreContext from '../../context/StoreContext'
 
-import { withSize } from 'react-sizeme'
 import { nanoid } from 'nanoid'
 
 import styled from 'styled-components'
@@ -12,6 +11,7 @@ import { Responsive as Grid } from 'react-grid-layout'
 import { Card } from 'primereact/card'
 
 import StoreItem from '../Store/StoreItem'
+import SizeMe from './SizeMe'
 
 import componentFactory from './ComponentFactory'
 import layoutFactory from '../../layouts/layoutFactory'
@@ -21,8 +21,9 @@ import { loadLocalStorageKeyAsJsonObject } from '../../utils/utils'
 import 'react-grid-layout/css/styles.css'
 import 'primereact/resources/themes/lara-dark-teal/theme.css'
 
-function GridLayout({ size }) {
+function GridLayout() {
 	const [layout, setLayout] = useState(loadLocalStorageKeyAsJsonObject('layout', layoutFactory.LD_0))
+	const [width, setWidth] = useState(0)
 
 	const { widgetEventManager, widgetEditMode } = useStoreContext()
 
@@ -124,25 +125,27 @@ function GridLayout({ size }) {
 	}
 
 	return (
-		<JoliGrid
-			className="layout "
-			resizeHandles={['se']}
-			style={{
-				minHeight: '120px',
-			}}
-			measureBeforeMount={true}
-			layouts={layout.layouts}
-			draggableCancel=".no-drag"
-			breakpoints={layout.breakpoints}
-			compactType={null}
-			cols={layout.cols}
-			width={size.width}
-			onDragStop={updateLayout}
-			onResizeStop={updateLayout}
-			isDroppable={true}
-		>
-			{generateDom(layout.components)}
-		</JoliGrid>
+		<SizeMe sizeChanged={({ width }) => setWidth(width)}>
+			<JoliGrid
+				className="layout"
+				resizeHandles={['se']}
+				style={{
+					minHeight: '120px',
+				}}
+				measureBeforeMount={true}
+				layouts={layout.layouts}
+				draggableCancel=".no-drag"
+				breakpoints={layout.breakpoints}
+				compactType={null}
+				cols={layout.cols}
+				width={width}
+				onDragStop={updateLayout}
+				onResizeStop={updateLayout}
+				isDroppable={true}
+			>
+				{generateDom(layout.components)}
+			</JoliGrid>
+		</SizeMe>
 	)
 }
 
@@ -175,4 +178,4 @@ const JoliGrid = styled(Grid)`
 		border-right: 2px solid white;
 	}
 `
-export default withSize()(GridLayout)
+export default GridLayout

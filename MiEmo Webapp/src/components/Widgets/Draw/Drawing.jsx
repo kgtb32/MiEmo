@@ -1,5 +1,4 @@
 import { React, useState, useRef } from 'react'
-import { withSize } from 'react-sizeme'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
@@ -13,7 +12,7 @@ import { BiUndo, BiRedo, BiEraser, BiPaint, BiColorFill } from 'react-icons/bi'
 
 const ICON_SIZE = '1.4em'
 
-function ReactDrawing(size) {
+function ReactDrawing() {
 	const [color, setColor] = useState('black')
 	const [canvasColor, setCanvasColor] = useState('white')
 	const [strokeWidth, setStrokeWidth] = useState(10)
@@ -33,27 +32,13 @@ function ReactDrawing(size) {
 		canvas.current.resetCanvas()
 	}
 
-	const drawingBorderSize = {
-		height: size.height,
-		width: size.width,
-		border: size.border,
-		borderRadius: size.borderRadius,
-		strokeWidth: 1,
-	}
-
 	return (
 		<BigBox className="h-100 d-flex flex-column">
-			<ReactSketchCanvas
-				ref={canvas}
-				canvasColor={canvasColor}
-				strokeColor={color}
-				opts={drawingBorderSize}
-				strokeWidth={strokeWidth}
-			/>
+			<ReactSketchCanvas ref={canvas} canvasColor={canvasColor} strokeColor={color} strokeWidth={strokeWidth} />
 			<div className="d-flex justify-content-between align-content-between w-100 flex-wrap">
 				<KeyboardedInput
 					setValue={value => setStrokeWidth(value)}
-					value={strokeWidth}
+					value={`${strokeWidth}`}
 					defaultKeyboard="numbers"
 					className="w-25"
 					variant={'dark'}
@@ -104,4 +89,4 @@ const BigBox = styled.div`
 	margin-right: 2%;
 `
 
-export default withSize({ monitorHeight: true })(ReactDrawing)
+export default ReactDrawing

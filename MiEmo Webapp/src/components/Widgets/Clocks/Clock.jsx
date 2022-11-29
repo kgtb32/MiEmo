@@ -1,10 +1,8 @@
 import { React, useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import WidgetClock from 'react-clock'
+import SizeMe from '../../layout/SizeMe'
 
 import styled from 'styled-components'
-import { withSize } from 'react-sizeme'
-
 import 'react-clock/dist/Clock.css'
 
 const minOfTwo = (one, two) => {
@@ -15,8 +13,9 @@ const minOfTwo = (one, two) => {
 	}
 }
 
-function Clock({ size }) {
+function Clock() {
 	const [value, setValue] = useState(new Date())
+	const [clockSize, setClockSize] = useState(0)
 
 	useEffect(() => {
 		const interval = setInterval(() => setValue(new Date()), 1000)
@@ -26,18 +25,12 @@ function Clock({ size }) {
 		}
 	}, [])
 
-	const clockSize = minOfTwo(size.height, size.width - 10)
-
 	return (
-		<div style={{ width: '100%', height: '100%' }}>
-			<JoliClock
-				value={value}
-				size={clockSize}
-				style={{
-					color: 'white',
-				}}
-			/>
-		</div>
+		<SizeMe sizeChanged={({ height, width }) => setClockSize(minOfTwo(height, width - 10))}>
+			<div className="h-100 w-100">
+				<JoliClock className="mx-auto" size={clockSize} value={value} style={{ color: 'white' }} />
+			</div>
+		</SizeMe>
 	)
 }
 
@@ -57,13 +50,10 @@ const JoliClock = styled(WidgetClock)`
 	& .react-clock__second-hand__body {
 		background-color: red;
 	}
+
+	& .react-clock__face {
+		border-color: white;
+	}
 `
 
-Clock.propTypes = {
-	size: PropTypes.shape({
-		height: PropTypes.number,
-		width: PropTypes.number,
-	}),
-}
-
-export default withSize({ monitorHeight: true })(Clock)
+export default Clock

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { withSize } from 'react-sizeme'
 import styled from 'styled-components'
 
 import '@fullcalendar/react/dist/vdom'
@@ -76,4 +75,4 @@ const JoliDiv = styled.div`
 	}
 `
 
-export default withSize({ monitorHeight: true })(Calendar)
+export default Calendar
