@@ -1,9 +1,10 @@
-import FlipClockBase from 'x-react-flipclock'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { React } from 'react'
 import styled from 'styled-components'
 
-import { withSize } from 'react-sizeme'
+import FlipClockBase from 'x-react-flipclock'
+
+import SizeMe from '../../layout/SizeMe'
 
 import settings from '../../../settings/settings'
 
@@ -17,29 +18,32 @@ const minOfTwo = (one, two) => {
 
 const FlipClock = settings.isProd ? FlipClockBase.default : FlipClockBase
 
-function DigitalClock({ size }) {
-	const { width, height } = size
+function DigitalClock() {
+	const [clockSize, setClockSize] = useState(0)
+
 	return (
-		<JoliFlipClock>
-			<FlipClock
-				size={minOfTwo(width, height)}
-				type="clock"
-				units={[
-					{
-						sep: ' ',
-						type: 'hours',
-					},
-					{
-						sep: ':',
-						type: 'minutes',
-					},
-					{
-						sep: ':',
-						type: 'seconds',
-					},
-				]}
-			/>
-		</JoliFlipClock>
+		<SizeMe sizeChanged={({ width, height }) => setClockSize(minOfTwo(width, height))}>
+			<JoliFlipClock>
+				<FlipClock
+					size={clockSize}
+					type="clock"
+					units={[
+						{
+							sep: ' ',
+							type: 'hours',
+						},
+						{
+							sep: ':',
+							type: 'minutes',
+						},
+						{
+							sep: ':',
+							type: 'seconds',
+						},
+					]}
+				/>
+			</JoliFlipClock>
+		</SizeMe>
 	)
 }
 
@@ -83,4 +87,4 @@ const JoliFlipClock = styled.div`
 		font-size: ${props => (props.children.props.size ? props.children.props.size + 'px !important' : '0px')};
 	}
 `
-export default withSize({ monitorHeight: true })(DigitalClock)
+export default DigitalClock

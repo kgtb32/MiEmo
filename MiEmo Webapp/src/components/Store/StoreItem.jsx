@@ -25,7 +25,7 @@ function StoreItem({ componentInfos, mode, event }) {
 
 StoreItem.propTypes = {
 	componentInfos: PropTypes.shape({
-		item: PropTypes.func.isRequired,
+		item: PropTypes.object.isRequired,
 		name: PropTypes.string.isRequired,
 		img: PropTypes.any.isRequired,
 		minW: PropTypes.number,

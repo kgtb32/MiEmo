@@ -20,7 +20,7 @@ import Page404 from './pages/Page404'
 
 function App() {
 	return (
-		<Suspense fallback={() => <p>loading</p>}>
+		<Suspense fallback={<p>loading</p>}>
 			<div className="App">
 				<Router>
 					<Routes>

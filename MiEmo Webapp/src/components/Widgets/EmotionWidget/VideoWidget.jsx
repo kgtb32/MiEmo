@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useCallback } from 'react'
 import PropTypes from 'prop-types'
-import { withSize } from 'react-sizeme'
 
 import Webcam from 'react-webcam'
 
 import api from '../../../api/'
 import settings from '../../../settings/settings'
 
-function VideoWidget({ size, shotEvent, setEmotion, setModalVisible }) {
+function VideoWidget({ shotEvent, setEmotion, setModalVisible }) {
 	const camRef = useRef(null)
 	const makeScreenshot = useCallback(() => {
 		const fetch = async () => {
@@ -31,16 +30,12 @@ function VideoWidget({ size, shotEvent, setEmotion, setModalVisible }) {
 				ref={camRef}
 				audio={false}
 				screenshotQuality={1}
+				className="w-100 h-100"
 				screenshotFormat="image/png"
 				imageSmoothing={true}
 				forceScreenshotSourceSize={true}
 				mirrored={settings?.emotionDetection?.mirorred ?? true}
 				style={{
-					width: size.width + 'px',
-					height: size.height + 'px',
-					position: 'absolute',
-					top: '0',
-					left: '0',
 					padding: '0px',
 					border: '1px solid transparent',
 					borderRadius: '8px',
@@ -52,13 +47,9 @@ function VideoWidget({ size, shotEvent, setEmotion, setModalVisible }) {
 }
 
 VideoWidget.propTypes = {
-	size: PropTypes.shape({
-		height: PropTypes.number,
-		width: PropTypes.number,
-	}),
 	shotEvent: PropTypes.any,
 	setEmotion: PropTypes.func,
 	setModalVisible: PropTypes.func,
 }
 
-export default withSize({ monitorHeight: true })(VideoWidget)
+export default VideoWidget
