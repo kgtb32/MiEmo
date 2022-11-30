@@ -45,7 +45,7 @@ export const command = (value, widgetEventManager, setIsClick, showInfo) => {
 			actionJoke(setIsClick)
 			break
 		default:
-			console.log(detect[0].youtube)
+			console.log('default')
 			return ''
 	}
 }
