@@ -1,7 +1,9 @@
 import componentFactory from '../layout/ComponentFactory'
+import joke from './joke.json'
 
 export const allComponent = Object.keys(componentFactory).map(key => componentFactory[key])
 export const allComponentKey = Object.keys(componentFactory)
+const synth = window.speechSynthesis
 
 export const command = (value, widgetEventManager, setIsClick, showInfo) => {
 	value = normalize(value)
@@ -39,6 +41,9 @@ export const command = (value, widgetEventManager, setIsClick, showInfo) => {
 		case isMatch(detect[10].whitenoise, value):
 			action(10, widgetEventManager, setIsClick, showInfo)
 			break
+		case isMatch(detect[11].joke, value):
+			actionJoke(setIsClick)
+			break
 		default:
 			console.log(detect[0].youtube)
 			return ''
@@ -62,6 +67,24 @@ export const action = (index, widgetEventManager, setIsClick, showInfo) => {
 	widgetEventManager.emit('itemAdd', allComponentKey[index])
 	setIsClick(false)
 	showInfo('Votre Wideget ' + allComponent[index].name + ' est ajouté')
+}
+
+export const actionJoke = async setIsClick => {
+	if (synth.speaking) {
+		console.log('speechSynthesis.speaking')
+		return
+	}
+
+	const utterThis = new SpeechSynthesisUtterance(
+		joke[Math.floor(Math.random() * joke.length)].joke +
+			'réponse ' +
+			joke[Math.floor(Math.random() * joke.length)].answer,
+	)
+	utterThis.volume = 1.5
+	utterThis.pitch = 1
+	utterThis.rate = 1
+	synth.speak(utterThis)
+	setIsClick(false)
 }
 
 //should be Lowercase without special character
@@ -98,5 +121,8 @@ export const detect = [
 	},
 	{
 		whitenoise: ['sons', 'blancs', 'son'],
+	},
+	{
+		joke: ['blague', 'blagues', 'une autre', 'encore'],
 	},
 ]
