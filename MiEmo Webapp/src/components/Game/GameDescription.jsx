@@ -9,8 +9,8 @@ export default function GameDescription({ game }) {
 	return (
 		<div>
 			<p className="text-center fw-bold fs-4">{game.name}</p>
-			<img src={game.cover} className="w-30 mx-auto d-block" />
-			<p className="text-center fw-bold fs-4">{game.year_created}</p>
+			<img src={game.cover} className="w-30 mx-auto d-block rounded" />
+			{game.year_created > 0 && <p className="text-center fw-bold fs-4">{game.year_created}</p>}
 			<div className="text-center fs-4">
 				<span className="mx-4 align-middle my-auto">
 					Joué <b>{game.nb_played}</b> fois
