@@ -9,7 +9,8 @@ export default function PlatformList({ platforms, selectedPlatform, setSelectedP
 				return (
 					<div
 						key={`platform_list_${platform.platform_id}`}
-						className={`border p-3 my-1 rounded ${selectedPlatform == index ? 'selected-item-blue' : ''}`}
+						id={`scroll-${index}`}
+						className={`p-3 my-1 rounded ${selectedPlatform == index ? 'selected-item-blue' : ''}`}
 						onClick={() => setSelectedPlatform(index)}
 					>
 						<img className="w-10" src={platform.game_box} />

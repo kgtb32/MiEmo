@@ -26,7 +26,6 @@ export default function Game() {
 	}, [api.game.platform])
 
 	const buttonPressed = buttonName => {
-		console.log('button pressed')
 		if (buttonName == settings.buttons.button_x) {
 			navigate(`/game/${platforms[selectedPlatform].platform_id}`)
 		} else if (buttonName == settings.buttons.button_o) {
@@ -39,18 +38,23 @@ export default function Game() {
 	}, [fetchPlatforms])
 
 	return (
-		<Row className="w-100">
-			<Col xl="2" lg="3" md="4" sm="4" xs="12" className="pl-1 pr-0">
+		<Row className="w-100 hv-100 overflow-hidden pb-3e">
+			<Col xl="2" lg="3" md="4" sm="4" xs="12" className="h-100 overflow-auto beauty-scroll pl-1 pr-025">
 				<PlatformList
 					platforms={platforms}
 					selectedPlatform={selectedPlatform}
 					setSelectedPlatform={setSelectedPlatform}
 				/>
 			</Col>
-			<Col className="p-0">
+			<Col className="pb-3e h-100 overflow-auto beauty-scroll">
 				{!!platforms[selectedPlatform] && <PlatformDescription platform={platforms[selectedPlatform]} />}
 			</Col>
 			<JoypadUtils
+				positions={{
+					yPosition: selectedPlatform,
+					yMax: platforms.length,
+					setYPosition: setSelectedPlatform,
+				}}
 				currentPosition={selectedPlatform}
 				max={platforms.length - 1}
 				setCurrentPosition={setSelectedPlatform}
