@@ -59,6 +59,7 @@ const apis = {
 	game: {
 		list: platform_uuid => api().game.list(platform_uuid),
 		platform: () => api().game.platform(),
+		getPlatform: platform_uuid => api().game.getPlatform(platform_uuid),
 		get: game_uuid => api().game.get(game_uuid),
 		play: game_uuid => api().game.play(game_uuid),
 	},
