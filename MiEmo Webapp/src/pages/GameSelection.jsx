@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { trackPromise, usePromiseTracker } from 'react-promise-tracker'
@@ -14,13 +14,15 @@ import JoypadUtils from '../utils/JoypadUtils'
 
 import { loadLocalStorageKey } from '../utils/utils'
 
-import api from '../api/'
 import settings from '../settings/settings'
+import useGameContext from '../context/GameContext'
 
 export default function GameSelection() {
 	const params = useParams()
-	const { promiseInProgress } = usePromiseTracker()
 	let navigate = useNavigate()
+
+	const { promiseInProgress } = usePromiseTracker()
+	const { getGames } = useGameContext()
 
 	const [games, setGames] = useState([])
 	const [filteredGames, setFilteredGames] = useState({
@@ -64,15 +66,9 @@ export default function GameSelection() {
 		}
 	}
 
-	const fetchGames = useCallback(platformId => {
-		const fetch = async () => api.game.list(platformId)
-
-		trackPromise(fetch()).then(setGames)
-	}, [])
-
 	useEffect(() => {
-		fetchGames(params?.platformId)
-	}, [params?.platformId, fetchGames])
+		trackPromise(getGames(params?.platformId)).then(setGames)
+	}, [params?.platformId])
 
 	return (
 		<div className="vh-100">

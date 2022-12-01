@@ -22,14 +22,17 @@ import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css'
 
 import { StoreProvider } from './context/StoreContext'
 import { KeyboardProvider } from './context/KeyboardContext'
+import { GameProvider } from './context/GameContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<StoreProvider>
 			<KeyboardProvider>
-				<ErrorBoundary>
-					<App />
-				</ErrorBoundary>
+				<GameProvider>
+					<ErrorBoundary>
+						<App />
+					</ErrorBoundary>
+				</GameProvider>
 			</KeyboardProvider>
 		</StoreProvider>
 	</React.StrictMode>,
