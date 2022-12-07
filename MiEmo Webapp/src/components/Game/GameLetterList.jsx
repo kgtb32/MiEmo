@@ -3,7 +3,11 @@ import PropTypes from 'prop-types'
 
 import { nanoid } from 'nanoid'
 
+import { FaSearch, FaStar } from 'react-icons/fa'
+
 export const letters = [
+	'SH',
+	'FV',
 	'A',
 	'B',
 	'C',
@@ -35,12 +39,22 @@ export const letters = [
 export default function GameLetterList({ currentLetter, setCurrentLetter }) {
 	const id = nanoid(12)
 
+	const getLogoOrLetter = letter => {
+		switch (letter) {
+			case 'FV':
+				return <FaStar />
+			case 'SH':
+				return <FaSearch />
+			default:
+				return <>{letter}</>
+		}
+	}
+
 	return (
 		<div className="d-flex flex-row w-100 flex-wrap justify-content-center">
 			{letters.map(letter => {
 				return (
 					<div
-						action
 						id={`${id}-select-letter-${letter}`}
 						className={`w-min-content p-2 mx-1 rounded text-center my-1 user-select-none ${
 							letter == currentLetter ? 'beauty-background' : ''
@@ -52,7 +66,7 @@ export default function GameLetterList({ currentLetter, setCurrentLetter }) {
 						key={`letter_${letter}`}
 						onClick={() => setCurrentLetter(letter)}
 					>
-						{letter}
+						{getLogoOrLetter(letter)}
 					</div>
 				)
 			})}
