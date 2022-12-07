@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from gameservice.models import Game, Genre, Platform, PopularGame, Core
+from gameservice.models import Game, Genre, Platform, PopularGame, Core, Favorite
 
 # Register your models here.
 @admin.register(PopularGame)
@@ -36,6 +36,10 @@ class GenreAdmin(admin.ModelAdmin):
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):
-    list_display = ("game_id","name","year_created","nb_played","favorite","cover","platform","core","config","nb_player","trailer_url",)
+    list_display = ("game_id","name","year_created","nb_played","cover","platform","core","config","nb_player","trailer_url",)
     search_fields = ["name", "platform", "year_created"]
 
+@admin.register(Favorite)
+class FavoriteAdmin(admin.ModelAdmin):
+    list_display = ("game_id", "favorite",)
+    search_fields = ["game_id"]

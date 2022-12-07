@@ -48,7 +48,6 @@ class Game(models.Model):
     name = models.CharField(max_length=255)
     year_created = models.IntegerField()
     nb_played = models.IntegerField()
-    favorite = models.BooleanField(default=False)
     cover = models.FileField(upload_to="static/game/cover/")
     platform = models.ForeignKey(Platform, on_delete=models.CASCADE)
     core = models.ForeignKey(Core, on_delete=models.CASCADE)
@@ -57,3 +56,7 @@ class Game(models.Model):
     nb_player = models.IntegerField(default=1)
     trailer_url = models.URLField(null = True, blank=True)
     game = models.FileField(upload_to="static/game/games", null=True)
+    
+class Favorite(models.Model):
+    game_id = models.ForeignKey(Game, on_delete=models.CASCADE, blank=False)
+    favorite = models.BooleanField(default=False)
