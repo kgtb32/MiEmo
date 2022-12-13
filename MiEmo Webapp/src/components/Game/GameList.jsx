@@ -16,6 +16,7 @@ export default function GameList({ games, currentItem, setCurrentItem }) {
 						key={`game_list_${index}`}
 						onClick={() => setCurrentItem(index)}
 						game={game}
+						index={index}
 						selected={currentItem == index}
 					/>
 				)

@@ -110,6 +110,7 @@ export default {
 	game: {
 		list: platform_uuid => fetchAPI(`${settings.game.list.url}/?platform__platform_id=${platform_uuid}`, 'GET'),
 		platform: () => fetchAPI(settings.game.platformList.url, 'GET'),
+		getPlatform: platform_uuid => fetchAPI(`${settings.game.platformList.url}${platform_uuid}/`, 'GET'),
 		get: game_uuid => fetchAPI(`${settings.game.list.url}/${game_uuid}/`, 'GET'),
 		play: game_uuid => fetchAPI(`${settings.game.play.url}/${game_uuid}/`, 'GET'),
 	},

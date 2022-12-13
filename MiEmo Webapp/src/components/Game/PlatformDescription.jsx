@@ -6,14 +6,14 @@ import { Col, Row } from 'react-bootstrap'
 
 export default function PlatformDescription({ platform }) {
 	return (
-		<div className="vh-100 overflow-auto p-4 text-wrap text-break">
+		<div className="p-4 text-wrap text-break">
 			<div className="mx-auto w-min-content mb-2">
 				<img src={platform.console_logo} className="w-auto h-8" />
 			</div>
 			<Row className="p-0">
 				<Col md="3">
 					<div className="d-flex flex-column">
-						<img src={platform.console_preview} className="w-100" />
+						<img src={platform.console_preview} className="w-100 max-h-12" />
 						<span className="text-center fw-bold fs-4">
 							{platform.year_created} - {platform.end_year}
 						</span>
@@ -27,14 +27,14 @@ export default function PlatformDescription({ platform }) {
 				{platform.popular_games.map((game, index) => {
 					return (
 						<Col key={`popular_game_${index}`} className="d-flex flex-column">
-							<img src={game.cover} className="w-50 mx-auto" />
+							<img src={game.cover} className="w-50 mx-auto rounded" />
 							<span className="text-center fs-4 fw-bold">{game.game_name}</span>
 						</Col>
 					)
 				})}
 				<Col className="d-flex flex-column">
 					<span className="text-center fs-4 fw-bold">Jeux populaires</span>
-					<img src={platform.controls} className="w-50 my-auto h-min-content mx-auto" />
+					<img src={platform.controls} className="w-50 my-auto h-min-content mx-auto max-h-12" />
 				</Col>
 			</Row>
 		</div>

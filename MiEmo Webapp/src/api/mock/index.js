@@ -65,6 +65,7 @@ export default {
 	game: {
 		list: () => Promise.resolve(GameList),
 		platform: () => Promise.resolve(PlatformList),
+		getPlatform: () => Promise.resolve(PlatformList[0]),
 		get: () => Promise.resolve(GameGet),
 		play: () => Promise.resolve(),
 	},

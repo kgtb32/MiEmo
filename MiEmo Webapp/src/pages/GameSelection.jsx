@@ -1,36 +1,54 @@
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
-import { Row, Col } from 'react-bootstrap'
-
-import ReactHowler from 'react-howler'
+import { trackPromise, usePromiseTracker } from 'react-promise-tracker'
+import { ProgressSpinner } from 'primereact/progressspinner'
 
 import GameList from '../components/Game/GameList'
 import GameDescription from '../components/Game/GameDescription'
+import GameLetterList, { letters } from '../components/Game/GameLetterList'
+import PlatformHeader from '../components/Game/PlatformHeader'
+import NoGameFound from '../components/Game/NoGameFound'
 
 import JoypadUtils from '../utils/JoypadUtils'
 
-import { EventEmitter } from 'events'
-
-import api from '../api/'
-import settings from '../settings/settings'
 import { loadLocalStorageKey } from '../utils/utils'
 
-const joystickEvent = new EventEmitter()
+import settings from '../settings/settings'
+import useGameContext from '../context/GameContext'
 
 export default function GameSelection() {
 	const params = useParams()
 	let navigate = useNavigate()
 
+	const { promiseInProgress } = usePromiseTracker()
+	const { getGames } = useGameContext()
+
 	const [games, setGames] = useState([])
-	const [selectedItem, setSelectedItem] = useState(0)
+	const [filteredGames, setFilteredGames] = useState({
+		games: [],
+		letter: 'A',
+		letterPosition: 0,
+	})
+	const [selectedItem, setSelectedItem] = useState(-1)
 	const [playMusic, setPlayMusic] = useState(loadLocalStorageKey(settings.game.musicKey, false) === 'true')
+
+	useEffect(() => {
+		setFilteredGames({
+			...filteredGames,
+			games: games.filter(({ name }) => name.toLowerCase().startsWith(filteredGames.letter.toLowerCase())),
+		})
+	}, [filteredGames.letter, games])
+
+	useEffect(() => {
+		if (filteredGames.games.length > 0) setSelectedItem(0)
+	}, [filteredGames.games])
 
 	const buttonPressed = button => {
 		switch (button) {
 			case settings.buttons.button_x: {
-				if (games[selectedItem]) {
-					navigate(`/game/${params?.platformId}/${games[selectedItem].game_id}`)
+				if (filteredGames.games[selectedItem]) {
+					navigate(`/game/${params?.platformId}/${filteredGames.games[selectedItem].game_id}`)
 				}
 				break
 			}
@@ -48,46 +66,71 @@ export default function GameSelection() {
 		}
 	}
 
-	const fetchGames = useCallback(platformId => {
-		const fetch = async () => api.game.list(platformId)
-		fetch().then(setGames)
-	}, [])
-
 	useEffect(() => {
-		fetchGames(params?.platformId)
-	}, [params?.platformId, fetchGames])
+		trackPromise(getGames(params?.platformId)).then(setGames)
+	}, [params?.platformId])
 
 	return (
-		<>
-			{!!games[selectedItem] && (
-				<div className="w-100 d-flex flex-column p-4">
-					<ReactHowler
-						playing={playMusic}
-						loop={true}
-						src={games[selectedItem].platform.music}
-						volume={settings.game.musicVolume / 100}
-					/>
-					<div className="mb-2 mx-auto d-block w-min-content">
-						<img src={games[selectedItem].platform.console_logo} className="w-auto h-8" />
-					</div>
-					<Row className="w-100 my-4">
-						<Col>
-							<GameList games={games} currentItem={selectedItem} setCurrentItem={setSelectedItem} />
-						</Col>
-						<Col>
-							<GameDescription game={games[selectedItem]} />
-						</Col>
-					</Row>
+		<div className="vh-100">
+			{promiseInProgress && (
+				<div className="w-100 h-100">
+					<ProgressSpinner className="mx-auto d-block mt-50vh" />
 				</div>
 			)}
+			{!promiseInProgress && (
+				<div className="w-100 h-100 d-flex flex-column max-vh-100 p-4 user-select-none">
+					<PlatformHeader platformUuid={params?.platformId} playMusic={playMusic} />
+					<div className="d-flex flex-column flex-wrap overflow-hidden p-5">
+						<div className="w-50 h-100 overflow-hidden d-flex flex-column">
+							<div className="w-100">
+								<GameLetterList
+									currentLetter={filteredGames.letter}
+									setCurrentLetter={letter =>
+										setFilteredGames({
+											...filteredGames,
+											letter,
+										})
+									}
+								/>
+							</div>
+							<div className="overflow-auto w-100 h-100 beauty-scroll px-1">
+								{filteredGames.games.length == 0 && <NoGameFound />}
+								{!!filteredGames.games[selectedItem] && (
+									<GameList
+										games={filteredGames.games}
+										currentItem={selectedItem}
+										setCurrentItem={setSelectedItem}
+									/>
+								)}
+							</div>
+						</div>
+						<div className="overflow-auto h-100 w-50 beauty-scroll">
+							{!!filteredGames.games[selectedItem] && (
+								<GameDescription game={filteredGames.games[selectedItem]} />
+							)}
+						</div>
+					</div>
+				</div>
+			)}
+
 			<JoypadUtils
-				currentPosition={selectedItem}
-				max={games.length - 1}
-				setCurrentPosition={setSelectedItem}
-				joystickEvent={joystickEvent}
+				positions={{
+					yPosition: selectedItem,
+					yMax: filteredGames.games.length - 1,
+					setYPosition: setSelectedItem,
+					xPosition: filteredGames.letterPosition,
+					xMax: letters.length - 1,
+					setXPosition: position => {
+						setFilteredGames({
+							...filteredGames,
+							letterPosition: position,
+							letter: letters[position],
+						})
+					},
+				}}
 				buttonPressed={buttonPressed}
 				controlType="gameSelect"
 			/>
-		</>
+		</div>
 	)
 }
