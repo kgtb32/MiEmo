@@ -28,8 +28,8 @@ export default function GameSelection() {
 	const [games, setGames] = useState([])
 	const [filteredGames, setFilteredGames] = useState({
 		games: [],
-		letter: 'A',
-		letterPosition: 2,
+		letter: 'FV',
+		letterPosition: 1,
 	})
 	const [selectedItem, setSelectedItem] = useState(-1)
 	const [playMusic, setPlayMusic] = useState(loadLocalStorageKey(settings.game.musicKey, false) === 'true')
