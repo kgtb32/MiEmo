@@ -8,7 +8,7 @@ import { CgArrowsV } from 'react-icons/cg'
 
 import settings from '../../settings/settings'
 
-export const ControlsTypesList = ['platformSelect', 'gameSelect', 'gameLoad']
+export const ControlsTypesList = ['platformSelect', 'gameSelect', 'gameLoad', 'none']
 export default function ControlsSelector({ type, clickCallback }) {
 	const generateButton = text => {
 		return {
@@ -81,6 +81,7 @@ export default function ControlsSelector({ type, clickCallback }) {
 				<Control />
 			</div>
 		),
+		none: <></>,
 	}
 
 	return <div className="offset-bottom p-2 px-4">{controlsViews[type] ?? controlsViews.default}</div>
