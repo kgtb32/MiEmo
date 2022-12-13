@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from gameservice.models import Core, Game, Genre, Platform, PopularGame
+from gameservice.models import Core, Game, Genre, Platform, PopularGame, Favorite
 
 class PopularGameSerializer(serializers.ModelSerializer):
     class Meta: 
@@ -59,7 +59,6 @@ class GameSerializer(serializers.ModelSerializer):
             "name",
             "year_created",
             "nb_played",
-            "favorite",
             "cover",
             "platform",
             "core",
@@ -69,3 +68,11 @@ class GameSerializer(serializers.ModelSerializer):
             "trailer_url"
         ]
 
+
+class FavoriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favorite
+        fields = [
+            "game_id",
+            "favorite"
+        ]

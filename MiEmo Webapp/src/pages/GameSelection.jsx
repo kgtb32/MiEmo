@@ -9,6 +9,7 @@ import GameDescription from '../components/Game/GameDescription'
 import GameLetterList, { letters } from '../components/Game/GameLetterList'
 import PlatformHeader from '../components/Game/PlatformHeader'
 import NoGameFound from '../components/Game/NoGameFound'
+import GameSearch from '../components/Game/GameSearch'
 
 import JoypadUtils from '../utils/JoypadUtils'
 
@@ -28,16 +29,32 @@ export default function GameSelection() {
 	const [filteredGames, setFilteredGames] = useState({
 		games: [],
 		letter: 'A',
-		letterPosition: 0,
+		letterPosition: 2,
 	})
 	const [selectedItem, setSelectedItem] = useState(-1)
 	const [playMusic, setPlayMusic] = useState(loadLocalStorageKey(settings.game.musicKey, false) === 'true')
+	const [searchMode, setSearchMode] = useState(false)
 
 	useEffect(() => {
-		setFilteredGames({
-			...filteredGames,
-			games: games.filter(({ name }) => name.toLowerCase().startsWith(filteredGames.letter.toLowerCase())),
-		})
+		if (filteredGames.letter == 'FV') {
+			setFilteredGames({
+				...filteredGames,
+				games: games.filter(({ favorite }) => !!favorite),
+			})
+			setSearchMode(false)
+		} else if (filteredGames.letter == 'SH') {
+			setFilteredGames({
+				...filteredGames,
+				games: [],
+			})
+			setSearchMode(true)
+		} else {
+			setSearchMode(false)
+			setFilteredGames({
+				...filteredGames,
+				games: games.filter(({ name }) => name.toLowerCase().startsWith(filteredGames.letter.toLowerCase())),
+			})
+		}
 	}, [filteredGames.letter, games])
 
 	useEffect(() => {
@@ -93,6 +110,17 @@ export default function GameSelection() {
 									}
 								/>
 							</div>
+							{searchMode && (
+								<GameSearch
+									setGames={games => {
+										setFilteredGames({
+											...filteredGames,
+											games,
+										})
+									}}
+									games={games}
+								/>
+							)}
 							<div className="overflow-auto w-100 h-100 beauty-scroll px-1">
 								{filteredGames.games.length == 0 && <NoGameFound />}
 								{!!filteredGames.games[selectedItem] && (

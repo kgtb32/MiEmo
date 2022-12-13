@@ -1,5 +1,7 @@
 import subprocess
-from sys import platform
+from django_filters.rest_framework import DjangoFilterBackend
+from django.core.cache import cache
+
 from rest_framework import viewsets, filters
 from rest_framework.response import Response
 
@@ -17,7 +19,39 @@ class PlatformViewSet(viewsets.ModelViewSet):
 class GameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
+    filter_backends = [DjangoFilterBackend,filters.SearchFilter]
+    search_fields = ['name']
     filterset_fields = ["platform__platform_id",]
+    
+    def get_platform_id_from_request(self, res):
+        try:
+           return res.data["game"]["platform_id"]
+        except Exception:
+            return None
+    
+    def update(self, request, *args, **kwargs):
+        res = super().update(request, *args, **kwargs)
+        plat_id = self.get_platform_id_from_request(res)
+        if(plat_id):
+            cache.delete('gm_'+plat_id)
+        return res
+    
+    
+    def create(self, request, *args, **kwargs):
+        res = super().create(request, *args, **kwargs)
+        plat_id = self.get_platform_id_from_request(res)
+        if(plat_id):
+            cache.delete('gm_'+plat_id)
+        return res
+    
+    def list(self, request, *args, **kwargs):
+        plat_id = request.GET["platform__platform_id"]
+        cached_res = cache.get('gm_'+plat_id)
+        if(cached_res):
+            return Response(status=200, data=cached_res)
+        res = super().list(request, *args, **kwargs)
+        cache.set('gm_'+plat_id, res.data, 3600)
+        return res
     
 class PlayGameViewSet(viewsets.ModelViewSet):
     queryset = Game.objects.all()
