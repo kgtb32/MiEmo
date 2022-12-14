@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Badge from 'react-bootstrap/Badge'
+
 import Control from './Control'
 
 import { BsJoystick } from 'react-icons/bs'
@@ -8,7 +10,7 @@ import { CgArrowsV } from 'react-icons/cg'
 
 import settings from '../../settings/settings'
 
-export const ControlsTypesList = ['platformSelect', 'gameSelect', 'gameLoad']
+export const ControlsTypesList = ['platformSelect', 'gameSelect', 'gameLoad', 'none']
 export default function ControlsSelector({ type, clickCallback }) {
 	const generateButton = text => {
 		return {
@@ -48,6 +50,21 @@ export default function ControlsSelector({ type, clickCallback }) {
 					onClick={() => clickCallback(settings.buttons.button_b)}
 				/>
 			),
+			select_button: (
+				<div onClick={() => clickCallback(settings.buttons.button_select)} className="fw-bold my-auto mx-1">
+					<Badge
+						pill
+						className="mx-1 my-auto"
+						style={{
+							background: '#2c3e50',
+							color: '#FFFFFF',
+						}}
+					>
+						SELECT
+					</Badge>
+					{text}
+				</div>
+			),
 			joystick_updown: (
 				<div className="d-flex">
 					<BsJoystick size="2em" />
@@ -69,6 +86,7 @@ export default function ControlsSelector({ type, clickCallback }) {
 		gameSelect: (
 			<div className="d-flex justify-content-between">
 				{generateButton('Changer de jeu').joystick_updown}
+				{generateButton('Filtrer').select_button}
 				{generateButton('Retour').o_button}
 				{generateButton('Favori').b_button}
 				{generateButton('Activer la musique').a_button}
@@ -81,6 +99,7 @@ export default function ControlsSelector({ type, clickCallback }) {
 				<Control />
 			</div>
 		),
+		none: <></>,
 	}
 
 	return <div className="offset-bottom p-2 px-4">{controlsViews[type] ?? controlsViews.default}</div>

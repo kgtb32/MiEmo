@@ -6,6 +6,7 @@ let settings = {
 		button_o: 'button_1',
 		button_a: 'button_2',
 		button_b: 'button_3',
+		button_select: 'button_8',
 	},
 	game: {
 		musicVolume: 50,

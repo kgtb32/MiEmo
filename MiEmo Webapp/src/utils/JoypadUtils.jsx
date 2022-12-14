@@ -22,25 +22,29 @@ export default function JoypadUtils({ positions, buttonPressed, controlType }) {
 		let movePosition = positions.yPosition
 		let moveXPosition = positions.xPosition
 		switch (direction) {
-			case 'bottom':
+			case 'bottom': {
 				if (positions.yPosition < positions.yMax) movePosition = executeMovementTrigger.bottom
+				positions.setYPosition(movePosition)
 				break
+			}
 			case 'top': {
 				if (positions.yPosition > 0) movePosition = executeMovementTrigger.top
+				positions.setYPosition(movePosition)
 				break
 			}
 			case 'left':
 				if (positions.xPosition > 0) moveXPosition = executeMovementTrigger.left
+				positions.setXPosition(moveXPosition)
+
 				break
 			case 'right':
 				if (positions.xPosition < positions.xMax) moveXPosition = executeMovementTrigger.right
+				positions.setXPosition(moveXPosition)
 				break
 			default:
 				return
 		}
 		document.getElementById(`scroll-${movePosition}`)?.scrollIntoView()
-		positions.setXPosition(moveXPosition)
-		positions.setYPosition(movePosition)
 		return movePosition
 	}
 
