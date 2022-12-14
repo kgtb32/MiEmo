@@ -114,4 +114,12 @@ export default {
 		get: game_uuid => fetchAPI(`${settings.game.list.url}/${game_uuid}/`, 'GET'),
 		play: game_uuid => fetchAPI(`${settings.game.play.url}/${game_uuid}/`, 'GET'),
 	},
+	hologram: {
+		availableHolograms: () => fetchAPI(settings.apiFullEndpoints.holo(), 'GET'),
+		addHologram: holo_url => fetchAPI(settings.apiFullEndpoints.holo(), 'POST', { holo_url }),
+		deleteHologram: holo_uuid => fetchAPI(`${settings.apiFullEndpoints.holo()}${holo_uuid}/`, 'DELETE'),
+		hologramSettings: () => fetchAPI(settings.apiFullEndpoints.holosettings(), 'GET'),
+		setHologramSetttings: (selectedHologram, changeOnGameStart) =>
+			fetchAPI(settings.apiFullEndpoints.holosettings(), 'POST', { selectedHologram, changeOnGameStart }),
+	},
 }

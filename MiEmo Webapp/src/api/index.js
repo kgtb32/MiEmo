@@ -63,6 +63,9 @@ const apis = {
 		get: game_uuid => api().game.get(game_uuid),
 		play: game_uuid => api().game.play(game_uuid),
 	},
+	hologram: {
+		availableHolograms: () => api().hologram.availableHolograms(),
+	},
 }
 
 export default apis
