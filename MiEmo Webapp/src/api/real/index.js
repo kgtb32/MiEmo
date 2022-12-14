@@ -114,6 +114,9 @@ export default {
 		get: game_uuid => fetchAPI(`${settings.game.list.url}/${game_uuid}/`, 'GET'),
 		play: game_uuid => fetchAPI(`${settings.game.play.url}/${game_uuid}/`, 'GET'),
 	},
+	gif: {
+		search: q => fetchAPI(`${settings.apiFullEndpoints.gifSearch()}?q=${q}&lng=fr&provider=tenor`),
+	},
 	hologram: {
 		availableHolograms: () => fetchAPI(settings.apiFullEndpoints.holo(), 'GET'),
 		addHologram: holo_url => fetchAPI(settings.apiFullEndpoints.holo(), 'POST', { holo_url }),
