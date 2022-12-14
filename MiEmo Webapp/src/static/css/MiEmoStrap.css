@@ -201,6 +201,10 @@
 	max-height: 12em;
 }
 
+.obj-scale-down {
+	object-fit: scale-down;
+}
+
 .p-divider.p-divider-horizontal:before {
 	border-top: 1px solid lightgray;
 }
