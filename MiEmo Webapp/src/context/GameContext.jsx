@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useState, useContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import api from '../api/'
@@ -32,17 +32,16 @@ export const GameProvider = props => {
 		})
 	}
 
-	return (
-		<GameContext.Provider
-			value={{
-				games,
-				currentPlatformId,
-				getGames,
-			}}
-		>
-			{props.children}
-		</GameContext.Provider>
+	const value = useMemo(
+		() => ({
+			games,
+			currentPlatformId,
+			getGames,
+		}),
+		[],
 	)
+
+	return <GameContext.Provider value={value}>{props.children}</GameContext.Provider>
 }
 
 GameProvider.propTypes = {
