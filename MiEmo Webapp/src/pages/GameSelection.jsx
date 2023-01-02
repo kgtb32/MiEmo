@@ -109,7 +109,7 @@ export default function GameSelection() {
 					<PlatformHeader platformUuid={params?.platformId} playMusic={playMusic} />
 					<div className="d-flex flex-column flex-wrap overflow-hidden p-5">
 						<div className="w-50 h-100 overflow-hidden d-flex flex-column">
-							<div className="overflow-auto w-100 h-100 beauty-scroll px-1">
+							<div className="w-100 h-100 px-1 d-flex flex-column">
 								<GameFilter
 									setX={x => setPositions({ ...positions, x })}
 									filterInfos={filterInfos}
@@ -117,12 +117,14 @@ export default function GameSelection() {
 									games={games}
 									setGames={setGames}
 								/>
-								{games.filtered.length == 0 && <NoGameFound />}
-								<GameList
-									games={games.filtered}
-									currentItem={positions.y}
-									setCurrentItem={y => setPositions({ ...positions, y })}
-								/>
+								<div className="overflow-auto h-100 beauty-scroll">
+									{games.filtered.length == 0 && <NoGameFound />}
+									<GameList
+										games={games.filtered}
+										currentItem={positions.y}
+										setCurrentItem={y => setPositions({ ...positions, y })}
+									/>
+								</div>
 							</div>
 						</div>
 						<div className="overflow-auto h-100 w-50 beauty-scroll">

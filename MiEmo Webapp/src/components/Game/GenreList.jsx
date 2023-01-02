@@ -8,12 +8,12 @@ export default function GenreList({ currentGenre, setCurrentGenre, genres }) {
 				return (
 					<div
 						key={`genre-scroll-${index}`}
-						className={`w-min-content p-2 mx-1 rounded text-center my-1 user-select-none ${
+						className={`h-min-content p-2 mx-1 rounded text-center my-1 user-select-none ${
 							currentGenre == index ? 'beauty-background' : ''
 						}`}
 						onClick={() => setCurrentGenre(index)}
 					>
-						{genre}
+						{genre.toLowerCase()}
 					</div>
 				)
 			})}
