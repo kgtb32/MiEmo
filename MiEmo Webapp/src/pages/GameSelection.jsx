@@ -27,17 +27,16 @@ export default function GameSelection() {
 	const params = useParams()
 	let navigate = useNavigate()
 
-	const { getGames } = useGameContext()
-
-	const [games, setGames] = useState({
-		cached: [],
-		filtered: [],
-	})
+	const { getGames, markAsFavorite, favorites } = useGameContext()
 
 	const [filterInfos, setFilterInfos] = useState({
 		letters,
 		genres: [],
 		filterMode: 'letters',
+	})
+	const [games, setGames] = useState({
+		cached: [],
+		filtered: [],
 	})
 
 	const [positions, setPositions] = useState({
@@ -56,7 +55,7 @@ export default function GameSelection() {
 				break
 			}
 			case settings.buttons.button_b:
-				return alert('favori !')
+				return markAsFavorite(games.filtered[positions.y].game_id)
 			case settings.buttons.button_a: {
 				setPlayMusic(!playMusic)
 				localStorage.setItem(settings.game.musicKey, !playMusic)
@@ -77,7 +76,7 @@ export default function GameSelection() {
 	}
 
 	useEffect(() => {
-		trackPromise(getGames(params?.platformId)).then(g => setGames({ filtered: g, cached: g }))
+		trackPromise(getGames(params?.platformId)).then(g => setGames({ filtered: favorites, cached: g }))
 	}, [params?.platformId])
 
 	useEffect(() => {
@@ -116,6 +115,7 @@ export default function GameSelection() {
 									x={positions.x}
 									games={games}
 									setGames={setGames}
+									favorites={favorites}
 								/>
 								<div className="overflow-auto h-100 beauty-scroll">
 									{games.filtered.length == 0 && <NoGameFound />}
@@ -128,7 +128,9 @@ export default function GameSelection() {
 							</div>
 						</div>
 						<div className="overflow-auto h-100 w-50 beauty-scroll">
-							{!!games.filtered[positions.y] && <GameDescription game={games.filtered[positions.y]} />}
+							{!!games.filtered[positions.y] && (
+								<GameDescription game={games.filtered[positions.y]} favorites={favorites} />
+							)}
 						</div>
 					</div>
 				</div>

@@ -5,7 +5,7 @@ import GameLetterList from './GameLetterList'
 import GameSearch from './GameSearch'
 import GenreList from './GenreList'
 
-export default function GameFilter({ filterInfos, x, setX, setGames, games }) {
+export default function GameFilter({ filterInfos, x, setX, setGames, games, favorites }) {
 	const [currentItem, setCurrentItem] = useState('FV')
 
 	const filterGames = item => {
@@ -14,7 +14,7 @@ export default function GameFilter({ filterInfos, x, setX, setGames, games }) {
 				case 'SH':
 					return games.cached
 				case 'FV':
-					return games.cached?.filter(({ favorite }) => favorite === true)
+					return favorites
 				default:
 					return games.cached?.filter(({ name }) => name.toLowerCase().startsWith(currentItem.toLowerCase()))
 			}
@@ -26,7 +26,9 @@ export default function GameFilter({ filterInfos, x, setX, setGames, games }) {
 	}
 
 	useEffect(() => {
-		setCurrentItem(filterInfos[filterInfos.filterMode][x] ?? '')
+		if (x) {
+			setCurrentItem(filterInfos[filterInfos.filterMode][x] ?? '')
+		}
 	}, [x])
 
 	useEffect(() => {
@@ -38,7 +40,7 @@ export default function GameFilter({ filterInfos, x, setX, setGames, games }) {
 			...games,
 			filtered: filterGames(currentItem),
 		})
-	}, [currentItem])
+	}, [currentItem, favorites])
 
 	return (
 		<div>
@@ -75,7 +77,13 @@ export default function GameFilter({ filterInfos, x, setX, setGames, games }) {
 	)
 }
 
+GameFilter.defaultProps = {
+	favorites: [],
+}
+
 GameFilter.propTypes = {
+	favorites: PropTypes.array,
+	filteredGames: PropTypes.object,
 	filterInfos: PropTypes.shape({
 		letters: PropTypes.array.isRequired,
 		genres: PropTypes.array.isRequired,
