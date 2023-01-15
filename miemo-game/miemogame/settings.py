@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 
     'django_filters',
     'gameservice',
+    'hologram',
     'rest_framework',
     'django_cleanup.apps.CleanupConfig',
     'corsheaders'
