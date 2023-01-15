@@ -27,17 +27,16 @@ export default function GameSelection() {
 	const params = useParams()
 	let navigate = useNavigate()
 
-	const { getGames } = useGameContext()
-
-	const [games, setGames] = useState({
-		cached: [],
-		filtered: [],
-	})
+	const { getGames, markAsFavorite, favorites } = useGameContext()
 
 	const [filterInfos, setFilterInfos] = useState({
 		letters,
 		genres: [],
 		filterMode: 'letters',
+	})
+	const [games, setGames] = useState({
+		cached: [],
+		filtered: [],
 	})
 
 	const [positions, setPositions] = useState({
@@ -56,7 +55,7 @@ export default function GameSelection() {
 				break
 			}
 			case settings.buttons.button_b:
-				return alert('favori !')
+				return markAsFavorite(games.filtered[positions.y].game_id)
 			case settings.buttons.button_a: {
 				setPlayMusic(!playMusic)
 				localStorage.setItem(settings.game.musicKey, !playMusic)
@@ -77,7 +76,7 @@ export default function GameSelection() {
 	}
 
 	useEffect(() => {
-		trackPromise(getGames(params?.platformId)).then(g => setGames({ filtered: g, cached: g }))
+		trackPromise(getGames(params?.platformId)).then(g => setGames({ filtered: favorites, cached: g }))
 	}, [params?.platformId])
 
 	useEffect(() => {
@@ -109,24 +108,29 @@ export default function GameSelection() {
 					<PlatformHeader platformUuid={params?.platformId} playMusic={playMusic} />
 					<div className="d-flex flex-column flex-wrap overflow-hidden p-5">
 						<div className="w-50 h-100 overflow-hidden d-flex flex-column">
-							<div className="overflow-auto w-100 h-100 beauty-scroll px-1">
+							<div className="w-100 h-100 px-1 d-flex flex-column">
 								<GameFilter
 									setX={x => setPositions({ ...positions, x })}
 									filterInfos={filterInfos}
 									x={positions.x}
 									games={games}
 									setGames={setGames}
+									favorites={favorites}
 								/>
-								{games.filtered.length == 0 && <NoGameFound />}
-								<GameList
-									games={games.filtered}
-									currentItem={positions.y}
-									setCurrentItem={y => setPositions({ ...positions, y })}
-								/>
+								<div className="overflow-auto h-100 beauty-scroll">
+									{games.filtered.length == 0 && <NoGameFound />}
+									<GameList
+										games={games.filtered}
+										currentItem={positions.y}
+										setCurrentItem={y => setPositions({ ...positions, y })}
+									/>
+								</div>
 							</div>
 						</div>
 						<div className="overflow-auto h-100 w-50 beauty-scroll">
-							{!!games.filtered[positions.y] && <GameDescription game={games.filtered[positions.y]} />}
+							{!!games.filtered[positions.y] && (
+								<GameDescription game={games.filtered[positions.y]} favorites={favorites} />
+							)}
 						</div>
 					</div>
 				</div>

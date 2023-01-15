@@ -4,8 +4,9 @@ import PropTypes from 'prop-types'
 import { gamePropTypes } from '../../proptypes/gamePropTypes'
 
 import { BsFillStarFill, BsFillPeopleFill } from 'react-icons/bs'
+import { nanoid } from 'nanoid'
 
-export default function GameDescription({ game }) {
+export default function GameDescription({ game, favorites }) {
 	return (
 		<div>
 			<p className="text-center fw-bold fs-4">{game.name}</p>
@@ -15,7 +16,7 @@ export default function GameDescription({ game }) {
 				<span className="mx-4 align-middle my-auto">
 					Joué <b>{game.nb_played}</b> fois
 				</span>
-				{game.favorite && (
+				{favorites.map(({ game_id }) => game_id).includes(game.game_id) && (
 					<div className="mx-auto w-fit-content d-inline">
 						<BsFillStarFill size="1.2em" color="yellow" />
 						<span className="text-center mx-2 fs-4 fw-bold align-middle">Favori</span>
@@ -30,10 +31,10 @@ export default function GameDescription({ game }) {
 				</div>
 			</div>
 			<div className="mx-auto d-flex justify-around w-fit-content max-w-100 flex-wrap my-2">
-				{game.genres.map((genre, index) => {
+				{game.genres.map(genre => {
 					return (
 						<span
-							key={`game_genre_${index}`}
+							key={`game_genre_${genre}${nanoid(12)}`}
 							className="d-pill fw-bold mx-1 my-1"
 							style={{
 								background: genre.background,
@@ -49,6 +50,11 @@ export default function GameDescription({ game }) {
 	)
 }
 
+GameDescription.defaultProps = {
+	favorites: [],
+}
+
 GameDescription.propTypes = {
 	game: PropTypes.shape(gamePropTypes),
+	favorites: PropTypes.array,
 }

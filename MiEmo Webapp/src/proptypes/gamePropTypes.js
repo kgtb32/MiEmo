@@ -19,7 +19,7 @@ export const gamePropTypes = {
 	name: PropTypes.string.isRequired,
 	year_created: PropTypes.number.isRequired,
 	nb_played: PropTypes.number.isRequired,
-	favorite: PropTypes.bool.isRequired,
+	favorite: PropTypes.bool,
 	cover: PropTypes.string,
 	platform: PropTypes.shape(PlatformProps),
 	core: PropTypes.shape(corePropTypes),
