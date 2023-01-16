@@ -1,9 +1,9 @@
 import componentFactory from '../layout/ComponentFactory'
 import jokes from './joke.json'
-import spoken from '/node_modules/spoken/build/spoken.js'
 
 export const allComponent = Object.keys(componentFactory).map(key => componentFactory[key])
 export const allComponentKey = Object.keys(componentFactory)
+const synth = window.speechSynthesis
 
 export const command = (value, widgetEventManager, setIsClick, showInfo) => {
 	value = normalize(value)
@@ -71,7 +71,18 @@ export const action = (index, widgetEventManager, setIsClick, showInfo) => {
 
 export const actionJoke = async setIsClick => {
 	const joke = jokes[Math.floor(Math.random() * jokes.length)]
-	spoken.say(joke.joke + 'et bien ' + joke.answer, 'Microsoft Paul - French (France)')
+	if (synth.speaking) {
+		console.log('speechSynthesis.speaking')
+		return
+	}
+
+	const utterThis = new SpeechSynthesisUtterance(joke.joke + 'réponse ' + joke.answer)
+	utterThis.volume = 1.5
+	utterThis.pitch = 1
+	utterThis.rate = 1
+	utterThis.lang = 'fr-FR'
+	utterThis.voice = window.speechSynthesis.getVoices()[2]
+	synth.speak(utterThis)
 	setIsClick(false)
 }
 
