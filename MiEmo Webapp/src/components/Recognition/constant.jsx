@@ -1,5 +1,5 @@
 import componentFactory from '../layout/ComponentFactory'
-import jokes from './joke.json'
+import api from '../../api'
 
 export const allComponent = Object.keys(componentFactory).map(key => componentFactory[key])
 export const allComponentKey = Object.keys(componentFactory)
@@ -70,7 +70,11 @@ export const action = (index, widgetEventManager, setIsClick, showInfo) => {
 }
 
 export const actionJoke = async setIsClick => {
-	const joke = jokes[Math.floor(Math.random() * jokes.length)]
+	// const joke = api.joke.get()
+	const fetchAPI = async () => api.joke.get()
+	const joke = await fetchAPI().then(res => {
+		return res
+	})
 	if (synth.speaking) {
 		console.log('speechSynthesis.speaking')
 		return

@@ -81,6 +81,11 @@ export default {
 			return fetchAPI(`${settings.youtube.search.url}?name=${name}`, 'GET')
 		},
 	},
+	joke: {
+		get: () => {
+			return fetchAPI(`${settings.joke.get.url}`, 'GET')
+		},
+	},
 	wifi: {
 		list: () => fetchAPI(settings.wifi.list.url, 'POST', {}, 'application/json'),
 		connect: (ssid, password) =>

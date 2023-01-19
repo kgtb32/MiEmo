@@ -14,6 +14,7 @@ import GameGet from './game/get.json'
 import Youtube from './youtube/youtube.json'
 import AvailableHologramList from './holo/AvailableHolograms.json'
 import gifSearchList from './gif/search.json'
+import Joke from './joke/jokes.json'
 
 export default {
 	weather: {
@@ -39,6 +40,11 @@ export default {
 	youtube: {
 		search: () => {
 			return Promise.resolve(Youtube)
+		},
+	},
+	joke: {
+		get: () => {
+			return Promise.resolve(Joke)
 		},
 	},
 	wifi: {

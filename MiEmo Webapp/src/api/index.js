@@ -33,6 +33,11 @@ const apis = {
 			return api().youtube.search(name)
 		},
 	},
+	joke: {
+		get: () => {
+			return api().joke.get()
+		},
+	},
 	wifi: {
 		list: () => api().wifi.list(),
 		connect: (ssid, password) => api().wifi.connect(ssid, password),
