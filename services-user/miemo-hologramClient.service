@@ -1,0 +1,12 @@
+[Unit]
+Description=Miemo hologram client service
+
+[Service]
+Type=idle
+ExecStart=runMiemoHologramClient
+ExecStop=/bin/pkill -TERM firefox
+ExecRestart=/bin/pkill -TERM firefox
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

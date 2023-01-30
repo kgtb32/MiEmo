@@ -1,0 +1,10 @@
+[Unit]
+Description=Miemo holo server
+
+[Service]
+Type=simple
+ExecStart=runMiemoHolo
+Restart=always
+
+[Install]
+WantedBy=default.target

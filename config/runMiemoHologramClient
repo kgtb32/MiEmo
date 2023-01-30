@@ -1,0 +1,9 @@
+#!/bin/bash
+QUERY=$(cat /tmp/hologram.cfg)
+BASE_URL="http://localhost:8006/"
+if [ -z $QUERY ]
+then
+    QUERY="base"
+fi
+FINAL_URL="${BASE_URL}${QUERY}"
+flatpak run org.mozilla.firefox --kiosk $FINAL_URL
