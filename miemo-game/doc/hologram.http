@@ -1,0 +1,17 @@
+POST http://localhost:8000/api/holo/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "holo_url": "https://i.giphy.com/media/N3NGMfgLLviTymncX1/giphy.webp"
+}
+
+####
+
+GET http://localhost:8000/api/holo/ HTTP/1.1
+
+
+####
+GET http://localhost:8000/api/holo/dfc7e0e2-d79f-425b-ad1a-9420b07c6040/ HTTP/1.1
+
+####
+DELETE http://localhost:8000/api/holo/dfc7e0e2-d79f-425b-ad1a-9420b07c6040/ HTTP/1.1

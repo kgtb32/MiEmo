@@ -21,13 +21,14 @@ from pathlib import Path
 from django.conf.urls.static import static
 
 from gameservice.views import PlatformViewSet, GameViewSet, PlayGameViewSet
-from hologram.views import HologramViewSet
+from hologram.views import HologramViewSet, HologramSettingsViewSet
 
 router = routers.DefaultRouter()
 router.register(r'platform', PlatformViewSet)
 router.register(r'game', GameViewSet)
 router.register(r'play', PlayGameViewSet)
 router.register(r'holo', HologramViewSet)
+router.register(r'holosettings', HologramSettingsViewSet, basename='holosettings')
 
 doc_root = Path(__file__).resolve().parent.parent
 print(doc_root / 'static')
