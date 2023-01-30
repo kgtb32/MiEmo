@@ -32,6 +32,8 @@ dialog --backtitle "miemo (ARCADE MODE) V2.0" --infobox "Please Wait" 3 34&
 deactivate
 cd /tmp
 
+mkdir -p /home/miemo/miemo-game/static/static/holo
+
 clear
 dialog --backtitle "miemo (ARCADE MODE) V2.0" --infobox "MIEMO-GAME IS INSTALLED" 3 34
 sleep 2

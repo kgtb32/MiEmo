@@ -25,11 +25,16 @@ dialog --backtitle "miemo (ARCADE MODE) V2.0" --title "INSTALLING MIEMO" --gauge
 
 nvm use v16.17.0 &>> /tmp/miemo_post_install.log
 
-npm install --global yarn &>> /tmp/miemo_post_install.log
 
 clear
 dialog --backtitle "miemo (ARCADE MODE) V2.0" --title "INSTALLING MIEMO" --gauge "INSTALLING YARN" 10 60 90 &
 
+npm install --global yarn &>> /tmp/miemo_post_install.log
+
+clear
+dialog --backtitle "miemo (ARCADE MODE) V2.0" --title "INSTALLING MIEMO" --gauge "INSTALLING http-server" 10 60 95 &
+
+npm install --global http-server &>> /tmp/miemo_post_install.log
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
