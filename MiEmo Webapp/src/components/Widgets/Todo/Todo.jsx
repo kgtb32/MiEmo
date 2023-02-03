@@ -81,7 +81,7 @@ const Todo = () => {
 	}
 
 	return (
-		<DivContainer className="datatable-editing-demo overflow-auto h-100">
+		<DivContainer className="datatable-editing-demo overflow-auto h-100" data-testid="test-todo">
 			<Toast ref={toast} />
 
 			<div className="card font-bold">
@@ -97,6 +97,7 @@ const Todo = () => {
 						/>
 					</div>
 					<ButtonCustom
+						data-testid="test-buttonadd"
 						icon="pi pi-plus"
 						aria-label="Bookmark"
 						onClick={() => addTask()}
