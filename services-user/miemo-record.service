@@ -1,0 +1,10 @@
+[Unit]
+Description=Miemo record service
+
+[Service]
+Type=simple
+ExecStart=runMiemoRecord
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

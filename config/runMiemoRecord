@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /home/miemo/miemo-record/
+. venv/bin/activate
+python3 miemo-record.py

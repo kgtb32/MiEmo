@@ -14,7 +14,8 @@ result=$(dialog --backtitle "miemo (ARCADE MODE) V2.0" --output-fd 1 --checklist
 5 'ENABLE USER SERVICES' off \
 6 'DOWNLOAD STATIC RESSOURCES' off \
 7 'DOWNLOAD RETROARCH CORES' off \
-8 'DL/INST MIEMO-GAME STATIC' off 
+8 'DL/INST MIEMO-GAME STATIC' off \
+9 'DEPLOY MIEMO-RECORD' off 
 )
 
 choices_selected=($result);
@@ -46,6 +47,9 @@ do
         ;;
     8)
         bash post-install/08_down_inst_miemo_game_static.sh
+        ;;
+    9)
+        bash post-install/09_miemo_record.sh
         ;;
     *)
         echo 'unknown'
