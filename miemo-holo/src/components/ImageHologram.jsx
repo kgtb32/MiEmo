@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Styled from "styled-components";
 
 export default function ImageHologram({ image, positions, size }) {
-  console.log(positions);
   return (
     <JoliSvg
       src={image}
@@ -34,8 +33,8 @@ const JoliSvg = Styled.img.attrs((props) => ({
 ImageHologram.propTypes = {
   image: PropTypes.string.isRequired,
   positions: PropTypes.shape({
-    left: PropTypes.string.isRequired,
-    top: PropTypes.string.isRequired,
+    left: PropTypes.number.isRequired,
+    top: PropTypes.number.isRequired,
   }),
   size: PropTypes.shape({
     width: PropTypes.number.isRequired,
