@@ -10,13 +10,19 @@ dialog --backtitle "miemo (ARCADE MODE) V2.0" --infobox "PROCESSING ..." 3 60 &
 cp /tmp/miemo/config/runMiemoWebapp /usr/bin/
 cp /tmp/miemo/config/runMiemoWebClient /usr/bin/
 cp /tmp/miemo/config/runMiemoStatic /usr/bin/
-cp /tmp/miemo/config/runMiemoGame /usr/bin
+cp /tmp/miemo/config/runMiemoGame /usr/bin/
+cp /tmp/miemo/config/runMiemoHolo /usr/bin/
+cp /tmp/miemo/config/runMiemoHologramClient /usr/bin/
+cp /tmp/miemo/config/hologramChanged /usr/bin/
 cp /tmp/miemo/config/runMiemoRecord /usr/bin
 
 chmod a+x /usr/bin/runMiemoWebapp
 chmod a+x /usr/bin/runMiemoWebClient
 chmod a+x /usr/bin/runMiemoStatic
 chmod a+x /usr/bin/runMiemoGame
+chmod a+x /usr/bin/runMiemoHolo
+chmod a+x /usr/bin/runMiemoHologramClient
+chmod a+x /usr/bin/hologramChanged
 chmod a+x /usr/bin/runMiemoRecord
 
 cp -r /tmp/miemo/services-admin/* /etc/systemd/system/
@@ -30,6 +36,7 @@ rm -rf /home/miemo/.config/openbox/
 mkdir -p /home/miemo/.config/openbox/
 cp /tmp/miemo/config/autostart /home/miemo/.config/openbox/autostart
 chown -R miemo:miemo /home/miemo/.config/openbox/autostart
+chown -R miemo:miemo /home/miemo/.config/
 
 
 clear

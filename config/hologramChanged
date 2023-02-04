@@ -1,0 +1,8 @@
+#!/bin/bash
+mode="base"
+if [ $# -eq 1 ]
+  then
+    mode=$1
+fi
+echo $mode > /tmp/hologram.cfg
+systemctl --user restart miemo-hologramClient

@@ -7,6 +7,7 @@ from rest_framework.response import Response
 
 from gameservice.models import Platform, Game
 from gameservice.serializers import PlatformSerializer, GameSerializer
+from hologram.hologram_service import game_launch, game_close
 
 # Create your views here.
 class PlatformViewSet(viewsets.ModelViewSet):
@@ -61,8 +62,10 @@ class PlayGameViewSet(viewsets.ModelViewSet):
         game = Game.objects.filter(game_id=pk).first()
         if(game):
             print(game.game.path, game.core.core_path)
+            game_launch()
             res = subprocess.run(["flatpak", "run", "org.libretro.RetroArch", "-L", game.core.core_path, game.game.path, "-f", "-v"])
             print(res.stderr)
+            game_close()
             return Response(status=200, data=GameSerializer(game).data)
         else:
             return Response(status=404)
