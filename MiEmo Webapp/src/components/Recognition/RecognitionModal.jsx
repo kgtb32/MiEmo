@@ -69,7 +69,7 @@ function RecognitionModal({ isClick, setIsClick, showInfo }) {
 				centered
 				className="no-drag"
 			>
-				<DivContainer isError={isError}>
+				<DivContainer iserror={isError.toString()}>
 					<p>{!isError ? 'MIEmo vous écoutes' : 'Oops! veuillez activer votre micro'}</p>
 					{!isError ? (
 						<div className="loader">
@@ -122,7 +122,7 @@ const DivContainer = styled(Modal.Body)`
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	background: ${props => (!props.isError ? 'linear-gradient(45deg, #0006ff, #5eead4)' : 'red')};
+	background: ${props => (props.iserror === 'false' ? 'linear-gradient(45deg, #0006ff, #5eead4)' : 'red')};
 	border-radius: 1.5em !important;
 
 	.loader {

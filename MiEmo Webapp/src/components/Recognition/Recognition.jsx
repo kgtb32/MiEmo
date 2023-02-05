@@ -19,7 +19,7 @@ const Recognition = () => {
 				onClick={() => setIsClick(prev => !prev)}
 				icon={isClick ? 'pi pi-stop-circle' : 'pi pi-microphone'}
 				color={'white'}
-				isClick={isClick}
+				isclick={isClick.toString()}
 			/>
 			{isClick && <RecognitionModal isClick={isClick} setIsClick={setIsClick} showInfo={showInfo} />}
 		</div>
@@ -27,9 +27,9 @@ const Recognition = () => {
 }
 
 const ButtonRecognitionCustom = styled(ButtonOutlinedCustom)`
-	color: ${props => props.isClick && 'red !important'};
-	border: ${props => props.isClick && '2px solid red !important;'};
-	background-color: ${props => props.isClick && 'white !important;'};
+	color: ${props => props.isclick === 'true' && 'red !important'};
+	border: ${props => props.isclick === 'true' && '2px solid red !important;'};
+	background-color: ${props => props.isclick === 'true' && 'white !important;'};
 `
 
 export default React.memo(Recognition)
