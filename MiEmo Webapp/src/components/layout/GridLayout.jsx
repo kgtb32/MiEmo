@@ -78,9 +78,13 @@ function GridLayout() {
 	useEffect(() => {
 		widgetEventManager.on('itemAdd', componentId => {
 			addItemToLayout(componentId, nanoid(1024))
+			widgetEventManager.removeAllListeners('itemAdd')
+			widgetEventManager.removeAllListeners('itemDel')
 		})
 		widgetEventManager.on('itemDel', itemId => {
 			delItemFromLayout(itemId)
+			widgetEventManager.removeAllListeners('itemAdd')
+			widgetEventManager.removeAllListeners('itemDel')
 		})
 	}, [widgetEventManager, layout])
 
