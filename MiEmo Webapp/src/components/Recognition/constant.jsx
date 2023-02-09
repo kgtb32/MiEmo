@@ -5,41 +5,41 @@ export const allComponent = Object.keys(componentFactory).map(key => componentFa
 export const allComponentKey = Object.keys(componentFactory)
 const synth = window.speechSynthesis
 
-export const command = (value, widgetEventManager, setIsClick, showInfo) => {
+export const command = (value, widgetEventManager, setIsClick) => {
 	value = normalize(value)
 	switch (true) {
 		case isMatch(detect[0].meteo, value):
-			action(0, widgetEventManager, setIsClick, showInfo)
+			action(0, widgetEventManager, setIsClick)
 			break
 		case isMatch(detect[1].clock, value):
-			action(1, widgetEventManager, setIsClick, showInfo)
+			action(1, widgetEventManager, setIsClick)
 			break
 		case isMatch(detect[2].flipClock, value):
-			action(2, widgetEventManager, setIsClick, showInfo)
+			action(2, widgetEventManager, setIsClick)
 			break
 		case isMatch(detect[3].youtube, value):
-			action(3, widgetEventManager, setIsClick, showInfo)
+			action(3, widgetEventManager, setIsClick)
 			break
 		case isMatch(detect[4].calendar, value):
-			action(4, widgetEventManager, setIsClick, showInfo)
+			action(4, widgetEventManager, setIsClick)
 			break
 		case isMatch(detect[5].emotion, value):
-			action(5, widgetEventManager, setIsClick, showInfo)
+			action(5, widgetEventManager, setIsClick)
 			break
 		case isMatch(detect[6].activity, value):
-			action(6, widgetEventManager, setIsClick, showInfo)
+			action(6, widgetEventManager, setIsClick)
 			break
 		case isMatch(detect[7].radio, value):
-			action(7, widgetEventManager, setIsClick, showInfo)
+			action(7, widgetEventManager, setIsClick)
 			break
 		case isMatch(detect[8].todo, value):
-			action(8, widgetEventManager, setIsClick, showInfo)
+			action(8, widgetEventManager, setIsClick)
 			break
 		case isMatch(detect[9].drawing, value):
-			action(9, widgetEventManager, setIsClick, showInfo)
+			action(9, widgetEventManager, setIsClick)
 			break
 		case isMatch(detect[10].whitenoise, value):
-			action(10, widgetEventManager, setIsClick, showInfo)
+			action(10, widgetEventManager, setIsClick)
 			break
 		case isMatch(detect[11].joke, value):
 			actionJoke(setIsClick)
@@ -63,10 +63,9 @@ export const normalize = value => {
 		.toLowerCase()
 }
 
-export const action = (index, widgetEventManager, setIsClick, showInfo) => {
+export const action = (index, widgetEventManager, setIsClick) => {
 	widgetEventManager.emit('itemAdd', allComponentKey[index])
 	setIsClick(false)
-	showInfo('Votre Wideget ' + allComponent[index].name + ' est ajouté')
 }
 
 export const actionJoke = async setIsClick => {

@@ -7,7 +7,7 @@ import { Image } from 'primereact/image'
 import { command } from './constant'
 import useStoreContext from '../../context/StoreContext'
 
-function RecognitionModal({ isClick, setIsClick, showInfo }) {
+function RecognitionModal({ isClick, setIsClick }) {
 	const { widgetEventManager } = useStoreContext()
 	const [isError, setIsError] = useState(false)
 	const getConf = recognition => {
@@ -15,7 +15,7 @@ function RecognitionModal({ isClick, setIsClick, showInfo }) {
 		recognition.onend = () => isClick && startSpeech(recognition)
 		recognition.onresult = result => {
 			const value = result.results[result.results.length - 1][0]?.transcript
-			command(value, widgetEventManager, setIsClick, showInfo)
+			command(value, widgetEventManager, setIsClick)
 			console.log(value)
 		}
 		return recognition
@@ -93,13 +93,11 @@ function RecognitionModal({ isClick, setIsClick, showInfo }) {
 RecognitionModal.propTypes = {
 	setIsClick: PropTypes.func.isRequired,
 	isClick: PropTypes.bool.isRequired,
-	showInfo: PropTypes.func.isRequired,
 }
 
 RecognitionModal.defaultProps = {
 	setIsClick: () => '',
 	isClick: () => false,
-	showInfo: () => '',
 }
 
 const ErrorImage = styled(Image)`
