@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Modal from 'react-bootstrap/Modal'
 import microphone from '/public/img/microphonedisabled.svg'
 import { Image } from 'primereact/image'
-import { command } from './constant'
+import { command } from './command/command'
 import useStoreContext from '../../context/StoreContext'
 
 function RecognitionModal({ isClick, setIsClick }) {
