@@ -75,27 +75,33 @@ function GridLayout() {
 		[layout],
 	)
 
+	const onAdd = componentId => {
+		if (!layout.components.find(e => e.componentId === componentId)) {
+			addItemToLayout(componentId, nanoid(1024))
+			showInfo('Votre Wideget ' + componentId + ' est ajouté')
+			widgetEventManager.off('itemAdd', onAdd)
+		} else {
+			showAlert('le widget ' + componentId + ' est déjà présent')
+		}
+	}
+
+	const onDelete = itemId => {
+		if (layout.components.find(e => e.gridId === itemId)) {
+			delItemFromLayout(itemId)
+			showInfo('Votre Wideget est supprimé')
+			widgetEventManager.off('itemDel', onDelete)
+		} else {
+			showAlert('Impossible de supprimer le widget')
+		}
+	}
+
 	useEffect(() => {
-		widgetEventManager.on('itemAdd', componentId => {
-			if (!layout.components.find(e => e.componentId === componentId)) {
-				addItemToLayout(componentId, nanoid(1024))
-				showInfo('Votre Wideget ' + componentId + ' est ajouté')
-				widgetEventManager.removeAllListeners('itemAdd')
-				widgetEventManager.removeAllListeners('itemDel')
-			} else {
-				showAlert('le widget ' + componentId + ' est déjà présent')
-			}
-		})
-		widgetEventManager.on('itemDel', itemId => {
-			if (layout.components.find(e => e.gridId === itemId)) {
-				delItemFromLayout(itemId)
-				showInfo('Votre Wideget est supprimé')
-				widgetEventManager.removeAllListeners('itemAdd')
-				widgetEventManager.removeAllListeners('itemDel')
-			} else {
-				showAlert('Impossible de supprimer le widget')
-			}
-		})
+		widgetEventManager.on('itemAdd', onAdd)
+		widgetEventManager.on('itemDel', onDelete)
+		return () => {
+			widgetEventManager.off('itemAdd', onAdd)
+			widgetEventManager.off('itemDel', onDelete)
+		}
 	}, [widgetEventManager, layout])
 
 	useEffect(() => {
