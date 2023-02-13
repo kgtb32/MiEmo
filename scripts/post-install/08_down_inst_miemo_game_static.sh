@@ -22,6 +22,7 @@ dialog --backtitle "miemo (ARCADE MODE) V2.0" --title "INSTALLING MIEMO" --gauge
 
 cd /home/miemo/miemo-game
 tar -zxvf /tmp/miemo-game-static/$MIEMO_GAME_NAME &>> /tmp/miemo_post_install.log
+mkdir -p /home/miemo/miemo-game/static/static/holo/
 
 rm -rf /tmp/miemo-game-static/
 clear
