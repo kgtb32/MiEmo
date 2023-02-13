@@ -28,12 +28,22 @@ def save_settings(data):
     save_json(sanitize_holo_settings(data))
     return True
 
+def set_holo_mode(mode: str):
+    with open("/tmp/holo_mode", "w") as outfile:
+        outfile.write(mode)
+
 def game_launch():
     settings = get_settings()
     if(settings["changeOnGameStart"]):
-        subprocess.run(["hologramChanged", "record"])
+        set_holo_mode('video')
 
 def game_close():
     settings = get_settings()
     if(settings["changeOnGameStart"]):
-        subprocess.run(["hologramChanged"])
+        set_holo_mode('base')
+        
+def holo_mode_get():
+    f = open('/tmp/holo_mode', 'r')
+    mode = f.read()
+    f.close()
+    return mode

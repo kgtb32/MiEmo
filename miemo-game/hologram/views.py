@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from hologram.models import Hologram
 from hologram.serializers import HologramSerializer
 
-from hologram.hologram_service import get_settings, save_settings
+from hologram.hologram_service import get_settings, save_settings, holo_mode_get
 
 # Create your views here.
 class HologramViewSet(viewsets.ModelViewSet):
@@ -21,3 +21,7 @@ class HologramSettingsViewSet(viewsets.ViewSet):
             return Response("ok")
         else:
             return Response("error", status=412)
+        
+class HologramModeViewSet(viewsets.ModelViewSet):
+    def list(self, request, *args, **kwargs):
+        return Response(data=holo_mode_get())
