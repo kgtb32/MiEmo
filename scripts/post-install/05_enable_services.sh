@@ -11,6 +11,7 @@ systemctl --user enable miemo-static
 systemctl --user enable miemo-game
 systemctl --user enable miemo-holo
 systemctl --user enable miemo-hologramClient
+systemctl --user enable miemo-record
 
 clear
 dialog --backtitle "miemo (ARCADE MODE) V2.0" --infobox "Services enabled" 3 34 &
