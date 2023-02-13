@@ -1,4 +1,7 @@
 #!/bin/bash
 cd /home/miemo/miemo-game/
+rm /tmp/holo_mode
+touch /tmp/holo_mode
+echo 'base' > /tmp/holo_mode
 . venv/bin/activate
 python3 manage.py runserver 8005
