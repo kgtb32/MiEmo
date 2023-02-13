@@ -1,9 +1,13 @@
 #!/bin/bash
-QUERY=$(cat /tmp/hologram.cfg)
-BASE_URL="http://localhost:8006/"
-if [ -z $QUERY ]
-then
-    QUERY="base"
-fi
-FINAL_URL="${BASE_URL}${QUERY}"
-flatpak run org.mozilla.firefox --kiosk $FINAL_URL
+flatpak run org.mozilla.firefox --kiosk http://localhost:8006/ &
+PID=$!
+echo $PID
+END=50
+x=$END
+while [ $x -gt 0 ]; 
+do 
+  xdotool search "Mozilla Firefox" windowmove %@ 800 0
+  x=$(($x-1))
+  sleep 1
+done
+wait $PID
