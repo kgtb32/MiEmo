@@ -1,1 +1,8 @@
 systemctl --user restart miemo-game
+systmectl --user restart miemo-hologramClient
+systemctl --user restart miemo-record
+xinput map-to-output 19 "HDMI-3"
+xset dpms force standby 
+xset s off -dpms 
+xset -dpms 
+xset s off
