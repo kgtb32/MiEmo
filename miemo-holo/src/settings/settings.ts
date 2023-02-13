@@ -62,4 +62,5 @@ export default {
   ...hologramSettings,
   gameEndpoint: "http://localhost:8005",
   recordEndpoint: "http://localhost:8007",
+  pullupDelay: 10 * 1000, //10 sec
 };
