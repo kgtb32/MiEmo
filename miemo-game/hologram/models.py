@@ -26,5 +26,8 @@ class Hologram(models.Model):
             ext = os.path.splitext(path)[1]
             relative_filename = "/static/static/holo/{}{}".format(uuid.uuid4(),ext)
             self.holo_url = relative_filename
+            self.holo_uuid = uuid.uuid4()
             self.save_file("{}{}".format(os.getcwd(),relative_filename),r.raw)
             super().save(*args, **kwargs)
+        else:
+            return requests.Response(status_code=412)
