@@ -6,7 +6,7 @@ Type=idle
 ExecStart=runMiemoHologramClient
 ExecStop=/bin/pkill -TERM firefox
 ExecRestart=/bin/pkill -TERM firefox
-Restart=on-failure
+Restart=always
 
 [Install]
 WantedBy=default.target

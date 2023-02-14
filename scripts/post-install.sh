@@ -15,8 +15,8 @@ result=$(dialog --backtitle "miemo (ARCADE MODE) V2.0" --output-fd 1 --checklist
 6 'DOWNLOAD STATIC RESSOURCES' off \
 7 'DOWNLOAD RETROARCH CORES' off \
 8 'DL/INST MIEMO-GAME STATIC' off \
-9 'DEPLOY MIEMO-RECORD' off 
-10 'DEPLOY MIEMO-HOLO' off
+9 'DEPLOY MIEMO-RECORD' off \
+10 'DEPLOY MIEMO-HOLO' off \
 )
 
 choices_selected=($result);
@@ -53,7 +53,7 @@ do
         bash post-install/09_miemo_record.sh
         ;;
     10)
-        bash post-install/09_deploy_holo.sh
+        bash post-install/10_deploy_holo.sh
         ;;
     *)
         echo 'unknown'

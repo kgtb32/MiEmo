@@ -27,5 +27,7 @@ export default {
       fetchAPI(`${settings.gameEndpoint}/api/holosettings/`, "GET"),
     get: (holo_uuid: string): Promise<Hologram> =>
       fetchAPI(`${settings.gameEndpoint}/api/holo/${holo_uuid}/`, "GET"),
+    mode: (): Promise<string> =>
+      fetchAPI(`${settings.gameEndpoint}/api/holomode/`, "GET"),
   },
 };

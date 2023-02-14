@@ -3,8 +3,8 @@ import { HoloSettings } from "../models/HoloSettings";
 const sizes: { height: number; width: number; x: number; y: number } = {
   height: 1000,
   width: 1000,
-  x: 0,
-  y: 0,
+  x: 350,
+  y: 25,
 };
 
 const hologramSettings: HoloSettings = {
@@ -62,4 +62,5 @@ export default {
   ...hologramSettings,
   gameEndpoint: "http://localhost:8005",
   recordEndpoint: "http://localhost:8007",
+  pullupDelay: 10 * 1000, //10 sec
 };

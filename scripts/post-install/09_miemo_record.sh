@@ -7,7 +7,7 @@ clear
 dialog --backtitle "miemo (ARCADE MODE) V2.0" --infobox "Cleaning up old install ..." 3 0 &
 rm -rf /home/miemo/miemo-record
 mkdir -p /home/miemo/miemo-record
-cp -r /tmp/miemo/miemo-record /home/miemo/miemo-record &>> /tmp/miemo_post_install.log
+cp -r /tmp/miemo/miemo-record/* /home/miemo/miemo-record &>> /tmp/miemo_post_install.log
 cd /home/miemo/miemo-record 
 dialog --backtitle "miemo (ARCADE MODE) V2.0" --infobox "Installing pip deps ..." 3 50 &
 python3 -m venv venv &>> /tmp/miemo_post_install.log

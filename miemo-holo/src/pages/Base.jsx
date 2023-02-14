@@ -5,27 +5,22 @@ import Hologram from "../components/Hologram";
 import api from "../api/";
 import settings from "../settings/settings";
 
-export default function Base() {
+export default function Base({ hologramUuid }) {
   const [hologramUrl, setHologramUrl] = useState("");
 
   const fetchHologram = () => {
-    const fetchHologramSetting = () => api.hologram.settings();
     const fetchHologram = (holo_uuid) => api.hologram.get(holo_uuid);
 
-    fetchHologramSetting()
-      .then((holo_settings) => {
-        fetchHologram(holo_settings.selectedHologram)
-          .then((hologram) => {
-            setHologramUrl(`${settings.gameEndpoint}${hologram.holo_url}`);
-          })
-          .catch();
+    fetchHologram(hologramUuid)
+      .then((hologram) => {
+        setHologramUrl(`${settings.gameEndpoint}${hologram.holo_url}`);
       })
       .catch();
   };
 
   useEffect(() => {
     fetchHologram();
-  }, []);
+  }, [hologramUuid]);
 
   return <Hologram url={hologramUrl} />;
 }
