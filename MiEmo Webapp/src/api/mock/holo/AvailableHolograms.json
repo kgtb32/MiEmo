@@ -1,0 +1,20 @@
+[
+	{
+		"holo_id": "2afac20dde9d31b21fac85de596267aa5e15cac92ad33c00ccb985a6ae05d803",
+		"src": "https://media.tenor.com/c6Bx09haxR0AAAAC/super-mario-twerk.gif",
+		"name": "Super Mario Twerk",
+		"choosen": false
+	},
+	{
+		"holo_id": "3664408219208bca41f5f14104ff3a9113711a2db873837259dc2eeb29cda9a0",
+		"src": "https://media.tenor.com/Jonv0MOCXW8AAAAC/its-a-me-mario.gif",
+		"name": "It's a me Mario",
+		"choosen": true
+	},
+	{
+		"holo_id": "d4c6a9a501ae3ed749b4fcba2f352821bd0ab9e02c6c939def2390dbdc3fad11",
+		"src": "https://media.tenor.com/Tamw_vsuR3oAAAAC/mario-dance-moves.gif",
+		"name": "Mario Dançant",
+		"choosen": false
+	}
+]

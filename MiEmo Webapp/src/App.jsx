@@ -14,6 +14,7 @@ import AudioMixer from './pages/Settings/AudioMixer'
 import AudioTest from './pages/Settings/AudioTest'
 import NetworkCheck from './pages/Settings/NetworkCheck'
 import CalendarConfig from './pages/Settings/CalendarConfig'
+import Hologram from './pages/Settings/Hologram'
 import GameLauncher from './pages/GameLauncher'
 
 import Page404 from './pages/Page404'
@@ -36,6 +37,7 @@ function App() {
 						<Route path="/settings/audioMixer" element={<AudioMixer />} />
 						<Route path="/settings/audioTest" element={<AudioTest />} />
 						<Route path="/settings/networkCheck" element={<NetworkCheck />} />
+						<Route path="/settings/hologram" element={<Hologram />} />
 						<Route path="/*" element={<Page404 />} />
 					</Routes>
 				</Router>

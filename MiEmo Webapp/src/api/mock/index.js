@@ -12,6 +12,8 @@ import GameList from './game/list.json'
 import PlatformList from './platform/list.json'
 import GameGet from './game/get.json'
 import Youtube from './youtube/youtube.json'
+import AvailableHologramList from './holo/AvailableHolograms.json'
+import gifSearchList from './gif/search.json'
 
 export default {
 	weather: {
@@ -68,5 +70,11 @@ export default {
 		getPlatform: () => Promise.resolve(PlatformList[0]),
 		get: () => Promise.resolve(GameGet),
 		play: () => Promise.resolve(),
+	},
+	hologram: {
+		availableHolograms: () => Promise.resolve(AvailableHologramList),
+	},
+	gif: {
+		search: () => Promise.resolve(gifSearchList),
 	},
 }

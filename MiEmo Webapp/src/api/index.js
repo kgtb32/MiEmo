@@ -63,6 +63,17 @@ const apis = {
 		get: game_uuid => api().game.get(game_uuid),
 		play: game_uuid => api().game.play(game_uuid),
 	},
+	hologram: {
+		availableHolograms: () => api().hologram.availableHolograms(),
+		addHologram: src => api().hologram.addHologram(src),
+		deleteHologram: uuid => api().hologram.deleteHologram(uuid),
+		setHologramSetttings: (selectedHologram, changeOnGameStart) =>
+			api().hologram.setHologramSetttings(selectedHologram, changeOnGameStart),
+		hologramSettings: () => api().hologram.hologramSettings(),
+	},
+	gif: {
+		search: q => api().gif.search(q),
+	},
 }
 
 export default apis

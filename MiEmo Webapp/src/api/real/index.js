@@ -14,7 +14,7 @@ const fetchAPI = (url, method, data, contentType) => {
 		},
 		body: JSON.stringify(data),
 	})
-		.then(response => response.json())
+		.then(response => (response.ok ? Promise.resolve(response.json()) : Promise.reject(response)))
 		.then(res => Promise.resolve(res))
 		.catch(err => Promise.reject(err))
 }
@@ -113,5 +113,16 @@ export default {
 		getPlatform: platform_uuid => fetchAPI(`${settings.game.platformList.url}${platform_uuid}/`, 'GET'),
 		get: game_uuid => fetchAPI(`${settings.game.list.url}/${game_uuid}/`, 'GET'),
 		play: game_uuid => fetchAPI(`${settings.game.play.url}/${game_uuid}/`, 'GET'),
+	},
+	gif: {
+		search: q => fetchAPI(`${settings.apiFullEndpoints.gifSearch()}?q=${q}&lng=fr&provider=tenor`),
+	},
+	hologram: {
+		availableHolograms: () => fetchAPI(settings.apiFullEndpoints.holo(), 'GET'),
+		addHologram: holo_url => fetchAPI(settings.apiFullEndpoints.holo(), 'POST', { holo_url }),
+		deleteHologram: holo_uuid => fetchAPI(`${settings.apiFullEndpoints.holo()}${holo_uuid}/`, 'DELETE'),
+		hologramSettings: () => fetchAPI(settings.apiFullEndpoints.holosettings(), 'GET'),
+		setHologramSetttings: (selectedHologram, changeOnGameStart) =>
+			fetchAPI(settings.apiFullEndpoints.holosettings(), 'POST', { selectedHologram, changeOnGameStart }),
 	},
 }

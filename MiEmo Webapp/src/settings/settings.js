@@ -1,3 +1,7 @@
+const endPoint = (baseUrl, url) => {
+	return `${baseUrl}/${url}`
+}
+
 let settings = {
 	useMock: true,
 	isProd: false,
@@ -7,6 +11,19 @@ let settings = {
 		button_a: 'button_2',
 		button_b: 'button_3',
 		button_select: 'button_8',
+	},
+	endPoints: {
+		miemoEmotion: 'http://localhost:5000',
+		miemoBackend: 'http://localhost:8000',
+		miemoWifi: 'http://localhost:8001',
+		miemoAudio: 'http://localhost:8002',
+		miemoBluetooth: 'http://localhost:8003',
+		miemoGame: 'http://localhost:8005',
+	},
+	apiFullEndpoints: {
+		gifSearch: () => endPoint(settings.endPoints.miemoBackend, 'gif/search'),
+		holo: () => endPoint(settings.endPoints.miemoGame, 'api/holo/'),
+		holosettings: () => endPoint(settings.endPoints.miemoGame, 'api/holosettings/'),
 	},
 	game: {
 		musicVolume: 50,
@@ -20,6 +37,9 @@ let settings = {
 		play: {
 			url: 'http://localhost:8000/api/play',
 		},
+	},
+	hologram: {
+		availableHolograms: 'http://localhost:8000/api/holo',
 	},
 	calendar: {
 		calIdLocalStorageVal: 'com.miemo.calendar.calendarId',

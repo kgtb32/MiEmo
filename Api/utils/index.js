@@ -20,4 +20,19 @@ export const generateQueryString = (urlStr, parameters) => {
   return decodeURIComponent(finalUrl.toString());
 };
 
+const convertPath = (path) => path.join("/");
+
+const convertQuery = (query) =>
+  Object.keys(query)
+    .map((key) => `${key}=${query[key]}`)
+    .join("&");
+
+export const endPoint = (url, route) => {
+  return `${url}/${route}`;
+};
+
+export const endPointWithPathOrQuery = (url, path, query) => {
+  return `${url}${convertPath(path)}?${convertQuery(query)}`;
+};
+
 export default { fetchAPI, generateQueryString };
