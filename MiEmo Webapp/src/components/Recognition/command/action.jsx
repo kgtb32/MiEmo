@@ -20,7 +20,7 @@ export const actionJoke = async setIsClick => {
 		return
 	}
 
-	const utterThis = new SpeechSynthesisUtterance(joke.joke + 'réponse ' + joke.answer)
+	const utterThis = new SpeechSynthesisUtterance(joke.joke + ' ' + joke.answer)
 	utterThis.volume = 1.5
 	utterThis.pitch = 1
 	utterThis.rate = 1
