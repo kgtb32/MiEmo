@@ -14,6 +14,7 @@ export default function Hologram({ url }) {
         display: "block",
         left: settings.x,
         top: settings.y,
+        position: "absolute",
       }}
     >
       {settings.faces.map((face) => {
