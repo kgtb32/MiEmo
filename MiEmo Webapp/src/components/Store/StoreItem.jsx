@@ -8,7 +8,7 @@ function StoreItem({ componentInfos, mode, event }) {
 		<DivContainer
 			className={'mx-1 ' + (mode == 'add' ? 'p-card' : '')}
 			mode={mode}
-			onClick={() => event.emit(mode == 'add' ? 'itemAdd' : 'itemDel', componentInfos?.id)}
+			onClick={() => event.emit(mode == 'add' ? 'itemAdd' : 'itemDel', componentInfos?.id, false)}
 		>
 			<Img src={_Img} mode={mode} />
 			<p className="text-truncate">{componentInfos.name}</p>

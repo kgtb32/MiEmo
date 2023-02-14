@@ -75,13 +75,19 @@ function GridLayout() {
 		[layout],
 	)
 
-	const onAdd = componentId => {
-		if (!layout.components.find(e => e.componentId === componentId)) {
+	const onAdd = (componentId, fromVoice) => {
+		if (fromVoice) {
+			if (!layout.components.find(e => e.componentId === componentId)) {
+				addItemToLayout(componentId, nanoid(1024))
+				showInfo('Votre Wideget ' + componentId + ' est ajouté')
+				widgetEventManager.off('itemAdd', onAdd)
+			} else {
+				showAlert('le widget ' + componentId + ' est déjà présent')
+			}
+		} else {
 			addItemToLayout(componentId, nanoid(1024))
 			showInfo('Votre Wideget ' + componentId + ' est ajouté')
 			widgetEventManager.off('itemAdd', onAdd)
-		} else {
-			showAlert('le widget ' + componentId + ' est déjà présent')
 		}
 	}
 

@@ -6,7 +6,7 @@ export const allComponent = Object.keys(componentFactory).map(key => componentFa
 export const allComponentKey = Object.keys(componentFactory)
 
 export const actionAddWidget = (index, widgetEventManager, setIsClick) => {
-	widgetEventManager.emit('itemAdd', allComponentKey[index])
+	widgetEventManager.emit('itemAdd', allComponentKey[index], true)
 	setIsClick(false)
 }
 
