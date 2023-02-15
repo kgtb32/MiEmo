@@ -24,6 +24,7 @@ let settings = {
 		gifSearch: () => endPoint(settings.endPoints.miemoBackend, 'gif/search'),
 		holo: () => endPoint(settings.endPoints.miemoGame, 'api/holo/'),
 		holosettings: () => endPoint(settings.endPoints.miemoGame, 'api/holosettings/'),
+		holoMode: () => endPoint(settings.endPoints.miemoGame, 'api/holomode/'),
 	},
 	game: {
 		musicVolume: 50,
