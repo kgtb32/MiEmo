@@ -30,7 +30,7 @@ function VideoWidget({ shotEvent, setEmotion, setModalVisible }) {
 				ref={camRef}
 				audio={false}
 				screenshotQuality={1}
-				className="w-100 h-100"
+				className="w-auto h-100 mw-100 mx-auto d-block"
 				screenshotFormat="image/png"
 				imageSmoothing={true}
 				forceScreenshotSourceSize={true}

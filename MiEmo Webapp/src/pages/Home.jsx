@@ -1,17 +1,17 @@
 import React from 'react'
-import GridLayout from '../components/layout/GridLayout'
 import { Link } from 'react-router-dom'
 
+import GridLayout from '../components/layout/GridLayout'
 import Store from '../components/Store/Store'
-
-import useStoreContext from '../context/StoreContext'
-
-import { IoGameControllerOutline } from 'react-icons/io5'
-
-import MiemoLogo from '../logo_miror.png'
+import Recognition from '../components/Recognition/Recognition'
 
 import { ButtonOutlinedCustom } from '../static/styledComponent/styled'
-import Recognition from '../components/Recognition/Recognition'
+
+import { IoGameControllerOutline } from 'react-icons/io5'
+import { GiMirrorMirror } from 'react-icons/gi'
+import MiemoLogo from '../logo_miror.png'
+
+import useStoreContext from '../context/StoreContext'
 
 export default function Home() {
 	const { widgetEditMode, toggleWidgetEditMode } = useStoreContext()
@@ -32,6 +32,15 @@ export default function Home() {
 				>
 					<Link className="text-decoration-none">
 						<Recognition />
+					</Link>
+					<Link className="text-decoration-none" to="/shadowme">
+						<ButtonOutlinedCustom
+							className="p-button-rounded p-1 px-1 mx-1 p-button-outlined"
+							icon="pi"
+							color="white"
+						>
+							<GiMirrorMirror />
+						</ButtonOutlinedCustom>
 					</Link>
 					<Link to="/game" className="text-decoration-none">
 						<ButtonOutlinedCustom
