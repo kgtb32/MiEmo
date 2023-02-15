@@ -15,7 +15,7 @@
 }
 
 .w-min-content {
-	width: min-content;
+	width: min-content !important;
 }
 
 .h-min-content {
@@ -100,7 +100,7 @@
 }
 
 .selected-item-blue {
-	background: #3498db;
+	background: #5eead4;
 }
 
 .modal-content {
@@ -148,7 +148,7 @@
 }
 
 .game-list > .active {
-	background: #3498db !important;
+	background: #5eead4 !important;
 	border-radius: 1em 1em 1em 1em !important;
 }
 
@@ -173,16 +173,17 @@
 }
 
 .beauty-scroll::-webkit-scrollbar-thumb {
-	background: #3498db;
+	background: #5eead4;
 	border-radius: 8px;
 }
 
 .beauty-scroll::-webkit-scrollbar-thumb:hover {
-	background: #2980b9;
+	background: #5eead4;
 }
 
-.beauty-background {
-	background-color: #2980b9;
+.beauty-background,
+.list-group-item.active {
+	background-color: #41b9a7 !important;
 }
 
 .mt-50vh {
@@ -207,4 +208,8 @@
 
 .p-divider.p-divider-horizontal:before {
 	border-top: 1px solid lightgray;
+}
+
+.row-gap {
+	row-gap: 0.5em;
 }
