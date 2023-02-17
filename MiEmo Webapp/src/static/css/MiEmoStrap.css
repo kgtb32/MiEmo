@@ -213,3 +213,11 @@
 .row-gap {
 	row-gap: 0.5em;
 }
+
+.b-none {
+	background: none;
+}
+
+.border-none {
+	border: none;
+}
