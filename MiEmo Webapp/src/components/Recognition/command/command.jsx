@@ -1,4 +1,4 @@
-import { actionAddWidget, actionJoke, actionSearchMeteo, getDateNow } from './action'
+import { actionAddWidget, actionJoke, actionSearchMeteo, getDateNow, dontUnderstand } from './action'
 
 export const command = (value, widgetEventManager, setIsClick) => {
 	value = normalize(value)
@@ -18,35 +18,35 @@ export const command = (value, widgetEventManager, setIsClick) => {
 		case isMatch(detect[1].getDateNow, value):
 			getDateNow(setIsClick)
 			break
-		case isMatch(detect[3].youtube, value):
+		case isMatch(detect[2].youtube, value):
 			actionAddWidget(3, widgetEventManager, setIsClick)
 			break
-		case isMatch(detect[4].calendar, value):
+		case isMatch(detect[3].calendar, value):
 			actionAddWidget(4, widgetEventManager, setIsClick)
 			break
-		case isMatch(detect[5].emotion, value):
+		case isMatch(detect[4].emotion, value):
 			actionAddWidget(5, widgetEventManager, setIsClick)
 			break
-		case isMatch(detect[6].activity, value):
+		case isMatch(detect[5].activity, value):
 			actionAddWidget(6, widgetEventManager, setIsClick)
 			break
-		case isMatch(detect[7].radio, value):
+		case isMatch(detect[6].radio, value):
 			actionAddWidget(7, widgetEventManager, setIsClick)
 			break
-		case isMatch(detect[8].todo, value):
+		case isMatch(detect[7].todo, value):
 			actionAddWidget(8, widgetEventManager, setIsClick)
 			break
-		case isMatch(detect[9].drawing, value):
+		case isMatch(detect[8].drawing, value):
 			actionAddWidget(9, widgetEventManager, setIsClick)
 			break
-		case isMatch(detect[10].whitenoise, value):
+		case isMatch(detect[9].whitenoise, value):
 			actionAddWidget(10, widgetEventManager, setIsClick)
 			break
-		case isMatch(detect[11].joke, value):
+		case isMatch(detect[10].joke, value):
 			actionJoke(setIsClick)
 			break
 		default:
-			console.log('default')
+			dontUnderstand(setIsClick)
 			return ''
 	}
 }

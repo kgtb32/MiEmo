@@ -48,6 +48,11 @@ export const getDateNow = setIsClick => {
 	setIsClick(false)
 }
 
+export const dontUnderstand = setIsClick => {
+	synth.speak(setutterThis("Je suis désolé mais je n'ai pas compris"))
+	setIsClick(false)
+}
+
 export const actionSearchMeteo = setIsClick => {
 	const city = loadLocalStorageKeyAsJsonObject('com.miemo.meteo.city', {})
 	const execute = async () => {
