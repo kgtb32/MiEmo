@@ -1,10 +1,13 @@
-import { actionAddWidget, actionJoke } from './action'
+import { actionAddWidget, actionJoke, actionSearchMeteo } from './action'
 
 export const command = (value, widgetEventManager, setIsClick) => {
 	value = normalize(value)
 	switch (true) {
 		case isMatch(detect[0].meteo, value):
 			actionAddWidget(0, widgetEventManager, setIsClick)
+			break
+		case isMatch(detect[0].subaction1, value):
+			actionSearchMeteo(setIsClick)
 			break
 		case isMatch(detect[1].clock, value):
 			actionAddWidget(1, widgetEventManager, setIsClick)
@@ -49,6 +52,43 @@ export const command = (value, widgetEventManager, setIsClick) => {
 export const detect = [
 	{
 		meteo: ['meteo'],
+		subaction1: [
+			'recherche',
+			'trouve',
+			'climat',
+			'Conditions meteorologiques',
+			'temperature',
+			'previsions meteorologiques',
+			'temps atmospherique',
+			'conditions climatiques',
+			'temps exterieur',
+			'phenomenes meteorologiques',
+			'meteo locale',
+			'conditions atmospheriques',
+			'temperatures',
+			'previsions',
+			'meteorologie',
+			'taux humidite',
+			'pluviometrie',
+			'vents',
+			'nuages',
+			'tempete',
+			'orage',
+			'ensoleillement',
+			'neige',
+			'pluie',
+			'canicule',
+			'froid',
+			'brouillard',
+			'brume',
+			'nuageux',
+			'couvert',
+			'pluvieux',
+			'sec',
+			'chaud',
+			'venteux',
+			'orageux',
+		],
 	},
 	{
 		clock: ['horloge analogique'],

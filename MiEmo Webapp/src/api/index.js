@@ -9,8 +9,8 @@ const api = () => {
 
 const apis = {
 	weather: {
-		get: (latitude, longitude, enabledValues) => {
-			return api().weather.get(latitude, longitude, enabledValues)
+		get: (latitude, longitude, enabledValues, type, timezone) => {
+			return api().weather.get(latitude, longitude, enabledValues, type, timezone)
 		},
 	},
 	city: {

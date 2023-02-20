@@ -21,7 +21,7 @@ const fetchAPI = (url, method, data, contentType) => {
 
 export default {
 	weather: {
-		get: (latitude, longitude, enabledValues) => {
+		get: (latitude, longitude, enabledValues, type, timezone) => {
 			return fetchAPI(
 				generateQueryString(settings.weather.url, [
 					{
@@ -33,8 +33,12 @@ export default {
 						val: longitude,
 					},
 					{
-						name: settings.weather.query.hour,
+						name: type,
 						val: generateMeteoAvailable(enabledValues),
+					},
+					{
+						name: settings.weather.query.timezone,
+						val: timezone,
 					},
 				]),
 			)

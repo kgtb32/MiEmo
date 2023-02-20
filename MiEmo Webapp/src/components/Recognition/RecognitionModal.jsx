@@ -70,7 +70,7 @@ function RecognitionModal({ isClick, setIsClick }) {
 				className="no-drag"
 			>
 				<DivContainer iserror={isError.toString()}>
-					<p>{!isError ? 'MIEmo vous écoutes' : 'Oops! veuillez activer votre micro'}</p>
+					<p>{!isError ? 'MIEmo vous écoute' : 'Oops! veuillez activer votre micro'}</p>
 					{!isError ? (
 						<div className="loader">
 							<span className="stroke"></span>
