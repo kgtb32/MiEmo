@@ -1,4 +1,4 @@
-import { actionAddWidget, actionJoke, actionSearchMeteo } from './action'
+import { actionAddWidget, actionJoke, actionSearchMeteo, getDateNow } from './action'
 
 export const command = (value, widgetEventManager, setIsClick) => {
 	value = normalize(value)
@@ -12,8 +12,11 @@ export const command = (value, widgetEventManager, setIsClick) => {
 		case isMatch(detect[1].clock, value):
 			actionAddWidget(1, widgetEventManager, setIsClick)
 			break
-		case isMatch(detect[2].flipClock, value):
+		case isMatch(detect[1].flipClock, value):
 			actionAddWidget(2, widgetEventManager, setIsClick)
+			break
+		case isMatch(detect[1].getDateNow, value):
+			getDateNow(setIsClick)
 			break
 		case isMatch(detect[3].youtube, value):
 			actionAddWidget(3, widgetEventManager, setIsClick)
@@ -92,9 +95,8 @@ export const detect = [
 	},
 	{
 		clock: ['horloge analogique'],
-	},
-	{
 		flipClock: ['horloge numerique'],
+		getDateNow: ['heure', 'date', 'le combien'],
 	},
 	{
 		youtube: ['youtube'],

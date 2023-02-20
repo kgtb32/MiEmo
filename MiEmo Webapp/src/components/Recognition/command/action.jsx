@@ -1,6 +1,6 @@
 import api from '../../../api'
 import componentFactory from '../../layout/ComponentFactory'
-import { loadLocalStorageKeyAsJsonObject, generateDay, momentNow } from '../../../utils/utils'
+import { loadLocalStorageKeyAsJsonObject, generateDay, momentNow, hoursNow } from '../../../utils/utils'
 import weatherText from '../../../static/json/weatherText.json'
 
 const synth = window.speechSynthesis
@@ -32,6 +32,19 @@ export const actionJoke = async setIsClick => {
 	}
 
 	synth.speak(setutterThis(joke.joke + ' ' + joke.answer))
+	setIsClick(false)
+}
+
+export const getDateNow = setIsClick => {
+	synth.speak(
+		setutterThis(
+			'Nous somme le ' +
+				generateDay(momentNow()).toString() +
+				'. ' +
+				'Et il est actullement ' +
+				hoursNow().toString(),
+		),
+	)
 	setIsClick(false)
 }
 
