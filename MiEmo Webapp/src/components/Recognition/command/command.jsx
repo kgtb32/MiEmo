@@ -1,6 +1,6 @@
 import { actionAddWidget, actionJoke, actionSearchMeteo, getDateNow, dontUnderstand } from './action'
 
-export const command = (value, widgetEventManager, setIsClick) => {
+export const command = (value, widgetEventManager, setIsClick, navigate) => {
 	value = normalize(value)
 	switch (true) {
 		case isMatch(detect[0].meteo, value):
@@ -44,6 +44,12 @@ export const command = (value, widgetEventManager, setIsClick) => {
 			break
 		case isMatch(detect[10].joke, value):
 			actionJoke(setIsClick)
+			break
+		case isMatch(detect[11].setting, value):
+			navigate('/settings')
+			break
+		case isMatch(detect[12].game, value):
+			navigate('/game')
 			break
 		default:
 			dontUnderstand(setIsClick)
@@ -124,6 +130,12 @@ export const detect = [
 	},
 	{
 		joke: ['blague', 'blagues', 'une autre', 'encore'],
+	},
+	{
+		setting: ['parametre', 'parametres', 'reglage', 'configuration', 'configurer', 'configure'],
+	},
+	{
+		game: ['jeux', 'jouer', 'joue', 'list jeux', 'jeu'],
 	},
 ]
 

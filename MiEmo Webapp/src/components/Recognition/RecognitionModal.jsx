@@ -6,16 +6,19 @@ import microphone from '/public/img/microphonedisabled.svg'
 import { Image } from 'primereact/image'
 import { command } from './command/command'
 import useStoreContext from '../../context/StoreContext'
+import { useNavigate } from 'react-router-dom'
 
 function RecognitionModal({ isClick, setIsClick }) {
 	const { widgetEventManager } = useStoreContext()
 	const [isError, setIsError] = useState(false)
+	const navigate = useNavigate()
+
 	const getConf = recognition => {
 		recognition.continuous = true
 		recognition.onend = () => isClick && startSpeech(recognition)
 		recognition.onresult = result => {
 			const value = result.results[result.results.length - 1][0]?.transcript
-			command(value, widgetEventManager, setIsClick)
+			command(value, widgetEventManager, setIsClick, navigate)
 			console.log(value)
 		}
 		return recognition
