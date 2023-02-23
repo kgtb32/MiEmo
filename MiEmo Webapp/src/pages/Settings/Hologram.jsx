@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import { trackPromise } from 'react-promise-tracker'
 
 import Alert from 'react-bootstrap/Alert'
 import { InputSwitch } from 'primereact/inputswitch'
@@ -19,9 +20,14 @@ export default function Hologram() {
 
 	const fetchHolograms = () => apis.hologram.availableHolograms()
 
+	const deleteHologram = id => {
+		trackPromise(
+			apis.hologram.deleteHologram(id).then(() => fetchHolograms().then(res => setAvailableHolograms(res))),
+		)
+	}
+
 	useEffect(() => {
 		const fetchSettings = () => apis.hologram.hologramSettings()
-
 		Promise.all([fetchHolograms(), fetchSettings()])
 			.then(res => {
 				setAvailableHolograms(res[0])
@@ -32,13 +38,15 @@ export default function Hologram() {
 	}, [])
 
 	const addHologram = url => {
-		apis.hologram.addHologram(url).then(res => {
-			setHologramSettings({
-				...hologramSettings,
-				selectedHologram: res.holo_uuid,
-			})
-			fetchHolograms().then(setAvailableHolograms).catch()
-		})
+		trackPromise(
+			apis.hologram.addHologram(url).then(res => {
+				setHologramSettings({
+					...hologramSettings,
+					selectedHologram: res.holo_uuid,
+				})
+				fetchHolograms().then(setAvailableHolograms).catch()
+			}),
+		)
 	}
 
 	useEffect(() => {
@@ -77,6 +85,7 @@ export default function Hologram() {
 				hologramSettings={hologramSettings}
 				availableHolograms={availableHolograms}
 				setHologramSettings={setHologramSettings}
+				deleteHologram={deleteHologram}
 			/>
 			<HologramSearch addHologram={addHologram} />
 		</div>

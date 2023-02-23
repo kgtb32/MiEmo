@@ -14,7 +14,16 @@ const fetchAPI = (url, method, data, contentType) => {
 		},
 		body: JSON.stringify(data),
 	})
-		.then(response => (response.ok ? Promise.resolve(response.json()) : Promise.reject(response)))
+		.then(response => (response.ok ? Promise.resolve(response) : Promise.reject(response)))
+		.then(response => {
+			return response.text().then(res => {
+				try {
+					return JSON.parse(res)
+				} catch {
+					return res
+				}
+			})
+		})
 		.then(res => Promise.resolve(res))
 		.catch(err => Promise.reject(err))
 }

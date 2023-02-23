@@ -5,7 +5,7 @@ import HologramItem from './HologramItem'
 
 import settings from '../../../settings/settings'
 
-export default function CurrentHologram({ hologramSettings, availableHolograms, setHologramSettings }) {
+export default function CurrentHologram({ hologramSettings, availableHolograms, setHologramSettings, deleteHologram }) {
 	return (
 		<div className="d-flex justify-content-between w-100 flex-wrap">
 			{availableHolograms.map(({ holo_uuid, holo_url }) => {
@@ -15,12 +15,17 @@ export default function CurrentHologram({ hologramSettings, availableHolograms, 
 						src={`${settings.endPoints.miemoGame}${holo_url}`}
 						choosen={hologramSettings?.selectedHologram == holo_uuid}
 						id={holo_uuid}
-						clickCallback={id =>
-							setHologramSettings({
-								...hologramSettings,
-								selectedHologram: id,
-							})
-						}
+						displayDeleteButton={true}
+						clickCallback={(id, type) => {
+							if (type) {
+								deleteHologram(id)
+							} else {
+								setHologramSettings({
+									...hologramSettings,
+									selectedHologram: id,
+								})
+							}
+						}}
 					/>
 				)
 			})}
@@ -35,4 +40,5 @@ CurrentHologram.propTypes = {
 	}),
 	availableHolograms: PropTypes.array,
 	setHologramSettings: PropTypes.func,
+	deleteHologram: PropTypes.func,
 }
