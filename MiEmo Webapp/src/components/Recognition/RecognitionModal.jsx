@@ -4,18 +4,21 @@ import PropTypes from 'prop-types'
 import Modal from 'react-bootstrap/Modal'
 import microphone from '/public/img/microphonedisabled.svg'
 import { Image } from 'primereact/image'
-import { command } from './constant'
+import { command } from './command/command'
 import useStoreContext from '../../context/StoreContext'
+import { useNavigate } from 'react-router-dom'
 
-function RecognitionModal({ isClick, setIsClick, showInfo }) {
+function RecognitionModal({ isClick, setIsClick }) {
 	const { widgetEventManager } = useStoreContext()
 	const [isError, setIsError] = useState(false)
+	const navigate = useNavigate()
+
 	const getConf = recognition => {
 		recognition.continuous = true
 		recognition.onend = () => isClick && startSpeech(recognition)
 		recognition.onresult = result => {
 			const value = result.results[result.results.length - 1][0]?.transcript
-			command(value, widgetEventManager, setIsClick, showInfo)
+			command(value, widgetEventManager, setIsClick, navigate)
 			console.log(value)
 		}
 		return recognition
@@ -69,8 +72,8 @@ function RecognitionModal({ isClick, setIsClick, showInfo }) {
 				centered
 				className="no-drag"
 			>
-				<DivContainer isError={isError}>
-					<p>{!isError ? 'MIEmo vous écoutes' : 'Oops! veuillez activer votre micro'}</p>
+				<DivContainer iserror={isError.toString()}>
+					<p>{!isError ? 'MIEmo vous écoute' : 'Oops! veuillez activer votre micro'}</p>
 					{!isError ? (
 						<div className="loader">
 							<span className="stroke"></span>
@@ -93,13 +96,11 @@ function RecognitionModal({ isClick, setIsClick, showInfo }) {
 RecognitionModal.propTypes = {
 	setIsClick: PropTypes.func.isRequired,
 	isClick: PropTypes.bool.isRequired,
-	showInfo: PropTypes.func.isRequired,
 }
 
 RecognitionModal.defaultProps = {
 	setIsClick: () => '',
 	isClick: () => false,
-	showInfo: () => '',
 }
 
 const ErrorImage = styled(Image)`
@@ -122,7 +123,7 @@ const DivContainer = styled(Modal.Body)`
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	background: ${props => (!props.isError ? 'linear-gradient(45deg, #0006ff, #5eead4)' : 'red')};
+	background: ${props => (props.iserror === 'false' ? 'linear-gradient(45deg, #0006ff, #5eead4)' : 'red')};
 	border-radius: 1.5em !important;
 
 	.loader {

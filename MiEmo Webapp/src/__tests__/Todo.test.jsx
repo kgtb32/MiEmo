@@ -1,111 +1,128 @@
 import React from 'react'
-import { render, unmountComponentAtNode } from 'react-dom'
+import { render, fireEvent, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import Todo from '../components/Widgets/Todo/Todo'
-import { act } from 'react-dom/test-utils'
-import { shallow, configure } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { KeyboardProvider } from '../context/KeyboardContext'
 
-let container = null
+let _asFragment
 beforeEach(() => {
-	// setup a DOM element as a render target
-	container = document.createElement('div')
-	document.body.appendChild(container)
-	act(() => {
-		render(<Todo />, container)
+	const { asFragment } = render(
+		<KeyboardProvider>
+			<Todo />
+		</KeyboardProvider>,
+	)
+	_asFragment = asFragment()
+
+	// mock localstorage
+	const localStorageMock = (function () {
+		let store = {}
+
+		return {
+			getItem: function (key) {
+				return store[key] || null
+			},
+			setItem: function (key, value) {
+				store[key] = value.toString()
+			},
+			removeItem: function (key) {
+				delete store[key]
+			},
+			clear: function () {
+				store = {}
+			},
+		}
+	})()
+
+	Object.defineProperty(window, 'localStorage', {
+		value: localStorageMock,
 	})
-	configure({ adapter: new Adapter() })
 })
 
 afterEach(() => {
-	// cleanup on exiting
-	unmountComponentAtNode(container)
-	container.remove()
-	container = null
+	localStorage.clear()
 })
 
-describe('rendering test', () => {
-	// verify that the Todo HTML has not changed between git merges
+describe('view testing', () => {
 	it('It should match the snapshot HTML for Todo', () => {
-		const container = shallow(<Todo />)
-		expect(container.html()).toMatchSnapshot()
+		expect(_asFragment).toMatchSnapshot()
+	})
+
+	it('Todo component should exist', () => {
+		const todo = screen.getByTestId('test-todo')
+		expect(todo).toBeDefined()
 	})
 
 	it('It should contain all static text when firts render', () => {
-		expect(container.textContent).toContain('Nom de la Tâche')
-		expect(container.textContent).toContain('Tâche')
-		expect(container.textContent).toContain('Check')
-		expect(container.textContent).toContain('No available options')
+		const todo = screen.getByTestId('test-todo')
+		const placeholderText = screen.getAllByPlaceholderText('Entrez une tâche')[0]
+		expect(todo).toHaveTextContent('Tâche')
+		expect(todo).toHaveTextContent('Check')
+		expect(todo).toHaveTextContent('No results found')
+		expect(todo).toContainElement(placeholderText)
 	})
 
 	it('Input should be empty', () => {
-		const inputValue = document.getElementsByTagName('input')[0].value
-		expect(inputValue).toEqual('')
-		const button = document.querySelector('button')
-		expect(button.disabled).toEqual(false)
+		expect(screen.getAllByPlaceholderText('Entrez une tâche')[1]).toHaveValue('')
 	})
 
-	it('Button should be enable', () => {
-		const button = document.querySelector('button')
-		expect(button.disabled).toEqual(false)
+	it('Button should be disable', () => {
+		expect(screen.getByTestId('test-buttonadd')).toBeDisabled()
 	})
 })
 
-describe('fonctional test', () => {
+describe('fonctional testing', () => {
 	it('Local storage should not contains task when first render', () => {
-		expect(JSON.parse(localStorage.getItem('taskwidgetdata'))).toEqual([])
+		const todo = screen.getByTestId('test-todo')
+		expect(todo).toHaveTextContent('No results found')
 	})
 
-	it('Task should not be added update when input is not completed', () => {
-		const button = document.getElementsByClassName('p-button-rounded p-button-secondary')[0]
-		button.dispatchEvent(new MouseEvent('click', { bubbles: true }))
-		expect(container.textContent).toContain('Error')
-		expect(container.textContent).toContain('Remplisser les champs')
-		expect(container.textContent).toContain('Nom de la Tâche')
-		expect(container.textContent).toContain('Tâche')
-		expect(container.textContent).toContain('Check')
-		expect(container.textContent).toContain('No available options')
+	it('Task should not be added when input value.lenght < 3 and contain No results found', () => {
+		const button = screen.getByTestId('test-buttonadd')
+		const todo = screen.getByTestId('test-todo')
+		expect(todo).toHaveTextContent('No results found')
+		const input = screen.getAllByPlaceholderText('Entrez une tâche')[1]
+		fireEvent.change(input, { target: { value: 'ab' } })
+		expect(input.value).toBe('ab')
+		expect(button).toBeDisabled()
+		expect(todo).toHaveTextContent('No results found')
 	})
 
-	it('It should contain Task when adding task', () => {
-		//set value on input
-		const input = document.getElementsByClassName('p-inputtext p-component')[0]
-		const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set
-		nativeInputValueSetter.call(input, 'My task')
-		const ev2 = new Event('input', { bubbles: true })
-		input.dispatchEvent(ev2)
-
-		const button = document.getElementsByClassName('p-button-rounded p-button-secondary')[0]
-		button.dispatchEvent(new MouseEvent('click', { bubbles: true }))
-		expect(container.textContent).toContain('My task')
-		localStorage.clear()
+	it('Task should be added when input value.lenght > 3 and not contain No results found', () => {
+		const button = screen.getByTestId('test-buttonadd')
+		const todo = screen.getByTestId('test-todo')
+		expect(todo).toHaveTextContent('No results found')
+		const input = screen.getAllByPlaceholderText('Entrez une tâche')[1]
+		fireEvent.change(input, { target: { value: 'abcd' } })
+		expect(input.value).toBe('abcd')
+		expect(button).toBeEnabled()
+		expect(todo).toHaveTextContent('No results found')
+		fireEvent.click(button)
+		fireEvent.change(input, { target: { value: '' } })
+		expect(todo).toHaveTextContent('abcd')
+		expect(todo).not.toHaveTextContent('No results found')
 	})
 
-	it('It should not contain No available options when adding task', () => {
-		//set value on input
-		const input = document.getElementsByClassName('p-inputtext p-component')[0]
-		const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set
-		nativeInputValueSetter.call(input, 'My task')
-		const ev2 = new Event('input', { bubbles: true })
-		input.dispatchEvent(ev2)
-
-		const button = document.getElementsByClassName('p-button-rounded p-button-secondary')[0]
-		button.dispatchEvent(new MouseEvent('click', { bubbles: true }))
-		expect(container.textContent).not.toContain('No available options')
-		localStorage.clear()
+	it('after adding task, input is not clear and button stay enable', () => {
+		const button = screen.getByTestId('test-buttonadd')
+		const input = screen.getAllByPlaceholderText('Entrez une tâche')[1]
+		fireEvent.change(input, { target: { value: 'abcd' } })
+		fireEvent.click(button)
+		expect(input.value).toBe('abcd')
+		expect(button).toBeEnabled()
 	})
 
 	it('Local storage should contain Task when adding task', () => {
-		//set value on input
-		const input = document.getElementsByClassName('p-inputtext p-component')[0]
-		const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set
-		nativeInputValueSetter.call(input, 'My task')
-		const ev2 = new Event('input', { bubbles: true })
-		input.dispatchEvent(ev2)
-
-		const button = document.getElementsByClassName('p-button-rounded p-button-secondary')[0]
-		button.dispatchEvent(new MouseEvent('click', { bubbles: true }))
-
-		expect(JSON.parse(localStorage.getItem('taskwidgetdata'))[0].taskname).toBe('My task')
-		localStorage.clear()
+		const button = screen.getByTestId('test-buttonadd')
+		const todo = screen.getByTestId('test-todo')
+		expect(todo).toHaveTextContent('No results found')
+		const input = screen.getAllByPlaceholderText('Entrez une tâche')[1]
+		fireEvent.change(input, { target: { value: 'abcd' } })
+		expect(input.value).toBe('abcd')
+		expect(button).toBeEnabled()
+		expect(todo).toHaveTextContent('No results found')
+		fireEvent.click(button)
+		fireEvent.change(input, { target: { value: '' } })
+		expect(todo).toHaveTextContent('abcd')
+		expect(JSON.parse(localStorage.getItem('taskwidgetdata'))[0].taskname).toEqual('abcd')
 	})
 })

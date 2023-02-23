@@ -28,14 +28,20 @@ function Meteo() {
 
 	const fecthAPI = useCallback(myCity => {
 		const execute = async () => {
-			return api.weather.get(myCity.latitude, myCity.longitude, [
-				'temperature_2m',
-				'relativehumidity_2m',
-				'apparent_temperature',
-				'precipitation',
-				'windspeed_10m',
-				'weathercode',
-			])
+			return api.weather.get(
+				myCity.latitude,
+				myCity.longitude,
+				[
+					'temperature_2m',
+					'relativehumidity_2m',
+					'apparent_temperature',
+					'precipitation',
+					'windspeed_10m',
+					'weathercode',
+				],
+				'hourly',
+				myCity.timezone,
+			)
 		}
 
 		if (myCity.name) {

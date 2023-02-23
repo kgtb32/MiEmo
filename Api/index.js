@@ -8,6 +8,7 @@ import { list as whiteNoiseList } from "./routes/whitenoise.js";
 import { search as radioSearch } from "./routes/radio.js";
 import { search as youtubeSearch } from "./routes/youtube.js";
 import { search as gifSearch } from "./routes/gif.js";
+import { get as joke } from "./routes/joke.js";
 
 export const generateRoutes = () => {
   const fastifyServer = fastify({ logger: true });
@@ -18,6 +19,8 @@ export const generateRoutes = () => {
   fastifyServer.get("/weather/get", weatherGet);
 
   fastifyServer.get("/youtube/search", youtubeSearch);
+
+  fastifyServer.get("/joke", joke);
 
   fastifyServer.get("/city/find", geocodingGet);
 

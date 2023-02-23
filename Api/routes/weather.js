@@ -5,9 +5,9 @@ export const get = async (request, reply) => {
   if (
     !request.query.latitude ||
     !request.query.longitude ||
-    !request.query.hourly
+    (!request.query.hourly && !request.query.daily)
   ) {
-    return reply.code(512).type("text/html").send("pre condition failed");
+    return reply.code(412).type("text/html").send("pre condition failed");
   }
   return reply
     .code(200)

@@ -73,6 +73,7 @@ let settings = {
 			lat: 'latitude',
 			lon: 'longitude',
 			hour: 'hourly',
+			timezone: 'timezone',
 			available: {
 				temp: 'temperature_2m',
 				prec: 'precipitation',

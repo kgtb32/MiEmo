@@ -55,6 +55,10 @@ export const momentNow = () => {
 	return dayjs(new Date())
 }
 
+export const hoursNow = () => {
+	return dayjs(new Date()).format('HH:mm')
+}
+
 export const imageFromWMOCode = WMOCode => {
 	return WeatherImageFactory[WeatherImage[WMOCode]]
 }
