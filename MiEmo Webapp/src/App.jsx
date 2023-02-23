@@ -16,6 +16,7 @@ import NetworkCheck from './pages/Settings/NetworkCheck'
 import CalendarConfig from './pages/Settings/CalendarConfig'
 import Hologram from './pages/Settings/Hologram'
 import GameLauncher from './pages/GameLauncher'
+import ShadowMe from './pages/ShadowMe'
 
 import Page404 from './pages/Page404'
 
@@ -26,6 +27,7 @@ function App() {
 				<Router>
 					<Routes>
 						<Route path="/" element={<Home />} />
+						<Route path="/shadowme" element={<ShadowMe />} />
 						<Route path="/game" element={<Game />} />
 						<Route path="/game/:platformId" element={<GameSelection />} />
 						<Route path="/game/:platformId/:gameId" element={<GameLauncher />} />

@@ -133,5 +133,6 @@ export default {
 		hologramSettings: () => fetchAPI(settings.apiFullEndpoints.holosettings(), 'GET'),
 		setHologramSetttings: (selectedHologram, changeOnGameStart) =>
 			fetchAPI(settings.apiFullEndpoints.holosettings(), 'POST', { selectedHologram, changeOnGameStart }),
+		setHoloMode: mode => fetchAPI(settings.apiFullEndpoints.holoMode(), 'POST', { mode }),
 	},
 }

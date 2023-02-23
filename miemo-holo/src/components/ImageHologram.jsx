@@ -25,7 +25,7 @@ const JoliSvg = Styled.img.attrs((props) => ({
   position: absolute;
   top: ${(props) => props.top}px;
   left: ${(props) => props.left}px;
-  transform: rotate(${(props) => props.rotation}deg);
+  transform: rotate(${(props) => props.rotation}deg) scaleX(-1);
   max-height: ${(props) => props.maxHeight}px;
   max-width: ${(props) => props.maxWidth}px;
 `;

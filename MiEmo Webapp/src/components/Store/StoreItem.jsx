@@ -2,23 +2,43 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai'
+
 function StoreItem({ componentInfos, mode, event }) {
 	const _Img = componentInfos?.img
+
+	const addComponent = id => {
+		if (mode == 'add') {
+			event.emit('itemAdd', id)
+		}
+	}
+
 	return (
 		<DivContainer
 			className={'mx-1 ' + (mode == 'add' ? 'p-card' : '')}
 			mode={mode}
-			onClick={() => event.emit(mode == 'add' ? 'itemAdd' : 'itemDel', componentInfos?.id, false)}
+			onClick={() => addComponent(componentInfos?.id)}
 		>
 			<Img src={_Img} mode={mode} />
 			<p className="text-truncate">{componentInfos.name}</p>
-			<Icustom
-				className={
-					'pi py-1 px-1 d-block mt-2 ' +
-					(mode == 'del' ? 'pi-minus-circle position-absolute right-0 top-0' : 'pi-plus-circle')
-				}
+			<div
+				className={'pi py-1 px-1 d-block mt-2 ' + (mode == 'del' ? 'position-absolute right-0 top-0' : '')}
 				mode={mode}
-			/>
+			>
+				{mode == 'del' ? (
+					<AiOutlineMinusCircle
+						color="red"
+						size="2em"
+						onClick={() => event.emit('itemDel', componentInfos?.id ?? 0)}
+					/>
+				) : (
+					<AiOutlinePlusCircle
+						color="green"
+						size="2em"
+						onClick={() => event.emit('itemAdd', componentInfos?.id ?? 0)}
+					/>
+				)}
+			</div>
 		</DivContainer>
 	)
 }
@@ -65,10 +85,6 @@ const DivContainer = styled.div`
 	min-height: ${props => (props.mode == 'add' ? '156px' : '')};
 	width: ${props => props.mode == 'del' && '100%'};
 	height: ${props => props.mode == 'del' && '100%'};
-`
-//
-const Icustom = styled.i`
-	color: ${props => (props.mode == 'add' ? '#5EEAD4' : 'red')};
 `
 
 const Img = styled.img`

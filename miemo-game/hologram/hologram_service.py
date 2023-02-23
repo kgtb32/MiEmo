@@ -31,6 +31,8 @@ def save_settings(data):
 def set_holo_mode(mode: str):
     with open("/tmp/holo_mode", "w") as outfile:
         outfile.write(mode)
+        return True
+    return False
 
 def game_launch():
     settings = get_settings()

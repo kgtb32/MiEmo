@@ -75,6 +75,7 @@ const apis = {
 		setHologramSetttings: (selectedHologram, changeOnGameStart) =>
 			api().hologram.setHologramSetttings(selectedHologram, changeOnGameStart),
 		hologramSettings: () => api().hologram.hologramSettings(),
+		setHoloMode: mode => api().hologram.setHoloMode(mode),
 	},
 	gif: {
 		search: q => api().gif.search(q),

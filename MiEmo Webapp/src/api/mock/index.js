@@ -79,6 +79,7 @@ export default {
 	},
 	hologram: {
 		availableHolograms: () => Promise.resolve(AvailableHologramList),
+		setHoloMode: () => Promise.resolve('ok'),
 	},
 	gif: {
 		search: () => Promise.resolve(gifSearchList),
