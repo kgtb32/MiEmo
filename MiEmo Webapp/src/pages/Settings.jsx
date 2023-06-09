@@ -7,12 +7,11 @@ import { Divider } from 'primereact/divider'
 import { ListGroup } from 'react-bootstrap'
 
 import { IoMdArrowRoundBack } from 'react-icons/io'
-import { FaBluetooth, FaEthernet, FaBroom } from 'react-icons/fa'
-import { MdOutlineWifi, MdSettingsEthernet } from 'react-icons/md'
-import { AiFillSound, AiFillCalendar, AiFillLayout, AiFillClockCircle, AiFillInfoCircle } from 'react-icons/ai'
-import { RiSoundModuleFill, RiRefreshLine } from 'react-icons/ri'
+import { FaBroom } from 'react-icons/fa'
+import { MdOutlineWifi } from 'react-icons/md'
+import { AiFillCalendar, AiFillInfoCircle } from 'react-icons/ai'
+import { RiSoundModuleFill } from 'react-icons/ri'
 import { Tb3DCubeSphere } from 'react-icons/tb'
-import { BiReset } from 'react-icons/bi'
 
 const size = '2em'
 
@@ -25,19 +24,15 @@ export default function Settings() {
 						<IoMdArrowRoundBack size="2em" color="black" />
 					</Link>
 				</Button>
-				<h1 className="d-inline-block mx-2 h-100 align-middle mt-2">Paramètres</h1>
+				<h1 className="d-inline-block mx-2 h-100 align-middle mt-2 user-select-none">Paramètres</h1>
 			</div>
 
 			<Divider />
 			<div className="px-4">
 				<div className="mt-5">
 					<div className="my-2">
-						<h2>Connectivité</h2>
+						<h2 className="user-select-none">Connectivité</h2>
 						<ListGroup>
-							<ListGroup.Item action>
-								<FaEthernet className="mx-2" color="white" size={size} />
-								<span>Paramètres réseau</span>
-							</ListGroup.Item>
 							<Link to="/settings/wifi" className="text-decoration-none">
 								<ListGroup.Item action>
 									<span>
@@ -63,7 +58,7 @@ export default function Settings() {
 						</ListGroup>
 					</div>
 					<div className="my-2">
-						<h2>Son</h2>
+						<h2 className="user-select-none">Son</h2>
 						<ListGroup>
 							<Link to="/settings/audioTest" className="text-decoration-none">
 								<ListGroup.Item action>
@@ -84,7 +79,7 @@ export default function Settings() {
 						</ListGroup>
 					</div>
 					<div className="my-2">
-						<h2>Interface</h2>
+						<h2 className="user-select-none">Interface</h2>
 						<ListGroup>
 							<Link to="/settings/hologram" className="text-decoration-none">
 								<ListGroup.Item action>
@@ -117,30 +112,16 @@ export default function Settings() {
 						</ListGroup>
 					</div>
 					<div className="my-2">
-						<h2>Système</h2>
-						<ListGroup.Item action>
-							<span>
-								<AiFillClockCircle className="mx-2" color="#bdc3c7" size={size} />
-								Date et Heure
-							</span>
-						</ListGroup.Item>
-						<ListGroup.Item action>
-							<span>
-								<RiRefreshLine className="mx-2" color="#3498db" size={size} />
-								Mises à jour
-							</span>
-						</ListGroup.Item>
-						<ListGroup.Item action>
-							<span>
-								<BiReset className="mx-2" color="#e74c3c" size={size} />
-								Réinitialiser MiEMo
-							</span>
-						</ListGroup.Item>
+						<h2 className="user-select-none">Système</h2>
+						<ListGroup>
+							<Link to="/about" className="text-decoration-none">
 						<ListGroup.Item action>
 							<span>
 								<AiFillInfoCircle className="mx-2" color="#2980b9" size={size} />À propos de
 							</span>
 						</ListGroup.Item>
+							</Link>
+						</ListGroup>
 					</div>
 				</div>
 			</div>
