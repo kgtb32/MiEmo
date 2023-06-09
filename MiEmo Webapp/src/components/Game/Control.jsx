@@ -11,9 +11,9 @@ export default function Control({ badgeText, text, color, background, onClick })
 				}}
 				className="w-1 h-1 circle d-flex"
 			>
-				<span className="d-block my-auto mx-auto fw-bold fs-5 h-min-content">{badgeText}</span>
+				<span className="user-select-none d-block my-auto mx-auto fw-bold fs-5 h-min-content">{badgeText}</span>
 			</div>
-			<span className="my-auto mx-1 fw-bold d-block h-min-content">{text}</span>
+			<span className="user-select-none my-auto mx-1 fw-bold d-block h-min-content">{text}</span>
 		</div>
 	)
 }

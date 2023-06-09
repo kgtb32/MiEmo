@@ -9,7 +9,7 @@ import { ButtonOutlinedCustom } from '../static/styledComponent/styled'
 
 import { IoGameControllerOutline } from 'react-icons/io5'
 import { GiMirrorMirror } from 'react-icons/gi'
-import MiemoLogo from '../logo_miror.png'
+import MiemoLogo from '/img/logo_miror.png'
 
 import useStoreContext from '../context/StoreContext'
 
@@ -24,7 +24,6 @@ export default function Home() {
 					<div className="h-100 mx-sm-4 mt-2 mb-2 mt-sm-0 mb-sm-2">
 						<img src={MiemoLogo} style={{ height: '4em' }} />
 					</div>
-					<h1 className="my-auto">MiEmo</h1>
 				</div>
 				<div
 					className="d-flex justify-content-center align-items-center align-items-sm-stretch flex-wrap flex-sm-nowrap"

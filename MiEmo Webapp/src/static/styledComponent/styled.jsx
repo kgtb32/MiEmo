@@ -7,6 +7,9 @@ export const ButtonOutlinedCustom = styled(Button)`
 		background-color: ${props => props.color} !important;
 	}
 
+	width: 4em !important;
+	height: 4em !important;
+
 	:enabled:focus {
 		box-shadow: none !important;
 	}

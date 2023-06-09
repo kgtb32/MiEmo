@@ -16,7 +16,7 @@ export default function ControlsSelector({ type, clickCallback }) {
 		return {
 			o_button: (
 				<Control
-					badgeText="O"
+					badgeText="1"
 					text={text}
 					color="#000000"
 					background="#2980b9"
@@ -25,7 +25,7 @@ export default function ControlsSelector({ type, clickCallback }) {
 			),
 			x_button: (
 				<Control
-					badgeText="X"
+					badgeText="4"
 					text={text}
 					color="#FFFFFF"
 					background="#c0392b"
@@ -34,7 +34,7 @@ export default function ControlsSelector({ type, clickCallback }) {
 			),
 			a_button: (
 				<Control
-					badgeText="A"
+					badgeText="3"
 					text={text}
 					color="#000000"
 					background="#f39c12"
@@ -43,7 +43,7 @@ export default function ControlsSelector({ type, clickCallback }) {
 			),
 			b_button: (
 				<Control
-					badgeText="B"
+					badgeText="2"
 					text={text}
 					color="#FFFFFF"
 					background="#27ae60"
@@ -102,7 +102,7 @@ export default function ControlsSelector({ type, clickCallback }) {
 		none: <></>,
 	}
 
-	return <div className="offset-bottom p-2 px-4">{controlsViews[type] ?? controlsViews.default}</div>
+	return <div className="offset-bottom p-2 p-4">{controlsViews[type] ?? controlsViews.default}</div>
 }
 
 ControlsSelector.propTypes = {
