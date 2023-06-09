@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  proxy:
+    image: miemo/proxy
+    build: ./proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ${NGINX_CONFIG_FILE_PATH}:/etc/nginx/conf.d/default.conf
+      - ${CERTBOT_WWW_PATH}:/var/www/certbot/:ro
+      - ${CERTBOT_CONF_PATH}:/etc/nginx/ssl/:ro
+  miemo-emotion:
+    image: miemo/emotion
+    build: ./Miemo-Emotion
+    working_dir: /src/
+    command: python3 /src/emotion_server.py
+  miemo-backend:
+    image: miemo/backend
+    build: ./Api
+  miemo-frontend:
+    image: miemo/frontend
+    build: ./MiEmo Webapp
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ${CERTBOT_WWW_PATH}:/var/www/certbot/:rw
+      - ${CERTBOT_CONF_PATH}:/etc/letsencrypt/:rw
