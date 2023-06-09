@@ -15,7 +15,7 @@ function SettingsHeader({ headerTitle, backUrl }) {
 						<IoMdArrowRoundBack size="2em" color="black" />
 					</Link>
 				</Button>
-				<h1 className="d-inline-block mx-2 h-100 align-middle mt-2">{`${headerTitle}`}</h1>
+				<h1 className="d-inline-block mx-2 h-100 align-middle mt-2 user-select-none">{`${headerTitle}`}</h1>
 			</div>
 			<Divider />
 		</>

@@ -6,7 +6,7 @@ import { Col, Row } from 'react-bootstrap'
 
 export default function PlatformDescription({ platform }) {
 	return (
-		<div className="p-4 text-wrap text-break">
+		<div className="p-4 text-wrap text-break user-select-none">
 			<div className="mx-auto w-min-content mb-2">
 				<img src={platform.console_logo} className="w-auto h-8" />
 			</div>
