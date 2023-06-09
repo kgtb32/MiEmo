@@ -17,17 +17,19 @@ import CalendarConfig from './pages/Settings/CalendarConfig'
 import Hologram from './pages/Settings/Hologram'
 import GameLauncher from './pages/GameLauncher'
 import ShadowMe from './pages/ShadowMe'
+import About from './pages/About'
 
 import Page404 from './pages/Page404'
 
 function App() {
 	return (
 		<Suspense fallback={<p>loading</p>}>
-			<div className="App">
+			<div className="App py-4">
 				<Router>
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/shadowme" element={<ShadowMe />} />
+						<Route path="/about" element={<About />} />
 						<Route path="/game" element={<Game />} />
 						<Route path="/game/:platformId" element={<GameSelection />} />
 						<Route path="/game/:platformId/:gameId" element={<GameLauncher />} />
