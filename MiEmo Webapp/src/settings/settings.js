@@ -5,6 +5,22 @@ const endPoint = (baseUrl, url) => {
 let settings = {
 	useMock: true,
 	isProd: false,
+	app: {
+		accentColor: {
+			key: 'com.miemo.accentColor',
+			defaultValue: 'com.miemo.color.turquoise',
+			colors: [
+				{ id: 'com.miemo.color.alizarin', name: 'alizarin', color: '#e74c3c' },
+				{ id: 'com.miemo.color.carrot', name: 'carrot', color: '#e67e22' },
+				{ id: 'com.miemo.color.sun_flower', name: 'sun flower', color: '#f1c40f' },
+				{ id: 'com.miemo.color.clouds', name: 'clouds', color: '#ecf0f1' },
+				{ id: 'com.miemo.color.turquoise', name: 'turquoise', color: '#1abc9c' },
+				{ id: 'com.miemo.color.emerald', name: 'emerald', color: '#2ecc71' },
+				{ id: 'com.miemo.color.peter_river', name: 'peter river', color: '#3498db' },
+				{ id: 'com.miemo.color.amethyst', name: 'amethyst', color: '#9b59b6' },
+			],
+		},
+	},
 	buttons: {
 		button_x: 'button_0',
 		button_o: 'button_1',
