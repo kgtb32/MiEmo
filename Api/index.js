@@ -40,7 +40,7 @@ const start = () => {
   return new Promise((resolve, reject) => {
     try {
       generateRoutes()
-        .listen(8000)
+        .listen(8000, "0.0.0.0")
         .then()
         .catch((err) => reject(err));
     } catch (err) {
