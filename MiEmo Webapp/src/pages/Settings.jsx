@@ -6,10 +6,10 @@ import { Divider } from 'primereact/divider'
 
 import { ListGroup } from 'react-bootstrap'
 
+import { AiFillCalendar, AiFillInfoCircle, AiFillSound, AiFillLayout } from 'react-icons/ai'
+import { FaBroom, FaBluetooth } from 'react-icons/fa'
 import { IoMdArrowRoundBack } from 'react-icons/io'
-import { FaBroom } from 'react-icons/fa'
-import { MdOutlineWifi } from 'react-icons/md'
-import { AiFillCalendar, AiFillInfoCircle } from 'react-icons/ai'
+import { MdOutlineWifi, MdSettingsEthernet } from 'react-icons/md'
 import { RiSoundModuleFill } from 'react-icons/ri'
 import { Tb3DCubeSphere } from 'react-icons/tb'
 
@@ -115,11 +115,12 @@ export default function Settings() {
 						<h2 className="user-select-none">Système</h2>
 						<ListGroup>
 							<Link to="/about" className="text-decoration-none">
-						<ListGroup.Item action>
-							<span>
-								<AiFillInfoCircle className="mx-2" color="#2980b9" size={size} />À propos de
-							</span>
-						</ListGroup.Item>
+								<ListGroup.Item action>
+									<span>
+										<AiFillInfoCircle className="mx-2" color="#2980b9" size={size} />
+										<span>À propos de</span>
+									</span>
+								</ListGroup.Item>
 							</Link>
 						</ListGroup>
 					</div>
