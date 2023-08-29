@@ -20,6 +20,7 @@ import ShadowMe from './pages/ShadowMe'
 import About from './pages/About'
 
 import Page404 from './pages/Page404'
+import AccentColor from './pages/Settings/AccentColor'
 
 function App() {
 	return (
@@ -41,6 +42,7 @@ function App() {
 						<Route path="/settings/audioMixer" element={<AudioMixer />} />
 						<Route path="/settings/audioTest" element={<AudioTest />} />
 						<Route path="/settings/networkCheck" element={<NetworkCheck />} />
+						<Route path="/settings/colors" element={<AccentColor />} />
 						<Route path="/settings/hologram" element={<Hologram />} />
 						<Route path="/*" element={<Page404 />} />
 					</Routes>
