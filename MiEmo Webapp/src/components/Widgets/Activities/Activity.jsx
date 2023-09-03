@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 
 import ActivitySelectorModal from './ActivitySelectorModal'
-
-import { Button } from 'primereact/button'
+import AccentedButton from '../../ui/AccentedButton'
 
 function Activity() {
 	const [activitySelectorModalVisible, setActivitySelectorModalVisible] = useState(false)
@@ -13,7 +12,7 @@ function Activity() {
 				modalVisible={activitySelectorModalVisible}
 				setModalVisible={setActivitySelectorModalVisible}
 			/>
-			<Button onClick={() => setActivitySelectorModalVisible(true)}>Démarrer une activité</Button>
+			<AccentedButton onClick={() => setActivitySelectorModalVisible(true)}>Démarrer une activité</AccentedButton>
 		</div>
 	)
 }

@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { Button } from 'primereact/button'
 import { Row, Col } from 'react-bootstrap'
 
 const MeteoForecast = React.lazy(() => import('./MeteoForecast'))
@@ -14,6 +13,7 @@ import api from '../../../api'
 import WeatherImageFactory from '../../../static/WeatherImageFactory'
 
 import { FiEdit } from 'react-icons/fi'
+import AccentedButton from '../../ui/AccentedButton'
 
 function Meteo() {
 	const [meteo, setMeteo] = useState(null)
@@ -65,9 +65,9 @@ function Meteo() {
 					<span className="ml-1 align-middle h-100 text-truncate	">
 						{currentCity.name} ({currentCity.admin1})
 					</span>
-					<Button className="p-button-rounded p-1 px-2" onClick={() => setModalVisible(true)}>
+					<AccentedButton className="p-button-rounded p-1 px-2" onClick={() => setModalVisible(true)}>
 						<FiEdit />
-					</Button>
+					</AccentedButton>
 				</div>
 			</div>
 		)
@@ -79,7 +79,7 @@ function Meteo() {
 			{!city.name && (
 				<div className="text-center">
 					<p>Aucune ville choisie</p>
-					<Button onClick={() => setModalVisible(true)}>Sélectionner une ville</Button>
+					<AccentedButton onClick={() => setModalVisible(true)}>Sélectionner une ville</AccentedButton>
 				</div>
 			)}
 			{!!meteo && !!city.name && (

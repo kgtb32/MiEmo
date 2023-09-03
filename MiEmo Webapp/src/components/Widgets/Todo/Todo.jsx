@@ -7,7 +7,7 @@ import { Toast } from 'primereact/toast'
 import { Checkbox } from 'primereact/checkbox'
 
 import KeyboardedInput from '../../layout/KeyboardedInput'
-import { Button } from 'primereact/button'
+import AccentedButton from '../../ui/AccentedButton'
 
 const Todo = () => {
 	const [task, setTask] = useState(JSON.parse(localStorage.getItem('taskwidgetdata')) ?? [])
@@ -140,7 +140,7 @@ const Todo = () => {
 	)
 }
 
-const ButtonCustom = styled(Button)`
+const ButtonCustom = styled(AccentedButton)`
 	background-color: #5eead4;
 	color: white;
 	border: none;

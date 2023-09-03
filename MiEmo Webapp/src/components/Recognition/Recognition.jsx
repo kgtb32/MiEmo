@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import { ButtonOutlinedCustom } from '../../static/styledComponent/styled'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+
 import RecognitionModal from './RecognitionModal'
 
-const Recognition = () => {
+import { ButtonOutlinedCustom } from '../../static/styledComponent/styled'
+
+const Recognition = ({ fg }) => {
 	const [isClick, setIsClick] = useState(false)
 
 	return (
@@ -14,14 +17,19 @@ const Recognition = () => {
 				icon={isClick ? 'pi pi-stop-circle' : 'pi pi-microphone'}
 				color={'white'}
 				isclick={isClick.toString()}
+				fg={fg}
 			/>
 			{isClick && <RecognitionModal isClick={isClick} setIsClick={setIsClick} />}
 		</div>
 	)
 }
 
+Recognition.propTypes = {
+	fg: PropTypes.string,
+}
+
 const ButtonRecognitionCustom = styled(ButtonOutlinedCustom)`
-	color: ${props => props.isclick === 'true' && 'red !important'};
+	color: ${props => props.fg};
 	border: ${props => props.isclick === 'true' && '2px solid red !important;'};
 	background-color: ${props => props.isclick === 'true' && 'white !important;'};
 `

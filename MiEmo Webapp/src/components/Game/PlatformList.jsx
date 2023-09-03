@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
+import AccentedListGroupItem from '../ui/AcccentedListGroupItem'
+
 import { PlatformProps } from '../../proptypes/PlatformPropTypes'
 
 export default function PlatformList({ platforms, selectedPlatform, setSelectedPlatform }) {
@@ -7,15 +10,16 @@ export default function PlatformList({ platforms, selectedPlatform, setSelectedP
 		<div className="w-100">
 			{platforms.map((platform, index) => {
 				return (
-					<div
+					<AccentedListGroupItem
 						key={`platform_list_${platform.platform_id}`}
 						id={`scroll-${index}`}
-						className={`p-3 my-1 rounded ${selectedPlatform == index ? 'selected-item-blue' : ''}`}
+						active={selectedPlatform == index}
+						className={`p-3 my-1 rounded`}
 						onClick={() => setSelectedPlatform(index)}
 					>
 						<img className="w-10" src={platform.game_box} />
 						<span className="mx-1">{platform.name}</span>
-					</div>
+					</AccentedListGroupItem>
 				)
 			})}
 		</div>

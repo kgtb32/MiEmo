@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Button } from 'primereact/button'
 
 import { EventEmitter } from 'events'
 
+import AccentedButton from '../../ui/AccentedButton'
 const VideoWidget = React.lazy(() => import('./VideoWidget'))
 const WebcamSelector = React.lazy(() => import('./WebcamSelector'))
 const ResultModal = React.lazy(() => import('./ResultModal'))
@@ -63,7 +63,7 @@ function EmotionWidget() {
 	)
 }
 
-const JoliButton = styled(Button)`
+const JoliButton = styled(AccentedButton)`
 	margin-left: 1em !important;
 	margin-right: 1em !important;
 `

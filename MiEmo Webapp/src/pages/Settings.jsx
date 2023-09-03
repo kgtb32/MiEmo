@@ -1,33 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Button } from 'primereact/button'
-import { Divider } from 'primereact/divider'
-
 import { ListGroup } from 'react-bootstrap'
 
 import { AiFillCalendar, AiFillInfoCircle, AiFillSound, AiFillLayout } from 'react-icons/ai'
 import { FaBroom, FaBluetooth } from 'react-icons/fa'
-import { IoMdArrowRoundBack, IoMdColorPalette } from 'react-icons/io'
+import { IoMdColorPalette } from 'react-icons/io'
 import { MdOutlineWifi, MdSettingsEthernet } from 'react-icons/md'
 import { RiSoundModuleFill } from 'react-icons/ri'
 import { Tb3DCubeSphere } from 'react-icons/tb'
+import SettingsHeader from '../components/Settings/SettingsHeader'
 
 const size = '2em'
 
 export default function Settings() {
 	return (
 		<div className="px-4 py-4">
-			<div>
-				<Button className="p-button-rounded px-1 py-1 align-middle">
-					<Link to="/">
-						<IoMdArrowRoundBack size="2em" color="black" />
-					</Link>
-				</Button>
-				<h1 className="d-inline-block mx-2 h-100 align-middle mt-2 user-select-none">Paramètres</h1>
-			</div>
-
-			<Divider />
+			<SettingsHeader headerTitle="Paramètres" backUrl="/" />
 			<div className="px-4">
 				<div className="mt-5">
 					<div className="my-2">

@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { ListGroup } from 'react-bootstrap'
 import { Divider } from 'primereact/divider'
-import { ProgressBar } from 'primereact/progressbar'
 import { Toast } from 'primereact/toast'
 import { ConfirmDialog } from 'primereact/confirmdialog'
 
 import SettingsHeader from '../../components/Settings/SettingsHeader'
+import AccentedProgressBar from '../../components/ui/AccentedProgressBar'
 
 import { FaBluetooth } from 'react-icons/fa'
 import { RiRefreshLine } from 'react-icons/ri'
@@ -109,7 +109,7 @@ export default function Bluetooth() {
 					<RiRefreshLine className="miemo-anim-spinner mx-1" color="white" size="1.5em" />
 					<p>Recherche des périphériques disponibles</p>
 				</div>
-				<ProgressBar mode="indeterminate" style={{ height: '6px' }}></ProgressBar>
+				<AccentedProgressBar mode="indeterminate" style={{ height: '6px' }}></AccentedProgressBar>
 			</div>
 		</div>
 	)

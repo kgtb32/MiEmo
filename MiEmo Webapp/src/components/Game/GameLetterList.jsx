@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { nanoid } from 'nanoid'
 
 import { FaSearch, FaStar } from 'react-icons/fa'
+import AccentedListGroupItem from '../ui/AcccentedListGroupItem'
 
 export const letters = [
 	'SH',
@@ -54,20 +55,19 @@ export default function GameLetterList({ currentLetter, setCurrentLetter }) {
 		<div className="d-flex flex-row w-100 flex-wrap justify-content-center">
 			{letters.map(letter => {
 				return (
-					<div
+					<AccentedListGroupItem
 						id={`${id}-select-letter-${letter}`}
-						className={`w-min-content p-2 mx-1 rounded text-center my-1 user-select-none ${
-							letter == currentLetter ? 'beauty-background' : ''
-						}`}
+						className={`w-min-content p-2 mx-1 rounded text-center my-1 user-select-none `}
 						style={{
 							height: '2.7em',
 							width: '2em',
 						}}
+						active={letter == currentLetter}
 						key={`letter_${letter}`}
 						onClick={() => setCurrentLetter(letter)}
 					>
 						{getLogoOrLetter(letter)}
-					</div>
+					</AccentedListGroupItem>
 				)
 			})}
 		</div>

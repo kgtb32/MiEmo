@@ -1,15 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { ListGroup } from 'react-bootstrap'
-
+import AccentedListGroupItem from '../ui/AcccentedListGroupItem'
 import { gamePropTypes } from '../../proptypes/gamePropTypes'
 
 export default function GameItem({ game, onClick, selected, index }) {
 	return (
-		<ListGroup.Item action onClick={onClick} active={selected} id={`scroll-${index}`}>
+		<AccentedListGroupItem action onClick={onClick} active={selected} id={`scroll-${index}`}>
 			{game.name}
-		</ListGroup.Item>
+		</AccentedListGroupItem>
 	)
 }
 

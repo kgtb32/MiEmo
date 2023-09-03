@@ -2,12 +2,13 @@ import React, { useRef, useState, useEffect } from 'react'
 
 import AudioPlayerBase from 'react-audio-player'
 import Slider from 'rc-slider'
-import { Button } from 'primereact/button'
-import { ListGroupItem, Row } from 'react-bootstrap'
+import { Row } from 'react-bootstrap'
 import { VirtualScroller } from 'primereact/virtualscroller'
 
 import RadioListItem from './RadioListItem'
 import SearchRadioModal from './SearchRadioModal'
+import AccentedButton from '../../ui/AccentedButton'
+import AccentedListGroupItem from '../../ui/AcccentedListGroupItem'
 
 import { FaSearch, FaVolumeUp, FaStop, FaPlay } from 'react-icons/fa'
 import { IoMdRadio, IoMdHeartDislike, IoIosHeart } from 'react-icons/io'
@@ -69,7 +70,7 @@ function Radio() {
 	const template = (item, options) => {
 		const radio = favorites[item]
 		return (
-			<ListGroupItem
+			<AccentedListGroupItem
 				action
 				onClick={() => {
 					setCurrentRadio(radio)
@@ -89,7 +90,7 @@ function Radio() {
 					currentRadio={currentRadio.stationuuid}
 					options={options}
 				/>
-			</ListGroupItem>
+			</AccentedListGroupItem>
 		)
 	}
 
@@ -97,16 +98,16 @@ function Radio() {
 		return (
 			<>
 				{bitFlags.isOn(radioPlayState.isPlaying, playState) && (
-					<Button onClick={() => audioRef?.current?.audioEl?.current?.pause()}>
+					<AccentedButton onClick={() => audioRef?.current?.audioEl?.current?.pause()}>
 						<FaStop />
-					</Button>
+					</AccentedButton>
 				)}
 				{bitFlags.isOn(radioPlayState.isPaused, playState) && (
-					<Button onClick={() => audioRef?.current?.audioEl?.current?.play()}>
+					<AccentedButton onClick={() => audioRef?.current?.audioEl?.current?.play()}>
 						<FaPlay />
-					</Button>
+					</AccentedButton>
 				)}
-				{radioPlayState.shouldPlay === playState && <Button loading />}
+				{radioPlayState.shouldPlay === playState && <AccentedButton loading />}
 			</>
 		)
 	}
@@ -122,15 +123,15 @@ function Radio() {
 				}}
 			/>
 			<div className="d-flex justify-content-between align-items-baseline my-0 p-1 vertical-align-middle">
-				<Button className="p-button-rounded p-1 px-2 d-inline-block">
+				<AccentedButton className="p-button-rounded p-1 px-2 d-inline-block">
 					<FaVolumeUp />
-				</Button>
-				<Button
+				</AccentedButton>
+				<AccentedButton
 					className="p-button-rounded d-inline-block p-1 px-2 mx-1"
 					onClick={() => setModalSearchVisible(true)}
 				>
 					<FaSearch />
-				</Button>
+				</AccentedButton>
 			</div>
 			<div>
 				<Slider value={volume} onChange={setVolume} />
@@ -165,19 +166,19 @@ function Radio() {
 					<div className="d-flex justify-content-between w-100 h-min-content">
 						{generateActionsPanel()}
 						{favorites[currentRadio.stationuuid] == null ? (
-							<Button
+							<AccentedButton
 								onClick={() => setFavorites({ [currentRadio.stationuuid]: currentRadio, ...favorites })}
 							>
 								<IoIosHeart />
-							</Button>
+							</AccentedButton>
 						) : (
-							<Button
+							<AccentedButton
 								onClick={() =>
 									setFavorites({ ...delete favorites[currentRadio.stationuuid], ...favorites })
 								}
 							>
 								<IoMdHeartDislike />
-							</Button>
+							</AccentedButton>
 						)}
 					</div>
 				</Row>

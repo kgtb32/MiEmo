@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
 import { ListGroup } from 'react-bootstrap'
-import { Button } from 'primereact/button'
 
 import ReactHowler from 'react-howler'
 
@@ -9,6 +8,7 @@ import { bitFlags } from '../../../utils/utils'
 import { FaMusic, FaStop } from 'react-icons/fa'
 
 import whitenoisesList from './whitenoisesList'
+import AccentedButton from '../../ui/AccentedButton'
 
 const playState = {
 	shouldPlay: 1 << 0,
@@ -90,16 +90,16 @@ function WhiteNoise() {
 				{bitFlags.isOn(playState.shouldPlay, currentPlayState) && (
 					<>
 						{bitFlags.isOn(playState.isPlaying, currentPlayState) ? (
-							<Button
+							<AccentedButton
 								onClick={() => {
 									setCurrentNoise()
 									setCurrentPlayState(0)
 								}}
 							>
 								<FaStop />
-							</Button>
+							</AccentedButton>
 						) : (
-							<Button disabled loading />
+							<AccentedButton disabled loading />
 						)}
 					</>
 				)}

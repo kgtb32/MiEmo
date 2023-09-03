@@ -11,14 +11,20 @@ import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list'
 import bootstrapPlugin from '@fullcalendar/bootstrap'
 
+import useApplicationSettingsContext from '../../../context/ApplicationSettingsContext'
+
+import { getColorFromSettings } from '../../../utils/utils'
 import settings from '../../../settings/settings'
 
 function Calendar() {
 	const [calendarId] = useState(localStorage.getItem(settings.calendar.calIdLocalStorageVal) ?? '')
 	const [apiKey] = useState(localStorage.getItem(settings.calendar.calApiKeyLocalStorageVal) ?? '')
 
+	const { selectedColor } = useApplicationSettingsContext()
+	const color = getColorFromSettings(selectedColor)
+
 	return (
-		<JoliDiv className="h-100">
+		<JoliDiv className="h-100" color={color}>
 			<FullCalendar
 				plugins={[
 					dayGridPlugin,
@@ -73,6 +79,14 @@ const JoliDiv = styled.div`
 	& .fc-toolbar-title {
 		text-transform: uppercase;
 	}
-`
 
+	.fc-button {
+		background: ${props => props?.color ?? 'transparent'} !important;
+		border-color: ${props => props?.color ?? 'transparent'} !important;
+	}
+
+	.fc-button:focus {
+		box-shadow: 0 0 0 0.2rem white !important;
+	}
+`
 export default Calendar
