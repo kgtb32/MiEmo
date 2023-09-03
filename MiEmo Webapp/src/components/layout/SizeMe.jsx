@@ -5,6 +5,16 @@ export default function SizeMe({ children, sizeChanged }) {
 	const parentRef = useRef(null)
 
 	useEffect(() => {
+		const handleResize = () => {
+			const [width, height] = [parentRef?.current?.clientWidth, parentRef?.current?.clientHeight]
+			sizeChanged({ width, height })
+		}
+		window.addEventListener('resize', handleResize)
+
+		return () => window.removeEventListener('resize', handleResize)
+	}, [])
+
+	useEffect(() => {
 		const [width, height] = [parentRef?.current?.clientWidth, parentRef?.current?.clientHeight]
 		sizeChanged({ width, height })
 	}, [parentRef?.current?.clientHeight, parentRef?.current?.clientWidth])

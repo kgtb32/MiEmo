@@ -151,27 +151,31 @@ function GridLayout() {
 	}
 
 	return (
-		<SizeMe sizeChanged={({ width }) => setWidth(width)}>
-			<JoliGrid
-				className="layout"
-				resizeHandles={['se']}
-				style={{
-					minHeight: '120px',
-				}}
-				measureBeforeMount={true}
-				layouts={layout.layouts}
-				draggableCancel=".no-drag"
-				breakpoints={layout.breakpoints}
-				compactType={null}
-				cols={layout.cols}
-				width={width}
-				onDragStop={updateLayout}
-				onResizeStop={updateLayout}
-				isDroppable={true}
-			>
-				{generateDom(layout.components)}
-			</JoliGrid>
-		</SizeMe>
+		<div className="w-100 h-100">
+			<SizeMe sizeChanged={({ width }) => setWidth(width)}>
+				{width > 0 && (
+					<JoliGrid
+						className="layout"
+						resizeHandles={['se']}
+						style={{
+							minHeight: '120px',
+						}}
+						measureBeforeMount={true}
+						layouts={layout.layouts}
+						draggableCancel=".no-drag"
+						breakpoints={layout.breakpoints}
+						compactType={null}
+						cols={layout.cols}
+						width={width}
+						onDragStop={updateLayout}
+						onResizeStop={updateLayout}
+						isDroppable={true}
+					>
+						{generateDom(layout.components)}
+					</JoliGrid>
+				)}
+			</SizeMe>
+		</div>
 	)
 }
 
