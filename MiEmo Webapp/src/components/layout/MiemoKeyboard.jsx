@@ -3,12 +3,15 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import ReactKeyboard from 'react-simple-keyboard'
+import useApplicationSettingsContext from '../../context/ApplicationSettingsContext'
 
 import 'react-simple-keyboard/build/css/index.css'
 import '../../static/css/keyboard.css'
 
 export default function MiemoKeyboard({ value, setValue, keyboardVisible, goFunction, defaultKeyboard }) {
 	const [layout, setLayout] = useState(defaultKeyboard)
+
+	const { enableVirtualKeyboard } = useApplicationSettingsContext()
 
 	useEffect(() => {
 		setLayout(defaultKeyboard)
@@ -37,7 +40,7 @@ export default function MiemoKeyboard({ value, setValue, keyboardVisible, goFunc
 
 	return (
 		<>
-			{keyboardVisible && (
+			{keyboardVisible && enableVirtualKeyboard && (
 				<JoliKeyboardContainer className="w-100 d-flex px-4">
 					<ReactKeyboard
 						className="w-100 min-width-100"

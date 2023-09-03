@@ -28,15 +28,15 @@ import { ApplicationSettingsProvider } from './context/ApplicationSettingsContex
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
 		<StoreProvider>
-			<KeyboardProvider>
-				<GameProvider>
-					<ApplicationSettingsProvider>
+			<GameProvider>
+				<ApplicationSettingsProvider>
+					<KeyboardProvider>
 						<ErrorBoundary>
 							<App />
 						</ErrorBoundary>
-					</ApplicationSettingsProvider>
-				</GameProvider>
-			</KeyboardProvider>
+					</KeyboardProvider>
+				</ApplicationSettingsProvider>
+			</GameProvider>
 		</StoreProvider>
 	</React.StrictMode>,
 )
