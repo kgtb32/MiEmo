@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom'
 
 import { ListGroup } from 'react-bootstrap'
 
+import SettingsHeader from '../components/Settings/SettingsHeader'
+
 import { AiFillCalendar, AiFillInfoCircle, AiFillSound, AiFillLayout } from 'react-icons/ai'
 import { FaBroom, FaBluetooth } from 'react-icons/fa'
 import { IoMdColorPalette } from 'react-icons/io'
-import { MdOutlineWifi, MdSettingsEthernet } from 'react-icons/md'
+import { MdOutlineWifi, MdSettingsEthernet, MdKeyboard } from 'react-icons/md'
 import { RiSoundModuleFill } from 'react-icons/ri'
 import { Tb3DCubeSphere } from 'react-icons/tb'
-import SettingsHeader from '../components/Settings/SettingsHeader'
 
 const size = '2em'
 
@@ -74,6 +75,12 @@ export default function Settings() {
 								<ListGroup.Item action>
 									<IoMdColorPalette className="mx-2" color="#d35400" size={size} />
 									<span>{"Couleur d'accentuation"}</span>
+								</ListGroup.Item>
+							</Link>
+							<Link to="/settings/keyboard" className="text-decoration-none">
+								<ListGroup.Item action>
+									<MdKeyboard className="mx-2" color="" size={size} />
+									<span>Clavier virtuel</span>
 								</ListGroup.Item>
 							</Link>
 							<Link to="/settings/hologram" className="text-decoration-none">

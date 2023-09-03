@@ -21,6 +21,7 @@ import About from './pages/About'
 
 import Page404 from './pages/Page404'
 import AccentColor from './pages/Settings/AccentColor'
+import VirtualKeyboard from './pages/Settings/VirtualKeyboard'
 
 function App() {
 	return (
@@ -43,6 +44,7 @@ function App() {
 						<Route path="/settings/audioTest" element={<AudioTest />} />
 						<Route path="/settings/networkCheck" element={<NetworkCheck />} />
 						<Route path="/settings/colors" element={<AccentColor />} />
+						<Route path="/settings/keyboard" element={<VirtualKeyboard />} />
 						<Route path="/settings/hologram" element={<Hologram />} />
 						<Route path="/*" element={<Page404 />} />
 					</Routes>
