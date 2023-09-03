@@ -6,6 +6,9 @@ let settings = {
 	useMock: true,
 	isProd: false,
 	app: {
+		virtualKeyboard: {
+			key: 'com.miemo.virtualKeyboard',
+		},
 		accentColor: {
 			key: 'com.miemo.accentColor',
 			defaultValue: 'com.miemo.color.turquoise',
