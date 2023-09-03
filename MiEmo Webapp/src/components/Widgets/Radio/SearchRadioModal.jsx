@@ -1,9 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { ListGroup, ListGroupItem, Modal } from 'react-bootstrap'
-
-import { Button } from 'primereact/button'
+import { ListGroup, Modal } from 'react-bootstrap'
 
 import RadioListItem from './RadioListItem'
 import KeyboardedInput from '../../layout/KeyboardedInput'
@@ -11,6 +9,8 @@ import KeyboardedInput from '../../layout/KeyboardedInput'
 import api from '../../../api'
 
 import { FaSearch } from 'react-icons/fa'
+import AccentedButton from '../../ui/AccentedButton'
+import AccentedListGroupItem from '../../ui/AcccentedListGroupItem'
 
 function SearchRadioModal({ setCurrentRadio, isModalVisible, setModalVisible }) {
 	const [query, setQuery] = useState('')
@@ -40,9 +40,13 @@ function SearchRadioModal({ setCurrentRadio, isModalVisible, setModalVisible }) 
 								props={{ className: 'w-100' }}
 								goFunction={executeSearch}
 							/>
-							<Button className="mx-1" disabled={query.length < 3} onClick={() => executeSearch()}>
+							<AccentedButton
+								className="mx-1"
+								disabled={query.length < 3}
+								onClick={() => executeSearch()}
+							>
 								<FaSearch />
-							</Button>
+							</AccentedButton>
 						</div>
 					</div>
 				</div>
@@ -55,7 +59,7 @@ function SearchRadioModal({ setCurrentRadio, isModalVisible, setModalVisible }) 
 					<ListGroup>
 						{result.map((e, i) => {
 							return (
-								<ListGroupItem
+								<AccentedListGroupItem
 									className="bg-dark text-white border-bottom-1 border-top-0 border-left-0 border-right-0 border-light my-1 rounded"
 									key={'radio_found' + i}
 									onClick={() => {
@@ -73,7 +77,7 @@ function SearchRadioModal({ setCurrentRadio, isModalVisible, setModalVisible }) 
 											countryCode: e.countrycode,
 										}}
 									/>
-								</ListGroupItem>
+								</AccentedListGroupItem>
 							)
 						})}
 					</ListGroup>

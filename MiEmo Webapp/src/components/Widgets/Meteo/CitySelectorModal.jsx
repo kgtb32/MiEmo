@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { Button } from 'primereact/button'
 import { ListBox } from 'primereact/listbox'
 
 import { Modal } from 'react-bootstrap'
@@ -11,6 +10,7 @@ import { FaSearch } from 'react-icons/fa'
 import KeyboardedInput from '../../layout/KeyboardedInput'
 
 import api from '../../../api'
+import AccentedButton from '../../ui/AccentedButton'
 
 export default function CitySelectorModal({ setCity, setModalVisible }) {
 	const [cityName, setCityName] = useState('')
@@ -63,9 +63,9 @@ export default function CitySelectorModal({ setCity, setModalVisible }) {
 							className: 'p-inputtext-sm w-100',
 						}}
 					/>
-					<Button className="p-button-sm" onClick={() => executeCitySearch()}>
+					<AccentedButton className="p-button-sm" onClick={() => executeCitySearch()}>
 						<FaSearch />
-					</Button>
+					</AccentedButton>
 				</div>
 				<div>
 					{results.length == 0 && <p>Aucun résultat</p>}
@@ -85,11 +85,11 @@ export default function CitySelectorModal({ setCity, setModalVisible }) {
 			</Modal.Body>
 			<Modal.Footer>
 				<div className="d-flex justify-content-between w-100">
-					<Button className="p-button-sm" onClick={() => setModalVisible(false)}>
+					<AccentedButton className="p-button-sm" onClick={() => setModalVisible(false)}>
 						Fermer
-					</Button>
+					</AccentedButton>
 					{selectedCity.name && (
-						<Button
+						<AccentedButton
 							className="p-button-sm p-button-success"
 							onClick={() => {
 								setCity(selectedCity)
@@ -97,7 +97,7 @@ export default function CitySelectorModal({ setCity, setModalVisible }) {
 							}}
 						>
 							Valider
-						</Button>
+						</AccentedButton>
 					)}
 				</div>
 			</Modal.Footer>

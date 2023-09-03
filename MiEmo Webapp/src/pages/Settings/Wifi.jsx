@@ -1,22 +1,17 @@
 import React, { useState, useCallback, useEffect } from 'react'
 
-import { Link } from 'react-router-dom'
-
-import { Button } from 'primereact/button'
-import { Divider } from 'primereact/divider'
-import { ProgressBar } from 'primereact/progressbar'
-
 import { ListGroup } from 'react-bootstrap'
 
 import WifiItem from '../../components/Settings/WifiItem'
 import WifiPasswordSelector from '../../components/Settings/WifiPasswordSelector'
+import SettingsHeader from '../../components/Settings/SettingsHeader'
 
-import { IoMdArrowRoundBack } from 'react-icons/io'
 import { RiRefreshLine } from 'react-icons/ri'
 
 import api from '../../api/'
 
 import '../../static/css/Spinner.css'
+import AccentedProgressBar from '../../components/ui/AccentedProgressBar'
 
 function Wifi() {
 	const [wifiList, setWifiList] = useState([])
@@ -46,15 +41,7 @@ function Wifi() {
 				modalVisible={modalVisible}
 				wifiInfos={selectedWifiNetwork}
 			/>
-			<div>
-				<Button className="p-button-rounded px-1 py-1 align-middle">
-					<Link to="/settings">
-						<IoMdArrowRoundBack size="2em" color="black" />
-					</Link>
-				</Button>
-				<h1 className="d-inline-block mx-2 h-100 align-middle mt-2">Wifi</h1>
-			</div>
-			<Divider />
+			<SettingsHeader headerTitle="Wifi" backUrl="/settings" />
 			<h2>Réseaux disponibles</h2>
 			<ListGroup>
 				{wifiList
@@ -86,7 +73,7 @@ function Wifi() {
 					<RiRefreshLine className="miemo-anim-spinner mx-1" color="white" size="1.5em" />
 					<p>Recherche des réseaux disponibles</p>
 				</div>
-				<ProgressBar mode="indeterminate" style={{ height: '6px' }}></ProgressBar>
+				<AccentedProgressBar mode="indeterminate" style={{ height: '6px' }}></AccentedProgressBar>
 			</div>
 		</div>
 	)

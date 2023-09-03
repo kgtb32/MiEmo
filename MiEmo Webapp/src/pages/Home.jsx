@@ -1,4 +1,9 @@
 import React from 'react'
+
+import { getColorFromSettings } from '../utils/utils'
+import useStoreContext from '../context/StoreContext'
+import useApplicationSettingsContext from '../context/ApplicationSettingsContext'
+
 import { Link } from 'react-router-dom'
 
 import GridLayout from '../components/layout/GridLayout'
@@ -9,11 +14,12 @@ import { ButtonOutlinedCustom } from '../static/styledComponent/styled'
 
 import { IoGameControllerOutline } from 'react-icons/io5'
 import { GiMirrorMirror } from 'react-icons/gi'
+
 import MiemoLogo from '/img/logo_miror.png'
-
-import useStoreContext from '../context/StoreContext'
-
 export default function Home() {
+	const { selectedColor } = useApplicationSettingsContext()
+	const color = getColorFromSettings(selectedColor)
+
 	const { widgetEditMode, toggleWidgetEditMode } = useStoreContext()
 
 	return (
@@ -30,39 +36,43 @@ export default function Home() {
 					style={{ padding: '1.5em' }}
 				>
 					<Link className="text-decoration-none">
-						<Recognition />
+						<Recognition fg={color} />
 					</Link>
 					<Link className="text-decoration-none" to="/shadowme">
 						<ButtonOutlinedCustom
 							className="p-button-rounded p-1 px-1 mx-1 p-button-outlined"
 							icon="pi"
 							color="white"
+							fg={color}
 						>
-							<GiMirrorMirror />
+							<GiMirrorMirror color={color} />
 						</ButtonOutlinedCustom>
 					</Link>
 					<Link to="/game" className="text-decoration-none">
 						<ButtonOutlinedCustom
 							className="p-button-rounded p-1 px-1 mx-1 p-button-outlined"
 							icon="pi"
-							color={'white'}
+							color="white"
+							fg={color}
 						>
-							<IoGameControllerOutline size="22" color="#5EEAD4" className="mx-2" />
+							<IoGameControllerOutline size="22" color={color} className="mx-2" />
 						</ButtonOutlinedCustom>
 					</Link>
 					<Link to="/settings" className="text-decoration-none">
 						<ButtonOutlinedCustom
 							className="p-button-rounded p-1 px-1 mx-1 p-button-outlined"
 							icon="pi pi-cog"
-							color={'white'}
+							color="white"
+							fg={color}
 						/>
 					</Link>
 					<Link className="text-decoration-none">
 						<ButtonOutlinedCustom
 							className="p-button-rounded p-1 px-1 mx-1 p-button-outlined"
 							onClick={toggleWidgetEditMode}
+							color="white"
+							fg={color}
 							icon="pi pi-home"
-							color={'white'}
 						/>
 					</Link>
 				</div>

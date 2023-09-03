@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import { Button } from 'primereact/button'
-
 import KeyboardedInput from '../layout/KeyboardedInput'
+import AccentedButton from '../ui/AccentedButton'
 
 import { snakeCase, deburr } from 'lodash'
 
@@ -23,9 +22,9 @@ export default function GameSearch({ setGames, games }) {
 	return (
 		<div className="w-100 d-flex my-1">
 			<KeyboardedInput setValue={setSearchString} value={searchString} props={{ className: 'w-100 mx-1 px-1' }} />
-			<Button>
+			<AccentedButton>
 				<FaSearch />
-			</Button>
+			</AccentedButton>
 		</div>
 	)
 }

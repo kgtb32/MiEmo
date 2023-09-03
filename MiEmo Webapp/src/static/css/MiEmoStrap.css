@@ -148,7 +148,6 @@
 }
 
 .game-list > .active {
-	background: #5eead4 !important;
 	border-radius: 1em 1em 1em 1em !important;
 }
 
@@ -181,8 +180,7 @@
 	background: #5eead4;
 }
 
-.beauty-background,
-.list-group-item.active {
+.beauty-background {
 	background-color: #41b9a7 !important;
 }
 

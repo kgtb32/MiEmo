@@ -6,6 +6,8 @@ dayjs.locale('fr')
 import WeatherImageFactory from '../static/WeatherImageFactory'
 import WeatherImage from '../static/json/weatherImage.json'
 
+import settings from '../settings/settings'
+
 export const generateQueryString = (urlStr, parameters) => {
 	const finalUrl = new URL(urlStr)
 	let params = finalUrl.searchParams
@@ -19,6 +21,9 @@ export const generateMeteoAvailable = whatWanted => {
 		return previousValue + ',' + currentValue
 	})
 }
+
+export const getColorFromSettings = selectedColor =>
+	settings.app.accentColor.colors.find(v => v.id == selectedColor).color
 
 export const parseISO8601Date = dateToParse => {
 	return dayjs(dateToParse)

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { ProgressBar } from 'primereact/progressbar'
-import { Button } from 'primereact/button'
 
-import CleanUp from '/img/cleanup.svg'
+import AccentedButton from '../../components/ui/AccentedButton'
+
 import { IoMdArrowRoundBack } from 'react-icons/io'
+import CleanUp from '/img/cleanup.svg'
 
 const baseDiff = 2 * 60
 
@@ -35,11 +36,11 @@ function CleanupPage() {
 
 	return (
 		<div className="p-5">
-			<Button className="p-button-rounded px-1 py-1 align-middle" disabled={percentage > 0}>
+			<AccentedButton className="p-button-rounded px-1 py-1 align-middle" disabled={percentage > 0}>
 				<Link to="/settings">
 					<IoMdArrowRoundBack size="2em" color="black" />
 				</Link>
-			</Button>
+			</AccentedButton>
 			<div className="text-center">
 				<h1>Mode nettoyage</h1>
 				<h2>Activé</h2>

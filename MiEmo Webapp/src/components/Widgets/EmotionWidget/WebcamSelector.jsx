@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { ListGroup, Modal } from 'react-bootstrap'
 
 import { AiFillCamera } from 'react-icons/ai'
+import AccentedListGroupItem from '../../ui/AcccentedListGroupItem'
 
 function WebcamSelector({ setSelectedVideoDevice, videoDevices, setModalVisible, modalVisible }) {
 	return (
@@ -16,7 +17,7 @@ function WebcamSelector({ setSelectedVideoDevice, videoDevices, setModalVisible,
 				<ListGroup defaultActiveKey="">
 					{videoDevices.map(({ label, deviceId }, i) => {
 						return (
-							<ListGroup.Item
+							<AccentedListGroupItem
 								onClick={() => {
 									setSelectedVideoDevice({ deviceId })
 									setModalVisible(false)
@@ -26,7 +27,7 @@ function WebcamSelector({ setSelectedVideoDevice, videoDevices, setModalVisible,
 							>
 								<AiFillCamera />
 								<span className="mx-2">{label ?? `Caméra ${i}`}</span>
-							</ListGroup.Item>
+							</AccentedListGroupItem>
 						)
 					})}
 				</ListGroup>

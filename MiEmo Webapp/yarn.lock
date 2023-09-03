@@ -9348,11 +9348,6 @@ spdy@^4.0.2:
     select-hose "^2.0.0"
     spdy-transport "^3.0.0"
 
-spoken@^1.1.17:
-  version "1.1.17"
-  resolved "https://registry.yarnpkg.com/spoken/-/spoken-1.1.17.tgz#5d50c487eef22b7d7e97661e66e79e2e4e662bd8"
-  integrity sha512-cERSTzRpvxCLCAAXEaO0Nt8ksXiDNxqNFwW2WnxFkkXaXLIdFc/GXIzG3OWzAZ4Nre+1UsPLgMrFXWZg3t+G0w==
-
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"

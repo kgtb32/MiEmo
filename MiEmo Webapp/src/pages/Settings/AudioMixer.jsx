@@ -1,16 +1,14 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react'
-import { Link } from 'react-router-dom'
-
-import { Button } from 'primereact/button'
-import { Divider } from 'primereact/divider'
-import { InputSwitch } from 'primereact/inputswitch'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import { ListGroup } from 'react-bootstrap'
 import RangeSlider from 'react-bootstrap-range-slider'
 
+import SettingsHeader from '../../components/Settings/SettingsHeader'
+import AccentedListGroupItem from '../../components/ui/AcccentedListGroupItem'
+import AccentedSwitch from '../../components/ui/AccentedSwitch'
+
 import AudioPlayerBase from 'react-audio-player'
 
-import { IoMdArrowRoundBack } from 'react-icons/io'
 import { BsSpeakerFill } from 'react-icons/bs'
 
 import BeepSound from '/sounds/beep.ogg'
@@ -96,19 +94,13 @@ function AudioMixer() {
 		<div className="p-4">
 			<div>
 				<ReactAudioPlayer ref={audioRef} src={BeepSound} volume={1} />
-				<Button className="p-button-rounded px-1 py-1 align-middle">
-					<Link to="/settings">
-						<IoMdArrowRoundBack size="2em" color="black" />
-					</Link>
-				</Button>
-				<h1 className="d-inline-block mx-2 h-100 align-middle mt-2">Mélangeur Audio</h1>
+				<SettingsHeader headerTitle="Mélangeur Audio" backUrl="/settings" />
 			</div>
-			<Divider />
 			<div>
 				<h2>Volume</h2>
 				<div className="my-3">
 					<div>
-						<InputSwitch checked={surAmp} onChange={e => setSurAmp(e.target.value)} />
+						<AccentedSwitch checked={surAmp} onChange={e => setSurAmp(e.target.value)} />
 						<p className="d-inline-block mx-2 font-bold align-middle">sur-amplification</p>
 					</div>
 					<>
@@ -117,6 +109,7 @@ function AudioMixer() {
 							value={parseInt(volume)}
 							max={surAmp ? 150 : 100}
 							variant="info"
+							color="red"
 							onChange={(_, value) => setVolume(value)}
 							onAfterChange={() => updateVolume(audioInfo?.['default-sink'] ?? '', volume)}
 						/>
@@ -127,7 +120,7 @@ function AudioMixer() {
 					<ListGroup>
 						{sinks.map((e, i) => {
 							return (
-								<ListGroup.Item
+								<AccentedListGroupItem
 									key={'sink_' + i}
 									action
 									active={e?.name == audioInfo?.['default-sink']}
@@ -135,7 +128,7 @@ function AudioMixer() {
 								>
 									<BsSpeakerFill size="2em" />
 									<span className="mx-2">{e?.description}</span>
-								</ListGroup.Item>
+								</AccentedListGroupItem>
 							)
 						})}
 					</ListGroup>

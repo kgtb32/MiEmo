@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { ReactSketchCanvas } from 'react-sketch-canvas'
-import { Button } from 'primereact/button'
 
 import ColorModal from './ColorModal'
 import KeyboardedInput from '../../layout/KeyboardedInput'
 
 import { BiUndo, BiRedo, BiEraser, BiPaint, BiColorFill } from 'react-icons/bi'
+import AccentedButton from '../../ui/AccentedButton'
 
 const ICON_SIZE = '1.4em'
 
@@ -49,22 +49,22 @@ function ReactDrawing() {
 					setColor={modalFillColorVisible ? setCanvasColor : setColor}
 					color={modalFillColorVisible ? canvasColor : color}
 				/>
-				<Button onClick={() => setModalFillColorVisible(!modalFillColorVisible)} className="p-2">
+				<AccentedButton onClick={() => setModalFillColorVisible(!modalFillColorVisible)} className="p-2">
 					<BiColorFill size={ICON_SIZE} />
-				</Button>
-				<Button onClick={() => setPencilColorVisible(!pencilColorVisible)} className="p-2">
+				</AccentedButton>
+				<AccentedButton onClick={() => setPencilColorVisible(!pencilColorVisible)} className="p-2">
 					<BiPaint size={ICON_SIZE} />
-				</Button>
-				<Button onClick={clearButtonClick} className="p-2">
+				</AccentedButton>
+				<AccentedButton onClick={clearButtonClick} className="p-2">
 					<BiEraser size={ICON_SIZE} />
-				</Button>
-				<Button onClick={undoButtonClick} className="p-2">
+				</AccentedButton>
+				<AccentedButton onClick={undoButtonClick} className="p-2">
 					<BiUndo size={ICON_SIZE} />
-				</Button>
+				</AccentedButton>
 
-				<Button onClick={redoButtonClick} className="p-2">
+				<AccentedButton onClick={redoButtonClick} className="p-2">
 					<BiRedo size={ICON_SIZE} />
-				</Button>
+				</AccentedButton>
 			</div>
 		</BigBox>
 	)
