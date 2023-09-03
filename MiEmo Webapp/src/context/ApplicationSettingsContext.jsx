@@ -6,7 +6,7 @@ export const ApplicationSettingsContext = createContext()
 
 export const ApplicationSettingsProvider = props => {
 	const getSavedSelectedColor = () =>
-		window.localStorage.getItem(settings.app.accentColor.key ?? settings.app.accentColor.defaultValue)
+		window.localStorage.getItem(settings.app.accentColor.key) ?? settings.app.accentColor.defaultValue
 	const saveSelectedColor = value => window.localStorage.setItem(settings.app.accentColor.key, value)
 
 	const [selectedColor, setSelectedColor] = useState(getSavedSelectedColor())
